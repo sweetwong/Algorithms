@@ -7,26 +7,22 @@ import util.MyLinkedList.ListNode;
 
 class Item23 {
 
-  public static void main(String[] args) {
-    ListNode l1 = MyLinkedList.createListNode(1, 4, 8, 10);
-    ListNode l2 = MyLinkedList.createListNode(2, 9, 24);
-    ListNode l3 = MyLinkedList.createListNode(3, 7);
-    MyLinkedList.printListNode(new Item23().mergeKLists(new ListNode[]{l1, l2, l3}));
-  }
-
-
+  /**
+   * 关键: 将 合并K个数组的问题 分解为 两组合并K/2个数组的问题
+   */
   public ListNode mergeKLists(ListNode[] lists) {
     int n = lists.length;
+
     if (n == 0) return null;
     if (n == 1) return lists[0];
     if (n == 2) return mergeTwoLists(lists[0], lists[1]);
 
     int middle = n / 2;
 
-    ListNode[] left = Arrays.copyOfRange(lists, 0, middle);
-    ListNode[] right = Arrays.copyOfRange(lists, middle, n);
+    ListNode[] l1 = Arrays.copyOfRange(lists, 0, middle);
+    ListNode[] l2 = Arrays.copyOfRange(lists, middle, n);
 
-    return mergeTwoLists(mergeKLists(left), mergeKLists(right));
+    return mergeTwoLists(mergeKLists(l1), mergeKLists(l2));
   }
 
   public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
@@ -39,6 +35,13 @@ class Item23 {
       l1.next = mergeTwoLists(l1.next, l2);
       return l1;
     }
+  }
+
+  public static void main(String[] args) {
+    ListNode l1 = MyLinkedList.createListNode(1, 4, 8, 10);
+    ListNode l2 = MyLinkedList.createListNode(2, 9, 24);
+    ListNode l3 = MyLinkedList.createListNode(3, 7);
+    MyLinkedList.printListNode(new Item23().mergeKLists(new ListNode[]{l1, l2, l3}));
   }
 
 }
