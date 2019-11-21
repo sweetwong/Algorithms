@@ -1,19 +1,9 @@
 package sort;
 
-import util.MyArray;
-
-import java.util.Arrays;
-
 /**
  * 插入排序, 稳定, O(n²)中最快的排序
  */
 public class InsertionSort {
-
-  public static void main(String[] args) {
-    int[] nums = MyArray.createRandomArrays(15, 50);
-    sort(nums);
-    System.out.print(Arrays.toString(nums));
-  }
 
   public static void sort(int[] nums) {
     if (nums.length <= 1) return;

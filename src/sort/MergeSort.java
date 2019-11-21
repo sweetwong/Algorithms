@@ -19,16 +19,16 @@ public class MergeSort {
     // 获取中位数,并将数组切割为两部分
     int middle = nums.length / 2;
 
-    // todo 此处可以优化,不用复制两个数组,而改用指针的形式
+    // 把数组分成左右两个区间
     int[] left = Arrays.copyOfRange(nums, 0, middle);
     int[] right = Arrays.copyOfRange(nums, middle, nums.length);
 
     // 归并左边的数组使其变成一个有序数组(将大问题变成小问题)
-    // 归并右边的数组使其变成一个有序数组(将大问题变成小问题)
-    // 合并两个有序数组
     sort(left);
+    // 归并右边的数组使其变成一个有序数组(将大问题变成小问题)
     sort(right);
 
+    // 合并两个有序数组
     mergeTwoSortedArrays(nums, left, right);
   }
 
@@ -38,17 +38,28 @@ public class MergeSort {
   public static void mergeTwoSortedArrays(int[] nums, int[] left, int[] right) {
     int[] temp = new int[left.length + right.length];
     for (int i = 0, l = 0, r = 0; i < temp.length; i++) {
+      // 检查左边的数组是否越界
       if (l >= left.length) {
         temp[i] = right[r++];
-      } else if (r >= right.length) {
+      }
+      // 检查右边的数组是否越界
+      else if (r >= right.length) {
         temp[i] = left[l++];
-      } else if (left[l] <= right[r]) { // 这句话必须这样写,左边<=右边,这样才能保持稳定性
+      }
+      // 这句话必须这样写,左边<=右边,这样才能保持稳定性
+      else if (left[l] <= right[r]) {
         temp[i] = left[l++];
-      } else {
+      }
+      // 最后一种情况,既左边>右边
+      else {
         temp[i] = right[r++];
       }
     }
+    // 将临时产生的排好序的数组复制到主数组上
     System.arraycopy(temp, 0, nums, 0, nums.length);
+
+    // 如果有返回值,就直接返回temp,不用在复制到主数组上
+    // return temp;
   }
 
   /**

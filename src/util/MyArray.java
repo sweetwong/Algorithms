@@ -1,5 +1,8 @@
 package util;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MyArray {
 
   /**
@@ -16,7 +19,7 @@ public class MyArray {
   }
 
   /**
-   * @param n 随机数组的长度
+   * @param n   随机数组的长度
    * @param max 每个数字的最大值
    * @return n个随机数字组成的数组
    */
@@ -28,6 +31,20 @@ public class MyArray {
       arr[i] = (int) num;
     }
     return arr;
+  }
+
+  public static int[] convertIntToArray(int x) {
+    List<Integer> list = new ArrayList<>();
+    while (x != 0) {
+      int pop = x % 10;
+      list.add(pop);
+      x = x / 10;
+    }
+    int[] res = new int[list.size()];
+    for (int i = 0; i < list.size(); i++) {
+      res[i] = list.get(list.size() - 1 - i);
+    }
+    return res;
   }
 
 

@@ -9,38 +9,55 @@ public class QuickSort {
     quickSort(nums, 0, nums.length - 1);
   }
 
-  public static void quickSort(int[] arr, int low, int high) {
+  public static void quickSort(int[] nums, int low, int high) {
     if (low < high) {
       // 先分区,然后返回基准
-      int pi = partition(arr, low, high);
+      int pi = partition(nums, low, high);
       // 左边快排
-      quickSort(arr, low, pi - 1);
+      quickSort(nums, low, pi - 1);
       // 右边快排
-      quickSort(arr, pi + 1, high);
+      quickSort(nums, pi + 1, high);
     }
   }
 
-  private static int partition(int[] arr, int low, int high) {
+  /**
+   * 选取最后一个数15作为基准
+   * 21 17 5  7  16 6  15
+   *
+   * 21和5换
+   * 5  17 21 7  16 6  15
+   *
+   * 17和7换
+   * 5  7  21 17 16 6  15
+   *
+   * 21和6换
+   * 5  7  6  17 16 21 15
+   *
+   * 基准15插入到中间
+   * 5  7  6  15 16 21 17
+   */
+  private static int partition(int[] nums, int low, int high) {
     //选出最后一个值作为基准
-    int pivot = arr[high];
-    //i作为左指数, i的一边是指小于pivot的数, j作为右指数, j的一边是大于pivot的数
-    int i = low - 1;
-    for (int j = low; j < high; j++) {
-      //如果arr[j]小于等于基准, 属于不正常情况, 交换i与j的位置
-      if (arr[j] <= pivot) {
-        i++;
+    int pivot = nums[high];
+    //left作为左指数, left的一边是指小于pivot的数
+    int left = low - 1;
+    // 遍历数组, 注意此处是i < high, 既不包括最后一个数
+    for (int i = low; i < high; i++) {
+      //如果nums[i]小于等于基准, 属于不正常情况, 交换i与j的位置
+      if (nums[i] <= pivot) {
+        left++;
         //交换i和j的位置
-        swap(arr, i, j);
+        swap(nums, left, i);
       }
     }
-    swap(arr, i + 1, high);
-    return i + 1;
+    swap(nums, left + 1, high);
+    return left + 1;
   }
 
-  private static void swap(int[] arr, int i, int j) {
-    int temp = arr[i];
-    arr[i] = arr[j];
-    arr[j] = temp;
+  private static void swap(int[] nums, int i, int j) {
+    int temp = nums[i];
+    nums[i] = nums[j];
+    nums[j] = temp;
   }
 
 }
