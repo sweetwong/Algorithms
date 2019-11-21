@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * 选择排序
  */
-class SelectionSort {
+public class SelectionSort {
 
   public static void main(String[] args) {
     int[] arr = new int[]{2, 1, 8, 3, -1, 24, 12};

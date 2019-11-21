@@ -7,7 +7,7 @@ import java.util.Arrays;
 /**
  * 插入排序, 稳定, O(n²)中最快的排序
  */
-class InsertionSort {
+public class InsertionSort {
 
   public static void main(String[] args) {
     int[] nums = MyArray.createRandomArrays(15, 50);

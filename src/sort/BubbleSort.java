@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * 冒泡排序
  */
-class BubbleSort {
+public class BubbleSort {
 
   public static void main(String[] args) {
     int[] arr = new int[]{2, 1, 8, 3, -1, 24, 12};
