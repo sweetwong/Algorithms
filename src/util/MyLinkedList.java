@@ -34,6 +34,9 @@ public class MyLinkedList {
   }
 
 
+  /**
+   * 链表的节点类
+   */
   public static class ListNode {
 
     public int val;

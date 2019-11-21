@@ -1,4 +1,4 @@
-package LeetCode;
+package leet_code;
 
 import util.MyLinkedList.ListNode;
 

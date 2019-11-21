@@ -1,17 +1,22 @@
 package sort;
 
+import util.MyArray;
+
 import java.util.Arrays;
 
+/**
+ * 插入排序, 稳定, O(n²)中最快的排序
+ */
 class InsertionSort {
 
   public static void main(String[] args) {
-    int[] arr = new int[]{2, 1, 8, 3, -1, 24, 12};
-    System.out.print(Arrays.toString(insertionSort(arr)));
+    int[] nums = MyArray.createRandomArrays(15, 50);
+    sort(nums);
+    System.out.print(Arrays.toString(nums));
   }
 
-  public static int[] insertionSort(int[] nums) {
-    if (nums.length <= 1)
-      return nums;
+  public static void sort(int[] nums) {
+    if (nums.length <= 1) return;
 
     for (int i = 1; i < nums.length; i++) {
       // 把当前的值保存下来
@@ -30,7 +35,6 @@ class InsertionSort {
       // 2. 当前值不是最小的值, preIndex是中间值, nums[preIndex + 1] = curr
       nums[preIndex + 1] = curr;
     }
-    return nums;
   }
 
 }

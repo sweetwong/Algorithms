@@ -2,6 +2,9 @@ package sort;
 
 import java.util.Arrays;
 
+/**
+ * 选择排序
+ */
 class SelectionSort {
 
   public static void main(String[] args) {
@@ -10,19 +13,19 @@ class SelectionSort {
     System.out.println(Arrays.toString(arr));
   }
 
-  private static void sort(int[] arr) {
-    for (int i = 0; i < arr.length - 1; i++) {
+  public static void sort(int[] nums) {
+    for (int i = 0; i < nums.length - 1; i++) {
       // 选出最小的index
       int minIndex = i;
-      for (int j = i + 1; j < arr.length; j++) {
-        if (arr[j] < arr[minIndex]) {
+      for (int j = i + 1; j < nums.length; j++) {
+        if (nums[j] < nums[minIndex]) {
           minIndex = j;
         }
       }
       // 交换i和最小的index
-      int temp = arr[i];
-      arr[i] = arr[minIndex];
-      arr[minIndex] = temp;
+      int temp = nums[i];
+      nums[i] = nums[minIndex];
+      nums[minIndex] = temp;
     }
   }
 }
