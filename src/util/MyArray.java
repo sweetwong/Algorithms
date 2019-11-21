@@ -1,6 +1,7 @@
 package util;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class MyArray {
@@ -45,6 +46,10 @@ public class MyArray {
       res[i] = list.get(list.size() - 1 - i);
     }
     return res;
+  }
+
+  public static void printArray(int[] arr) {
+    System.out.println(Arrays.toString(arr));
   }
 
 
