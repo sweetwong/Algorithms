@@ -14,6 +14,7 @@ public class MyArray {
     int[] arr = new int[n];
     for (int i = 0; i < arr.length; i++) {
       double num = Math.random() * Integer.MAX_VALUE;
+      if (Math.random() < 0.5) num = -num;
       arr[i] = (int) num;
     }
     return arr;

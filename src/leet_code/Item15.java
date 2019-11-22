@@ -1,49 +1,42 @@
 package leet_code;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Arrays;
 import java.util.List;
 
-class Item15 {
-
-  public static void main(String[] args) {
-    int[] nums = {0, -1, 1};
-    print(threeSum(nums));
-  }
+public class Item15 {
 
   public static List<List<Integer>> threeSum(int[] nums) {
-    List<List<Integer>> res = new ArrayList<>();
-    if (nums.length <= 2) return res;
+    List<List<Integer>> ans = new ArrayList<>();
+    int len = nums.length;
+    if (len < 3) return ans;
+    Arrays.sort(nums); // 排序
+    for (int i = 0; i < len; i++) {
+      if (nums[i] > 0) break; // 如果当前数字大于0，则三数之和一定大于0，所以结束循环
+      if (i > 0 && nums[i] == nums[i - 1]) continue; // 去重
 
-    HashMap<Integer, Integer> map = new HashMap<>();
+      int l = i + 1;
+      int r = len - 1;
+      while (l < r) {
+        int sum = nums[i] + nums[l] + nums[r];
 
-    for (int i = 0; i < nums.length; i++) {
-      map.put(nums[i], i);
-    }
-
-    for (int i = 0; i < nums.length - 1; i++) {
-      for (int j = i + 1; j < nums.length; j++) {
-        int target = -(nums[i] + nums[j]);
-        if (map.containsKey(target)) {
-          int value = map.get(target);
-
-          if (target >= nums[i] && target >= nums[j] && value != i && value != j) {
-            List<Integer> list = new ArrayList<>();
-            list.add(nums[i]);
-            list.add(nums[j]);
-            list.add(nums[value]);
-            res.add(list);
-          }
+        // 如果相等
+        if (sum == 0) {
+          ans.add(Arrays.asList(nums[i], nums[l], nums[r]));
+          while (l < r && nums[l] == nums[l + 1]) l++; // 去重
+          while (l < r && nums[r] == nums[r - 1]) r--; // 去重
+          l++;
+          r--;
+        } else if (sum < 0) {
+          l++;
+        } else {
+          r--;
         }
+
       }
     }
-    return res;
-  }
-
-  public static void print(List<List<Integer>> lists) {
-    for (List<Integer> list : lists) {
-      System.out.println("[" + list.get(0) + ", " + list.get(1) + ", " + list.get(2) + "]");
-    }
+    return ans;
   }
 
 }
+

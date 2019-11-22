@@ -7,12 +7,6 @@ import java.util.Arrays;
  */
 public class BubbleSort {
 
-  public static void main(String[] args) {
-    int[] arr = new int[]{2, 1, 8, 3, -1, 24, 12};
-    sort(arr);
-    System.out.println(Arrays.toString(arr));
-  }
-
   public static void sort(int[] nums) {
     // i代表不需要被比较的数的量
     // 刚开始i=0,代表所有的数都要比较一遍
