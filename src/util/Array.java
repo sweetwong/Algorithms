@@ -14,7 +14,6 @@ public class Array {
     int[] arr = new int[n];
     for (int i = 0; i < arr.length; i++) {
       double num = Math.random() * Integer.MAX_VALUE;
-      if (Math.random() < 0.5) num = -num;
       arr[i] = (int) num;
     }
     return arr;
@@ -25,11 +24,12 @@ public class Array {
    * @param max 每个数字的最大值
    * @return n个随机数字组成的数组
    */
-  public static int[] createRandomArrays(int n, int max) {
+  public static int[] createRandomArrays(int n, int max, boolean neg) {
     if (max == 0) max = Integer.MAX_VALUE;
     int[] arr = new int[n];
     for (int i = 0; i < arr.length; i++) {
       double num = Math.random() * max;
+      if (neg && Math.random() < 0.5) num = -num;
       arr[i] = (int) num;
     }
     return arr;

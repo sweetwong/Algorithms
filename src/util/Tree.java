@@ -1,6 +1,5 @@
 package util;
 
-import javax.swing.tree.TreeNode;
 import java.util.*;
 import java.util.LinkedList;
 
@@ -16,45 +15,63 @@ public class Tree {
     }
   }
 
-  private static List<Integer> list = new ArrayList<>();
+  private List<Integer> res = new ArrayList<>();
 
   /**
-   * 二叉树的前序遍历
+   * 二叉树的前序遍历, 递归法
    */
-  public static void preorderTraversal(TreeNode root) {
+  public void preorderTraversal(TreeNode root) {
     if (root != null) {
-      list.add(root.val);
+      res.add(root.val);
       preorderTraversal(root.left);
       preorderTraversal(root.right);
-      System.out.println("val: " + root.val + ", 高度: " + height(root));
     }
   }
 
   /**
-   * 二叉树的中序遍历递归法
+   * 二叉树前序遍历, 迭代法
    */
-  public static void inorderTraversal(TreeNode root) {
+  public void preorderTraversalIte(TreeNode root) {
+    Deque<TreeNode> stack = new ArrayDeque<>();
+    // 指针指向根节点
+    TreeNode curr = root;
+    // 记住这个条件
+    while (curr != null || !stack.isEmpty()) {
+      // 向左遍历, 包括当前指针, 压入栈中, 最后curr会变成null, 向左溢出
+      while (curr != null) {
+        stack.push(curr);
+        // 添加的时候读值!!!
+        res.add(curr.val);
+        curr = curr.left;
+      }
+      // 指针位置恢复到出栈位置
+      curr = stack.pop();
+      // 向右子节点走, 如果有值就会在下一轮遍历中压入栈中, 如果无值就向右溢出, 通过下一步出栈恢复
+      curr = curr.right;
+    }
+  }
+
+
+  /**
+   * 二叉树的中序遍历, 递归法
+   */
+  public void inorderTraversal(TreeNode root) {
     if (root != null) {
       inorderTraversal(root.left);
-      list.add(root.val);
+      res.add(root.val);
       inorderTraversal(root.right);
     }
   }
 
-  //         0
-  //     1       2
-  //   3   4   5   6
-  //                  7
-
   /**
-   * 二叉树中序遍历迭代法
+   * 二叉树中序遍历, 迭代法, 利用栈
    */
-  public static void inorderTraversalIte(TreeNode root) {
-    Stack<TreeNode> stack = new Stack<>();
-    stack.push(new TreeNode(-1));
+  public void inorderTraversalIte(TreeNode root) {
+    Deque<TreeNode> stack = new ArrayDeque<>();
     // 指针指向根节点
     TreeNode curr = root;
-    while (!stack.empty()) {
+    // 记住这个条件
+    while (curr != null || !stack.isEmpty()) {
       // 向左遍历, 包括当前指针, 压入栈中, 最后curr会变成null, 向左溢出
       while (curr != null) {
         stack.push(curr);
@@ -62,45 +79,48 @@ public class Tree {
       }
       // 指针位置恢复到出栈位置
       curr = stack.pop();
-      list.add(curr.val);
+      // 取值的时候读值!!!
+      res.add(curr.val);
       // 向右子节点走, 如果有值就会在下一轮遍历中压入栈中, 如果无值就向右溢出, 通过下一步出栈恢复
       curr = curr.right;
     }
-    if (!list.isEmpty()) list.remove(list.size() - 1);
   }
 
 
   /**
-   * 二叉树的后序遍历
+   * 二叉树的后序遍历, 递归法
    */
-  public static void postorderTraversal(TreeNode root) {
+  public void postorderTraversal(TreeNode root) {
     if (root != null) {
       postorderTraversal(root.left);
       postorderTraversal(root.right);
-      list.add(root.val);
+      res.add(root.val);
     }
   }
 
-  private static Queue<Integer> queue = new LinkedList<>();
-
-  public static void levelTraversal(TreeNode root) {
-    if (root != null) {
-      queue.offer(root.val);
-
-      while (!queue.isEmpty()) {
-      }
+  /**
+   * 二叉树的层次遍历, 迭代法, 利用队列
+   */
+  public void levelorderTraversalIte(TreeNode root) {
+    Queue<TreeNode> queue = new ArrayDeque<>();
+    queue.offer(root);
+    while (!queue.isEmpty()) {
+      TreeNode temp = queue.poll();
+      res.add(temp.val);
+      if (temp.left != null) queue.offer(temp.left);
+      if (temp.right != null) queue.offer(temp.right);
     }
   }
-
 
   //         0
   //     1       2
   //   3   4   5   6
   //                  7
-  // 前序遍历: [0, 1, 3, 4, 2, 5, 6, 7]
-  // 中序遍历: [3, 1, 4, 0, 5, 2, 6, 7]
-  // 后序遍历: [3, 4, 1, 5, 7, 6, 2, 0]
-  public static TreeNode createTree() {
+  //                    8
+  // 前序遍历: [0, 1, 3, 4, 2, 5, 6, 7, 8]
+  // 中序遍历: [3, 1, 4, 0, 5, 2, 6, 7, 8]
+  // 后序遍历: [3, 4, 1, 5, 7, 8, 6, 2, 0]
+  public static TreeNode createBinaryTree() {
     TreeNode root = new TreeNode(0);
     root.left = new TreeNode(1);
     root.right = new TreeNode(2);
@@ -109,6 +129,7 @@ public class Tree {
     root.right.left = new TreeNode(5);
     root.right.right = new TreeNode(6);
     root.right.right.right = new TreeNode(7);
+    root.right.right.right.right = new TreeNode(8);
     return root;
   }
 
@@ -117,6 +138,10 @@ public class Tree {
   //   1   4   6   9
   //                  10
   // 中序遍历: [1, 3, 4, 5, 6, 8, 9, 10]
+
+  /**
+   *
+   */
   public static TreeNode createBinarySearchTree() {
     TreeNode root = new TreeNode(5);
     root.left = new TreeNode(3);
@@ -129,22 +154,26 @@ public class Tree {
     return root;
   }
 
-  public static int height(TreeNode root) {
-    if (root == null) return 0;
-
-    /* compute height of each subtree */
-    int lHeight = height(root.left);
-    int rHeight = height(root.right);
-
-    /* use the larger one */
-    if (lHeight > rHeight) return (lHeight + 1);
-    else return (rHeight + 1);
+  public static TreeNode createBinaryTreeByArray(int[] array, int index) {
+    TreeNode root = null;
+    if (index < array.length) {
+      int value = array[index];
+      root = new TreeNode(value);
+      root.left = createBinaryTreeByArray(array, 2 * index + 1);
+      root.right = createBinaryTreeByArray(array, 2 * index + 2);
+      return root;
+    }
+    return root;
   }
 
+
   public static void main(String[] args) {
-    TreeNode root = createTree();
-    inorderTraversalIte(root);
-    System.out.println(list.toString());
+    TreeNode root = createBinaryTree();
+
+    Tree tree = new Tree();
+    tree.levelorderTraversalIte(root);
+
+    System.out.println(tree.res.toString());
   }
 
 }
