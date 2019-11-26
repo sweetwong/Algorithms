@@ -1,6 +1,6 @@
 package util;
 
-public class MyLinkedList {
+public class LinkedList {
 
   /**
    * @param nums 输入任意数字

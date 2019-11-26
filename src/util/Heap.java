@@ -1,6 +1,6 @@
 package util;
 
-public class MyHeap {
+public class Heap {
 
   public static void printHeap(int[] arr) {
     int size = arr.length;

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class MyArray {
+public class Array {
 
   /**
    * @param n 随机数组的长度

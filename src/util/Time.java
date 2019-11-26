@@ -1,6 +1,6 @@
 package util;
 
-public class TimeUtils {
+public class Time {
 
   public static void watch(Fun fun) {
     long prev = System.currentTimeMillis();

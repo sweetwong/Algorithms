@@ -2,8 +2,8 @@ package leet_code;
 
 import java.util.Arrays;
 
-import util.MyLinkedList;
-import util.MyLinkedList.ListNode;
+import util.LinkedList;
+import util.LinkedList.ListNode;
 
 class Item23 {
 
@@ -38,10 +38,10 @@ class Item23 {
   }
 
   public static void main(String[] args) {
-    ListNode l1 = MyLinkedList.createListNode(1, 4, 8, 10);
-    ListNode l2 = MyLinkedList.createListNode(2, 9, 24);
-    ListNode l3 = MyLinkedList.createListNode(3, 7);
-    MyLinkedList.printListNode(new Item23().mergeKLists(new ListNode[]{l1, l2, l3}));
+    ListNode l1 = LinkedList.createListNode(1, 4, 8, 10);
+    ListNode l2 = LinkedList.createListNode(2, 9, 24);
+    ListNode l3 = LinkedList.createListNode(3, 7);
+    LinkedList.printListNode(new Item23().mergeKLists(new ListNode[]{l1, l2, l3}));
   }
 
 }

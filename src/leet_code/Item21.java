@@ -1,6 +1,6 @@
 package leet_code;
 
-import util.MyLinkedList.ListNode;
+import util.LinkedList.ListNode;
 
 class Item21 {
 

@@ -1,6 +1,6 @@
 package sort;
 
-import util.MyLinkedList.ListNode;
+import util.LinkedList.ListNode;
 
 import java.util.Arrays;
 
