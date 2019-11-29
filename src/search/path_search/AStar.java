@@ -1,8 +1,9 @@
-package path_search;
+package search.path_search;
 
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
+
 
 class AStar {
   private final List<Node> open;
@@ -16,7 +17,7 @@ class AStar {
   private final boolean diag;
 
   // Node class for convienience
-  public static class Node implements Comparable {
+  static class Node implements Comparable {
     public Node parent;
     public int x, y;
     public double g;
@@ -94,7 +95,6 @@ class AStar {
       return Math.abs(this.now.x + dx - this.xend) + Math.abs(this.now.y + dy - this.yend); // else return "Manhattan distance"
     }
   }
-
   private void addNeigborsToOpenList() {
     Node node;
     for (int x = -1; x <= 1; x++) {

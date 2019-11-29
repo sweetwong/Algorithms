@@ -1,19 +1,9 @@
-package util;
+package util.tree;
 
 import java.util.*;
 import java.util.LinkedList;
 
-public class Tree {
-
-  public static class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-
-    TreeNode(int val) {
-      this.val = val;
-    }
-  }
+public class BinaryTree {
 
   private List<Integer> res = new ArrayList<>();
 
@@ -32,7 +22,7 @@ public class Tree {
    * 二叉树前序遍历, 迭代法
    */
   public void preorderTraversalIte(TreeNode root) {
-    Deque<TreeNode> stack = new ArrayDeque<>();
+    Stack<TreeNode> stack = new Stack<>();
     // 指针指向根节点
     TreeNode curr = root;
     // 记住这个条件
@@ -67,7 +57,7 @@ public class Tree {
    * 二叉树中序遍历, 迭代法, 利用栈
    */
   public void inorderTraversalIte(TreeNode root) {
-    Deque<TreeNode> stack = new ArrayDeque<>();
+    Stack<TreeNode> stack = new Stack<>();
     // 指针指向根节点
     TreeNode curr = root;
     // 记住这个条件
@@ -102,7 +92,7 @@ public class Tree {
    * 二叉树的层次遍历, 迭代法, 利用队列
    */
   public void levelorderTraversalIte(TreeNode root) {
-    Queue<TreeNode> queue = new ArrayDeque<>();
+    Queue<TreeNode> queue = new LinkedList<>();
     queue.offer(root);
     while (!queue.isEmpty()) {
       TreeNode temp = queue.poll();
@@ -115,11 +105,11 @@ public class Tree {
   //         0
   //     1       2
   //   3   4   5   6
-  //                  7
-  //                    8
-  // 前序遍历: [0, 1, 3, 4, 2, 5, 6, 7, 8]
-  // 中序遍历: [3, 1, 4, 0, 5, 2, 6, 7, 8]
-  // 后序遍历: [3, 4, 1, 5, 7, 8, 6, 2, 0]
+  //                  14
+  //                    30
+  // 前序遍历: [0, 1, 3, 4, 2, 5, 6, 14, 30]
+  // 中序遍历: [3, 1, 4, 0, 5, 2, 6, 14, 30]
+  // 后序遍历: [3, 4, 1, 5, 14, 30, 6, 2, 0]
   public static TreeNode createBinaryTree() {
     TreeNode root = new TreeNode(0);
     root.left = new TreeNode(1);
@@ -128,31 +118,11 @@ public class Tree {
     root.left.right = new TreeNode(4);
     root.right.left = new TreeNode(5);
     root.right.right = new TreeNode(6);
-    root.right.right.right = new TreeNode(7);
-    root.right.right.right.right = new TreeNode(8);
+    root.right.right.right = new TreeNode(14);
+    root.right.right.right.right = new TreeNode(30);
     return root;
   }
 
-  //         5
-  //     3       8
-  //   1   4   6   9
-  //                  10
-  // 中序遍历: [1, 3, 4, 5, 6, 8, 9, 10]
-
-  /**
-   *
-   */
-  public static TreeNode createBinarySearchTree() {
-    TreeNode root = new TreeNode(5);
-    root.left = new TreeNode(3);
-    root.right = new TreeNode(8);
-    root.left.left = new TreeNode(1);
-    root.left.right = new TreeNode(4);
-    root.right.left = new TreeNode(6);
-    root.right.right = new TreeNode(9);
-    root.right.right.right = new TreeNode(10);
-    return root;
-  }
 
   public static TreeNode createBinaryTreeByArray(int[] array, int index) {
     TreeNode root = null;
@@ -164,16 +134,6 @@ public class Tree {
       return root;
     }
     return root;
-  }
-
-
-  public static void main(String[] args) {
-    TreeNode root = createBinaryTree();
-
-    Tree tree = new Tree();
-    tree.levelorderTraversalIte(root);
-
-    System.out.println(tree.res.toString());
   }
 
 }
