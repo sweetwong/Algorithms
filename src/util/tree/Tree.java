@@ -3,7 +3,14 @@ package util.tree;
 import java.util.*;
 import java.util.LinkedList;
 
+import util.Array;
+
 public class Tree {
+
+  public static void main(String[] args) {
+    levelOrderTraversalIte(null);
+    System.out.println(res.toString());
+  }
 
   private static List<Integer> res = new ArrayList<>();
 
@@ -91,7 +98,9 @@ public class Tree {
   /**
    * 二叉树的层次遍历, 迭代法, 利用队列
    */
-  public static void levelorderTraversalIte(TreeNode root) {
+  public static void levelOrderTraversalIte(TreeNode root) {
+    if (root == null) return;
+
     Queue<TreeNode> queue = new LinkedList<>();
     queue.offer(root);
     while (!queue.isEmpty()) {
@@ -101,6 +110,34 @@ public class Tree {
       if (temp.right != null) queue.offer(temp.right);
     }
   }
+
+  /**
+   * 二叉树的层次遍历, 迭代法, 利用队列, 区别每一层
+   */
+  public static List<List<Integer>> levelOrderTraversalIte2(TreeNode root) {
+    List<List<Integer>> res = new ArrayList<>();
+    if (root == null) return res;
+
+    Queue<TreeNode> queue = new LinkedList<>();
+    queue.offer(root);
+
+    while (!queue.isEmpty()) {
+      List<Integer> levelList = new ArrayList<>();
+      int levelLength = queue.size();
+
+      // 重点!!, 每次把队列中前一层的拿完
+      for (int i = 0; i < levelLength; i++) {
+        TreeNode curr = queue.poll();
+        levelList.add(curr.val);
+        if (curr.left != null) queue.offer(curr.left);
+        if (curr.right != null) queue.offer(curr.right);
+      }
+
+      res.add(levelList);
+    }
+    return res;
+  }
+
 
   /**
    * 树的最大深度/高度, 递归法

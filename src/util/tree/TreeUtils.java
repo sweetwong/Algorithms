@@ -6,13 +6,13 @@ import java.util.Queue;
 
 public class TreeUtils {
 
-  public static TreeNode arrayToTree(int[] array, int index) {
+  public static TreeNode nonNullArrayToTree(int[] array, int index) {
     TreeNode root = null;
     if (index < array.length) {
       int value = array[index];
       root = new TreeNode(value);
-      root.left = arrayToTree(array, 2 * index + 1);
-      root.right = arrayToTree(array, 2 * index + 2);
+      root.left = nonNullArrayToTree(array, 2 * index + 1);
+      root.right = nonNullArrayToTree(array, 2 * index + 2);
       return root;
     }
     return root;
@@ -20,12 +20,14 @@ public class TreeUtils {
 
 
   /**
-   * 0 -> 0
-   * 1 -> 1
-   * 2 -> 3
-   * 3 -> 7
+   *  示例:
+   *         0
+   *       1    2
+   *               3
+   *
+   *  [0, 1, 2, null, null, null, 3]
    */
-  public static Integer[] convertTreeToNullableArray(TreeNode root) {
+  public static Integer[] treeToNullableArray(TreeNode root) {
     int depth = Tree.maxDepth(root);
     int length = (1 << depth) - 1;
 
@@ -57,7 +59,7 @@ public class TreeUtils {
   // 前序遍历: [0, 1, 3, 4, 2, 5, 6, 14]
   // 中序遍历: [3, 1, 4, 0, 5, 2, 6, 14]
   // 后序遍历: [3, 4, 1, 5, 14, 6, 2, 0]
-  public static TreeNode createBinaryTree() {
+  public static TreeNode createDemoBinaryTree() {
     TreeNode root = new TreeNode(0);
     root.left = new TreeNode(1);
     root.right = new TreeNode(2);
@@ -74,7 +76,7 @@ public class TreeUtils {
     root.right = new TreeNode(12);
     root.right.right = new TreeNode(15);
 
-    Integer[] arr = convertTreeToNullableArray(root);
+    Integer[] arr = treeToNullableArray(root);
     System.out.println(Arrays.toString(arr));
   }
 
