@@ -3,19 +3,26 @@ package util.tree;
 import java.util.*;
 import java.util.LinkedList;
 
+import sort.QuickSort;
 import util.Array;
 
 public class Tree {
 
   public static void main(String[] args) {
-    levelOrderTraversalIte(null);
-    System.out.println(res.toString());
+    int[] arr = Array.createRandomArrays(10, 100, false);
+    QuickSort.sort(arr);
+    Array.printArray(arr);
+
+
+    TreeNode root = TreeUtils.arrayToCompleteBinaryTree(arr, 0);
+    List<List<Integer>> lists = levelOrderTraversalIte2(root);
+    System.out.println(lists.toString());
   }
 
   private static List<Integer> res = new ArrayList<>();
 
   /**
-   * 二叉树的前序遍历, 递归法
+   * 二叉树的前序遍历, 递归法, DFS
    */
   public static void preorderTraversal(TreeNode root) {
     if (root != null) {
@@ -26,7 +33,7 @@ public class Tree {
   }
 
   /**
-   * 二叉树前序遍历, 迭代法
+   * 二叉树前序遍历, 迭代法, DFS
    */
   public static void preorderTraversalIte(TreeNode root) {
     Stack<TreeNode> stack = new Stack<>();
@@ -50,7 +57,7 @@ public class Tree {
 
 
   /**
-   * 二叉树的中序遍历, 递归法
+   * 二叉树的中序遍历, 递归法, DFS
    */
   public static void inorderTraversal(TreeNode root) {
     if (root != null) {
@@ -61,7 +68,7 @@ public class Tree {
   }
 
   /**
-   * 二叉树中序遍历, 迭代法, 利用栈
+   * 二叉树中序遍历, 迭代法, 利用栈, DFS
    */
   public static void inorderTraversalIte(TreeNode root) {
     Stack<TreeNode> stack = new Stack<>();
@@ -85,7 +92,7 @@ public class Tree {
 
 
   /**
-   * 二叉树的后序遍历, 递归法
+   * 二叉树的后序遍历, 递归法, DFS
    */
   public static void postorderTraversal(TreeNode root) {
     if (root != null) {
@@ -96,7 +103,31 @@ public class Tree {
   }
 
   /**
-   * 二叉树的层次遍历, 迭代法, 利用队列
+   * 二叉树的层次遍历, 递归法, DFS
+   */
+  public List<List<Integer>> levelOrderTraversal(TreeNode root) {
+    List<List<Integer>> res = new ArrayList<>();
+    if (root == null) return res;
+    levelOrderTraversalHelper(res, root, 0);
+    return res;
+  }
+
+  /**
+   * 在前/中/后序遍历的基础上, 给每一次遍历注明深度, 根据深度来加入到集合中
+   */
+  private void levelOrderTraversalHelper(List<List<Integer>> res, TreeNode root, int currDepth) {
+    if (root != null) {
+      if (res.size() == currDepth) res.add(new ArrayList<Integer>());
+
+      res.get(currDepth).add(root.val);
+      levelOrderTraversalHelper(res, root.left, currDepth + 1);
+      levelOrderTraversalHelper(res, root.right, currDepth + 1);
+    }
+  }
+
+
+  /**
+   * 二叉树的层次遍历, 迭代法, 利用队列, BFS
    */
   public static void levelOrderTraversalIte(TreeNode root) {
     if (root == null) return;
@@ -112,7 +143,7 @@ public class Tree {
   }
 
   /**
-   * 二叉树的层次遍历, 迭代法, 利用队列, 区别每一层
+   * 二叉树的层次遍历, 迭代法, 利用队列, 区别每一层, BFS
    */
   public static List<List<Integer>> levelOrderTraversalIte2(TreeNode root) {
     List<List<Integer>> res = new ArrayList<>();
@@ -123,9 +154,10 @@ public class Tree {
 
     while (!queue.isEmpty()) {
       List<Integer> levelList = new ArrayList<>();
-      int levelLength = queue.size();
 
-      // 重点!!, 每次把队列中前一层的拿完
+      // 此处必须先赋值, 因为queue.size()会一直变化
+      int levelLength = queue.size();
+      // 每次把队列中前一层的拿完
       for (int i = 0; i < levelLength; i++) {
         TreeNode curr = queue.poll();
         levelList.add(curr.val);
@@ -138,16 +170,58 @@ public class Tree {
     return res;
   }
 
+  /**
+   * Z字形层次遍历, 迭代法, 在层次遍历的基础上拓展, 利用双端队列, BFS
+   */
+  public static List<List<Integer>> zigzagLevelOrderTraversal(TreeNode root) {
+    List<List<Integer>> res = new ArrayList<>();
+    if (root == null) return res;
+
+    Deque<TreeNode> deque = new LinkedList<>();
+    deque.offerLast(root);
+
+    boolean forward = true;
+
+    while (!deque.isEmpty()) {
+      List<Integer> levelList = new ArrayList<>();
+
+      // 此处必须先赋值, 因为deque.size()会一直变化
+      int levelLength = deque.size();
+      for (int i = 0; i < levelLength; i++) {
+        TreeNode curr;
+        // 正向(正常的操作, 从队尾排入, 从队首取出, 先排左边, 再排右边)
+        if (forward) {
+          curr = deque.pollFirst();
+          levelList.add(curr.val);
+          if (curr.left != null) deque.offerLast(curr.left);
+          if (curr.right != null) deque.offerLast(curr.right);
+
+        }
+        // 反向(反向的操作, 从队首排入, 从队尾取出, 先排右边, 再排左边)
+        else {
+          curr = deque.pollLast();
+          levelList.add(curr.val);
+          if (curr.right != null) deque.offerFirst(curr.right);
+          if (curr.left != null) deque.offerFirst(curr.left);
+        }
+      }
+
+      res.add(levelList);
+      forward = !forward;
+    }
+    return res;
+  }
+
 
   /**
    * 树的最大深度/高度, 递归法
-   * 思路: 从上往下探
+   * 思路: 从上往下探深度
    */
   public static int maxDepth(TreeNode root) {
     if (root == null) return 0;
-    int lh = maxDepth(root.left);
-    int rh = maxDepth(root.right);
-    return Math.max(lh, rh) + 1;
+    int leftMax = maxDepth(root.left);
+    int rightMax = maxDepth(root.right);
+    return Math.max(leftMax, rightMax) + 1;
   }
 
   /**

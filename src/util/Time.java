@@ -16,6 +16,13 @@ public class Time {
     System.out.println((curr - prev) / 1000 + "微秒");
   }
 
+  public static void watchNS(Fun fun) {
+    long prev = System.nanoTime();
+    fun.run();
+    long curr = System.nanoTime();
+    System.out.println(curr - prev + "纳秒");
+  }
+
   public interface Fun {
 
     void run();
