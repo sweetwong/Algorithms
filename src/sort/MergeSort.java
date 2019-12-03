@@ -1,5 +1,6 @@
 package sort;
 
+import util.Array;
 import util.LinkedList.ListNode;
 
 import java.util.Arrays;
@@ -9,6 +10,13 @@ import java.util.Arrays;
  */
 public class MergeSort {
 
+
+  public static void main(String[] args) {
+    int[] arr = {0, 1, 2, -1};
+    sort(arr);
+    System.out.println(Arrays.toString(arr));
+  }
+
   /**
    * 归并排序
    */
@@ -16,12 +24,12 @@ public class MergeSort {
     // 递归终止条件
     if (nums.length <= 1) return;
 
-    // 获取中位数,并将数组切割为两部分
-    int middle = nums.length / 2;
+    // 获取中位数,并将数组切割为两部分, 这种写法如果是偶数middle将会是中间偏左的数
+    int mid = nums.length / 2;
 
     // 把数组分成左右两个区间
-    int[] left = Arrays.copyOfRange(nums, 0, middle);
-    int[] right = Arrays.copyOfRange(nums, middle, nums.length);
+    int[] left = Arrays.copyOfRange(nums, 0, mid);
+    int[] right = Arrays.copyOfRange(nums, mid, nums.length);
 
     // 归并左边的数组使其变成一个有序数组(将大问题变成小问题)
     sort(left);
@@ -36,30 +44,50 @@ public class MergeSort {
    * 归并两个有序数组
    */
   public static void mergeTwoSortedArrays(int[] nums, int[] left, int[] right) {
-    int[] temp = new int[left.length + right.length];
-    for (int i = 0, l = 0, r = 0; i < temp.length; i++) {
+    for (int i = 0, l = 0, r = 0; i < nums.length; i++) {
       // 检查左边的数组是否越界
-      if (l >= left.length) {
-        temp[i] = right[r++];
-      }
-      // 检查右边的数组是否越界
-      else if (r >= right.length) {
-        temp[i] = left[l++];
-      }
-      // 这句话必须这样写,左边<=右边,这样才能保持稳定性
-      else if (left[l] <= right[r]) {
-        temp[i] = left[l++];
-      }
-      // 最后一种情况,既左边>右边
-      else {
-        temp[i] = right[r++];
-      }
+      if (l >= left.length)
+        nums[i] = right[r++];
+        // 检查右边的数组是否越界
+      else if (r >= right.length)
+        nums[i] = left[l++];
+        // 这句话必须这样写, 左边<=右边, 这样才能保持稳定性
+      else if (left[l] <= right[r])
+        nums[i] = left[l++];
+        // 最后一种情况, 既左边>右边
+      else
+        nums[i] = right[r++];
     }
-    // 将临时产生的排好序的数组复制到主数组上
-    System.arraycopy(temp, 0, nums, 0, nums.length);
+  }
 
-    // 如果有返回值,就直接返回temp,不用在复制到主数组上
-    // return temp;
+  /**
+   * 对象的归并排序
+   */
+  public static <T extends Comparable<T>> void sort(T[] nums) {
+    if (nums.length <= 1) return;
+    int mid = nums.length / 2;
+    T[] left = Arrays.copyOfRange(nums, 0, mid);
+    T[] right = Arrays.copyOfRange(nums, mid, nums.length);
+    sort(left);
+    sort(right);
+    mergeTwoSortedArrays(nums, left, right);
+  }
+
+  /**
+   * 对象的归并排序
+   */
+  public static <T extends Comparable<T>> void mergeTwoSortedArrays(T[] nums, T[] left, T[] right) {
+    for (int i = 0, l = 0, r = 0; i < nums.length; i++) {
+      if (l >= left.length)
+        nums[i] = right[r++];
+      else if (r >= right.length)
+        nums[i] = left[l++];
+        // 这句话必须这样写, 左边<=右边, 这样才能保持稳定性
+      else if (left[l].compareTo(right[r]) <= 0)
+        nums[i] = left[l++];
+      else
+        nums[i] = right[r++];
+    }
   }
 
   /**
@@ -87,10 +115,10 @@ public class MergeSort {
     if (n == 1) return lists[0];
     if (n == 2) return mergeTwoSortedLists(lists[0], lists[1]);
 
-    int middle = n / 2;
+    int mid = n / 2;
 
-    ListNode[] left = Arrays.copyOfRange(lists, 0, middle);
-    ListNode[] right = Arrays.copyOfRange(lists, middle, n);
+    ListNode[] left = Arrays.copyOfRange(lists, 0, mid);
+    ListNode[] right = Arrays.copyOfRange(lists, mid, n);
 
     return mergeTwoSortedLists(mergeKSortedLists(left), mergeKSortedLists(right));
   }

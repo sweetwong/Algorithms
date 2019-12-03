@@ -1,17 +1,9 @@
 package sort;
 
-import java.util.Arrays;
-
 /**
  * 选择排序
  */
 public class SelectionSort {
-
-  public static void main(String[] args) {
-    int[] arr = new int[]{2, 1, 8, 3, -1, 24, 12};
-    sort(arr);
-    System.out.println(Arrays.toString(arr));
-  }
 
   public static void sort(int[] nums) {
     for (int i = 0; i < nums.length - 1; i++) {

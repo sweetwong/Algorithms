@@ -15,7 +15,7 @@ public class InsertionSort {
 
       // 前指针指向前一个数
       int preIndex = i - 1;
-      // 当指针处于有效范围, 且当前的值小于前指针所指的值(此处只能是<不能是<=, 否则就不稳定了)
+      // 当指针处于有效范围, 且当前的值小于前指针所指的值(此处只能是>不能是>=, 否则就不稳定了)
       while (preIndex >= 0 && nums[preIndex] > curr) {
         // 指针所指的值前挪
         nums[preIndex + 1] = nums[preIndex];
