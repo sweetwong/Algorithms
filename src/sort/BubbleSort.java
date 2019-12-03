@@ -1,18 +1,10 @@
 package sort;
 
-import util.Array;
 
 /**
  * 冒泡排序
  */
 public class BubbleSort {
-
-  public static void main(String[] args) {
-    int[] arr = Array.createRandomArrays(10, 100, false);
-    Array.printArray(arr);
-    sort(arr);
-    Array.printArray(arr);
-  }
 
   public static void sort(int[] nums) {
     // i代表不需要被比较的数的量

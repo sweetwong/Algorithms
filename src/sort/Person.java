@@ -5,12 +5,22 @@ import java.util.Random;
 
 public class Person implements Comparable<Person> {
 
+  private int id;
   private int age;
   private String name;
 
-  public Person(int age, String name) {
-    this.age = age;
+  public Person(int id, int age, String name) {
+    this.id = id;
     this.name = name;
+    this.age = age;
+  }
+
+  public int getId() {
+    return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
   }
 
   public int getAge() {
@@ -36,20 +46,20 @@ public class Person implements Comparable<Person> {
 
   @Override
   public String toString() {
-    return "name: " + name + ", age: " + age;
+    return "id: " + id + ", age: " + age + ", name: " + name;
   }
 
   public static Person[] createPersons(int n, int maxAge) {
     Person[] persons = new Person[n];
     for (int i = 0; i < n; i++) {
-      persons[i] = new Person((int) (Math.random() * maxAge), createRandomJianHan(3));
+      persons[i] = new Person(i, (int) (Math.random() * maxAge), createRandomJianHan(3));
     }
     return persons;
   }
 
   public static void printPeople(Person[] people) {
-    for (int i = 0; i < people.length; i++) {
-      System.out.println("{id: " + i + ", " + people[i].toString() + "}");
+    for (Person person : people) {
+      System.out.println(person.toString());
     }
   }
 

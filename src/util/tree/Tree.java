@@ -11,8 +11,6 @@ public class Tree {
   public static void main(String[] args) {
     int[] arr = Array.createRandomArrays(10, 100, false);
     QuickSort.sort(arr);
-    Array.printArray(arr);
-
 
     TreeNode root = TreeUtils.arrayToCompleteBinaryTree(arr, 0);
     List<List<Integer>> lists = levelOrderTraversalIte2(root);
