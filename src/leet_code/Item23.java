@@ -1,6 +1,8 @@
 package leet_code;
 
 import java.util.Arrays;
+import java.util.Comparator;
+import java.util.PriorityQueue;
 
 import util.LinkedList;
 import util.LinkedList.ListNode;
@@ -8,7 +10,7 @@ import util.LinkedList.ListNode;
 class Item23 {
 
   /**
-   * 关键: 将 合并K个数组的问题 分解为 两组合并K/2个数组的问题
+   * 关键: 将合并K个数组的问题 分解为 两组合并K/2个数组的问题
    */
   public ListNode mergeKLists(ListNode[] lists) {
     int n = lists.length;
@@ -37,11 +39,44 @@ class Item23 {
     }
   }
 
+  /**
+   * 使用优先队列
+   */
+  public static ListNode mergeKLists2(ListNode[] lists) {
+    if (lists == null || lists.length == 0) return null;
+    if (lists.length == 1) return lists[0];
+
+    PriorityQueue<ListNode> pq = new PriorityQueue<>(new Comparator<ListNode>() {
+      @Override
+      public int compare(ListNode o1, ListNode o2) {
+        return o1.val - o2.val;
+      }
+    });
+
+    for (ListNode list : lists) {
+      if (list != null)
+        pq.offer(list);
+    }
+
+    ListNode dummyHead = new ListNode(0);
+    ListNode curr = dummyHead;
+    while (!pq.isEmpty()) {
+      ListNode node = pq.poll();
+      curr.next = node;
+      curr = curr.next;
+
+      if (node.next != null)
+        pq.offer(node.next);
+    }
+
+    return dummyHead.next;
+  }
+
   public static void main(String[] args) {
     ListNode l1 = LinkedList.createListNode(1, 4, 8, 10);
     ListNode l2 = LinkedList.createListNode(2, 9, 24);
     ListNode l3 = LinkedList.createListNode(3, 7);
-    LinkedList.printListNode(new Item23().mergeKLists(new ListNode[]{l1, l2, l3}));
+    LinkedList.printListNode(mergeKLists2(new ListNode[]{l1, l2, l3}));
   }
 
 }

@@ -2,7 +2,7 @@ package leet_code;
 
 class Item7 {
 
-  private int reverse(int x) {
+  public int reverse(int x) {
     int res = 0;
     while (x != 0) {
       int pop = x % 10;
@@ -20,5 +20,7 @@ class Item7 {
     }
     return res;
   }
+
+
 
 }
