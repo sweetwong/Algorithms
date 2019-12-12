@@ -14,7 +14,7 @@ public class BinarySearch {
     int low = 0;
     int high = arr.length - 1;
     int mid;
-    // 注意是<=
+    // 必须是<=, 不能是<
     while (low <= high) {
       // 关键
       // 也可以写 mid = low + (high - low) / 2
