@@ -1,0 +1,4 @@
+package reflect;
+
+class Method {
+}
