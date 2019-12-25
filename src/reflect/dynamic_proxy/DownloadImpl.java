@@ -1,4 +1,4 @@
-package reflect.demo;
+package reflect.dynamic_proxy;
 
 
 class DownloadImpl implements Download {

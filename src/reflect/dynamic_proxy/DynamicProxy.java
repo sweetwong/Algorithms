@@ -1,4 +1,4 @@
-package reflect.demo;
+package reflect.dynamic_proxy;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
@@ -7,12 +7,13 @@ import java.lang.reflect.Proxy;
 class DynamicProxy {
 
   public static void main(String[] args) {
+    // 只有一个地方用到了这个
     Download realDownload = new DownloadImpl();
 
     // 注意, 动态代理只能代理接口, 不能代理类
     Download proxyDownload = (Download) Proxy.newProxyInstance(
-      DownloadImpl.class.getClassLoader(),
-      DownloadImpl.class.getInterfaces(),
+      Download.class.getClassLoader(),
+      new Class<?>[]{Download.class},
       new InvocationHandler() {
         @Override
         public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
@@ -23,8 +24,8 @@ class DynamicProxy {
         }
       });
 
-    int time = proxyDownload.downloadAudio();
-    System.out.println(time);
+    int audioTime = proxyDownload.downloadAudio();
+    System.out.println(audioTime);
 
     try {
       Thread.sleep(1000);
@@ -33,6 +34,7 @@ class DynamicProxy {
     }
     System.out.println();
 
-    proxyDownload.downloadVideo();
+    int videoTime = proxyDownload.downloadVideo();
+    System.out.println(videoTime);
   }
 }
