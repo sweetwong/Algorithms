@@ -1,11 +1,7 @@
-package sort;
-
-import util.Array;
-
-import java.util.Arrays;
+package sort.nlogn;
 
 /**
- * 快速排序, 不稳定, 最快的排序
+ * 快速排序, 时间复杂度O(nlogn), 空间复杂度O(logn), 不稳定, 最快的排序方法之一
  */
 public class QuickSort {
 
@@ -16,11 +12,11 @@ public class QuickSort {
   public static void quickSort(int[] nums, int low, int high) {
     if (low < high) {
       // 先分区,然后返回分区的索引
-      int pi = partition(nums, low, high);
+      int partition = partition(nums, low, high);
       // 左边快排
-      quickSort(nums, low, pi - 1);
+      quickSort(nums, low, partition - 1);
       // 右边快排
-      quickSort(nums, pi + 1, high);
+      quickSort(nums, partition + 1, high);
     }
   }
 
@@ -43,9 +39,9 @@ public class QuickSort {
   private static int partition(int[] nums, int low, int high) {
     // 选出最后一个值作为基准
     int pivot = nums[high];
-    // i作为左指数, i的一边是指小于pivot的数
+    // i是慢指针, i的一边是指小于pivot的数
     int i = low;
-    // 遍历数组, 注意此处是j< high, 既不包括最后一个数
+    // j是快指针, 从low遍历到high, 注意此处是j < high, 既不包括最后一个数
     for (int j = low; j < high; j++) {
       // 如果nums[j]小于等于基准, 属于不正常情况, 交换i与j的位置
       if (nums[j] <= pivot) {

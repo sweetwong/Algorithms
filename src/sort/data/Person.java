@@ -1,4 +1,4 @@
-package sort;
+package sort.data;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Random;
@@ -49,7 +49,7 @@ public class Person implements Comparable<Person> {
     return "id: " + id + ", age: " + age + ", name: " + name;
   }
 
-  public static Person[] createPersons(int n, int maxAge) {
+  public static Person[] createPeople(int n, int maxAge) {
     Person[] persons = new Person[n];
     for (int i = 0; i < n; i++) {
       persons[i] = new Person(i, (int) (Math.random() * maxAge), createRandomJianHan(3));

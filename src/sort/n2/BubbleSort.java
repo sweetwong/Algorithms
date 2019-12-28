@@ -1,8 +1,8 @@
-package sort;
+package sort.n2;
 
 
 /**
- * 冒泡排序
+ * 冒泡排序, 时间复杂度O(n²), 空间复杂度O(1), 稳定
  */
 public class BubbleSort {
 

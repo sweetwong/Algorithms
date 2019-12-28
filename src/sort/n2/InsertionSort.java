@@ -1,12 +1,13 @@
-package sort;
+package sort.n2;
 
 /**
- * 插入排序, 稳定, O(n²)中最快的排序
+ * 插入排序, 时间复杂度O(n²), 空间复杂度O(1), 稳定, O(n²)中最快的排序
  */
 public class InsertionSort {
 
   public static void sort(int[] nums) {
-    if (nums.length <= 1) return;
+//    // 此处长度0和1都成立
+//    if (nums.length <= 1) return;
 
     // 从第二个数开始遍历
     for (int i = 1; i < nums.length; i++) {

@@ -1,7 +1,7 @@
-package sort;
+package sort.n2;
 
 /**
- * 选择排序
+ * 选择排序, 时间复杂度O(n²), 空间复杂度O(1), 不稳定
  */
 public class SelectionSort {
 

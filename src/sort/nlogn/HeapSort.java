@@ -1,9 +1,9 @@
-package sort;
+package sort.nlogn;
 
 
-import util.Array;
-
-
+/**
+ * 堆排序, 时间复杂度O(nlogn), 空间复杂度O(1), 不稳定
+ */
 public class HeapSort {
 
   public static void sort(int[] nums) {

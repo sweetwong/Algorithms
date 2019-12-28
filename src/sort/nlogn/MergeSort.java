@@ -1,12 +1,11 @@
-package sort;
+package sort.nlogn;
 
-import util.Array;
 import util.LinkedList.ListNode;
 
 import java.util.Arrays;
 
 /**
- * 归并排序
+ * 归并排序, 时间复杂度O(nlogn), 空间复杂度O(n), 稳定, 对象排序一般用MergeSort或者基于归并排序的TimSort
  */
 public class MergeSort {
 
@@ -111,6 +110,7 @@ public class MergeSort {
   public ListNode mergeKSortedLists(ListNode[] lists) {
     int n = lists.length;
 
+    // 终止条件
     if (n == 0) return null;
     if (n == 1) return lists[0];
     if (n == 2) return mergeTwoSortedLists(lists[0], lists[1]);

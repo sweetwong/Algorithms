@@ -3,7 +3,7 @@ package util.tree;
 import java.util.*;
 import java.util.LinkedList;
 
-import sort.QuickSort;
+import sort.nlogn.QuickSort;
 import util.Array;
 
 public class Tree {
