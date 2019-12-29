@@ -15,7 +15,6 @@ public class Number {
   }
 
   public static void print32BitBinaryString(int num) {
-    System.out.println(num);
     StringBuilder sBuilder = new StringBuilder();
     for (int i = 0; i < 32; i++) {
       sBuilder.append(num & 1);
@@ -25,7 +24,6 @@ public class Number {
   }
 
   public static void printSimpleBinaryString(int num) {
-    System.out.println(num);
     StringBuilder sBuilder = new StringBuilder();
     for (int i = 0; i < 32; i++) {
       sBuilder.append(num & 1);

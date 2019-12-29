@@ -3,40 +3,44 @@ package leet_code;
 class Item53 {
 
   public static void main(String[] args) {
-    int[] arr = new int[]{-2, 1, -3, 4, -1, 2, 1, -5, 4};
-    System.out.println(maxSubArray(arr));
+    int[] nums = new int[]{-2, 1, -3, 4, -1, 2, 1, -5, 4};
+    System.out.println(maxSubArray(nums));
   }
 
   public static int maxSubArray(int[] nums) {
     int len = nums.length;
-    if (len == 1) return nums[0];
+    if (len == 0) return 0;
 
-    int max = Integer.MIN_VALUE;
-    int sum = nums[0];
-    int i = 0, j = 0;
+    int currSum = nums[0];
+    int maxSum = nums[0];
 
-    while (i < len - 1 && j < len - 1) {
-      while (j < len - 2 && nums[j + 1] >= 0) {
-        sum += nums[j + 1];
-        j++;
+    for (int i = 1; i < len; i++) {
+      // 当新数大于0
+      if (nums[i] > 0) {
+        // 当之前的和小于等于0, 直接用新的数
+        if (currSum <= 0) {
+          currSum = nums[i];
+        }
+        // 当之前的和大于0, 用之前的和加新数
+        else {
+          currSum += nums[i];
+        }
       }
-      max = Math.max(max, sum);
-      while (i <= j && nums[i] <= 0) {
-        sum -= nums[i];
-        i++;
+      // 新数小于等于0
+      else {
+        // 当之前的和小于等于0, 直接用新的数
+        if (currSum <= 0) {
+          currSum = nums[i];
+        }
+        // 当之前的和大于0, 用之前的和加新数
+        else {
+          currSum += nums[i];
+        }
       }
-      max = Math.max(max, sum);
+      maxSum = Math.max(currSum, maxSum);
 
-      if (nums[j + 1] >= nums[i]) {
-        sum += nums[j + 1];
-        j++;
-      } else {
-        sum -= nums[i];
-        i++;
-      }
     }
-
-    return max;
+    return maxSum;
   }
 
 }
