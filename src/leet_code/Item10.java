@@ -31,6 +31,7 @@ class Item10 {
     else {
       return firstMatch && isMatch(s.substring(1), p.substring(1));
     }
+
   }
 
   public static void main(String[] args) {

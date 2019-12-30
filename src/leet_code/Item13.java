@@ -3,7 +3,7 @@ package leet_code;
 class Item13 {
 
   public static void main(String[] args) {
-    System.out.println(String.valueOf(romanToInt("MCMXCIV")));
+    System.out.println(romanToInt("MCMXCIV"));
   }
 
   public static int romanToInt(String s) {
@@ -67,7 +67,7 @@ class Item13 {
           i++;
           break;
         case 'M':
-          sum += 100;
+          sum += 1000;
           i++;
           break;
       }
