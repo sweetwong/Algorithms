@@ -20,22 +20,6 @@ public class QuickSort {
     }
   }
 
-  /**
-   * 选取最后一个数15作为基准
-   * 21 17 5  7  16 6  15
-   * <p>
-   * 21和5换
-   * 5  17 21 7  16 6  15
-   * <p>
-   * 17和7换
-   * 5  7  21 17 16 6  15
-   * <p>
-   * 21和6换
-   * 5  7  6  17 16 21 15
-   * <p>
-   * 基准15插入到中间
-   * 5  7  6  15 16 21 17
-   */
   private static int partition(int[] nums, int low, int high) {
     // 选出最后一个值作为基准
     int pivot = nums[high];

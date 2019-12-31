@@ -1,22 +1,26 @@
 package classic;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import util.Time;
 
 /**
  * 爬楼梯问题, 每次可以爬1层, 也可以爬2层
  * 问跳到n层一共有多少种方式?
+ *
+ * f(n) = f(n-1) + f(n-2)
+ *
+ * 第一次可以跳一层, 也可以跳两层, 大问题 -> 小问题
+ *
+ * 递归思想: 是把f(n)化成f(n-1)和f(n-2)
+ * 迭代思想: 已知f(1)和f(2), 求f(3), f(4), ..., f(n)
  */
 class ClimbStairs {
 
   public static void main(String[] args) {
-    System.out.println(climbStairsIte(1));
+    Time.watch(() -> climbStairsDpIte(1000000));
   }
 
   /**
-   * 爬楼梯问题, 最简单的解法, 不过非常慢, 因为子问题重复计算, 效率极差
+   * 方法一: 爬楼梯问题, 最简单的解法, 不过非常慢, 因为子问题重复计算, 效率极差
    */
   public static int climbStairs(int n) {
     if (n <= 2) return n;
@@ -24,13 +28,17 @@ class ClimbStairs {
   }
 
   /**
-   * 动态规划 + 递归, 在第一种解法的基础上加入了dp用来缓存
+   * 方法二: 动态规划 + 递归, 在第一种解法的基础上加入了dp用来缓存
    */
   public static int climbStairsDp(int n) {
     int[] dp = new int[n + 1];
     return climbStairsDpHelper(n, dp);
   }
 
+
+  /**
+   * 方法二的辅助方法, 在方法一的基础上加入了一个缓存
+   */
   public static int climbStairsDpHelper(int n, int[] dp) {
     if (n <= 2) return n;
 
@@ -45,9 +53,9 @@ class ClimbStairs {
   }
 
   /**
-   * 动态规划 + 迭代
+   * 方法三: 动态规划 + 迭代
    */
-  public static int climbStairsIte(int n) {
+  public static int climbStairsDpIte(int n) {
     if (n <= 2) return n;
 
     int[] dp = new int[n + 1];

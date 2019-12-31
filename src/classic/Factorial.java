@@ -1,5 +1,8 @@
 package classic;
 
+import util.Array;
+import util.Time;
+
 /**
  * 求n的阶乘, n是非负数
  * 注意0的阶乘是1
@@ -11,15 +14,12 @@ class Factorial {
     return n * factorial(n - 1);
   }
 
-  public static int factorialTest(int n) {
-    if (n <= 1) return 1;
-    int lastFactorial = factorialTest(n - 1);
-    int num = lastFactorial * n;
-    System.out.println(lastFactorial + " × " + n + " = " + num);
-    return num;
+  public static int factorialIte(int n) {
+    int res = 1;
+    for (int i = 2; i <= n; i++) {
+      res *= i;
+    }
+    return res;
   }
 
-  public static void main(String[] args) {
-    factorialTest(10);
-  }
 }

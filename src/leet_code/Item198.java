@@ -1,7 +1,5 @@
 package leet_code;
 
-import java.util.Arrays;
-
 /**
  * 纪念一下, 这是我纯自己写的dp, 居然击败了100%几乎最优
  */
@@ -47,8 +45,6 @@ class Item198 {
     if (len == 2) return dp[1];
     dp[2] = Math.max(nums[0] + nums[2], nums[1]);
     if (len == 3) return dp[2];
-
-    if (len <= 3) return dp[len - 1];
 
     for (int i = 3; i < len; i++) {
       dp[i] = Math.max(nums[i] + dp[i - 2], dp[i - 1]);
