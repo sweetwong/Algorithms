@@ -15,22 +15,14 @@ public class Number {
   }
 
   public static void print32BitBinaryString(int num) {
+    System.out.println(num + "  ");
     StringBuilder sBuilder = new StringBuilder();
     for (int i = 0; i < 32; i++) {
       sBuilder.append(num & 1);
       num = num >>> 1;
     }
     System.out.println(sBuilder.reverse().toString());
-  }
-
-  public static void printSimpleBinaryString(int num) {
-    StringBuilder sBuilder = new StringBuilder();
-    for (int i = 0; i < 32; i++) {
-      sBuilder.append(num & 1);
-      num = num >>> 1;
-    }
-    int index = sBuilder.reverse().indexOf("1");
-    System.out.println(sBuilder.substring(index));
+    System.out.println();
   }
 
 }
