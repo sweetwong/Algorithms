@@ -4,12 +4,12 @@ import java.util.*;
 import java.util.LinkedList;
 
 import sort.nlogn.QuickSort;
-import util.Array;
+import util.ArrayUtils;
 
 public class Tree {
 
   public static void main(String[] args) {
-    int[] arr = Array.createRandomArrays(10, 100, false);
+    int[] arr = ArrayUtils.createRandomArrays(10, 100, false);
     QuickSort.sort(arr);
 
     TreeNode root = TreeUtils.arrayToCompleteBinaryTree(arr, 0);

@@ -1,7 +1,7 @@
 package leet_code;
 
-import util.LinkedList;
-import util.LinkedList.ListNode;
+import util.linked_list.LinkedListUtils;
+import util.linked_list.ListNode;
 
 class Item21 {
 
@@ -37,9 +37,9 @@ class Item21 {
   }
 
   public static void main(String[] args) {
-    ListNode l1 = LinkedList.createListNode(1, 4, 5, 7);
-    ListNode l2 = LinkedList.createListNode(2, 8, 9);
-    LinkedList.printListNode(mergeTwoListsIte(l1, l2));
+    ListNode l1 = LinkedListUtils.createListNode(1, 4, 5, 7);
+    ListNode l2 = LinkedListUtils.createListNode(2, 8, 9);
+    LinkedListUtils.printListNode(mergeTwoListsIte(l1, l2));
   }
 
 }

@@ -1,7 +1,5 @@
 package leet_code;
 
-import util.Array;
-
 import java.util.Arrays;
 
 /**

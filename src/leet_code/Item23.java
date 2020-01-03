@@ -4,8 +4,8 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
-import util.LinkedList;
-import util.LinkedList.ListNode;
+import util.linked_list.LinkedListUtils;
+import util.linked_list.ListNode;
 
 class Item23 {
 
@@ -73,10 +73,10 @@ class Item23 {
   }
 
   public static void main(String[] args) {
-    ListNode l1 = LinkedList.createListNode(1, 4, 8, 10);
-    ListNode l2 = LinkedList.createListNode(2, 9, 24);
-    ListNode l3 = LinkedList.createListNode(3, 7);
-    LinkedList.printListNode(mergeKLists2(new ListNode[]{l1, l2, l3}));
+    ListNode l1 = LinkedListUtils.createListNode(1, 4, 8, 10);
+    ListNode l2 = LinkedListUtils.createListNode(2, 9, 24);
+    ListNode l3 = LinkedListUtils.createListNode(3, 7);
+    LinkedListUtils.printListNode(mergeKLists2(new ListNode[]{l1, l2, l3}));
   }
 
 }

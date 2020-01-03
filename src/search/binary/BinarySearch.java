@@ -1,10 +1,5 @@
 package search.binary;
 
-import util.Array;
-import util.Time;
-
-import java.util.Arrays;
-
 public class BinarySearch {
 
   public static void main(String[] args) {

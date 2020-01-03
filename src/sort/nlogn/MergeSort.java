@@ -1,6 +1,7 @@
 package sort.nlogn;
 
-import util.LinkedList.ListNode;
+
+import util.linked_list.ListNode;
 
 import java.util.Arrays;
 

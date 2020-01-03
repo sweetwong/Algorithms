@@ -1,8 +1,5 @@
 package classic;
 
-import util.Array;
-import util.Time;
-
 /**
  * 求n的阶乘, n是非负数
  * 注意0的阶乘是1

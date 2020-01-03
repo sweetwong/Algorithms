@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Array {
+public class ArrayUtils {
 
   /**
    * @param n 随机数组的长度
@@ -47,6 +47,10 @@ public class Array {
       res[i] = list.get(list.size() - 1 - i);
     }
     return res;
+  }
+
+  public static void printArray(int[] nums) {
+    System.out.println(toString(nums));
   }
 
   public static String toString(int[] a) {
