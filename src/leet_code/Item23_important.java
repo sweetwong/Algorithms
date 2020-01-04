@@ -7,22 +7,21 @@ import java.util.PriorityQueue;
 import util.linked_list.LinkedListUtils;
 import util.linked_list.ListNode;
 
-class Item23 {
+class Item23_important {
 
   /**
    * 关键: 将合并K个数组的问题 分解为 两组合并K/2个数组的问题
    */
   public ListNode mergeKLists(ListNode[] lists) {
-    int n = lists.length;
+    int len = lists.length;
 
-    if (n == 0) return null;
-    if (n == 1) return lists[0];
-    if (n == 2) return mergeTwoLists(lists[0], lists[1]);
+    if (len == 0) return null;
+    if (len == 1) return lists[0];
 
-    int middle = n / 2;
+    int middle = len / 2;
 
     ListNode[] l1 = Arrays.copyOfRange(lists, 0, middle);
-    ListNode[] l2 = Arrays.copyOfRange(lists, middle, n);
+    ListNode[] l2 = Arrays.copyOfRange(lists, middle, len);
 
     return mergeTwoLists(mergeKLists(l1), mergeKLists(l2));
   }
@@ -30,19 +29,19 @@ class Item23 {
   public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
     if (l1 == null) return l2;
     if (l2 == null) return l1;
-    if (l1.val > l2.val) {
-      l2.next = mergeTwoLists(l1, l2.next);
-      return l2;
-    } else {
+    if (l1.val <= l2.val) {
       l1.next = mergeTwoLists(l1.next, l2);
       return l1;
+    } else {
+      l2.next = mergeTwoLists(l1, l2.next);
+      return l2;
     }
   }
 
   /**
    * 使用优先队列
    */
-  public static ListNode mergeKLists2(ListNode[] lists) {
+  public static ListNode mergeKListsPriorityQueue(ListNode[] lists) {
     if (lists == null || lists.length == 0) return null;
     if (lists.length == 1) return lists[0];
 
@@ -76,7 +75,7 @@ class Item23 {
     ListNode l1 = LinkedListUtils.createListNode(1, 4, 8, 10);
     ListNode l2 = LinkedListUtils.createListNode(2, 9, 24);
     ListNode l3 = LinkedListUtils.createListNode(3, 7);
-    LinkedListUtils.printListNode(mergeKLists2(new ListNode[]{l1, l2, l3}));
+    LinkedListUtils.printListNode(mergeKListsPriorityQueue(new ListNode[]{l1, l2, l3}));
   }
 
 }
