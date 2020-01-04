@@ -1,6 +1,7 @@
 package sort.nlogn;
 
-
+import util.ArrayUtils;
+import util.Time;
 import util.linked_list.ListNode;
 
 import java.util.Arrays;
@@ -10,13 +11,6 @@ import java.util.Arrays;
  */
 public class MergeSort {
 
-
-  public static void main(String[] args) {
-    int[] arr = {0, 1, 2, -1};
-    sort(arr);
-    System.out.println(Arrays.toString(arr));
-  }
-
   /**
    * 归并排序
    */
@@ -24,10 +18,11 @@ public class MergeSort {
     // 递归终止条件
     if (nums.length <= 1) return;
 
-    // 获取中位数,并将数组切割为两部分, 这种写法如果是偶数middle将会是中间偏左的数
+    // 获取中位数,并将数组切割为两部分, 这种写法如果是偶数middle将会是中间偏右的数
+    // 注意: 此处必须这么写, 写成 int mid = (nums.length - 1) / 2会报错
     int mid = nums.length / 2;
 
-    // 把数组分成左右两个区间
+    // 把数组分成左右两个区间(额外使用的空间, 复制了原来的数组)
     int[] left = Arrays.copyOfRange(nums, 0, mid);
     int[] right = Arrays.copyOfRange(nums, mid, nums.length);
 
@@ -88,6 +83,32 @@ public class MergeSort {
       else
         nums[i] = right[r++];
     }
+  }
+
+  /**
+   * 链表的归并排序
+   *
+   * 思路:
+   * 1. 利用快慢指针找到链表中点, 把链表分成两个两边
+   * 2. 分别对两个链表进行递归(大问题变小问题, 会一直分, 直到分成链表个数为1)为了得到两个有序链表
+   * 3. 归并两个有序链表
+   */
+  public static ListNode sortList(ListNode head) {
+    // 终止条件, 快指针到达最后一个节点 或者 快指针到达最后一个再超出一个位置
+    if (head == null || head.next == null) return head;
+
+    // 利用快慢指针, 慢指针既是中点, 奇数个(中间), 偶数个(中间偏左)
+    ListNode slow = head, fast = head.next;
+    while (fast != null && fast.next != null) {
+      slow = slow.next;
+      fast = fast.next.next;
+    }
+
+    // 这个值必然有, 因为链表至少有两个, 此时rightHead就是第二个节点
+    ListNode rightHead = slow.next;
+    slow.next = null;
+
+    return mergeTwoSortedLists(sortList(head), sortList(rightHead));
   }
 
   /**

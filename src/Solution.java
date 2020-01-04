@@ -1,18 +1,35 @@
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Set;
+import sort.nlogn.HeapSort;
+import sort.nlogn.MergeSort;
+import sort.nlogn.QuickSort;
+import util.ArrayUtils;
+import util.Time;
+
+import java.util.Arrays;
 
 class Solution {
 
   public static void main(String[] args) {
-    Map<Integer, Integer> map = new HashMap<>();
-    map.put(1, 2);
-    map.put(3, 4);
-    Set<Map.Entry<Integer, Integer>> entries = map.entrySet();
-    for (Map.Entry<Integer, Integer> entry: entries){
-      System.out.println(entry.getKey() + " " + entry.getValue());
-    }
-  }
 
+    for (int i = 0; i < 5; i++) {
+
+      int[] nums1 = ArrayUtils.createRandomArrays(10000000);
+      System.out.println("归并排序");
+      Time.watch(() -> MergeSort.sort(nums1));
+
+      int[] nums2 = ArrayUtils.createRandomArrays(10000000);
+      System.out.println("快速排序");
+      Time.watch(() -> QuickSort.sort(nums2));
+
+      int[] nums3 = ArrayUtils.createRandomArrays(10000000);
+      System.out.println("堆排序");
+      Time.watch(() -> HeapSort.sort(nums3));
+
+      int[] nums4 = ArrayUtils.createRandomArrays(10000000);
+      System.out.println("系统排序");
+      Time.watch(() -> Arrays.sort(nums4));
+
+      System.out.println();
+    }
+
+  }
 }
