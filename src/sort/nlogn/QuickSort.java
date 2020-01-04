@@ -2,6 +2,8 @@ package sort.nlogn;
 
 /**
  * 快速排序, 时间复杂度O(nlogn), 最坏情况为O(n²), 空间复杂度O(logn), 不稳定, 最快的排序方法之一, 原地算法
+ *
+ * todo 请完成random pivot quick sort
  */
 public class QuickSort {
 
