@@ -6,7 +6,7 @@ import util.ArrayUtils;
 import java.util.Arrays;
 
 /**
- * 堆排序, 时间复杂度O(nlogn), 空间复杂度O(1), 不稳定
+ * 堆排序, 时间复杂度O(nlogn), 空间复杂度O(1)(亮点), 不稳定, in place
  *
  * 堆是一个近似完全二叉树的结构, 并同时满足堆积的性质: 即子结点的键值或索引总是小于(或者大于)它的父节点
  */

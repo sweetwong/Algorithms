@@ -6,7 +6,7 @@ import util.linked_list.ListNode;
 import java.util.Arrays;
 
 /**
- * 归并排序, 时间复杂度O(nlogn), 空间复杂度O(n), 稳定, 对象排序一般用MergeSort或者基于归并排序的TimSort
+ * 归并排序, 时间复杂度O(nlogn), 空间复杂度O(n), 稳定, 对象排序一般用MergeSort或者基于归并排序的TimSort, 不是原地算法
  */
 public class MergeSort {
 
