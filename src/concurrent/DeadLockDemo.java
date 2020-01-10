@@ -1,6 +1,6 @@
-package java.concurrent;
+package concurrent;
 
-public class DeadLock {
+public class DeadLockDemo {
 
   Object o1 = new Object();
   Object o2 = new Object();
@@ -35,7 +35,7 @@ public class DeadLock {
   }
 
   public static void main(String[] args) {
-    new DeadLock().deadLock();
+    new DeadLockDemo().deadLock();
   }
 
 }
