@@ -46,51 +46,62 @@ package leet_code;
  * p = "mis*is*p*."
  * Output: false
  */
-class Item10 {
+class Item10_dp {
 
-  /**
-   * 递归法, 优点: 比较好理解
-   *        缺点: 重复计算子问题, 类似于斐波那契函数的递归计算, 效率很低
-   *
-   *        如何改善: 使用动态规划 dp
-   */
-  public boolean isMatch(String s, String p) {
+  public static void main(String[] args) {
+    String s = "mississippi";
+    String p = "mis*is*p*.";
+    isMatch(s, p);
+  }
 
-    int len = p.length();
+  public static boolean isMatch(String s, String p) {
+    Boolean[][] dp = new Boolean[s.length() + 1][p.length() + 1];
+    return helper(s, p, dp);
+  }
+
+  public static boolean helper(String s, String p, Boolean[][] dp) {
+    int lenS = s.length();
+    int lenP = p.length();
+
+    if (dp[lenS][lenP] != null) {
+      return dp[lenS][lenP];
+    }
 
     // 当p的长度为0, 递归的终止条件
-    if (len == 0) return s.isEmpty();
+    if (lenP == 0) return lenS == 0;
 
     // 判断第一个字符是否匹配
-    boolean firstMatch = (!s.isEmpty() && (p.charAt(0) == s.charAt(0) || p.charAt(0) == '.'));
+    boolean firstMatch = (lenS != 0 && (p.charAt(0) == s.charAt(0) || p.charAt(0) == '.'));
 
     // 当p的长度为1, 这种情况不存在'*'问题
-    if (len == 1) {
+    if (lenP == 1) {
       return s.length() == 1 && firstMatch;
     }
 
     // p的长度为0和1都被拦截了, 下面的都是p长度大于1的情况
 
+    boolean result;
+
     // 当p的长度大于1, 且第二字符为'*'
     if (p.charAt(1) == '*') {
       // 当第一个字符匹配, 大问题可以分为两种子问题, s进1 或者 p进2
       if (firstMatch) {
-        return isMatch(s.substring(1), p) || isMatch(s, p.substring(2));
+        result = isMatch(s.substring(1), p) || isMatch(s, p.substring(2));
       }
       // 当第一个字符不匹配, 减小问题范围, 只能 p进2(忽略掉'*'和其前一个字符)
       else {
-        return isMatch(s, p.substring(2));
+        result = isMatch(s, p.substring(2));
       }
     }
     // 当p的长度大于1, 且第二个字符不为'*', 问题规模缩小1
     else {
-      return firstMatch && isMatch(s.substring(1), p.substring(1));
+      result = firstMatch && isMatch(s.substring(1), p.substring(1));
     }
 
-  }
+    dp[lenS][lenP] = result;
 
-  public boolean isMatchDp(String s, String p) {
-    return false;
+    return result;
+
   }
 
 

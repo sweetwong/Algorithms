@@ -16,11 +16,11 @@ import util.Time;
 class ClimbStairs {
 
   public static void main(String[] args) {
-    Time.watch(() -> climbStairsDpIte(1000000));
+    Time.watch(() -> climbStairsDp(100));
   }
 
   /**
-   * 方法一: 爬楼梯问题, 最简单的解法, 不过非常慢, 因为子问题重复计算, 效率极差
+   * 方法一: 爬楼梯问题, 暴力法, 非常慢, 因为子问题重复计算, 效率极差
    */
   public static int climbStairs(int n) {
     if (n <= 2) return n;
@@ -28,32 +28,39 @@ class ClimbStairs {
   }
 
   /**
-   * 方法二: 动态规划 + 递归, 在第一种解法的基础上加入了dp用来缓存
+   * 方法二: 动态规划, 在第一种解法的基础上加入了备忘录来记录缓存, 又称记忆化递归
+   *
+   * 自顶向下(通过递归), 在递归的基础上加上了备忘录
    */
   public static int climbStairsDp(int n) {
+    // 此长度处用n+1是因为, 存储时, 是从dp[1]开始存的, 因此dp[n]需要长度n+1的数组
     int[] dp = new int[n + 1];
-    return climbStairsDpHelper(n, dp);
+    return helper(n, dp);
   }
 
-
   /**
-   * 方法二的辅助方法, 在方法一的基础上加入了一个缓存
+   * 方法二的辅助方法, 自顶向下
    */
-  public static int climbStairsDpHelper(int n, int[] dp) {
-    if (n <= 2) return n;
+  public static int helper(int n, int[] dp) {
+    // 通过判断非0为没有存储, 如果所有的数都有可能出现, 可以改用Integer[], 然后通过是否为空来判断是否有记录, boolean等其他的同理
+    if (dp[n] != 0)
+      // 此处找到缓存就直接返回了, 没有再继续分化成子问题, 因此每个子问题只计算了一遍
+      return dp[n];
 
-    int cache = dp[n];
-    if (cache != 0) {
-      return cache;
-    } else {
-      int value = climbStairsDpHelper(n - 1, dp) + climbStairsDpHelper(n - 2, dp);
-      dp[n] = value;
-      return value;
-    }
+    int res;
+
+    // 原递归函数
+    if (n <= 2) res = n;
+    else res = helper(n - 1, dp) + helper(n - 2, dp);
+
+    dp[n] = res;
+    return res;
   }
 
   /**
-   * 方法三: 动态规划 + 迭代
+   * 方法三: 动态规划
+   *
+   * 自底向上(通过迭代), 由简单解推算出复杂解
    */
   public static int climbStairsDpIte(int n) {
     if (n <= 2) return n;
