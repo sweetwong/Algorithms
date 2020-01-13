@@ -1,6 +1,4 @@
-package classic;
-
-import util.Time;
+package classical;
 
 /**
  * 爬楼梯问题, 每次可以爬1层, 也可以爬2层
@@ -16,11 +14,13 @@ import util.Time;
 class ClimbStairs {
 
   public static void main(String[] args) {
-    Time.watch(() -> climbStairsDp(100));
+    System.out.println(climbStairsFibonacci(10));
   }
 
   /**
    * 方法一: 爬楼梯问题, 暴力法, 非常慢, 因为子问题重复计算, 效率极差
+   * 时间复杂度: O(2^n), 遍历一次
+   * 空间复杂度: O(n), 递归深度可达到n
    */
   public static int climbStairs(int n) {
     if (n <= 2) return n;
@@ -29,6 +29,8 @@ class ClimbStairs {
 
   /**
    * 方法二: 动态规划, 在第一种解法的基础上加入了备忘录来记录缓存, 又称记忆化递归
+   * 时间复杂度: O(n), 树形递归大小可达到n
+   * 空间复杂度: O(n), 递归深度可达到n
    *
    * 自顶向下(通过递归), 在递归的基础上加上了备忘录
    */
@@ -59,6 +61,8 @@ class ClimbStairs {
 
   /**
    * 方法三: 动态规划
+   * 时间复杂度: O(n), 遍历一次
+   * 空间复杂度: O(n), 创造了一个dp存储
    *
    * 自底向上(通过迭代), 由简单解推算出复杂解
    */
@@ -74,6 +78,26 @@ class ClimbStairs {
     }
 
     return dp[n];
+  }
+
+
+  /**
+   * 方法四: 斐波那契数列
+   * 时间复杂度: O(n), 遍历一次
+   * 空间复杂度: O(1), 只用了常数量的额外变量, first和second
+   *
+   * 在方法三的基础上优化, 其实并不需要保存所有的数, 只要求出想要的第n个即可
+   */
+  public static int climbStairsFibonacci(int n) {
+    if (n == 2) return n;
+
+    int first = 1, second = 2;
+    for (int i = 3; i < n + 1; i++) {
+      int sum = first + second;
+      first = second;
+      second = sum;
+    }
+    return second;
   }
 
 

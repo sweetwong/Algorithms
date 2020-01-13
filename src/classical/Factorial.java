@@ -1,4 +1,4 @@
-package classic;
+package classical;
 
 /**
  * 求n的阶乘, n是非负数

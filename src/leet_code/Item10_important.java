@@ -46,7 +46,7 @@ package leet_code;
  * p = "mis*is*p*."
  * Output: false
  */
-class Item10 {
+class Item10_important {
 
   /**
    * 递归法, 优点: 比较好理解
@@ -88,10 +88,5 @@ class Item10 {
     }
 
   }
-
-  public boolean isMatchDp(String s, String p) {
-    return false;
-  }
-
 
 }

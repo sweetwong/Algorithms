@@ -1,4 +1,4 @@
-package classic;
+package classical;
 
 /*
  * 斐波那契数列:

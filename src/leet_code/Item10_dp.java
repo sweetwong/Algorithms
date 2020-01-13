@@ -54,6 +54,7 @@ class Item10_dp {
     isMatch(s, p);
   }
 
+  // todo 完成这个动态规划
   public static boolean isMatch(String s, String p) {
     Boolean[][] dp = new Boolean[s.length() + 1][p.length() + 1];
     return helper(s, p, dp);

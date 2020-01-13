@@ -2,11 +2,10 @@ package leet_code;
 
 import util.Time;
 
+/**
+ * 爬楼梯问题, 参考classical
+ */
 class Item70 {
-
-  public static void main(String[] args) {
-    Time.watch(() -> System.out.println(climbStairs(45)));
-  }
 
   public static int climbStairs(int n) {
     if (n == 1) return 1;
