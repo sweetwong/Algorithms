@@ -24,12 +24,12 @@ public class TreeUtils {
     int[] nums = new int[]{1, 2, 3, 4, 5, 6, 7};
     TreeNode root = arrayToCompleteBinaryTree(nums, 0);
 
-    preorderTraversal(root);
+    inorderTraversal(root);
     System.out.println(res.toString());
 
     res.clear();
 
-    preorderTraversalIte(root);
+    inorderTraversalIte(root);
     System.out.println(res.toString());
   }
 

@@ -50,6 +50,12 @@ public class LinkedListUtils {
 
   /**
    * 反转链表, 迭代法
+   *
+   * 利用三个变量, prev、curr、next
+   * prev指向前一个数, curr指向当前的数, nextTemp指向后一个数(每次都会新生成, 用来暂存)
+   *
+   * 反转过程: 把next保存下来, curr接上prev
+   * 向前推进: prev变成curr, curr变成next
    */
   public static ListNode reverseLinkedList(ListNode root) {
     ListNode prev = null, curr = root;
