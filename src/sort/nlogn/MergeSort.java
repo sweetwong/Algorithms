@@ -19,7 +19,7 @@ public class MergeSort {
     if (nums.length <= 1) return;
 
     // 获取中位数,并将数组切割为两部分, 这种写法如果是偶数middle将会是中间偏右的数
-    // 注意: 此处必须这么写, 写成 int mid = (nums.length - 1) / 2会报错
+    // 注意: 此处必须这么写, 写成 int mid = (nums.length - 1) / 2会报错, 是因为Arrays.copyOfRange(nums, 0, mid)操作
     int mid = nums.length / 2;
 
     // 把数组分成左右两个区间(额外使用的空间, 复制了原来的数组)
