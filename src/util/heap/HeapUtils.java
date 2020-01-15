@@ -1,6 +1,9 @@
-package util;
+package util.heap;
 
-public class Heap {
+/**
+ * 堆的应用场景: 优先队列
+ */
+public class HeapUtils {
 
   public static void printHeap(int[] arr) {
     int size = arr.length;

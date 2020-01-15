@@ -1,7 +1,5 @@
 package sort.n2;
 
-import util.ArrayUtils;
-
 import java.util.Arrays;
 
 /**

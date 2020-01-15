@@ -1,6 +1,6 @@
 package leet_code;
 
-import util.Number;
+import util.NumberUtils;
 
 /**
  * Given a non-empty array of integers, every element appears twice except for one. Find that single one.
@@ -20,7 +20,7 @@ import util.Number;
 class Item136 {
 
   public static void main(String[] args) {
-    Number.print32BitBinaryString(5 ^ 12 ^ 13 ^ 12 ^ 13);
+    NumberUtils.print32BitBinaryString(5 ^ 12 ^ 13 ^ 12 ^ 13);
   }
 
   /**

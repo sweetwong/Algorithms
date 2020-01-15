@@ -1,6 +1,6 @@
 package util;
 
-public class Number {
+public class NumberUtils {
 
   public static void main(String[] args) {
     // 1100

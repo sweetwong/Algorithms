@@ -1,12 +1,12 @@
 package util.linked_list;
 
 import sort.nlogn.QuickSort;
-import util.ArrayUtils;
+import util.array.ArrayUtils;
 
 public class LinkedListUtils {
 
   public static void main(String[] args) {
-    int[] nums = ArrayUtils.createRandomArrays(10, 100, false);
+    int[] nums = ArrayUtils.createRandomArray(10, 100, false);
     QuickSort.sort(nums);
 
     ArrayUtils.printArray(nums);

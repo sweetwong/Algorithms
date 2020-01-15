@@ -1,29 +1,28 @@
 package sort.nlogn;
 
-import util.ArrayUtils;
-import util.Time;
-
-import java.lang.reflect.Array;
-import java.util.Arrays;
-import java.util.Random;
+import util.array.ArrayUtils;
+import util.TimeWatcher;
 
 /**
  * 快速排序, 时间复杂度O(nlogn), 最坏情况为O(n²), 通过取随机中枢可以将最坏情况优化到O(nlogn)
  * 空间复杂度O(logn), 不稳定, 最快的排序方法之一, 原地算法
  *
- * 算法思想: 快慢指针, 分治法
- *
+ * 算法思想: 快慢指针, 分治法, 原地算法
  */
 public class QuickSort {
 
   public static void main(String[] args) {
-    int[] nums = ArrayUtils.createRandomArrays(20, 10, false);
-    int[] nums2 = new int[nums.length*2];
-
-    sort(nums);
-    System.out.println(Arrays.toString(nums));
+    for (int i = 0; i < 5; i++) {
+      int[] nums = ArrayUtils.createRandomArray(10000000);
+      TimeWatcher.watch(() -> sort(nums));
+      TimeWatcher.watch(() -> sort(nums));
+      System.out.println();
+    }
   }
 
+  /**
+   * 模拟Arrays.sort()接口
+   */
   public static void sort(int[] nums) {
     quickSort(nums, 0, nums.length - 1);
   }
@@ -97,10 +96,12 @@ public class QuickSort {
   }
 
   private static <T extends Comparable<T>> int partition(T[] arr, int low, int high) {
+    int randomIndex = low + (int) ((high - low) * Math.random());
+    swap(arr, randomIndex, high);
     T pivot = arr[high];
     int i = low;
     for (int j = low; j < high; j++) {
-      if (arr[j].compareTo(pivot) <= 0) {
+      if (arr[j].compareTo(pivot) < 0) {
         swap(arr, i, j);
         i++;
       }

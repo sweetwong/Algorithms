@@ -1,7 +1,7 @@
 package leet_code;
 
 import sort.nlogn.QuickSort;
-import util.ArrayUtils;
+import util.array.ArrayUtils;
 import util.linked_list.LinkedListUtils;
 import util.linked_list.ListNode;
 
@@ -21,7 +21,7 @@ import java.util.Arrays;
 class Item148_important {
 
   public static void main(String[] args) {
-    int[] nums = ArrayUtils.createRandomArrays(10, 100, false);
+    int[] nums = ArrayUtils.createRandomArray(10, 100, false);
     System.out.println(Arrays.toString(nums));
 
     ListNode head = LinkedListUtils.createListNode(nums);

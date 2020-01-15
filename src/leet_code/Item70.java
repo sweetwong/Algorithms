@@ -1,7 +1,5 @@
 package leet_code;
 
-import util.Time;
-
 /**
  * 爬楼梯问题, 参考classical
  */

@@ -1,4 +1,4 @@
-package util;
+package util.array;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,12 +10,10 @@ public class ArrayUtils {
    * @param n 随机数组的长度
    * @return n个随机数字组成的数组
    */
-  public static int[] createRandomArrays(int n) {
+  public static int[] createRandomArray(int n) {
     int[] arr = new int[n];
-    for (int i = 0; i < arr.length; i++) {
-      double num = Math.random() * Integer.MAX_VALUE;
-      arr[i] = (int) num;
-    }
+    for (int i = 0; i < arr.length; i++)
+      arr[i] = (int) (Math.random() * Integer.MAX_VALUE);
     return arr;
   }
 
@@ -24,7 +22,7 @@ public class ArrayUtils {
    * @param max 每个数字的最大值
    * @return n个随机数字组成的数组
    */
-  public static int[] createRandomArrays(int n, int max, boolean neg) {
+  public static int[] createRandomArray(int n, int max, boolean neg) {
     if (max == 0) max = Integer.MAX_VALUE;
     int[] arr = new int[n];
     for (int i = 0; i < arr.length; i++) {
