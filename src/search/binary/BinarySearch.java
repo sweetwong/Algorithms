@@ -19,11 +19,12 @@ public class BinarySearch {
       // 关键
       // 也可以写 mid = low + (high - low) / 2
       // >>>是无符号右移, 高位都补零, 如果是负数会变成正数, 效率比>>高? 但是数组索引只能正数, >>>必须要加括号
+      // mid取的是中间偏左的数
       int mid = low + ((high - low) >>> 1);
-      if (arr[mid] > target) {
-        high = mid - 1;
-      } else if (arr[mid] < target) {
+      if (arr[mid] < target) {
         low = mid + 1;
+      } else if (arr[mid] > target) {
+        high = mid - 1;
       } else {
         return mid;
       }

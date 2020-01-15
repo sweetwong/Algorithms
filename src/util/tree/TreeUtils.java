@@ -1,5 +1,6 @@
 package util.tree;
 
+import java.lang.reflect.Array;
 import java.util.*;
 import java.util.LinkedList;
 
@@ -9,7 +10,7 @@ import util.array.ArrayUtils;
 /**
  * 二叉树的常规操作
  *
- * 1. 前/中/后序遍历的递归法和迭代法
+ * 1. 前/中/后序遍历的递归法和迭代法, 迭代法有分为先压入和后压入
  * 2. 层次遍历的递归法和迭代法
  * 3. 层次遍历, 区别每一层
  * 4. Z型遍历, 利用双端队列
@@ -20,17 +21,19 @@ import util.array.ArrayUtils;
 public class TreeUtils {
 
   public static void main(String[] args) {
-    int[] arr = ArrayUtils.createRandomArray(15, 100, false);
-    QuickSort.sort(arr);
-    System.out.println(Arrays.toString(arr));
+    int[] nums = new int[]{1, 2, 3, 4, 5, 6, 7};
+    TreeNode root = arrayToCompleteBinaryTree(nums, 0);
 
-    TreeNode root = arrayToCompleteBinaryTree(arr, 0);
-    List<List<Integer>> lists = levelOrderTraversalIte2(root);
+    preorderTraversal(root);
+    System.out.println(res.toString());
 
-    System.out.println(lists.toString());
+    res.clear();
+
+    preorderTraversalIte(root);
+    System.out.println(res.toString());
   }
 
-  private static List<Integer> res = new ArrayList<>();
+  private static LinkedList<Integer> res = new LinkedList<>();
 
   /**
    * 二叉树的前序遍历, 递归法, DFS
@@ -44,9 +47,24 @@ public class TreeUtils {
   }
 
   /**
-   * 二叉树前序遍历, 迭代法, DFS
+   * 二叉树前序遍历, 迭代法, DFS, 先压入栈, 类似层次遍历的用法
    */
   public static void preorderTraversalIte(TreeNode root) {
+    if (root == null) return;
+    Stack<TreeNode> stack = new Stack<>();
+    stack.push(root);
+    while (!stack.isEmpty()) {
+      TreeNode temp = stack.pop();
+      res.add(temp.val);
+      if (temp.right != null) stack.push(temp.right);
+      if (temp.left != null) stack.push(temp.left);
+    }
+  }
+
+  /**
+   * 二叉树前序遍历, 迭代法, DFS, 后压入栈
+   */
+  public static void preorderTraversalIte1(TreeNode root) {
     Stack<TreeNode> stack = new Stack<>();
     // 指针指向根节点
     TreeNode curr = root;
@@ -79,7 +97,7 @@ public class TreeUtils {
   }
 
   /**
-   * 二叉树中序遍历, 迭代法, 利用栈, DFS
+   * 二叉树中序遍历, 迭代法, 利用栈, DFS, 后压入
    */
   public static void inorderTraversalIte(TreeNode root) {
     Stack<TreeNode> stack = new Stack<>();
@@ -111,6 +129,28 @@ public class TreeUtils {
       res.add(root.val);
     }
   }
+
+  /**
+   * 二叉树后序遍历, 迭代法, DFS, 先压入栈
+   */
+  public static void postorderTraversalIte(TreeNode root) {
+    if (root == null) return;
+    Stack<TreeNode> stack = new Stack<>();
+    stack.push(root);
+    while (!stack.isEmpty()) {
+      TreeNode temp = stack.pop();
+      res.addFirst(temp.val);
+      if (temp.left != null) stack.push(temp.left);
+      if (temp.right != null) stack.push(temp.right);
+    }
+  }
+
+  /**
+   * 二叉树后序遍历, 迭代法, 利用栈, DFS, 后压入栈
+   */
+  public static void postorderTraversalIte2(TreeNode root) {
+  }
+
 
   /**
    * 二叉树的层次遍历, 递归法,DFS
@@ -161,6 +201,7 @@ public class TreeUtils {
     queue.offer(root);
 
     while (!queue.isEmpty()) {
+      // 每次遍历一层
       List<Integer> levelList = new ArrayList<>();
 
       // 此处必须先赋值, 因为queue.size()会一直变化
