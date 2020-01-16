@@ -3,6 +3,9 @@ package leet_code;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * todo 有了回溯的思路之后, 可以将之前的解法完成
+ */
 class Item51_solution {
 
   // 竖排被占登记，用于判断是否能够被竖排攻击
@@ -50,16 +53,15 @@ class Item51_solution {
         // 放置皇后
         placeQueen(row, col);
 
-        // 如果当前行是最后一行且放置了皇后, 说明已经完成任务, 添加解
         if (row + 1 == n) {
+          // 如果当前行是最后一行且放置了皇后, 说明已经完成任务, 添加解
           addSolution();
-        }
-        // 如果当前行不是最后一行且放置了皇后, 遍历下一行, 在此处递归
-        else {
+        } else {
+          // 如果当前行不是最后一行且放置了皇后, 遍历下一行, 在此处递归
           backtrack(row + 1);
         }
 
-        // 回溯
+        // 回溯, 移除皇后
         removeQueen(row, col);
       }
 
@@ -67,7 +69,7 @@ class Item51_solution {
   }
 
   /**
-   * 判断该位置是否会被攻击, 重要
+   * 判断该位置是否会被攻击
    */
   public boolean isNotUnderAttack(int row, int col) {
     // main: row - col = const, 加上常数 n - 1 是为了防止出现负数下标, 例如 row = 0, col = 3

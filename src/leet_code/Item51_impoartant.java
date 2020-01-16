@@ -1,12 +1,9 @@
-package classical;
+package leet_code;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * N皇后问题
- */
-class NQueens {
+class Item51_impoartant {
 
   private int n;
 
@@ -25,8 +22,6 @@ class NQueens {
     for (int col = 0; col < n; col++) {
 
       if (isSafe(row, col)) {
-
-        // 放置皇后
         board[row][col] = 1;
 
         if (row + 1 == n) {
@@ -35,17 +30,11 @@ class NQueens {
           backtracking(row + 1);
         }
 
-        // 移除皇后
         board[row][col] = 0;
       }
     }
   }
 
-
-  /**
-   * 此处通过记录对角线会更快
-   * 不过这种通过向上遍历, 同时用3个变量来代表3个方向, 更容易理解
-   */
   private boolean isSafe(int row, int col) {
     int left = col - 1, right = col + 1;
     for (int i = row - 1; i >= 0; i--) {
@@ -63,10 +52,11 @@ class NQueens {
     for (int col = 0; col < n; col++) {
       StringBuilder sb = new StringBuilder();
       for (int row = 0; row < n; row++) {
-        if (board[row][col] == 1)
+        if (board[row][col] == 1) {
           sb.append('Q');
-        else
+        } else {
           sb.append('.');
+        }
       }
       oneSolution.add(sb.toString());
     }
