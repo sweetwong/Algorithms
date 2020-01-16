@@ -1,13 +1,6 @@
-import sort.nlogn.QuickSort;
-import util.array.ArrayUtils;
-import util.TimeWatcher;
+import java.util.ArrayList;
+import java.util.List;
 
-class Solution {
+import util.tree.TreeUtils;
 
-  public static void main(String[] args) {
-    int[] nums = ArrayUtils.createRandomArray(10000000);
-    TimeWatcher.watch(() -> QuickSort.sort(nums));
-    TimeWatcher.watch(() -> QuickSort.sort(nums));
-  }
 
-}

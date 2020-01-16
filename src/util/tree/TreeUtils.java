@@ -379,7 +379,7 @@ public class TreeUtils {
     return res;
   }
 
-  public static void printLists(List<List<Integer>> lists) {
+  public static <T> void printLists(List<List<T>> lists) {
     int size = lists.size();
     if (size == 0) {
       System.out.println("[]");
