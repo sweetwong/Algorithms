@@ -3,7 +3,7 @@ package leet_code;
 import java.util.ArrayList;
 import java.util.List;
 
-class Item51_impoartant {
+class Item51_important {
 
   private int n;
 
