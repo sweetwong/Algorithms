@@ -6,6 +6,7 @@ class Item13 {
     System.out.println(romanToInt("MCMXCIV"));
   }
 
+  // todo 可以优化下, 这个看了想打人
   public static int romanToInt(String s) {
     int len = s.length();
     char[] chars = s.toCharArray();

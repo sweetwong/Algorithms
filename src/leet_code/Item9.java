@@ -1,38 +1,23 @@
 package leet_code;
 
-import java.util.ArrayList;
-import java.util.List;
-
 class Item9 {
 
-  public static void main(String[] args) {
-    int[] nums = new int[]{0, 1, 2, 3, 4};
-    int n = nums.length;
-    System.out.print(nums[n / 2]);
-  }
+  public boolean isPalindrome(int num) {
+    if (num < 0) return false;
+    if (num == 0) return true;
 
-  // x=1523
-  public boolean isPalindrome(int x) {
-    if (x < 0) return false;
-    if (x <= 1) return true;
-    List<Integer> list = new ArrayList<>();
-    while (x != 0) {
-      list.add(x % 10);
-      x = x / 10;
+    // 这种情况是为了防止, rev不增大, 导致当停止递归时, 不是在数的中间
+    // 例如: 1100会返回true
+    if (num % 10 == 0) return false;
+
+    int rev = 0;
+    while (num > rev) {
+      int pop = num % 10;
+      num = num / 10;
+      rev = rev * 10 + pop;
     }
-    int n = list.size();
-    int l, r;
-    if (n % 2 == 0) {
-      l = (n - 1) / 2;
-      r = (n - 1) / 2 + 1;
-    } else {
-      l = n / 2 - 1;
-      r = n / 2 + 1;
-    }
-    while (r < n) {
-      if (!list.get(l--).equals(list.get(r++))) return false;
-    }
-    return true;
+
+    return num == rev || num == rev / 10;
   }
 
 }

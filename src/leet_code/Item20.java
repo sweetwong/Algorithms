@@ -16,12 +16,10 @@ public class Item20 {
       else {
         if (stack.isEmpty()) return false;
         // 查看栈顶, 如果是一对就一起消掉, 如果不是就返回否
-        char peek = stack.peek();
-        if ((c == ')' && peek == '(')
-          || (c == ']' && peek == '[')
-          || (c == '}' && peek == '{'))
-          stack.pop();
-        else
+        char peek = stack.pop();
+        if ((c == ')' && peek != '(')
+          || (c == ']' && peek != '[')
+          || (c == '}' && peek != '{'))
           return false;
       }
     }
