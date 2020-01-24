@@ -1,8 +1,8 @@
 package sort.nlogn;
 
-import util.linked_list.ListNode;
-
 import java.util.Arrays;
+
+import util.linked_list.ListNode;
 
 /**
  * 归并排序, 时间复杂度O(nlogn), 空间复杂度O(n), 稳定, 对象排序一般用MergeSort或者基于归并排序的TimSort, 不是原地算法
@@ -54,6 +54,23 @@ public class MergeSort {
   }
 
   /**
+   * 归并两个有序数组, 剩余的部分直接复制, 这样效率更高, 不过对于归并排序, 这种操作并没有必要,
+   */
+  public static void mergeTwoSortedArrays2(int[] nums, int[] nums1, int[] nums2) {
+    int p = 0, p1 = 0, p2 = 0, len1 = nums1.length, len2 = nums2.length;
+    while (p1 < len1 && p2 < len2) {
+      nums[p++] = nums1[p1] <= nums2[p2] ? nums1[p1++] : nums2[p2++];
+    }
+    // p1到头, p2没有到头
+    if (p1 == len1 && p2 != len2)
+      System.arraycopy(nums2, p2, nums, p, len2 - p2);
+    // p1没有到头, p2到头
+    else if (p1 != len1 && p2 == len2)
+      System.arraycopy(nums1, p1, nums, p, len1 - p1);
+  }
+
+
+  /**
    * 对象的归并排序
    */
   public static <T extends Comparable<T>> void sort(T[] nums) {
@@ -85,7 +102,7 @@ public class MergeSort {
 
   /**
    * 链表的归并排序
-   *
+   * <p>
    * 思路:
    * 1. 利用快慢指针找到链表中点, 把链表分成两个两边
    * 2. 分别对两个链表进行递归(大问题变小问题, 会一直分, 直到分成链表个数为1)为了得到两个有序链表
