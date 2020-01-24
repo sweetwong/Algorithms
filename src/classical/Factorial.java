@@ -4,7 +4,7 @@ package classical;
  * 求n的阶乘, n是非负数
  * 注意0的阶乘是1
  */
-class Factorial {
+public class Factorial {
 
   public static int factorial(int n) {
     if (n <= 1) return 1;

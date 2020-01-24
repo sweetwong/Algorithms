@@ -19,7 +19,7 @@ class Item3_important {
         j++;
         res = Math.max(res, j - i);
       }
-      // 如果Set包含，满指针进一步
+      // 如果Set包含，慢指针进一步
       else {
         set.remove(s.charAt(i));
         i++;

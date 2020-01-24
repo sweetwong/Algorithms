@@ -3,7 +3,12 @@ package leet_code;
 import java.util.ArrayList;
 import java.util.List;
 
-class Item51_important {
+class Item51_N皇后_important {
+
+  public static void main(String[] args) {
+    Item51_N皇后_important a = new Item51_N皇后_important();
+    a.solveNQueens(4);
+  }
 
   private int n;
 
@@ -18,21 +23,30 @@ class Item51_important {
     return res;
   }
 
+  private int times = 0;
+
   private void backtracking(int row) {
+    // 终止条件
+    if (row == n) {
+      addSolution();
+      return;
+    }
+
     for (int col = 0; col < n; col++) {
 
       if (isSafe(row, col)) {
+
+        // 放置皇后
         board[row][col] = 1;
 
-        if (row + 1 == n) {
-          addSolution();
-        } else {
-          backtracking(row + 1);
-        }
+        // 向前推进
+        backtracking(row + 1);
 
+        // 回溯
         board[row][col] = 0;
       }
     }
+
   }
 
   private boolean isSafe(int row, int col) {

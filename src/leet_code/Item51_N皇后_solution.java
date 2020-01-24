@@ -3,10 +3,7 @@ package leet_code;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * todo 有了回溯的思路之后, 可以将之前的解法完成
- */
-class Item51_solution {
+class Item51_N皇后_solution {
 
   // 竖排被占登记，用于判断是否能够被竖排攻击
   int rows[];

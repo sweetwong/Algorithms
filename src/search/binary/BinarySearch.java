@@ -4,7 +4,7 @@ public class BinarySearch {
 
   public static void main(String[] args) {
     int[] arr = new int[]{0, 1};
-    System.out.println(binarySearch(arr, 0));
+    System.out.println(binarySearch(arr, 1));
   }
 
   /**
@@ -15,6 +15,7 @@ public class BinarySearch {
     int high = arr.length - 1;
     // 必须是<=, 不能是<
     // 如果是<, 对于在[0,1]中寻找1, 会返回-1
+    // 当low == high, 是最后一个解
     while (low <= high) {
       // 关键
       // 也可以写 mid = low + (high - low) / 2
