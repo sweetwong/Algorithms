@@ -9,17 +9,18 @@ public class LinkedListUtils {
     int[] nums = ArrayUtils.createRandomArray(10, 100, false);
     QuickSort.sort(nums);
 
-    ArrayUtils.printArray(nums);
+    ListNode head = create(nums);
+    print(head);
 
-    ListNode head = createListNode(nums);
-    printListNode(head);
+    ListNode rev = reverse(head);
+    print(rev);
   }
 
   /**
    * @param nums 输入任意数字
    * @return 生成对应链表
    */
-  public static ListNode createListNode(int... nums) {
+  public static ListNode create(int... nums) {
     ListNode dummyHead = new ListNode(0);
     ListNode curr = dummyHead;
     for (int num : nums) {
@@ -34,7 +35,7 @@ public class LinkedListUtils {
    *
    * @param node 输入的链表
    */
-  public static void printListNode(ListNode node) {
+  public static void print(ListNode node) {
     if (node == null) {
       System.out.print("null");
     } else {
@@ -57,13 +58,14 @@ public class LinkedListUtils {
    * 反转过程: 把next保存下来, curr接上prev
    * 向前推进: prev变成curr, curr变成next
    */
-  public static ListNode reverseLinkedList(ListNode root) {
+  public static ListNode reverse(ListNode root) {
     ListNode prev = null, curr = root;
-    // 一开始设为空而不是root.next, 可以包括root为空的情况
     while (curr != null) {
-      // 在此处求ahead, 因为已经确定了curr不为空
+      // 反转
       ListNode nextTemp = curr.next;
       curr.next = prev;
+
+      // 向前推进
       prev = curr;
       curr = nextTemp;
     }

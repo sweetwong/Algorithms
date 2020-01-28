@@ -10,8 +10,8 @@ class Item54_螺旋矩阵 {
 
   public static void main(String[] args) {
     int[][] matrix = {
-      {1, 2},
-      {4, 5},
+      {1, 2, 3},
+      {4, 5, 6},
     };
     System.out.println(spiralOrder(matrix).toString());
   }

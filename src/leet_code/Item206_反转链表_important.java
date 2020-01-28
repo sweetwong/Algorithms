@@ -6,14 +6,14 @@ import util.linked_list.ListNode;
 /**
  * 反转链表
  */
-class Item206_important {
+class Item206_反转链表_important {
 
   public static void main(String[] args) {
-    ListNode head = LinkedListUtils.createListNode(1, 2, 3, 4, 5);
-    LinkedListUtils.printListNode(head);
+    ListNode head = LinkedListUtils.create(1, 2, 3, 4, 5);
+    LinkedListUtils.print(head);
 
     ListNode rev = reverseList1(head);
-    LinkedListUtils.printListNode(rev);
+    LinkedListUtils.print(rev);
   }
 
   /**

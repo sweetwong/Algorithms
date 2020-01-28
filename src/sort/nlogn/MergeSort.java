@@ -1,7 +1,9 @@
 package sort.nlogn;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 
+import util.array.ArrayUtils;
 import util.linked_list.ListNode;
 
 /**
@@ -16,11 +18,12 @@ public class MergeSort {
     // 递归终止条件
     if (nums.length <= 1) return;
 
-    // 获取中位数,并将数组切割为两部分, 这种写法如果是偶数middle将会是中间偏右的数
+    // 获取中位数(中间偏右), 并将数组切割为两部分, 这种写法如果是偶数middle将会是中间偏右的数
     // 注意: 此处必须这么写, 写成 int mid = (nums.length - 1) / 2会报错, 是因为Arrays.copyOfRange(nums, 0, mid)操作
     int mid = nums.length / 2;
 
     // 把数组分成左右两个区间(额外使用的空间, 复制了原来的数组)
+    // 也可以把这一步放到mergeTwoSortedArrays方法中, 然后参数就用指针, 不传数组(原理是一样的)
     int[] left = Arrays.copyOfRange(nums, 0, mid);
     int[] right = Arrays.copyOfRange(nums, mid, nums.length);
 
@@ -54,21 +57,24 @@ public class MergeSort {
   }
 
   /**
-   * 归并两个有序数组, 剩余的部分直接复制, 这样效率更高, 不过对于归并排序, 这种操作并没有必要,
+   * 归并两个有序数组, 剩余的部分直接复制, 这样效率更高, 不过对于归并排序, 这种操作并没有必要
+   * 但是如果nums1和nums2的长度有很大不同, 这个方法会比起全部遍历效率很多
    */
-  public static void mergeTwoSortedArrays2(int[] nums, int[] nums1, int[] nums2) {
-    int p = 0, p1 = 0, p2 = 0, len1 = nums1.length, len2 = nums2.length;
-    while (p1 < len1 && p2 < len2) {
-      nums[p++] = nums1[p1] <= nums2[p2] ? nums1[p1++] : nums2[p2++];
+  public static void mergeTwoSortedArrays1(int[] nums, int[] left, int[] right) {
+    int i = 0, l = 0, r = 0, lenL = left.length, lenR = right.length;
+    // 结束条件, p1或p2到头
+    while (l < lenL && r < lenR) {
+      nums[i++] = left[l] <= right[r] ? left[l++] : right[r++];
     }
     // p1到头, p2没有到头
-    if (p1 == len1 && p2 != len2)
-      System.arraycopy(nums2, p2, nums, p, len2 - p2);
+    if (l == lenL) {
+      System.arraycopy(right, r, nums, i, lenR - r);
+    }
     // p1没有到头, p2到头
-    else if (p1 != len1 && p2 == len2)
-      System.arraycopy(nums1, p1, nums, p, len1 - p1);
+    else {
+      System.arraycopy(left, l, nums, i, lenL - l);
+    }
   }
-
 
   /**
    * 对象的归并排序
@@ -129,15 +135,15 @@ public class MergeSort {
   /**
    * 归并两个有序链表
    */
-  public static ListNode mergeTwoSortedLists(ListNode left, ListNode right) {
-    if (left == null) return right;
-    if (right == null) return left;
-    if (left.val <= right.val) {
-      left.next = mergeTwoSortedLists(left.next, right);
-      return left;
+  public static ListNode mergeTwoSortedLists(ListNode l1, ListNode l2) {
+    if (l1 == null) return l2;
+    if (l2 == null) return l1;
+    if (l1.val <= l2.val) {
+      l1.next = mergeTwoSortedLists(l1.next, l2);
+      return l1;
     } else {
-      right.next = mergeTwoSortedLists(left, right.next);
-      return right;
+      l2.next = mergeTwoSortedLists(l1, l2.next);
+      return l2;
     }
   }
 
@@ -150,7 +156,6 @@ public class MergeSort {
     // 终止条件
     if (n == 0) return null;
     if (n == 1) return lists[0];
-    if (n == 2) return mergeTwoSortedLists(lists[0], lists[1]);
 
     int mid = n / 2;
 

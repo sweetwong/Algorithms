@@ -2,13 +2,13 @@ package leet_code;
 
 class Item55_跳跃游戏_动态规划_自顶向下_important {
 
-  public static boolean canJump(int[] nums) {
+  public boolean canJump(int[] nums) {
     int n = nums.length;
     Boolean[] memo = new Boolean[n + 1];
     return canJumpFromPosition(nums, nums.length, memo, 0);
   }
 
-  public static boolean canJumpFromPosition(int[] nums, int n, Boolean[] memo, int start) {
+  public boolean canJumpFromPosition(int[] nums, int n, Boolean[] memo, int start) {
     if (start >= n - 1) return true;
     if (nums[start] == 0) return false;
 

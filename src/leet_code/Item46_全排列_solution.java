@@ -9,7 +9,9 @@ class Item46_全排列_solution {
 
   public static void main(String[] args) {
     Item46_全排列_solution a = new Item46_全排列_solution();
-    a.permute(new int[]{1, 2, 3, 4});
+    List<List<Integer>> permute = a.permute(new int[]{3, 2, 1});
+
+    System.out.println(permute.toString());
   }
 
   public List<List<Integer>> permute(int[] nums) {
@@ -48,7 +50,6 @@ class Item46_全排列_solution {
       Collections.swap(nums, start, i);
     }
   }
-
 
 
 }

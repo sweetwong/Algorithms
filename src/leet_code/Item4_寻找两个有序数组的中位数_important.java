@@ -5,7 +5,7 @@ package leet_code;
  *
  * 且要很好的区分, 第k个数和其下标nums[k-1]
  */
-class Item4_important {
+class Item4_寻找两个有序数组的中位数_important {
 
   public static double findMedianSortedArrays(int[] nums1, int[] nums2) {
     int len = nums1.length + nums2.length;

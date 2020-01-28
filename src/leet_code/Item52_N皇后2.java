@@ -1,30 +1,27 @@
 package leet_code;
 
-import java.util.ArrayList;
-import java.util.List;
-
-class Item51_N皇后_important {
+class Item52_N皇后2 {
 
   private int n;
 
-  private boolean[][] board;
+  private int total = 0;
 
-  private List<List<String>> res = new ArrayList<>();
+  private boolean[][] board;
 
   /**
    * 调用
    */
-  public List<List<String>> solveNQueens(int n) {
+  public int totalNQueens(int n) {
     this.n = n;
     board = new boolean[n][n];
     backtracking(0);
-    return res;
+    return total;
   }
 
   private void backtracking(int row) {
     // 终止条件, 在这里添加结果
     if (row == n) {
-      addSolution();
+      total++;
       return;
     }
 
@@ -55,22 +52,6 @@ class Item51_N皇后_important {
       right++;
     }
     return true;
-  }
-
-  private void addSolution() {
-    List<String> oneSolution = new ArrayList<>();
-    for (int col = 0; col < n; col++) {
-      StringBuilder sb = new StringBuilder();
-      for (int row = 0; row < n; row++) {
-        if (board[row][col]) {
-          sb.append('Q');
-        } else {
-          sb.append('.');
-        }
-      }
-      oneSolution.add(sb.toString());
-    }
-    res.add(oneSolution);
   }
 
 }

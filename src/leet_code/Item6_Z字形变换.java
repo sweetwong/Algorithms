@@ -1,11 +1,9 @@
 package leet_code;
 
-import com.sun.org.apache.bcel.internal.generic.IF_ACMPEQ;
-
 import java.util.ArrayList;
 import java.util.List;
 
-class Item6 {
+class Item6_Z字形变换 {
 
   public String convert(String s, int numRows) {
     if (s.length() <= numRows || numRows <= 1) return s;
@@ -35,7 +33,7 @@ class Item6 {
   }
 
   public static void main(String[] args) {
-    System.out.println(new Item6().convert("AB", 1));
+    System.out.println(new Item6_Z字形变换().convert("AB", 1));
   }
 
 }

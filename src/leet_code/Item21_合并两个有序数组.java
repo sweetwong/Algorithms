@@ -2,7 +2,7 @@ package leet_code;
 
 import util.linked_list.ListNode;
 
-class Item21 {
+class Item21_合并两个有序数组 {
 
   public static ListNode mergeTwoLists(ListNode l1, ListNode l2) {
     if (l1 == null) return l2;
@@ -17,8 +17,9 @@ class Item21 {
   }
 
   public static ListNode mergeTwoListsIte(ListNode l1, ListNode l2) {
-    ListNode dummyHead = new ListNode(0);
-    ListNode curr = dummyHead;
+    ListNode dummy = new ListNode(0);
+
+    ListNode curr = dummy;
     while (l1 != null && l2 != null) {
       if (l1.val <= l2.val) {
         curr.next = l1;
@@ -32,7 +33,7 @@ class Item21 {
 
     curr.next = l1 == null ? l2 : l1;
 
-    return dummyHead.next;
+    return dummy.next;
   }
 
 }

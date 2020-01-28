@@ -13,9 +13,9 @@ import util.linked_list.ListNode;
 class Item203 {
 
   public static void main(String[] args) {
-    ListNode head = LinkedListUtils.createListNode(1, 2, 2, 1);
+    ListNode head = LinkedListUtils.create(1, 2, 2, 1);
     removeElements1(head, 2);
-    LinkedListUtils.printListNode(head);
+    LinkedListUtils.print(head);
   }
 
   /**

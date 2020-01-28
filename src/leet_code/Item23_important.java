@@ -72,10 +72,10 @@ class Item23_important {
   }
 
   public static void main(String[] args) {
-    ListNode l1 = LinkedListUtils.createListNode(1, 4, 8, 10);
-    ListNode l2 = LinkedListUtils.createListNode(2, 9, 24);
-    ListNode l3 = LinkedListUtils.createListNode(3, 7);
-    LinkedListUtils.printListNode(mergeKListsPriorityQueue(new ListNode[]{l1, l2, l3}));
+    ListNode l1 = LinkedListUtils.create(1, 4, 8, 10);
+    ListNode l2 = LinkedListUtils.create(2, 9, 24);
+    ListNode l3 = LinkedListUtils.create(3, 7);
+    LinkedListUtils.print(mergeKListsPriorityQueue(new ListNode[]{l1, l2, l3}));
   }
 
 }

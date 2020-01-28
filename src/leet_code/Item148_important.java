@@ -24,9 +24,9 @@ class Item148_important {
     int[] nums = ArrayUtils.createRandomArray(10, 100, false);
     System.out.println(Arrays.toString(nums));
 
-    ListNode head = LinkedListUtils.createListNode(nums);
+    ListNode head = LinkedListUtils.create(nums);
     head = sortList(head);
-    LinkedListUtils.printListNode(head);
+    LinkedListUtils.print(head);
     QuickSort.sort(nums);
     System.out.println(Arrays.toString(nums));
   }

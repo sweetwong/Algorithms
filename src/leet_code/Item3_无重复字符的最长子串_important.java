@@ -6,7 +6,7 @@ import java.util.Set;
 /**
  * Longest Substring Without Repeating Characters
  */
-class Item3_important {
+class Item3_无重复字符的最长子串_important {
 
   public static int lengthOfLongestSubstring(String s) {
     Set<Character> set = new HashSet<>();

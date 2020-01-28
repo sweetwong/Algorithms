@@ -1,6 +1,6 @@
 package leet_code;
 
-class Item7 {
+class Item7_整数反转 {
 
   public int reverse(int x) {
     int res = 0;

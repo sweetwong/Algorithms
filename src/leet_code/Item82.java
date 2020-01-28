@@ -3,25 +3,12 @@ package leet_code;
 import util.linked_list.LinkedListUtils;
 import util.linked_list.ListNode;
 
-/**
- * Given a sorted linked list, delete all nodes that have duplicate numbers, leaving only distinct numbers from the original list.
- *
- * Example 1:
- * Input: 1->2->3->3->4->4->5
- * Output: 1->2->5
- *
- * Example 2:
- * Input: 1->1->1->2->3
- * Output: 2->3
- *
- * 0->1->1->2->2->3
- */
 class Item82 {
 
   public static void main(String[] args) {
-    ListNode head = LinkedListUtils.createListNode(1, 2, 2);
+    ListNode head = LinkedListUtils.create(1, 2, 2);
     head = deleteDuplicatesIte(head);
-    LinkedListUtils.printListNode(head);
+    LinkedListUtils.print(head);
   }
 
   public static ListNode deleteDuplicates(ListNode head) {

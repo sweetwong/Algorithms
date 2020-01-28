@@ -2,7 +2,7 @@ package leet_code;
 
 import util.linked_list.ListNode;
 
-class Item2 {
+class Item2_两数相加 {
 
   public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
     ListNode dummy = new ListNode(0);

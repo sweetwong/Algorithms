@@ -1,13 +1,11 @@
 package leet_code;
 
-class Item9 {
+class Item9_回文数 {
 
   public boolean isPalindrome(int num) {
     if (num < 0) return false;
     if (num == 0) return true;
-
-    // 这种情况是为了防止, rev不增大, 导致当停止递归时, 不是在数的中间
-    // 例如: 1100会返回true
+    // 因为 0 * 10 = 0, 导致不是在中间停止
     if (num % 10 == 0) return false;
 
     int rev = 0;

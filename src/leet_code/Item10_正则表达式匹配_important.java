@@ -46,7 +46,7 @@ package leet_code;
  * p = "mis*is*p*."
  * Output: false
  */
-class Item10_important {
+class Item10_正则表达式匹配_important {
 
   /**
    * 递归法, 优点: 比较好理解

@@ -6,9 +6,9 @@ import util.linked_list.ListNode;
 class Item25 {
 
   public static void main(String[] args) {
-    ListNode head = LinkedListUtils.createListNode(1, 2, 3, 4, 5);
+    ListNode head = LinkedListUtils.create(1, 2, 3, 4, 5);
     head = reverseKGroup(head, 3);
-    LinkedListUtils.printListNode(head);
+    LinkedListUtils.print(head);
   }
 
   public static ListNode reverseKGroup(ListNode head, int k) {
