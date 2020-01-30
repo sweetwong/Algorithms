@@ -1,22 +1,23 @@
 package leet_code;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedList;
 import java.util.List;
-
-import util.Utils;
 
 import static util.Utils.swap;
 
 class Item46_全排列_important {
+
+  public static void main(String[] args) {
+    Item46_全排列_important a = new Item46_全排列_important();
+    System.out.println(a.permute(new int[]{1, 2, 3}).toString());
+  }
 
   public List<List<Integer>> permute(int[] nums) {
     // 结果
     List<List<Integer>> res = new ArrayList<>();
 
     // 开始回溯
-    backtrack(nums.length, nums, res, 0);
+    backtracking(nums.length, nums, res, 0);
 
     // 返回结果
     return res;
@@ -27,16 +28,15 @@ class Item46_全排列_important {
    *
    * N皇后的回溯是二维的, 是在 m × n 的棋盘上放棋
    */
-  private void backtrack(int n, int[] nums, List<List<Integer>> res, int row) {
-    // 当每一层的棋都放完了, 终止
-    // 终止条件, 同时在这里处理结果
-    if (row == n) {
+  private void backtracking(int n, int[] nums, List<List<Integer>> res, int start) {
+    // 只有当row达到n的时候才添加, 其他时候不添加+
+    if (start == n) {
       List<Integer> oneSolution = new ArrayList<>();
       for (int num : nums) {
         oneSolution.add(num);
       }
       res.add(oneSolution);
-      return;
+      // 最后不用加return, 因为当row=n的时候, 下面的for循环无法开启
     }
 
     // 迭代的方向是从左到右(宽度), 递归的方向是从上到下(深度)
@@ -44,14 +44,21 @@ class Item46_全排列_important {
     // 递归是向下一个梯度前进
 
     // 其中start代表哪一行(深度), col代表哪一列(宽度)
-    for (int col = row; col < n; col++) {
+    for (int i = start; i < n; i++) {
       // 尝试(放棋)
-      swap(nums, row, col);
+      swap(nums, start, i);
       // 递归(去下一层放棋)
-      backtrack(n, nums, res, row + 1);
+      backtracking(n, nums, res, start + 1);
       // 回溯(反悔)
-      swap(nums, row, col);
+      swap(nums, start, i);
     }
   }
+
+  public void swap(int[] nums, int i, int j) {
+    int temp = nums[i];
+    nums[i] = nums[j];
+    nums[j] = temp;
+  }
+
 
 }

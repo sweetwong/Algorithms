@@ -36,10 +36,8 @@ class Item46_全排列_solution {
 
   public void backtrack(int n, List<Integer> nums, List<List<Integer>> res, int start) {
     // 终止条件, 同时在这里处理结果
-    if (start == n) {
+    if (start == n)
       res.add(new ArrayList<Integer>(nums));
-      return;
-    }
 
     for (int i = start; i < n; i++) {
       // 放置
