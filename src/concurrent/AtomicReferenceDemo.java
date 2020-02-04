@@ -1,8 +1,10 @@
+package concurrent;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 
-class Solution {
+class AtomicReferenceDemo {
 
   private static int count = 0;
   private static AtomicReference<Integer> atomicReference = new AtomicReference<>(0);
@@ -14,6 +16,7 @@ class Solution {
     safeCount();
     Thread.sleep(3000);
     System.out.println("失败: " + failureMsg.size() + "次");
+    System.out.println(failureMsg.toString());
   }
 
   private static final int M = 100;
@@ -30,18 +33,12 @@ class Solution {
     }
   }
 
-  private static List<String> failureMsg = new ArrayList<>();
-
   public static void safeCount() {
     for (int i = 0; i < M; i++) {
       new Thread(() -> {
         for (int j = 0; j < N; j++) {
           for (; ; ) {
-            if (retry()) {
-              break;
-            } else {
-              failureMsg.add("");
-            }
+            if (retry()) break;
           }
           System.out.println(Thread.currentThread().getName() + " " + atomicReference.get());
         }
@@ -49,10 +46,13 @@ class Solution {
     }
   }
 
+  private static List<String> failureMsg = new ArrayList<>();
+
   private static boolean retry() {
     Integer expect = atomicReference.get();
-    return atomicReference.compareAndSet(expect, expect + 1);
+    boolean success = atomicReference.compareAndSet(expect, expect + 1);
+    if (!success) failureMsg.add("预期值为" + expect + "失败");
+    return success;
   }
-
 
 }
