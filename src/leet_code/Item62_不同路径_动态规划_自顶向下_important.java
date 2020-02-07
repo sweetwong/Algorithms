@@ -21,6 +21,7 @@ class Item62_不同路径_动态规划_自顶向下_important {
       return memo[max][min];
     }
 
+    // 大问题分成两个小问题
     int res = dp(memo, m - 1, n) + dp(memo, n - 1, m);
     memo[max][min] = res;
 

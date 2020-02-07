@@ -30,7 +30,7 @@ class TowerOfHanoi {
     // 大问题化成小问题, 问题规模从n减小到n-1, 直到n=1终止递归
 
     hanoi(from, to, temp, n - 1);
-    hanoi(from, temp, to, 1);
+    hanoi(from, null, to, 1);
     hanoi(temp, from, to, n - 1);
   }
 }

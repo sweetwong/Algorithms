@@ -20,10 +20,6 @@ class Item10_正则表达式匹配_动态规划_自顶向下 {
     int lenS = s.length();
     int lenP = p.length();
 
-    if (dp[lenS][lenP] != null) {
-      return dp[lenS][lenP];
-    }
-
     // 当p的长度为0, 递归的终止条件
     if (lenP == 0) return lenS == 0;
 
@@ -36,6 +32,10 @@ class Item10_正则表达式匹配_动态规划_自顶向下 {
     }
 
     // p的长度为0和1都被拦截了, 下面的都是p长度大于1的情况
+
+    if (dp[lenS][lenP] != null) {
+      return dp[lenS][lenP];
+    }
 
     boolean result;
 

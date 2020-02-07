@@ -24,7 +24,7 @@ import util.linked_list.ListNode;
  * rotate 4 steps to the right: 2->0->1->NULL
  *
  */
-class Item61 {
+class Item61_旋转链表 {
 
   public static void main(String[] args) {
     ListNode head = LinkedListUtils.create(1, 2, 3, 4, 5);

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Item15 {
+public class Item15_三数之和 {
 
   public static List<List<Integer>> threeSum(int[] nums) {
     int len = nums.length;

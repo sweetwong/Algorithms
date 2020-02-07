@@ -67,6 +67,7 @@ public class QuickSort {
       if (nums[j] < pivot) {
         // 交换i和j的位置
         swap(nums, i, j);
+
         i++;
       }
     }

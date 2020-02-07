@@ -3,36 +3,39 @@ package leet_code;
 /**
  * 纪念一下, 这是我纯自己写的dp, 居然击败了100%几乎最优
  */
-class Item198 {
+class Item198_打家劫舍_动态规划 {
 
   public static void main(String[] args) {
     int[] nums = new int[]{2, 7, 9, 3, 1, 6};
     System.out.println(robIte(nums));
   }
 
+  /**
+   * 动态规划, 自顶向下
+   */
   public static int rob(int[] nums) {
-    Integer[] dp = new Integer[nums.length + 1];
-    return robHelper(nums, 0, dp);
+    Integer[] memo = new Integer[nums.length + 1];
+    return dp(nums, 0, memo);
   }
 
-  public static int robHelper(int[] nums, int start, Integer[] dp) {
+  public static int dp(int[] nums, int start, Integer[] memo) {
     int len = nums.length;
 
     if (start >= len) return 0;
     if (start == len - 1) return nums[len - 1];
     if (start == len - 2) return Math.max(nums[len - 1], nums[len - 2]);
 
-    Integer cache = dp[start];
-    if (cache != null) {
-      return cache;
-    } else {
-      int res = Math.max(nums[start] + robHelper(nums, start + 2, dp),
-        nums[start + 1] + robHelper(nums, start + 3, dp));
-      dp[start] = res;
-      return res;
-    }
+    if (memo[start] != null) return memo[start];
+
+    int res = Math.max(nums[start] + dp(nums, start + 2, memo), nums[start + 1] + dp(nums, start + 3, memo));
+    memo[start] = res;
+    return res;
   }
 
+
+  /**
+   * 动态规划, 自底向上
+   */
   public static int robIte(int[] nums) {
     int len = nums.length;
     if (len == 0) return 0;

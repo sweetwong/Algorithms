@@ -21,13 +21,13 @@ public class LinkedListUtils {
    * @return 生成对应链表
    */
   public static ListNode create(int... nums) {
-    ListNode dummyHead = new ListNode(0);
-    ListNode curr = dummyHead;
+    ListNode dummy = new ListNode(0);
+    ListNode curr = dummy;
     for (int num : nums) {
       curr.next = new ListNode(num);
       curr = curr.next;
     }
-    return dummyHead.next;
+    return dummy.next;
   }
 
   /**
@@ -55,18 +55,22 @@ public class LinkedListUtils {
    * 利用三个变量, prev、curr、next
    * prev指向前一个数, curr指向当前的数, nextTemp指向后一个数(每次都会新生成, 用来暂存)
    *
-   * 反转过程: 把next保存下来, curr接上prev
+   * 反转过程: 把nextTemp保存下来, curr接上prev
    * 向前推进: prev变成curr, curr变成next
    */
   public static ListNode reverse(ListNode root) {
     ListNode prev = null, curr = root;
     while (curr != null) {
-      // 反转
+      // 前两步是反转操作
+      // 这个的作用是为了记录下一个节点, 用于后面的推进, 因为curr反转后就会丢失下一个节点
       ListNode nextTemp = curr.next;
+      // 每一轮只反转一个节点
       curr.next = prev;
 
-      // 向前推进
+      // 后两步是推进操作
+      // 先推进prev, 因为后面curr会改变
       prev = curr;
+      // 后推进curr
       curr = nextTemp;
     }
     return prev;
