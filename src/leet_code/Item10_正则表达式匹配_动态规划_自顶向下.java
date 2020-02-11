@@ -12,11 +12,10 @@ class Item10_正则表达式匹配_动态规划_自顶向下 {
   }
 
   public static boolean isMatch(String s, String p) {
-    Boolean[][] dp = new Boolean[s.length() + 1][p.length() + 1];
-    return helper(s, p, dp);
+    return isMatch(s, p, new Boolean[s.length() + 1][p.length() + 1]);
   }
 
-  public static boolean helper(String s, String p, Boolean[][] dp) {
+  public static boolean isMatch(String s, String p, Boolean[][] memo) {
     int lenS = s.length();
     int lenP = p.length();
 
@@ -33,8 +32,8 @@ class Item10_正则表达式匹配_动态规划_自顶向下 {
 
     // p的长度为0和1都被拦截了, 下面的都是p长度大于1的情况
 
-    if (dp[lenS][lenP] != null) {
-      return dp[lenS][lenP];
+    if (memo[lenS][lenP] != null) {
+      return memo[lenS][lenP];
     }
 
     boolean result;
@@ -55,7 +54,7 @@ class Item10_正则表达式匹配_动态规划_自顶向下 {
       result = firstMatch && isMatch(s.substring(1), p.substring(1));
     }
 
-    dp[lenS][lenP] = result;
+    memo[lenS][lenP] = result;
 
     return result;
 

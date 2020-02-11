@@ -61,6 +61,17 @@ public class ArrayUtils {
     }
   }
 
+  public static void printMatrix(char[][] matrix) {
+    for (char[] row : matrix) {
+      System.out.print(addEmpty(String.valueOf(row[0])));
+      for (int i = 1; i < row.length; i++) {
+        System.out.print(" " + addEmpty(String.valueOf(row[i])));
+      }
+      System.out.println();
+    }
+  }
+
+
   public static String addEmpty(String s) {
     int len = s.length();
     if (len == 0) {

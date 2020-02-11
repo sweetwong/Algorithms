@@ -7,11 +7,10 @@ class Item62_不同路径_动态规划_自顶向下_important {
   }
 
   public static int uniquePaths(int m, int n) {
-    int[][] memo = new int[Math.max(m, n) + 1][Math.min(m, n) + 1];
-    return dp(memo, m, n);
+    return uniquePaths(new int[Math.max(m, n) + 1][Math.min(m, n) + 1], m, n);
   }
 
-  public static int dp(int[][] memo, int m, int n) {
+  public static int uniquePaths(int[][] memo, int m, int n) {
     if (m == 1 || n == 1) return 1;
 
     int max = Math.max(m, n);
@@ -22,7 +21,7 @@ class Item62_不同路径_动态规划_自顶向下_important {
     }
 
     // 大问题分成两个小问题
-    int res = dp(memo, m - 1, n) + dp(memo, n - 1, m);
+    int res = uniquePaths(memo, m - 1, n) + uniquePaths(memo, n - 1, m);
     memo[max][min] = res;
 
     return res;
