@@ -9,6 +9,14 @@ public class TimeWatcher {
     System.out.println(curr - prev + "毫秒");
   }
 
+  public static void watch(Fun fun, String tag) {
+    long prev = System.currentTimeMillis();
+    fun.run();
+    long curr = System.currentTimeMillis();
+    System.out.println(tag + ": " + (curr - prev) + "毫秒");
+  }
+
+
   public static void watchUS(Fun fun) {
     long prev = System.nanoTime();
     fun.run();

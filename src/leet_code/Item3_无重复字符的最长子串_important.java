@@ -3,11 +3,11 @@ package leet_code;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * Longest Substring Without Repeating Characters
- */
 class Item3_无重复字符的最长子串_important {
 
+  /**
+   * 解题思路: 滑动窗口(HashSet + 快慢指针)
+   */
   public static int lengthOfLongestSubstring(String s) {
     Set<Character> set = new HashSet<>();
     int res = 0, i = 0, j = 0;
