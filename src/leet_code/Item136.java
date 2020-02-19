@@ -20,7 +20,7 @@ import util.NumberUtils;
 class Item136 {
 
   public static void main(String[] args) {
-    NumberUtils.print32BitBinaryString(5 ^ 12 ^ 13 ^ 12 ^ 13);
+    NumberUtils.printBinary(5 ^ 12 ^ 13 ^ 12 ^ 13);
   }
 
   /**

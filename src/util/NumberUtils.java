@@ -2,26 +2,35 @@ package util;
 
 public class NumberUtils {
 
-  public static void main(String[] args) {
-    // 1100
-    int a = -64;
-    print32BitBinaryString(a);
-    System.out.println();
-    int b = a >>> 2;
-    int c = a >> 2;
-    print32BitBinaryString(b);
-    System.out.println();
-    print32BitBinaryString(c);
-  }
+  /**
+   * 打印出一个整型对应的二进制字符串
+   */
+  public static void printBinary(int num) {
+    System.out.println(num);
 
-  public static void print32BitBinaryString(int num) {
-    System.out.println(num + "  ");
-    StringBuilder sBuilder = new StringBuilder();
+    StringBuilder builder = new StringBuilder();
     for (int i = 0; i < 32; i++) {
-      sBuilder.append(num & 1);
+      builder.append(num & 1);
       num = num >>> 1;
     }
-    System.out.println(sBuilder.reverse().toString());
+    System.out.println(builder.reverse().toString());
+
+    System.out.println();
+  }
+
+  public static void printBinary(byte b) {
+    int num = (int) b;
+
+    System.out.println(num);
+
+    StringBuilder builder = new StringBuilder();
+    for (int i = 0; i < 32; i++) {
+      builder.append(num & 1);
+      num = num >>> 1;
+    }
+    builder.delete(8, 32);
+    System.out.println(builder.reverse().toString());
+
     System.out.println();
   }
 

@@ -13,12 +13,23 @@ package classical;
  */
 public class Fibonacci {
 
-  /**
-   * 暴力法, 非常慢, 因为子问题重复计算, 效率极差, 其他方法参考爬楼梯问题ClimbStairs
-   */
+  public static void main(String[] args) {
+    for (int i = 1; i <= 9; i++) {
+      System.out.println(fibonacci(i));
+    }
+  }
+
   public static int fibonacci(int n) {
     if (n <= 2) return 1;
-    return fibonacci(n - 1) + fibonacci(n - 2);
+
+    int p = 1, q = 1;
+    for (int i = 3; i <= n; i++) {
+      int sum = p + q;
+      p = q;
+      q = sum;
+    }
+
+    return q;
   }
 
 
