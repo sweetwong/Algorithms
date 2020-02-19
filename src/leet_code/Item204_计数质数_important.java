@@ -9,11 +9,6 @@ import util.TimeWatcher;
  */
 class Item204_计数质数_important {
 
-  public static void main(String[] args) {
-    Item204_计数质数_important a = new Item204_计数质数_important();
-    TimeWatcher.watch(() -> a.countPrimes(200000));
-  }
-
   public int countPrimes(int n) {
     // 因为题目要求的是, 求小于n的所有质数, 因此此处不包括n, 最大的索引为 n - 1
     boolean[] notPrime = new boolean[n];

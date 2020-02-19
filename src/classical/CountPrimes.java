@@ -1,5 +1,7 @@
 package classical;
 
+import util.TimeWatcher;
+
 /**
  * 计算n以内的有多少个质数(素数)
  * 质数是指在大于1的自然数中，除了1和它本身以外不再有其他因数的自然数。
@@ -7,7 +9,11 @@ package classical;
  */
 class CountPrimes {
 
-  public int countPrimes(int n) {
+  public static void main(String[] args) {
+    TimeWatcher.watch(() -> countPrimes(100000000));
+  }
+
+  public static int countPrimes(int n) {
     // 因为题目要求的是, 求小于n的所有质数, 因此此处不包括n, 最大的索引为 n - 1
     boolean[] notPrime = new boolean[n];
     // 考虑到质数的定义, 从2开始
