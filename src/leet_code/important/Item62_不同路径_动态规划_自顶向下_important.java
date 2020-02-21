@@ -1,4 +1,4 @@
-package leet_code;
+package leet_code.important;
 
 class Item62_不同路径_动态规划_自顶向下_important {
 

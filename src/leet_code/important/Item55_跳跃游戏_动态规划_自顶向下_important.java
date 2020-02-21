@@ -1,4 +1,4 @@
-package leet_code;
+package leet_code.important;
 
 class Item55_跳跃游戏_动态规划_自顶向下_important {
 

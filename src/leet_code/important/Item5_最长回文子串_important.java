@@ -1,4 +1,4 @@
-package leet_code;
+package leet_code.important;
 
 /**
  * 最长回文子字符串

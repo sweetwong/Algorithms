@@ -1,4 +1,4 @@
-package leet_code;
+package leet_code.important;
 
 import util.linked_list.LinkedListUtils;
 import util.linked_list.ListNode;

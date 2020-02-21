@@ -1,9 +1,7 @@
-package leet_code;
+package leet_code.important;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static util.Utils.swap;
 
 class Item46_全排列_important {
 

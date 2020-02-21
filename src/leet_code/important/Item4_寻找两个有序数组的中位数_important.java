@@ -1,4 +1,4 @@
-package leet_code;
+package leet_code.important;
 
 /**
  * 二分法的代表题

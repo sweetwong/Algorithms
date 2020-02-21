@@ -1,4 +1,4 @@
-package leet_code;
+package leet_code.important;
 
 class Item189_旋转数组_important {
 

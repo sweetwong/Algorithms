@@ -1,4 +1,4 @@
-package leet_code;
+package leet_code.important;
 
 /**
  * 厄拉多塞筛选法
