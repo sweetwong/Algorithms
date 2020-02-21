@@ -1,6 +1,6 @@
 package classical;
 
-import util.TimeWatcher;
+import util.Time;
 
 /**
  * 计算n以内的有多少个质数(素数)
@@ -10,7 +10,7 @@ import util.TimeWatcher;
 class CountPrimes {
 
   public static void main(String[] args) {
-    TimeWatcher.watch(() -> countPrimes(100000000));
+    Time.watch(() -> countPrimes(100000000));
   }
 
   public static int countPrimes(int n) {

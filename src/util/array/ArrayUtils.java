@@ -1,5 +1,7 @@
 package util.array;
 
+import edu.princeton.cs.algs4.In;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -16,6 +18,18 @@ public class ArrayUtils {
       arr[i] = (int) (Math.random() * Integer.MAX_VALUE);
     return arr;
   }
+
+  /**
+   * @param n 随机数组的长度
+   * @return n个随机数字组成的数组
+   */
+  public static Integer[] createRandomArray(Integer n) {
+    Integer[] arr = new Integer[n];
+    for (int i = 0; i < arr.length; i++)
+      arr[i] = (int) (Math.random() * Integer.MAX_VALUE);
+    return arr;
+  }
+
 
   /**
    * @param n   随机数组的长度

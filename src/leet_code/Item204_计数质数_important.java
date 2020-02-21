@@ -1,7 +1,5 @@
 package leet_code;
 
-import util.TimeWatcher;
-
 /**
  * 厄拉多塞筛选法
  *

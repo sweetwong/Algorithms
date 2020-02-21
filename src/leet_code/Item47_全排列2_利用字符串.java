@@ -5,10 +5,6 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
-import classical.Factorial;
-import util.TimeWatcher;
-import util.array.ArrayUtils;
-
 class Item47_全排列2_利用字符串 {
 
   public List<List<Integer>> permuteUnique(int[] nums) {

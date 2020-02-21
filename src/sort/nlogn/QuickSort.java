@@ -1,11 +1,11 @@
 package sort.nlogn;
 
 import util.array.ArrayUtils;
-import util.TimeWatcher;
+import util.Time;
 
 /**
  * 快速排序, 时间复杂度O(nlogn), 最坏情况为O(n²), 通过取随机中枢可以将最坏情况优化到O(nlogn)
- * 空间复杂度O(logn), 不稳定, 最快的排序方法之一, 原地算法
+ * 空间复杂度O(logn), 递归栈的深度为logn, 不稳定, 最快的排序方法之一, 原地算法
  *
  * 算法思想: 快慢指针, 分治法, 原地算法
  */
@@ -14,8 +14,8 @@ public class QuickSort {
   public static void main(String[] args) {
     for (int i = 0; i < 5; i++) {
       int[] nums = ArrayUtils.createRandomArray(10000000);
-      TimeWatcher.watch(() -> sort(nums));
-      TimeWatcher.watch(() -> sort(nums));
+      Time.watch(() -> sort(nums));
+      Time.watch(() -> sort(nums));
       System.out.println();
     }
   }

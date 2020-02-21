@@ -2,7 +2,7 @@ package sort.nlogn;
 
 
 import util.array.ArrayUtils;
-import util.TimeWatcher;
+import util.Time;
 
 /**
  * 堆排序, 时间复杂度O(nlogn), 空间复杂度O(1)(亮点), 不稳定, 原地算法
@@ -65,8 +65,8 @@ public class HeapSort {
   public static void main(String[] args) {
     for (int i = 0; i < 5; i++) {
       int[] nums = ArrayUtils.createRandomArray(10000000);
-      TimeWatcher.watch(() -> sort(nums));
-      TimeWatcher.watch(() -> sort(nums));
+      Time.watch(() -> sort(nums));
+      Time.watch(() -> sort(nums));
       System.out.println();
     }
   }
