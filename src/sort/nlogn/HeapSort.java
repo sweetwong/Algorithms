@@ -48,6 +48,7 @@ public class HeapSort {
    */
   public static void heapify(int[] nums, int start, int n) {
     // n / 2是最后一排的第一个
+    // 也相当于while(start <= n / 2 - 1)
     while (start < n / 2) {
       // 指向左子树
       int left = 2 * start + 1;

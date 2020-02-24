@@ -8,12 +8,6 @@ import java.util.Arrays;
  */
 public class ShellSort {
 
-  public static void main(String[] args) {
-    int[] arr = new int[0];
-    shellSort(arr);
-    System.out.println(Arrays.toString(arr));
-  }
-
   public static void shellSort(int[] arr) {
     int length = arr.length;
     int temp;
@@ -28,6 +22,12 @@ public class ShellSort {
         arr[j + step] = temp;
       }
     }
+  }
+
+  public static void main(String[] args) {
+    int[] arr = new int[0];
+    shellSort(arr);
+    System.out.println(Arrays.toString(arr));
   }
 
 }

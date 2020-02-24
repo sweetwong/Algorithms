@@ -1,5 +1,10 @@
 package concurrent;
 
+/**
+ * 死锁示例
+ *
+ * 当两个线程互相占有对方的锁, 就会发生死锁
+ */
 public class DeadLockDemo {
 
   Object o1 = new Object();
@@ -30,6 +35,7 @@ public class DeadLockDemo {
         }
       }
     });
+
     t1.start();
     t2.start();
   }

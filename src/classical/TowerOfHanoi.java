@@ -14,11 +14,6 @@ class TowerOfHanoi {
 
   private static int count = 0;
 
-  public static void main(String[] args) {
-    hanoi("A", "B", "C", 3);
-    System.out.println("一共搬运了" + count + "次");
-  }
-
   public static void hanoi(String from, String temp, String to, int n) {
     // 终止条件, 也是真正搬运的步骤
     if (n == 1) {
@@ -33,4 +28,10 @@ class TowerOfHanoi {
     hanoi(from, null, to, 1);
     hanoi(temp, from, to, n - 1);
   }
+
+  public static void main(String[] args) {
+    hanoi("A", "B", "C", 3);
+    System.out.println("一共搬运了" + count + "次");
+  }
+
 }

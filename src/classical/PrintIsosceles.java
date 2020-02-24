@@ -3,11 +3,7 @@ package classical;
 /**
  * 打印等腰三角形
  */
-class PrintStar {
-
-  public static void main(String[] args) {
-    printStar(10);
-  }
+class PrintIsosceles {
 
   public static void printStar(int n) {
     // 控制行数
@@ -24,4 +20,9 @@ class PrintStar {
       System.out.println();
     }
   }
+
+  public static void main(String[] args) {
+    printStar(10);
+  }
+
 }

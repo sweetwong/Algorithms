@@ -3,7 +3,7 @@ package search.binary;
 public class BinarySearch {
 
   /**
-   * 二分查找, 迭代法, 推荐使用, 空间复杂度为O(1)
+   * 二分查找, 迭代法, 空间复杂度为O(1)
    */
   public static int binarySearch(int[] arr, int target) {
     int lo = 0;
@@ -32,6 +32,9 @@ public class BinarySearch {
 
   /**
    * 二分查找, 递归法
+   *
+   * 当然只是列举下, 当然是不能使用的
+   * 没必要增加无谓的空间复杂度
    */
   public static int binarySearch(int[] arr, int lo, int hi, int target) {
     if (lo <= hi) {
