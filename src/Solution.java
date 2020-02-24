@@ -1,38 +1,21 @@
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.LinkedList;
-import java.util.List;
-
 import util.heap.HeapUtils;
 import util.tree.TreeNode;
 import util.tree.TreeUtils;
 
+import java.util.List;
+
 class Solution {
 
   public static void main(String[] args) {
-    TreeNode root = TreeUtils.arrayToCompleteBinaryTree(new int[]{0, 1, 2, 3, 4, 5, 6});
-    List<Integer> res = postorderTraversal(root);
-    System.out.println(res);
-  }
+    int[] nums = {0, 1, 2, 3, 4, 5, 6};
+    TreeNode root = TreeUtils.arrayToCompleteBinaryTree(nums);
+    HeapUtils.printHeap(nums);
 
-  public static List<Integer> postorderTraversal(TreeNode root) {
-    LinkedList<Integer> res = new LinkedList<>();
+    System.out.println();
 
-    Deque<TreeNode> stack = new ArrayDeque<>();
-    TreeNode curr = root;
+    List<List<Integer>> res = TreeUtils.levelOrderTraversalIte2(root);
 
-    while (curr != null || !stack.isEmpty()) {
-      while (curr != null) {
-        res.addFirst(curr.val);
-        stack.push(curr);
-        curr = curr.right;
-      }
-      curr = stack.pop();
-      curr = curr.left;
-    }
-
-    return res;
+    System.out.println(res.toString());
   }
 
 }

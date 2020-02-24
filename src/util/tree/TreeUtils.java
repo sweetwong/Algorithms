@@ -1,11 +1,6 @@
 package util.tree;
 
-import java.lang.reflect.Array;
 import java.util.*;
-import java.util.LinkedList;
-
-import sort.nlogn.QuickSort;
-import util.array.ArrayUtils;
 
 /**
  * 二叉树的常规操作
@@ -47,25 +42,10 @@ public class TreeUtils {
   }
 
   /**
-   * 二叉树前序遍历, 迭代法, DFS, 先压入栈, 类似层次遍历的用法
-   */
-  public static void preorderTraversalIte(TreeNode root) {
-    if (root == null) return;
-    Stack<TreeNode> stack = new Stack<>();
-    stack.push(root);
-    while (!stack.isEmpty()) {
-      TreeNode temp = stack.pop();
-      res.add(temp.val);
-      if (temp.right != null) stack.push(temp.right);
-      if (temp.left != null) stack.push(temp.left);
-    }
-  }
-
-  /**
    * 二叉树前序遍历, 迭代法, DFS, 后压入栈
    */
-  public static void preorderTraversalIte1(TreeNode root) {
-    Stack<TreeNode> stack = new Stack<>();
+  public static void preorderTraversalIte(TreeNode root) {
+    Deque<TreeNode> stack = new ArrayDeque<>();
     // 指针指向根节点
     TreeNode curr = root;
     // 记住这个条件
@@ -73,7 +53,7 @@ public class TreeUtils {
       // 向左遍历, 包括当前指针, 压入栈中, 最后curr会变成null, 向左溢出
       while (curr != null) {
         stack.push(curr);
-        // 添加的时候读值!!!
+        // 添加的时候读值
         res.add(curr.val);
         curr = curr.left;
       }
@@ -84,6 +64,24 @@ public class TreeUtils {
     }
   }
 
+  /**
+   * 二叉树前序遍历, 迭代法, DFS, 先压入栈, 类似层次遍历的用法
+   */
+  public static List<Integer> preorderTraversalIte1(TreeNode root) {
+    List<Integer> res = new ArrayList<>();
+    // 如果是先压入栈的用法, 需要判空
+    if (root == null) return res;
+    Deque<TreeNode> stack = new ArrayDeque<>();
+    stack.push(root);
+    while (!stack.isEmpty()) {
+      TreeNode curr = stack.pop();
+      res.add(curr.val);
+      // 此处很容易用错
+      if (curr.right != null) stack.push(curr.right);
+      if (curr.left != null) stack.push(curr.left);
+    }
+    return res;
+  }
 
   /**
    * 二叉树的中序遍历, 递归法, DFS
@@ -99,8 +97,10 @@ public class TreeUtils {
   /**
    * 二叉树中序遍历, 迭代法, 利用栈, DFS, 后压入
    */
-  public static void inorderTraversalIte(TreeNode root) {
-    Stack<TreeNode> stack = new Stack<>();
+  public static List<Integer> inorderTraversalIte(TreeNode root) {
+    List<Integer> res = new ArrayList<>();
+    // 这是一个无法接受null的双端队列, 用来实现栈会比LinkedList快
+    Deque<TreeNode> stack = new ArrayDeque<>();
     // 指针指向根节点
     TreeNode curr = root;
     // 记住这个条件
@@ -117,6 +117,8 @@ public class TreeUtils {
       // 向右子节点走, 如果有值就会在下一轮遍历中压入栈中, 如果无值就向右溢出, 通过下一步出栈恢复
       curr = curr.right;
     }
+
+    return res;
   }
 
   /**
@@ -131,9 +133,11 @@ public class TreeUtils {
   }
 
   /**
-   * 二叉树后序遍历, 迭代法, DFS, 先压入栈
+   * 二叉树后序遍历, 迭代法, 利用栈, DFS, 后压入栈
+   *
+   * 思想是把前序遍历先左右翻转, 然后再把结果倒置
    */
-  public static void postorderTraversalIte(TreeNode root) {
+  public static List<Integer> postorderTraversalIte(TreeNode root) {
     LinkedList<Integer> res = new LinkedList<>();
 
     Deque<TreeNode> stack = new ArrayDeque<>();
@@ -141,41 +145,39 @@ public class TreeUtils {
 
     while (curr != null || !stack.isEmpty()) {
       while (curr != null) {
+        // 前序遍历是加到列表尾部, 此处是加到列表首部
         res.addFirst(curr.val);
         stack.push(curr);
+        // 前序遍历此处是left, 后序遍历则翻转
         curr = curr.right;
       }
       curr = stack.pop();
+      // 前序遍历此处是right, 后序遍历则翻转
       curr = curr.left;
     }
 
+    return res;
   }
 
   /**
-   * 二叉树后序遍历, 迭代法, 利用栈, DFS, 后压入栈
-   */
-  public static void postorderTraversalIte2(TreeNode root) {
-  }
-
-
-  /**
-   * 二叉树的层次遍历, 递归法,DFS
+   * 二叉树的层次遍历, 递归法, DFS
    * 在前/中/后序遍历的基础上, 给每一次遍历注明深度, 根据深度来加入到集合中
    */
   public List<List<Integer>> levelOrderTraversal(TreeNode root) {
     List<List<Integer>> res = new ArrayList<>();
     if (root == null) return res;
-    levelOrderTraversalHelper(res, root, 0);
+    // level是从0层开始的, 既第一层是0层, 第二层是1层
+    levelOrderTraversal(res, root, 0);
     return res;
   }
 
-  private void levelOrderTraversalHelper(List<List<Integer>> res, TreeNode root, int currDepth) {
+  private void levelOrderTraversal(List<List<Integer>> res, TreeNode root, int level) {
     if (root != null) {
-      if (res.size() == currDepth) res.add(new ArrayList<Integer>());
+      if (res.size() == level) res.add(new ArrayList<Integer>());
 
-      res.get(currDepth).add(root.val);
-      levelOrderTraversalHelper(res, root.left, currDepth + 1);
-      levelOrderTraversalHelper(res, root.right, currDepth + 1);
+      res.get(level).add(root.val);
+      levelOrderTraversal(res, root.left, level + 1);
+      levelOrderTraversal(res, root.right, level + 1);
     }
   }
 
@@ -183,10 +185,11 @@ public class TreeUtils {
   /**
    * 二叉树的层次遍历, 迭代法, 利用队列, BFS
    */
-  public static void levelOrderTraversalIte(TreeNode root) {
-    if (root == null) return;
+  public static List<Integer> levelOrderTraversalIte(TreeNode root) {
+    List<Integer> res = new ArrayList<>();
+    if (root == null) return res;
 
-    Queue<TreeNode> queue = new LinkedList<>();
+    Queue<TreeNode> queue = new ArrayDeque<>();
     queue.offer(root);
     while (!queue.isEmpty()) {
       TreeNode temp = queue.poll();
@@ -194,6 +197,8 @@ public class TreeUtils {
       if (temp.left != null) queue.offer(temp.left);
       if (temp.right != null) queue.offer(temp.right);
     }
+
+    return res;
   }
 
   /**
@@ -211,9 +216,10 @@ public class TreeUtils {
       List<Integer> levelList = new ArrayList<>();
 
       // 此处必须先赋值, 因为queue.size()会一直变化
-      int levelLength = queue.size();
+      int levelLen = queue.size();
       // 每次把队列中前一层的拿完
-      for (int i = 0; i < levelLength; i++) {
+      // 注意, 此处也不能用while(!queue.isEmpty())来判断, 因为queue会一直往里面添加
+      for (int i = 0; i < levelLen; i++) {
         TreeNode curr = queue.poll();
         levelList.add(curr.val);
         if (curr.left != null) queue.offer(curr.left);
@@ -242,11 +248,12 @@ public class TreeUtils {
       List<Integer> levelList = new ArrayList<>();
 
       // 此处必须先赋值, 因为deque.size()会一直变化
-      int levelLength = deque.size();
-      for (int i = 0; i < levelLength; i++) {
+      int levelLen = deque.size();
+      for (int i = 0; i < levelLen; i++) {
         TreeNode curr;
         // 正向(正常的操作, 从队尾排入, 从队首取出, 先排左边, 再排右边)
         if (forward) {
+          // pollFirst() = poll()
           curr = deque.pollFirst();
           levelList.add(curr.val);
           if (curr.left != null) deque.offerLast(curr.left);
