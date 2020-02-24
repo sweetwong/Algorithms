@@ -134,15 +134,21 @@ public class TreeUtils {
    * 二叉树后序遍历, 迭代法, DFS, 先压入栈
    */
   public static void postorderTraversalIte(TreeNode root) {
-    if (root == null) return;
-    Stack<TreeNode> stack = new Stack<>();
-    stack.push(root);
-    while (!stack.isEmpty()) {
-      TreeNode temp = stack.pop();
-      res.addFirst(temp.val);
-      if (temp.left != null) stack.push(temp.left);
-      if (temp.right != null) stack.push(temp.right);
+    LinkedList<Integer> res = new LinkedList<>();
+
+    Deque<TreeNode> stack = new ArrayDeque<>();
+    TreeNode curr = root;
+
+    while (curr != null || !stack.isEmpty()) {
+      while (curr != null) {
+        res.addFirst(curr.val);
+        stack.push(curr);
+        curr = curr.right;
+      }
+      curr = stack.pop();
+      curr = curr.left;
     }
+
   }
 
   /**
@@ -296,6 +302,10 @@ public class TreeUtils {
     return t1.val == t2.val
       && isSame(t1.left, t2.left)
       && isSame(t1.right, t2.right);
+  }
+
+  public static TreeNode arrayToCompleteBinaryTree(int[] array) {
+    return arrayToCompleteBinaryTree(array, 0);
   }
 
   public static TreeNode arrayToCompleteBinaryTree(int[] array, int index) {
