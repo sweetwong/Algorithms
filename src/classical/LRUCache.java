@@ -1,6 +1,6 @@
 package classical;
 
-import util.data.Person;
+import util.entity.Person;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

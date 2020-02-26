@@ -3,7 +3,7 @@ package leet_code;
 import java.util.HashMap;
 import java.util.Map;
 
-class Item392 {
+class Item392_判断子序列 {
 
   public boolean isSubsequence(String s, String t) {
     int len = s.length();

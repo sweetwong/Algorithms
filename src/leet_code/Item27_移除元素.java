@@ -2,8 +2,6 @@ package leet_code;
 
 import java.util.Arrays;
 
-import util.Utils;
-
 class Item27_移除元素 {
 
   public static void main(String[] args) {

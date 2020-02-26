@@ -6,7 +6,7 @@ class Item13_罗马数字转整数 {
     System.out.println(romanToInt("MCMXCIV"));
   }
 
-  // todo 可以优化下, 这个看了想打人
+  // todo 用HashMap优化下, 这个看了想打人
   public static int romanToInt(String s) {
     int len = s.length();
     char[] chars = s.toCharArray();

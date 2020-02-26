@@ -19,13 +19,7 @@ import java.util.function.BiConsumer;
  * 你的算法的时间复杂度必须优于 O(n log n) , n 是数组的大小。
  *
  */
-class Item347 {
-
-  public static void main(String[] args) {
-    int[] nums = new int[]{1, 1, 1, 2, 2, 3};
-    List<Integer> res = topKFrequent(nums, 3);
-    System.out.println(res.toString());
-  }
+class Item347_前K个高频元素 {
 
   public static List<Integer> topKFrequent(int[] nums, int k) {
     List<Integer> res = new ArrayList<>();
@@ -37,7 +31,7 @@ class Item347 {
     }
 
     // 按照每个数字出现的次数构建有限队列
-    PriorityQueue<Integer> heap = new PriorityQueue<>((o1, o2) -> count.get(o2) - count.get(o1));
+    PriorityQueue<Integer> heap = new PriorityQueue<>((o1, o2) -> Integer.compare(count.get(o2), count.get(o1)));
     for (int num : count.keySet()) {
       heap.offer(num);
     }
@@ -48,5 +42,11 @@ class Item347 {
     }
 
     return res;
+  }
+
+  public static void main(String[] args) {
+    int[] nums = new int[]{1, 1, 1, 2, 2, 3};
+    List<Integer> res = topKFrequent(nums, 3);
+    System.out.println(res.toString());
   }
 }

@@ -30,7 +30,7 @@ package leet_code;
  * You may assume there are no cycles anywhere in the entire linked structure.
  * Your code should preferably backtracking in O(n) time and use only O(1) memory.
  */
-class Item160 {
+class Item160_相交链表 {
 
   
 }

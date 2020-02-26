@@ -10,7 +10,7 @@ import util.linked_list.ListNode;
  * Input:  1->2->6->3->4->5->6, val = 6
  * Output: 1->2->3->4->5
  */
-class Item203 {
+class Item203_移除链表元素 {
 
   public static void main(String[] args) {
     ListNode head = LinkedListUtils.create(1, 2, 2, 1);

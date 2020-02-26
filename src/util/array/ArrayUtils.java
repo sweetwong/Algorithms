@@ -16,6 +16,9 @@ public class ArrayUtils {
     return arr;
   }
 
+  /**
+   * 检查一个数组是否从小到大排序
+   */
   public static void checkSorted(int[] nums) {
     boolean sorted = true;
     for (int i = 1; i < nums.length; i++) {
@@ -64,9 +67,10 @@ public class ArrayUtils {
       list.add(pop);
       x = x / 10;
     }
-    int[] res = new int[list.size()];
-    for (int i = 0; i < list.size(); i++) {
-      res[i] = list.get(list.size() - 1 - i);
+    int size = list.size();
+    int[] res = new int[size];
+    for (int i = 0; i < size; i++) {
+      res[i] = list.get(size - 1 - i);
     }
     return res;
   }

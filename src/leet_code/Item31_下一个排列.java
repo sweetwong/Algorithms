@@ -3,7 +3,8 @@ package leet_code;
 import java.util.Arrays;
 
 /**
- * 找到下一个字典排列, 既 下一个 满足大于nums对应的数的 最小的 数
+ * 找到下一个字典排列
+ * 注意, 要知道什么是字典排列, 既 下一个 满足大于nums对应的数的 最小的 数
  */
 class Item31_下一个排列 {
 

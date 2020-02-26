@@ -29,7 +29,7 @@ import java.util.Set;
  * Follow up:
  * Can you solve it using O(1) (i.e. constant) memory?
  */
-class Item141 {
+class Item141_环形链表 {
 
   /**
    * 方法一: 使用HashSet

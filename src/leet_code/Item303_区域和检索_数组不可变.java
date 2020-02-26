@@ -3,7 +3,7 @@ package leet_code;
 import java.util.HashMap;
 import java.util.Map;
 
-class Item303 {
+class Item303_区域和检索_数组不可变 {
 
   private int[] nums;
 
@@ -13,7 +13,7 @@ class Item303 {
    */
   private Map<String, Integer> map = new HashMap<>();
 
-  public Item303(int[] nums) {
+  public Item303_区域和检索_数组不可变(int[] nums) {
     this.nums = nums;
   }
 

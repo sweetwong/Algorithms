@@ -2,7 +2,7 @@ package leet_code;
 
 import util.linked_list.ListNode;
 
-class Item142_环形链表2 {
+class Item142_环形链表II {
 
   public ListNode detectCycle(ListNode head) {
     ListNode meet = hasCycle(head);

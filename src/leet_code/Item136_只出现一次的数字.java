@@ -17,7 +17,7 @@ import util.other.NumberUtils;
  * Input: [4,1,2,1,2]
  * Output: 4
  */
-class Item136 {
+class Item136_只出现一次的数字 {
 
   public static void main(String[] args) {
     NumberUtils.printBinary(5 ^ 12 ^ 13 ^ 12 ^ 13);

@@ -1,13 +1,13 @@
-package util.data;
+package util.entity;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Random;
 
 class NameGenerator {
 
-  private NameGenerator() {
-  }
-
+  /**
+   * 任意生成一个中文名
+   */
   public static String getChineseName() {
     String str = null;
     String name = null;

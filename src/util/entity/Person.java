@@ -1,7 +1,7 @@
-package util.data;
+package util.entity;
 
 /**
- * 这个用来示例对象的比较
+ * 这个用来示例对象的比较的实体类
  */
 public class Person implements Comparable<Person> {
 

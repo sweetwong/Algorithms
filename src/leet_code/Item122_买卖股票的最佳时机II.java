@@ -28,7 +28,7 @@ package leet_code;
  * Explanation: In this case, no transaction is done, i.e. max profit = 0.
  *
  */
-class Item122 {
+class Item122_买卖股票的最佳时机II {
 
   public static void main(String[] args) {
     int[] prices = new int[]{7, 1, 5, 3, 6, 4};

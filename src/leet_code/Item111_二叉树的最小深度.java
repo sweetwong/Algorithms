@@ -5,7 +5,7 @@ import util.tree.TreeNode;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class Item111 {
+public class Item111_二叉树的最小深度 {
 
   public int minDepth(TreeNode root) {
     if (root == null) return 0;
