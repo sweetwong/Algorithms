@@ -37,23 +37,22 @@ class ClimbStairs {
   public static int climbStairsDp(int n) {
     // 此长度处用n+1是因为, 存储时, 是从dp[1]开始存的, 因此dp[n]需要长度n+1的数组
     int[] dp = new int[n + 1];
-    return helper(n, dp);
+    return climbStairsDp(n, dp);
   }
 
   /**
    * 方法二的辅助方法, 自顶向下
    */
-  public static int helper(int n, int[] dp) {
+  private static int climbStairsDp(int n, int[] dp) {
+    // 终止条件
+    if (n <= 2) return n;
+
     // 通过判断非0为没有存储, 如果所有的数都有可能出现, 可以改用Integer[], 然后通过是否为空来判断是否有记录, boolean等其他的同理
     if (dp[n] != 0)
       // 此处找到缓存就直接返回了, 没有再继续分化成子问题, 因此每个子问题只计算了一遍
       return dp[n];
 
-    int res;
-
-    // 原递归函数
-    if (n <= 2) res = n;
-    else res = helper(n - 1, dp) + helper(n - 2, dp);
+    int res = climbStairsDp(n - 1, dp) + climbStairsDp(n - 2, dp);
 
     dp[n] = res;
     return res;

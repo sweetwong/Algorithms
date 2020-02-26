@@ -1,4 +1,4 @@
-package search.path_search;
+package search.graph.path_finding;
 
 import java.util.List;
 import java.util.ArrayList;

@@ -5,6 +5,9 @@ import util.entity.Person;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+/**
+ * 实现LRU缓存(Least Recently Used Cache)
+ */
 public class LRUCache<K, V> extends LinkedHashMap<K, V> {
 
   private int capacity;
