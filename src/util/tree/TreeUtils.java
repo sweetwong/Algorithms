@@ -5,29 +5,20 @@ import java.util.*;
 /**
  * 二叉树的常规操作
  *
- * 1. 前/中/后序遍历的递归法和迭代法, 迭代法有分为先压入和后压入
- * 2. 层次遍历的递归法和迭代法
+ * 1. 前/中/后序遍历的递归法和迭代法
+ * 2. 层次遍历的递归法(深度优先)和迭代法(广度优先)
  * 3. 层次遍历, 区别每一层
  * 4. Z型遍历, 利用双端队列
  * 5. 获取树的深度
  * 6. 判断两个树是否相等/是否镜像对称
  * 7. 将树转为列表
+ *
  */
 public class TreeUtils {
 
-  public static void main(String[] args) {
-    int[] nums = new int[]{1, 2, 3, 4, 5, 6, 7};
-    TreeNode root = arrayToCompleteBinaryTree(nums, 0);
-
-    inorderTraversal(root);
-    System.out.println(res.toString());
-
-    res.clear();
-
-    inorderTraversalIte(root);
-    System.out.println(res.toString());
-  }
-
+  /**
+   * 这个理论上来说是需要放在方法中创建的, 但是重复的太多了, 为了节省代码空间, 在这个类中放在了外面
+   */
   private static LinkedList<Integer> res = new LinkedList<>();
 
   /**
@@ -44,7 +35,8 @@ public class TreeUtils {
   /**
    * 二叉树前序遍历, 迭代法, DFS, 后压入栈
    */
-  public static void preorderTraversalIte(TreeNode root) {
+  public static List<Integer> preorderTraversalIte(TreeNode root) {
+    List<Integer> res = new ArrayList<>();
     Deque<TreeNode> stack = new ArrayDeque<>();
     // 指针指向根节点
     TreeNode curr = root;
@@ -62,12 +54,15 @@ public class TreeUtils {
       // 向右子节点走, 如果有值就会在下一轮遍历中压入栈中, 如果无值就向右溢出, 通过下一步出栈恢复
       curr = curr.right;
     }
+    return res;
   }
 
   /**
    * 二叉树前序遍历, 迭代法, DFS, 先压入栈, 类似层次遍历的用法
+   *
+   * 比较非主流的方法, 不建议使用, 容易错, 特别是开头需要判空, 入栈的顺序是先右后左容易搞错
    */
-  public static List<Integer> preorderTraversalIte1(TreeNode root) {
+  public static List<Integer> preorderTraversal1(TreeNode root) {
     List<Integer> res = new ArrayList<>();
     // 如果是先压入栈的用法, 需要判空
     if (root == null) return res;
@@ -208,18 +203,17 @@ public class TreeUtils {
     List<List<Integer>> res = new ArrayList<>();
     if (root == null) return res;
 
-    Queue<TreeNode> queue = new LinkedList<>();
+    Queue<TreeNode> queue = new ArrayDeque<>();
     queue.offer(root);
 
     while (!queue.isEmpty()) {
       // 每次遍历一层
       List<Integer> levelList = new ArrayList<>();
 
-      // 此处必须先赋值, 因为queue.size()会一直变化
-      int levelLen = queue.size();
+      // 此处必须先赋值, 因为queue.size()会一直变化!!!
       // 每次把队列中前一层的拿完
       // 注意, 此处也不能用while(!queue.isEmpty())来判断, 因为queue会一直往里面添加
-      for (int i = 0; i < levelLen; i++) {
+      for (int i = 0, levelLen = queue.size(); i < levelLen; i++) {
         TreeNode curr = queue.poll();
         levelList.add(curr.val);
         if (curr.left != null) queue.offer(curr.left);
@@ -250,11 +244,10 @@ public class TreeUtils {
       // 此处必须先赋值, 因为deque.size()会一直变化
       int levelLen = deque.size();
       for (int i = 0; i < levelLen; i++) {
-        TreeNode curr;
         // 正向(正常的操作, 从队尾排入, 从队首取出, 先排左边, 再排右边)
         if (forward) {
-          // pollFirst() = poll()
-          curr = deque.pollFirst();
+          // 注意: pollFirst() = poll()
+          TreeNode curr = deque.pollFirst();
           levelList.add(curr.val);
           if (curr.left != null) deque.offerLast(curr.left);
           if (curr.right != null) deque.offerLast(curr.right);
@@ -262,7 +255,7 @@ public class TreeUtils {
         }
         // 反向(反向的操作, 从队首排入, 从队尾取出, 先排右边, 再排左边)
         else {
-          curr = deque.pollLast();
+          TreeNode curr = deque.pollLast();
           levelList.add(curr.val);
           if (curr.right != null) deque.offerFirst(curr.right);
           if (curr.left != null) deque.offerFirst(curr.left);
@@ -394,18 +387,5 @@ public class TreeUtils {
     return res;
   }
 
-  public static <T> void printLists(List<List<T>> lists) {
-    int size = lists.size();
-    if (size == 0) {
-      System.out.println("[]");
-      return;
-    }
-    System.out.println("[");
-    for (int i = 0; i < size - 1; i++) {
-      System.out.println("  " + lists.get(i).toString() + ",");
-    }
-    System.out.println("  " + lists.get(size - 1));
-    System.out.println("]");
-  }
 
 }

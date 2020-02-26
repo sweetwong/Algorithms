@@ -1,6 +1,6 @@
 package classical;
 
-import util.Time;
+import util.other.Time;
 
 /**
  * 计算n以内的有多少个质数(素数)

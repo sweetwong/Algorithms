@@ -1,7 +1,7 @@
 package sort.nlogn;
 
 
-import util.Time;
+import util.other.Time;
 import util.array.ArrayUtils;
 
 /**
