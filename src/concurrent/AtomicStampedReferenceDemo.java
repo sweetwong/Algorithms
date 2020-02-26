@@ -66,7 +66,7 @@ class AtomicStampedReferenceDemo {
     int updateStamp = randomInt();
 
     boolean success = asr.compareAndSet(expectReference, updateReference, expectStamp, updateStamp);
-    // todo 这里有个奇怪的错误, 估计也是因为多线程导致的
+    // 这里有个奇怪的错误, 估计也是因为多线程导致的
     if (!success) failureMsg.add("预期值为" + expectReference + "失败");
     return success;
   }

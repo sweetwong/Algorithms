@@ -2,6 +2,7 @@ package leet_code;
 
 class Item11_盛最多水的容器 {
 
+  // todo 所以为什么这样就能得到最大而不错过最小呢?
   public int maxArea(int[] height) {
     int maxArea = 0, lo = 0, hi = height.length - 1;
 

@@ -13,7 +13,6 @@ class Item200_岛屿数量_广度优先搜索 {
       this.row = row;
       this.col = col;
     }
-
   }
 
   // todo

@@ -5,6 +5,8 @@ import util.array.ArrayUtils;
 
 /**
  * 基数排序
+ *
+ * todo 已经学会了7种比较排序了, 后面有时间可以看看3种非比较排序, 桶排序, 计数排序, 基数排序
  */
 class RadixSort {
 

@@ -29,7 +29,7 @@ public class BubbleSort {
    * 优化过的冒泡排序, 最快时间复杂度可以达到O(n), 每轮大循环都检查一次是否已完成排序, 如果完成就终止循环
    */
   public static void bubbleSort(int nums[]) {
-    for (int i = 1, len = nums.length; i < len - 1; i++) {
+    for (int i = 0, len = nums.length; i < len - 1; i++) {
       boolean finish = true;
       for (int j = 0; j < len - i - 1; j++) {
         if (nums[j] > nums[j + 1]) {

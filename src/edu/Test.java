@@ -1,0 +1,4 @@
+package edu;
+
+class Test {
+}
