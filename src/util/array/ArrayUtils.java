@@ -1,9 +1,6 @@
 package util.array;
 
-import edu.princeton.cs.algs4.In;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class ArrayUtils {
@@ -17,6 +14,19 @@ public class ArrayUtils {
     for (int i = 0; i < arr.length; i++)
       arr[i] = (int) (Math.random() * Integer.MAX_VALUE);
     return arr;
+  }
+
+  public static void checkSorted(int[] nums) {
+    boolean sorted = true;
+    for (int i = 1; i < nums.length; i++) {
+      if (nums[i - 1] > nums[i]) {
+        sorted = false;
+        break;
+      }
+    }
+
+    if (sorted) System.out.println("已排序");
+    else System.out.println("未排序");
   }
 
   /**
