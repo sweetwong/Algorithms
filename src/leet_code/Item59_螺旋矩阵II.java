@@ -2,7 +2,7 @@ package leet_code;
 
 import util.array.ArrayUtils;
 
-class Item59_螺旋矩阵 {
+class Item59_螺旋矩阵II {
 
   public static void main(String[] args) {
     int[][] matrix = generateMatrix(4);

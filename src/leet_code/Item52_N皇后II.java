@@ -1,6 +1,6 @@
 package leet_code;
 
-class Item52_N皇后2 {
+class Item52_N皇后II {
 
   private int n;
 

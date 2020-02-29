@@ -1,12 +1,11 @@
 package leet_code.important;
 
 import java.util.HashMap;
-import java.util.Map;
 
 class Item138_复制带随机指针的链表_深度优先_important {
 
   // HashMap将旧节点作为键，将新节点作为其值
-  HashMap<Node, Node> visitedHash = new HashMap<Node, Node>();
+  HashMap<Node, Node> visitedHash = new HashMap<>();
 
   public Node copyRandomList(Node head) {
 

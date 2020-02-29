@@ -1,6 +1,6 @@
 package leet_code;
 
-class Item45_跳跃游戏2_贪心法 {
+class Item45_跳跃游戏II_贪心法 {
 
   /**
    * 注意, 此贪心法不是贪的nums[i]就是不是要求每次能跳最远的
@@ -25,7 +25,7 @@ class Item45_跳跃游戏2_贪心法 {
   }
 
   public static void main(String[] args) {
-    Item45_跳跃游戏2_贪心法 a = new Item45_跳跃游戏2_贪心法();
+    Item45_跳跃游戏II_贪心法 a = new Item45_跳跃游戏II_贪心法();
     System.out.println(a.jump(new int[]{2, 3, 1, 1, 4}));
   }
 

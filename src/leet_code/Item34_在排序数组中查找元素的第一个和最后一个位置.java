@@ -5,13 +5,10 @@ import java.util.Arrays;
 class Item34_在排序数组中查找元素的第一个和最后一个位置 {
 
   public int[] searchRange(int[] nums, int target) {
-    int[] res = new int[2];
-    res[0] = searchBound(nums, target, true);
-    res[1] = searchBound(nums, target, false);
-    return res;
+    return new int[]{search(nums, target, true), search(nums, target, false)};
   }
 
-  public int searchBound(int[] nums, int target, boolean left) {
+  public int search(int[] nums, int target, boolean searchLow) {
     int lo = 0;
     int hi = nums.length - 1;
     int res = -1;
@@ -23,8 +20,9 @@ class Item34_在排序数组中查找元素的第一个和最后一个位置 {
       } else if (midVal > target) {
         hi = mid - 1;
       } else {
+        // 关键: 保存最后一次找到的结果res, 不要关注最后lo和hi停留的位置
         res = mid;
-        if (left) {
+        if (searchLow) {
           hi = mid - 1;
         } else {
           lo = mid + 1;
