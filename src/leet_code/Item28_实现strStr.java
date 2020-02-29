@@ -1,26 +1,12 @@
 package leet_code;
 
 /**
- * Implement strStr().
+ * 这个strStr其实就是Java的indexOf, 自己手动实现一下
  *
- * Return the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.
- *
- * Example 1:
- *
- * Input: haystack = "hello", needle = "ll"
- * Output: 2
- * Example 2:
- *
- * Input: haystack = "aaaaa", needle = "bba"
- * Output: -1
- * Clarification:
- *
- * What should we return when needle is an empty string? This is a great question to ask during an interview.
- *
- * For the purpose of this problem, we will return 0 when needle is an empty string. This is consistent to C's strstr() and Java's indexOf().
  */
 class Item28_实现strStr {
 
+  // todo
   public int strStr(String haystack, String needle) {
     return haystack.indexOf(needle);
   }
