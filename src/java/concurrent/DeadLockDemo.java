@@ -1,4 +1,4 @@
-package concurrent;
+package java.concurrent;
 
 /**
  * 死锁示例

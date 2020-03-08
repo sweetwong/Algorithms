@@ -1,4 +1,4 @@
-package reflect.bean;
+package java.reflect.bean;
 
 public class Person {
 

@@ -10,11 +10,11 @@ class Item121_买股票的最佳时机 {
   public static int maxProfit(int[] prices) {
     if (prices.length <= 1) return 0;
 
-    int minPrice = prices[0], maxProfit = 0;
+    int maxProfit = 0;
+    int minPrice = prices[0];
 
     for (int i = 1; i < prices.length; i++) {
-      int currProfit = prices[i] - minPrice;
-      maxProfit = Math.max(maxProfit, currProfit);
+      maxProfit = Math.max(maxProfit, prices[i] - minPrice);
       minPrice = Math.min(minPrice, prices[i]);
     }
 

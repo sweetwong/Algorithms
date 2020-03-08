@@ -1,4 +1,4 @@
-package concurrent;
+package java.concurrent;
 
 /**
  * 重入锁示例

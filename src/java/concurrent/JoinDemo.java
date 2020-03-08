@@ -1,4 +1,4 @@
-package concurrent;
+package java.concurrent;
 
 public class JoinDemo {
 

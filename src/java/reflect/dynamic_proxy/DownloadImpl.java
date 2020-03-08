@@ -1,4 +1,4 @@
-package reflect.dynamic_proxy;
+package java.reflect.dynamic_proxy;
 
 
 class DownloadImpl implements Download {
