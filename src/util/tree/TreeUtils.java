@@ -272,9 +272,9 @@ public class TreeUtils {
    * 树的最大深度/高度, 递归法
    * 思路: 从上往下探深度
    */
-  public static int maxDepth(TreeNode root) {
+  public static int depth(TreeNode root) {
     if (root == null) return 0;
-    return Math.max(maxDepth(root.left), maxDepth(root.right)) + 1;
+    return Math.max(depth(root.left), depth(root.right)) + 1;
   }
 
   /**
@@ -323,7 +323,7 @@ public class TreeUtils {
    * 把树转为可空列表, 如果有节点就传入节点的值, 没有就传入null
    */
   public static List<Integer> treeToNullableList(TreeNode root) {
-    int maxDepth = TreeUtils.maxDepth(root);
+    int maxDepth = TreeUtils.depth(root);
     int maxLength = (1 << maxDepth) - 1;
 
     List<Integer> res = new ArrayList<>(maxLength);
@@ -352,7 +352,7 @@ public class TreeUtils {
    */
   public static List<List<Integer>> treeToNullableLists(TreeNode root) {
     List<List<Integer>> res = new ArrayList<>();
-    int maxDepth = TreeUtils.maxDepth(root);
+    int maxDepth = TreeUtils.depth(root);
     // 最大深度对应的最大节点数
     int maxLength = (1 << maxDepth) - 1;
 
