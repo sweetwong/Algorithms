@@ -1,14 +1,17 @@
+package leet_code;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-class Solution {
+class Item15_三数之和 {
 
   public static void main(String[] args) {
     int[] nums = {-4, -2, 1, -5, -4, -4, 4, -2, 0, 4, 0, -2, 3, 1, -5, 0};
-    Arrays.sort(nums);
-    System.out.println(Arrays.toString(nums));
+    List<List<Integer>> res = threeSum(nums);
+    System.out.println(res);
   }
+
 
   public static List<List<Integer>> threeSum(int[] nums) {
     List<List<Integer>> res = new ArrayList<>();
