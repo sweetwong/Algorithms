@@ -3,7 +3,7 @@ package leet_code.important;
 import java.util.HashSet;
 import java.util.Set;
 
-class Item3_无重复字符的最长子串_important {
+class Item3_无重复字符的最长子串 {
 
   /**
    * 解题思路: 滑动窗口(HashSet + 快慢指针)

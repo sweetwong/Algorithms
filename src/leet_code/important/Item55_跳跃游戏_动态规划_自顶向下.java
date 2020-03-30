@@ -1,6 +1,6 @@
 package leet_code.important;
 
-class Item55_跳跃游戏_动态规划_自顶向下_important {
+class Item55_跳跃游戏_动态规划_自顶向下 {
 
   public boolean canJump(int[] nums) {
     return canJump(nums, nums.length, new Boolean[nums.length + 1], 0);

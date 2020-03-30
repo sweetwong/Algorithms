@@ -3,10 +3,10 @@ package leet_code.important;
 import java.util.ArrayList;
 import java.util.List;
 
-class Item46_全排列_important {
+class Item46_全排列 {
 
   public static void main(String[] args) {
-    Item46_全排列_important a = new Item46_全排列_important();
+    Item46_全排列 a = new Item46_全排列();
     System.out.println(a.permute(new int[]{1, 2, 3}).toString());
   }
 

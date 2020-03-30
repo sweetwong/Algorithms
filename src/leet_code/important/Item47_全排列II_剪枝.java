@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-class Item47_全排列II_剪枝_important {
+class Item47_全排列II_剪枝 {
 
   public List<List<Integer>> permuteUnique(int[] nums) {
     List<List<Integer>> res = new ArrayList<>();

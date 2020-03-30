@@ -7,7 +7,7 @@ import java.util.PriorityQueue;
 import util.linked_list.LinkedListUtils;
 import util.linked_list.ListNode;
 
-class Item23_合并K个排序链表_important {
+class Item23_合并K个排序链表_分治法 {
 
   /**
    * 关键: 将合并K个数组的问题 分解为 两组合并K/2个数组的问题

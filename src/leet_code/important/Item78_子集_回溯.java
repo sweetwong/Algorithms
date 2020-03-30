@@ -3,10 +3,10 @@ package leet_code.important;
 import java.util.ArrayList;
 import java.util.List;
 
-class Item78_子集_回溯_important {
+class Item78_子集_回溯 {
 
   public static void main(String[] args) {
-    Item78_子集_回溯_important a = new Item78_子集_回溯_important();
+    Item78_子集_回溯 a = new Item78_子集_回溯();
     System.out.println(a.subsets(new int[]{1, 2, 3}));
   }
 

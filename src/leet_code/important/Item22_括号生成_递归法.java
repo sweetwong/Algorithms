@@ -3,7 +3,7 @@ package leet_code.important;
 import java.util.ArrayList;
 import java.util.List;
 
-class Item22_括号生成_important {
+class Item22_括号生成_递归法 {
 
   public static List<String> generateParenthesis(int n) {
     List<String> res = new ArrayList<>();

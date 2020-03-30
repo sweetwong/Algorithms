@@ -6,7 +6,7 @@ import util.linked_list.ListNode;
 /**
  * 反转链表
  */
-class Item206_反转链表_important {
+class Item206_反转链表 {
 
   public static void main(String[] args) {
     ListNode head = LinkedListUtils.create(1, 2, 3, 4, 5);

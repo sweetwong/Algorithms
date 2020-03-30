@@ -1,6 +1,6 @@
 package leet_code.important;
 
-class Item33_搜索旋转排列数组_important {
+class Item33_搜索旋转排列数组 {
 
   /**
    * 在二分法的基础上加了拓展

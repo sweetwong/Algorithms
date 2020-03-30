@@ -18,7 +18,7 @@ import java.util.Arrays;
  * Input: -1->5->3->4->0
  * Output: -1->0->3->4->5
  */
-class Item148_排序链表_important {
+class Item148_排序链表 {
 
   public static void main(String[] args) {
     int[] nums = ArrayUtils.createRandomArray(10, 100, false);

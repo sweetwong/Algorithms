@@ -1,6 +1,6 @@
 package leet_code.important;
 
-class Item62_不同路径_动态规划_自顶向下_important {
+class Item62_不同路径_动态规划_自顶向下 {
 
   public static void main(String[] args) {
     System.out.println(uniquePaths(12, 23));

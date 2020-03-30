@@ -6,5 +6,5 @@ import java.util.List;
 /**
  * @see classical.NQueens
  */
-class Item51_N皇后_important {
+class Item51_N皇后 {
 }
