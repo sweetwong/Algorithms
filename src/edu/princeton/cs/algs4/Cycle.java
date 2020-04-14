@@ -11,10 +11,10 @@
  *
  *  % java Cycle tinyG.txt
  *  3 4 5 3 
- * 
+ *
  *  % java Cycle mediumG.txt 
  *  15 0 225 15 
- * 
+ *
  *  % java Cycle largeG.txt 
  *  996673 762 840164 4619 785187 194717 996673 
  *
@@ -37,7 +37,7 @@ package edu.princeton.cs.algs4;
  *  &Theta;(<em>V</em> + <em>E</em>) time in the worst case.)
  *  Each instance method takes &Theta;(1) time.
  *  It uses &Theta;(<em>V</em>) extra space (not including the graph).
- *  
+ *
  *  <p>
  *  For additional documentation, see
  *  <a href="https://algs4.cs.princeton.edu/41graph">Section 4.1</a>   
@@ -120,7 +120,7 @@ public class Cycle {
         return cycle != null;
     }
 
-     /**
+    /**
      * Returns a cycle in the graph {@code G}.
      * @return a cycle if the graph {@code G} has a cycle,
      *         and {@code null} otherwise
@@ -167,8 +167,7 @@ public class Cycle {
                 StdOut.print(v + " ");
             }
             StdOut.println();
-        }
-        else {
+        } else {
             StdOut.println("Graph is acyclic");
         }
     }

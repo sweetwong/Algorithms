@@ -30,34 +30,34 @@ package leet_code;
  */
 class Item122_买卖股票的最佳时机II {
 
-  public static void main(String[] args) {
-    int[] prices = new int[]{7, 1, 5, 3, 6, 4};
-    System.out.println(maxProfit(prices));
-  }
-
-  /**
-   * 解题思路: 找到一个上升区间, 直到检测到开始下降或者到顶, 做一笔买卖
-   */
-  public static int maxProfit(int[] prices) {
-    int len = prices.length;
-    if (len <= 1) return 0;
-
-    int profit = 0;
-
-    int i = 0, j = 1;
-    while (i < len && j < len) {
-      if (prices[i] > prices[j]) i++;
-      else {
-        if (j + 1 < len && prices[j] <= prices[j + 1]) j++;
-        else {
-          profit += prices[j] - prices[i];
-          i = j + 1;
-          j = j + 2;
-        }
-      }
+    public static void main(String[] args) {
+        int[] prices = new int[]{7, 1, 5, 3, 6, 4};
+        System.out.println(maxProfit(prices));
     }
 
-    return profit;
-  }
+    /**
+     * 解题思路: 找到一个上升区间, 直到检测到开始下降或者到顶, 做一笔买卖
+     */
+    public static int maxProfit(int[] prices) {
+        int len = prices.length;
+        if (len <= 1) return 0;
+
+        int profit = 0;
+
+        int i = 0, j = 1;
+        while (i < len && j < len) {
+            if (prices[i] > prices[j]) i++;
+            else {
+                if (j + 1 < len && prices[j] <= prices[j + 1]) j++;
+                else {
+                    profit += prices[j] - prices[i];
+                    i = j + 1;
+                    j = j + 2;
+                }
+            }
+        }
+
+        return profit;
+    }
 
 }

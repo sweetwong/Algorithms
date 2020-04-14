@@ -69,8 +69,8 @@ public class BellmanFordSP {
      * @throws IllegalArgumentException unless {@code 0 <= s < V}
      */
     public BellmanFordSP(EdgeWeightedDigraph G, int s) {
-        distTo  = new double[G.V()];
-        edgeTo  = new DirectedEdge[G.V()];
+        distTo = new double[G.V()];
+        edgeTo = new DirectedEdge[G.V()];
         onQueue = new boolean[G.V()];
         for (int v = 0; v < G.V(); v++)
             distTo[v] = Double.POSITIVE_INFINITY;
@@ -120,7 +120,7 @@ public class BellmanFordSP {
     /**
      * Returns a negative cycle reachable from the source vertex {@code s}, or {@code null}
      * if there is no such cycle.
-     * @return a negative cycle reachable from the soruce vertex {@code s} 
+     * @return a negative cycle reachable from the soruce vertex {@code s}
      *    as an iterable of edges, and {@code null} if there is no such cycle
      */
     public Iterable<DirectedEdge> negativeCycle() {
@@ -256,7 +256,7 @@ public class BellmanFordSP {
     private void validateVertex(int v) {
         int V = distTo.length;
         if (v < 0 || v >= V)
-            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V - 1));
     }
 
     /**
@@ -286,8 +286,7 @@ public class BellmanFordSP {
                         StdOut.print(e + "   ");
                     }
                     StdOut.println();
-                }
-                else {
+                } else {
                     StdOut.printf("%d to %d           no path\n", s, v);
                 }
             }

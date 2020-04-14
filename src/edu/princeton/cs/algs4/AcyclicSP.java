@@ -79,7 +79,7 @@ public class AcyclicSP {
         if (distTo[w] > distTo[v] + e.weight()) {
             distTo[w] = distTo[v] + e.weight();
             edgeTo[w] = e;
-        }       
+        }
     }
 
     /**
@@ -127,7 +127,7 @@ public class AcyclicSP {
     private void validateVertex(int v) {
         int V = distTo.length;
         if (v < 0 || v >= V)
-            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V - 1));
     }
 
     /**
@@ -149,8 +149,7 @@ public class AcyclicSP {
                     StdOut.print(e + "   ");
                 }
                 StdOut.println();
-            }
-            else {
+            } else {
                 StdOut.printf("%d to %d         no path\n", s, v);
             }
         }

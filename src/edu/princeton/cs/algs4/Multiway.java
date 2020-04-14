@@ -5,7 +5,7 @@
  *  Data files:   https://algs4.cs.princeton.edu/24pq/m1.txt
  *                https://algs4.cs.princeton.edu/24pq/m2.txt
  *                https://algs4.cs.princeton.edu/24pq/m3.txt
- * 
+ *
  *  Merges together the sorted input stream given as command-line arguments
  *  into a single sorted output stream on standard output.
  *
@@ -14,7 +14,7 @@
  *
  *  % more m2.txt 
  *  B D H P Q Q
- * 
+ *
  *  % more m3.txt 
  *  A B E F J N
  *
@@ -39,10 +39,11 @@ package edu.princeton.cs.algs4;
  *  @author Kevin Wayne
  */
 
-public class Multiway { 
+public class Multiway {
 
     // This class should not be instantiated.
-    private Multiway() { }
+    private Multiway() {
+    }
 
     // merge together the sorted input streams and write the sorted result to standard output
     private static void merge(In[] streams) {

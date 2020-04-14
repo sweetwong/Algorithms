@@ -4,8 +4,8 @@
  *  Dependencies: SymbolGraph.java Graph.java BreadthFirstPaths.java StdOut.java
  *  Data files:   https://algs4.cs.princeton.edu/41graph/routes.txt
  *                https://algs4.cs.princeton.edu/41graph/movies.txt
- *  
- *  
+ *
+ *
  *  %  java DegreesOfSeparation routes.txt " " "JFK"
  *  LAS
  *     JFK
@@ -77,7 +77,8 @@ package edu.princeton.cs.algs4;
 public class DegreesOfSeparation {
 
     // this class cannot be instantiated
-    private DegreesOfSeparation() { }
+    private DegreesOfSeparation() {
+    }
 
     /**
      *  Reads in a social network from a file, and then repeatedly reads in
@@ -92,9 +93,9 @@ public class DegreesOfSeparation {
      * @param args the command-line arguments
      */
     public static void main(String[] args) {
-        String filename  = args[0];
+        String filename = args[0];
         String delimiter = args[1];
-        String source    = args[2];
+        String source = args[2];
 
         // StdOut.println("Source: " + source);
 
@@ -116,12 +117,10 @@ public class DegreesOfSeparation {
                     for (int v : bfs.pathTo(t)) {
                         StdOut.println("   " + sg.nameOf(v));
                     }
-                }
-                else {
+                } else {
                     StdOut.println("Not connected");
                 }
-            }
-            else {
+            } else {
                 StdOut.println("   Not in database.");
             }
         }

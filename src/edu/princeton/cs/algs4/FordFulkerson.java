@@ -43,7 +43,7 @@ public class FordFulkerson {
     private boolean[] marked;     // marked[v] = true iff s->v path in residual graph
     private FlowEdge[] edgeTo;    // edgeTo[v] = last edge on shortest residual s->v path
     private double value;         // current value of max flow
-  
+
     /**
      * Compute a maximum flow and minimum cut in the network {@code G}
      * from vertex {@code s} to vertex {@code t}.
@@ -60,7 +60,7 @@ public class FordFulkerson {
         V = G.V();
         validate(s);
         validate(t);
-        if (s == t)               throw new IllegalArgumentException("Source equals sink");
+        if (s == t) throw new IllegalArgumentException("Source equals sink");
         if (!isFeasible(G, s, t)) throw new IllegalArgumentException("Initial flow is infeasible");
 
         // while there exists an augmenting path, use it
@@ -75,7 +75,7 @@ public class FordFulkerson {
 
             // augment flow
             for (int v = t; v != s; v = edgeTo[v].other(v)) {
-                edgeTo[v].addResidualFlowTo(v, bottle); 
+                edgeTo[v].addResidualFlowTo(v, bottle);
             }
 
             value += bottle;
@@ -90,7 +90,7 @@ public class FordFulkerson {
      *
      * @return the value of the maximum flow
      */
-    public double value()  {
+    public double value() {
         return value;
     }
 
@@ -102,15 +102,15 @@ public class FordFulkerson {
      *         {@code false} otherwise
      * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
-    public boolean inCut(int v)  {
+    public boolean inCut(int v) {
         validate(v);
         return marked[v];
     }
 
     // throw an IllegalArgumentException if v is outside prescibed range
-    private void validate(int v)  {
+    private void validate(int v) {
         if (v < 0 || v >= V)
-            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V - 1));
     }
 
 
@@ -148,13 +148,12 @@ public class FordFulkerson {
     }
 
 
-
     // return excess flow at vertex v
     private double excess(FlowNetwork G, int v) {
         double excess = 0.0;
         for (FlowEdge e : G.adj(v)) {
             if (v == e.from()) excess -= e.flow();
-            else               excess += e.flow();
+            else excess += e.flow();
         }
         return excess;
     }
@@ -192,7 +191,6 @@ public class FordFulkerson {
         }
         return true;
     }
-
 
 
     // check optimality conditions
@@ -242,7 +240,7 @@ public class FordFulkerson {
         // create flow network with V vertices and E edges
         int V = Integer.parseInt(args[0]);
         int E = Integer.parseInt(args[1]);
-        int s = 0, t = V-1;
+        int s = 0, t = V - 1;
         FlowNetwork G = new FlowNetwork(V, E);
         StdOut.println(G);
 
@@ -263,7 +261,7 @@ public class FordFulkerson {
         }
         StdOut.println();
 
-        StdOut.println("Max flow value = " +  maxflow.value());
+        StdOut.println("Max flow value = " + maxflow.value());
     }
 
 }

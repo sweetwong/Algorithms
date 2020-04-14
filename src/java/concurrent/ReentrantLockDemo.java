@@ -5,25 +5,25 @@ package java.concurrent;
  */
 class ReentrantLockDemo {
 
-  public static void main(String[] args) throws InterruptedException {
-    ReentrantLockDemo demo = new ReentrantLockDemo();
-    demo.first();
-  }
+    public static void main(String[] args) throws InterruptedException {
+        ReentrantLockDemo demo = new ReentrantLockDemo();
+        demo.first();
+    }
 
-  private UnReentrantLock lock = new UnReentrantLock();
+    private UnReentrantLock lock = new UnReentrantLock();
 
-  public void first() throws InterruptedException {
-    lock.lock();
-    ThreadUtils.print("first");
-    last();
-    lock.unlock();
-  }
+    public void first() throws InterruptedException {
+        lock.lock();
+        ThreadUtils.print("first");
+        last();
+        lock.unlock();
+    }
 
-  public void last() {
-    lock.lock();
-    ThreadUtils.print("last");
-    lock.unlock();
+    public void last() {
+        lock.lock();
+        ThreadUtils.print("last");
+        lock.unlock();
 
-  }
+    }
 
 }

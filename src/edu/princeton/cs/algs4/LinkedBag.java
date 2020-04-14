@@ -98,8 +98,8 @@ public class LinkedBag<Item> implements Iterable<Item> {
     /**
      * Returns an iterator that iterates over the items in the bag.
      */
-    public Iterator<Item> iterator()  {
-        return new ListIterator();  
+    public Iterator<Item> iterator() {
+        return new ListIterator();
     }
 
     // an iterator over a linked list
@@ -125,7 +125,7 @@ public class LinkedBag<Item> implements Iterable<Item> {
         public Item next() {
             if (!hasNext()) throw new NoSuchElementException();
             Item item = current.item;
-            current = current.next; 
+            current = current.next;
             return item;
         }
     }

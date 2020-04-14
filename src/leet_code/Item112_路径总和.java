@@ -23,16 +23,16 @@ import util.tree.TreeNode;
  */
 class Item112_路径总和 {
 
-  /**
-   * 树 -> 首先想到用递归的方法
-   * 递归 -> 把大树的问题变成其子树的问题
-   */
-  public static boolean hasPathSum(TreeNode root, int sum) {
-    if (root == null) return false;
-    if (root != null && root.left == null && root.right == null) {
-      return sum - root.val == 0;
+    /**
+     * 树 -> 首先想到用递归的方法
+     * 递归 -> 把大树的问题变成其子树的问题
+     */
+    public static boolean hasPathSum(TreeNode root, int sum) {
+        if (root == null) return false;
+        if (root != null && root.left == null && root.right == null) {
+            return sum - root.val == 0;
+        }
+        return hasPathSum(root.left, sum - root.val) || hasPathSum(root.right, sum - root.val);
     }
-    return hasPathSum(root.left, sum - root.val) || hasPathSum(root.right, sum - root.val);
-  }
 
 }

@@ -101,7 +101,7 @@ public class DijkstraSP {
             distTo[w] = distTo[v] + e.weight();
             edgeTo[w] = e;
             if (pq.contains(w)) pq.decreaseKey(w, distTo[w]);
-            else                pq.insert(w, distTo[w]);
+            else pq.insert(w, distTo[w]);
         }
     }
 
@@ -204,7 +204,7 @@ public class DijkstraSP {
     private void validateVertex(int v) {
         int V = distTo.length;
         if (v < 0 || v >= V)
-            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V - 1));
     }
 
     /**
@@ -229,8 +229,7 @@ public class DijkstraSP {
                     StdOut.print(e + "   ");
                 }
                 StdOut.println();
-            }
-            else {
+            } else {
                 StdOut.printf("%d to %d         no path\n", s, t);
             }
         }

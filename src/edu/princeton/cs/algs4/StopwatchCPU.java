@@ -34,15 +34,15 @@ public class StopwatchCPU {
 
     private final ThreadMXBean threadTimer;
     private final long start;
-            
+
     /**
      * Initializes a new stopwatch.
      */
-    public StopwatchCPU() {  
+    public StopwatchCPU() {
         threadTimer = ManagementFactory.getThreadMXBean();
         start = threadTimer.getCurrentThreadCpuTime();
-    }   
-        
+    }
+
     /**
      * Returns the elapsed CPU time (in seconds) since the stopwatch was created.
      *

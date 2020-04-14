@@ -3,7 +3,7 @@
  *  Execution:    java ST < input.txt
  *  Dependencies: StdIn.java StdOut.java
  *  Data files:   https://algs4.cs.princeton.edu/35applications/tinyST.txt
- *  
+ *
  *  Sorted symbol table implementation using a java.util.TreeMap.
  *  Does not allow duplicates.
  *
@@ -92,7 +92,7 @@ public class ST<Key extends Comparable<Key>, Value> implements Iterable<Key> {
     public void put(Key key, Value val) {
         if (key == null) throw new IllegalArgumentException("calls put() with null key");
         if (val == null) st.remove(key);
-        else             st.put(key, val);
+        else st.put(key, val);
     }
 
     /**
@@ -172,7 +172,7 @@ public class ST<Key extends Comparable<Key>, Value> implements Iterable<Key> {
      * This method is provided for backward compatibility with the version from
      * <em>Introduction to Programming in Java: An Interdisciplinary Approach.</em>
      *
-     * @return     an iterator to all of the keys in this symbol table
+     * @return an iterator to all of the keys in this symbol table
      * @deprecated Replaced by {@link #keys()}.
      */
     @Deprecated

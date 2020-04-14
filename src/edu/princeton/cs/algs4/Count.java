@@ -49,7 +49,8 @@ package edu.princeton.cs.algs4;
 public class Count {
 
     // Do not instantiate.
-    private Count() { }
+    private Count() {
+    }
 
     /**
      * Reads in text from standard input; calculates the frequency of

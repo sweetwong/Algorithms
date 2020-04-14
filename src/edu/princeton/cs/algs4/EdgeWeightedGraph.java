@@ -64,7 +64,7 @@ public class EdgeWeightedGraph {
     private final int V;
     private int E;
     private Bag<Edge>[] adj;
-    
+
     /**
      * Initializes an empty edge-weighted graph with {@code V} vertices and 0 edges.
      *
@@ -101,7 +101,7 @@ public class EdgeWeightedGraph {
         }
     }
 
-    /**  
+    /**
      * Initializes an edge-weighted graph from an input stream.
      * The format is the number of vertices <em>V</em>,
      * followed by the number of edges <em>E</em>,
@@ -134,8 +134,7 @@ public class EdgeWeightedGraph {
                 Edge e = new Edge(v, w, weight);
                 addEdge(e);
             }
-        }   
-        catch (NoSuchElementException e) {
+        } catch (NoSuchElementException e) {
             throw new IllegalArgumentException("invalid input format in EdgeWeightedGraph constructor", e);
         }
 
@@ -183,7 +182,7 @@ public class EdgeWeightedGraph {
     // throw an IllegalArgumentException unless {@code 0 <= v < V}
     private void validateVertex(int v) {
         if (v < 0 || v >= V)
-            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V - 1));
     }
 
     /**
@@ -218,7 +217,7 @@ public class EdgeWeightedGraph {
      * Returns the degree of vertex {@code v}.
      *
      * @param  v the vertex
-     * @return the degree of vertex {@code v}               
+     * @return the degree of vertex {@code v}
      * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
     public int degree(int v) {

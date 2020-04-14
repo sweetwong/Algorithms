@@ -4,7 +4,7 @@
  *  Dependencies: StdIn.java StdOut.java
  *  Data files:   https://algs4.cs.princeton.edu/11model/cards.txt
  *                https://algs4.cs.princeton.edu/11model/cardsUnicode.txt
- *  
+ *
  *  Reads in a list of strings and prints them in random order.
  *  The Knuth (or Fisher-Yates) shuffling algorithm guarantees
  *  to rearrange the elements in uniformly random order, under
@@ -31,7 +31,7 @@
  *  2♦ 3♦ 4♦ 5♦ 6♦ 7♦ 8♦ 9♦ 10♦ J♦ Q♦ K♦ A♦ 
  *  2♥ 3♥ 4♥ 5♥ 6♥ 7♥ 8♥ 9♥ 10♥ J♥ Q♥ K♥ A♥ 
  *  2♠ 3♠ 4♠ 5♠ 6♠ 7♠ 8♠ 9♠ 10♠ J♠ Q♠ K♠ A♠ 
- * 
+ *
  *  % java Knuth < cardsUnicode.txt
  *  2♠
  *  K♥
@@ -62,10 +62,11 @@ package edu.princeton.cs.algs4;
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
  */
-public class Knuth { 
+public class Knuth {
 
     // this class should not be instantiated
-    private Knuth() { }
+    private Knuth() {
+    }
 
     /**
      * Rearranges an array of objects in uniformly random order

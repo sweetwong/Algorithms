@@ -3,7 +3,7 @@
  *  Execution:    java ResizingArrayQueue < input.txt
  *  Dependencies: StdIn.java StdOut.java
  *  Data files:   https://algs4.cs.princeton.edu/13stacks/tobe.txt  
- *  
+ *
  *  Queue implementation with a resizing array.
  *
  *  % java ResizingArrayQueue < tobe.txt 
@@ -78,7 +78,7 @@ public class ResizingArrayQueue<Item> implements Iterable<Item> {
         }
         q = temp;
         first = 0;
-        last  = n;
+        last = n;
     }
 
     /**
@@ -87,7 +87,7 @@ public class ResizingArrayQueue<Item> implements Iterable<Item> {
      */
     public void enqueue(Item item) {
         // double size of array if necessary and recopy to front of array
-        if (n == q.length) resize(2*q.length);   // double size of array if necessary
+        if (n == q.length) resize(2 * q.length);   // double size of array if necessary
         q[last++] = item;                        // add item
         if (last == q.length) last = 0;          // wrap-around
         n++;
@@ -106,7 +106,7 @@ public class ResizingArrayQueue<Item> implements Iterable<Item> {
         first++;
         if (first == q.length) first = 0;           // wrap-around
         // shrink size of array if necessary
-        if (n > 0 && n == q.length/4) resize(q.length/2); 
+        if (n > 0 && n == q.length / 4) resize(q.length / 2);
         return item;
     }
 
@@ -132,8 +132,14 @@ public class ResizingArrayQueue<Item> implements Iterable<Item> {
     // an iterator, doesn't implement remove() since it's optional
     private class ArrayIterator implements Iterator<Item> {
         private int i = 0;
-        public boolean hasNext()  { return i < n;                               }
-        public void remove()      { throw new UnsupportedOperationException();  }
+
+        public boolean hasNext() {
+            return i < n;
+        }
+
+        public void remove() {
+            throw new UnsupportedOperationException();
+        }
 
         public Item next() {
             if (!hasNext()) throw new NoSuchElementException();
@@ -143,7 +149,7 @@ public class ResizingArrayQueue<Item> implements Iterable<Item> {
         }
     }
 
-   /**
+    /**
      * Unit tests the {@code ResizingArrayQueue} data type.
      *
      * @param args the command-line arguments

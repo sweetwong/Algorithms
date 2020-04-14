@@ -51,7 +51,7 @@ public class EdgeWeightedDigraph {
     private int E;                      // number of edges in this digraph
     private Bag<DirectedEdge>[] adj;    // adj[v] = adjacency list for vertex v
     private int[] indegree;             // indegree[v] = indegree of vertex v
-    
+
     /**
      * Initializes an empty edge-weighted digraph with {@code V} vertices and 0 edges.
      *
@@ -88,7 +88,7 @@ public class EdgeWeightedDigraph {
         }
     }
 
-    /**  
+    /**
      * Initializes an edge-weighted digraph from the specified input stream.
      * The format is the number of vertices <em>V</em>,
      * followed by the number of edges <em>E</em>,
@@ -121,8 +121,7 @@ public class EdgeWeightedDigraph {
                 double weight = in.readDouble();
                 addEdge(new DirectedEdge(v, w, weight));
             }
-        }   
-        catch (NoSuchElementException e) {
+        } catch (NoSuchElementException e) {
             throw new IllegalArgumentException("invalid input format in EdgeWeightedDigraph constructor", e);
         }
     }
@@ -170,7 +169,7 @@ public class EdgeWeightedDigraph {
     // throw an IllegalArgumentException unless {@code 0 <= v < V}
     private void validateVertex(int v) {
         if (v < 0 || v >= V)
-            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V - 1));
     }
 
     /**
@@ -244,7 +243,7 @@ public class EdgeWeightedDigraph {
             }
         }
         return list;
-    } 
+    }
 
     /**
      * Returns a string representation of this edge-weighted digraph.

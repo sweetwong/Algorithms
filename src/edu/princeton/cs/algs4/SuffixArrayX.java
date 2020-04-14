@@ -3,7 +3,7 @@
  *  Execution:    java SuffixArrayX < input.txt
  *  Dependencies: StdIn.java StdOut.java
  *  Data files:   https://algs4.cs.princeton.edu/63suffix/abra.txt
- *  
+ *
  *  A data type that computes the suffix array of a string using 3-way
  *  radix quicksort.
  *
@@ -61,7 +61,7 @@ package edu.princeton.cs.algs4;
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  */
 public class SuffixArrayX {
-    private static final int CUTOFF =  5;   // cutoff to insertion sort (any value between 0 and 12)
+    private static final int CUTOFF = 5;   // cutoff to insertion sort (any value between 0 and 12)
 
     private final char[] text;
     private final int[] index;   // index[i] = j means text.substring(j) is ith largest suffix
@@ -79,11 +79,11 @@ public class SuffixArrayX {
         for (int i = 0; i < n; i++)
             index[i] = i;
 
-        sort(0, n-1, 0);
+        sort(0, n - 1, 0);
     }
 
     // 3-way string quicksort lo..hi starting at dth character
-    private void sort(int lo, int hi, int d) { 
+    private void sort(int lo, int hi, int d) {
 
         // cutoff to insertion sort for small subarrays
         if (hi <= lo + CUTOFF) {
@@ -96,22 +96,22 @@ public class SuffixArrayX {
         int i = lo + 1;
         while (i <= gt) {
             char t = text[index[i] + d];
-            if      (t < v) exch(lt++, i++);
+            if (t < v) exch(lt++, i++);
             else if (t > v) exch(i, gt--);
-            else            i++;
+            else i++;
         }
 
         // a[lo..lt-1] < v = a[lt..gt] < a[gt+1..hi]. 
-        sort(lo, lt-1, d);
-        if (v > 0) sort(lt, gt, d+1);
-        sort(gt+1, hi, d);
+        sort(lo, lt - 1, d);
+        if (v > 0) sort(lt, gt, d + 1);
+        sort(gt + 1, hi, d);
     }
 
     // sort from a[lo] to a[hi], starting at the dth character
     private void insertion(int lo, int hi, int d) {
         for (int i = lo; i <= hi; i++)
-            for (int j = i; j > lo && less(index[j], index[j-1], d); j--)
-                exch(j, j-1);
+            for (int j = i; j > lo && less(index[j], index[j - 1], d); j--)
+                exch(j, j - 1);
     }
 
     // is text[i+d..n) < text[j+d..n) ?
@@ -166,7 +166,7 @@ public class SuffixArrayX {
      */
     public int lcp(int i) {
         if (i < 1 || i >= n) throw new IllegalArgumentException();
-        return lcp(index[i], index[i-1]);
+        return lcp(index[i], index[i - 1]);
     }
 
     // longest common prefix of text[i..n) and text[j..n)
@@ -204,12 +204,12 @@ public class SuffixArrayX {
         while (lo <= hi) {
             int mid = lo + (hi - lo) / 2;
             int cmp = compare(query, index[mid]);
-            if      (cmp < 0) hi = mid - 1;
+            if (cmp < 0) hi = mid - 1;
             else if (cmp > 0) lo = mid + 1;
             else return mid;
         }
         return lo;
-    } 
+    }
 
     // is query < text[i..n) ?
     private int compare(String query, int i) {
@@ -259,10 +259,9 @@ public class SuffixArrayX {
             assert s.substring(index).equals(suffix2.select(i));
             if (i == 0) {
                 StdOut.printf("%3d %3d %3s %3d  %s\n", i, index, "-", rank, ith);
-            }
-            else {
+            } else {
                 // int lcp  = suffix.lcp(suffix2.index(i), suffix2.index(i-1));
-                int lcp  = suffix2.lcp(i);
+                int lcp = suffix2.lcp(i);
                 StdOut.printf("%3d %3d %3d %3d  %s\n", i, index, lcp, rank, ith);
             }
         }

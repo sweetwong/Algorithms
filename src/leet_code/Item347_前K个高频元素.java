@@ -21,32 +21,32 @@ import java.util.function.BiConsumer;
  */
 class Item347_前K个高频元素 {
 
-  public static List<Integer> topKFrequent(int[] nums, int k) {
-    List<Integer> res = new ArrayList<>();
+    public static List<Integer> topKFrequent(int[] nums, int k) {
+        List<Integer> res = new ArrayList<>();
 
-    // 用HashMap来记录每个数字出现的次数, 并可以利用Map的特性消掉重复Map
-    Map<Integer, Integer> count = new HashMap<>();
-    for (int num : nums) {
-      count.put(num, count.getOrDefault(num, 0) + 1);
+        // 用HashMap来记录每个数字出现的次数, 并可以利用Map的特性消掉重复Map
+        Map<Integer, Integer> count = new HashMap<>();
+        for (int num : nums) {
+            count.put(num, count.getOrDefault(num, 0) + 1);
+        }
+
+        // 按照每个数字出现的次数构建有限队列
+        PriorityQueue<Integer> heap = new PriorityQueue<>((o1, o2) -> Integer.compare(count.get(o2), count.get(o1)));
+        for (int num : count.keySet()) {
+            heap.offer(num);
+        }
+
+        // 拿到前k个
+        for (int i = 0; i < k; i++) {
+            res.add(heap.poll());
+        }
+
+        return res;
     }
 
-    // 按照每个数字出现的次数构建有限队列
-    PriorityQueue<Integer> heap = new PriorityQueue<>((o1, o2) -> Integer.compare(count.get(o2), count.get(o1)));
-    for (int num : count.keySet()) {
-      heap.offer(num);
+    public static void main(String[] args) {
+        int[] nums = new int[]{1, 1, 1, 2, 2, 3};
+        List<Integer> res = topKFrequent(nums, 3);
+        System.out.println(res.toString());
     }
-
-    // 拿到前k个
-    for (int i = 0; i < k; i++) {
-      res.add(heap.poll());
-    }
-
-    return res;
-  }
-
-  public static void main(String[] args) {
-    int[] nums = new int[]{1, 1, 1, 2, 2, 3};
-    List<Integer> res = topKFrequent(nums, 3);
-    System.out.println(res.toString());
-  }
 }

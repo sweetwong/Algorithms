@@ -10,20 +10,20 @@ package sort.n2;
  */
 public class ShellSort {
 
-  public static void sort(int[] nums) {
-    int len = nums.length;
-    for (int gap = len / 2; gap >= 1; gap /= 2) {
-      // 注意: 这段代码和插入排序的核心代码几乎一样, 唯一不同的是插入排序的gap为1
-      for (int i = gap; i < len; i++) {
-        int curr = nums[i];
-        int j = i - gap;
-        while (j >= 0 && nums[j] > curr) {
-          nums[j + gap] = nums[j];
-          j -= gap;
+    public static void sort(int[] nums) {
+        int len = nums.length;
+        for (int gap = len / 2; gap >= 1; gap /= 2) {
+            // 注意: 这段代码和插入排序的核心代码几乎一样, 唯一不同的是插入排序的gap为1
+            for (int i = gap; i < len; i++) {
+                int curr = nums[i];
+                int j = i - gap;
+                while (j >= 0 && nums[j] > curr) {
+                    nums[j + gap] = nums[j];
+                    j -= gap;
+                }
+                nums[j + gap] = curr;
+            }
         }
-        nums[j + gap] = curr;
-      }
     }
-  }
 
 }

@@ -3,7 +3,7 @@
  *  Execution:    java LinearProbingHashST < input.txt
  *  Dependencies: StdIn.java StdOut.java
  *  Data files:   https://algs4.cs.princeton.edu/34hash/tinyST.txt
- *  
+ *
  *  Symbol-table implementation with linear-probing hash table.
  *
  ******************************************************************************/
@@ -64,7 +64,7 @@ public class LinearProbingHashST<Key, Value> {
     public LinearProbingHashST(int capacity) {
         m = capacity;
         n = 0;
-        keys = (Key[])   new Object[m];
+        keys = (Key[]) new Object[m];
         vals = (Value[]) new Object[m];
     }
 
@@ -115,7 +115,7 @@ public class LinearProbingHashST<Key, Value> {
         }
         keys = temp.keys;
         vals = temp.vals;
-        m    = temp.m;
+        m = temp.m;
     }
 
     /**
@@ -137,7 +137,7 @@ public class LinearProbingHashST<Key, Value> {
         }
 
         // double table size if 50% full
-        if (n >= m/2) resize(2*m);
+        if (n >= m / 2) resize(2 * m);
 
         int i;
         for (i = hash(key); keys[i] != null; i = (i + 1) % m) {
@@ -191,7 +191,7 @@ public class LinearProbingHashST<Key, Value> {
         i = (i + 1) % m;
         while (keys[i] != null) {
             // delete keys[i] an vals[i] and reinsert
-            Key   keyToRehash = keys[i];
+            Key keyToRehash = keys[i];
             Value valToRehash = vals[i];
             keys[i] = null;
             vals[i] = null;
@@ -203,7 +203,7 @@ public class LinearProbingHashST<Key, Value> {
         n--;
 
         // halves size of array if it's 12.5% full or less
-        if (n > 0 && n <= m/8) resize(m/2);
+        if (n > 0 && n <= m / 8) resize(m / 2);
 
         assert check();
     }
@@ -227,7 +227,7 @@ public class LinearProbingHashST<Key, Value> {
     private boolean check() {
 
         // check that hash table is at most 50% full
-        if (m < 2*n) {
+        if (m < 2 * n) {
             System.err.println("Hash table size m = " + m + "; array size n = " + n);
             return false;
         }
@@ -249,7 +249,7 @@ public class LinearProbingHashST<Key, Value> {
      *
      * @param args the command-line arguments
      */
-    public static void main(String[] args) { 
+    public static void main(String[] args) {
         LinearProbingHashST<String, Integer> st = new LinearProbingHashST<String, Integer>();
         for (int i = 0; !StdIn.isEmpty(); i++) {
             String key = StdIn.readString();
@@ -257,8 +257,8 @@ public class LinearProbingHashST<Key, Value> {
         }
 
         // print keys
-        for (String s : st.keys()) 
-            StdOut.println(s + " " + st.get(s)); 
+        for (String s : st.keys())
+            StdOut.println(s + " " + st.get(s));
     }
 }
 

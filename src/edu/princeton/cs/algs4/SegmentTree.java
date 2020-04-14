@@ -1,7 +1,7 @@
 /******************************************************************************
  *  Compilation:  javac SegmentTree.java
  *  Execution:    java SegmentTree
- *  
+ *
  *  A segment tree data structure.
  *
  ******************************************************************************/
@@ -113,7 +113,7 @@ public class SegmentTree {
 
     /**
      * Range Min Query
-     * 
+     *
      * Time-Complexity: O(log(n))
      *
      * @param  from from index
@@ -299,8 +299,7 @@ public class SegmentTree {
                     array[i] = Integer.parseInt(line[i + 1]);
                 }
                 st = new SegmentTree(array);
-            }
-            else if (line[0].equals("init")) {
+            } else if (line[0].equals("init")) {
                 array = new int[arg1];
                 Arrays.fill(array, arg2);
                 st = new SegmentTree(array);
@@ -309,22 +308,17 @@ public class SegmentTree {
                     StdOut.print(st.rsq(i, i) + " ");
                 }
                 StdOut.println();
-            }
-
-            else if (line[0].equals("up")) {
+            } else if (line[0].equals("up")) {
                 st.update(arg1, arg2, arg3);
                 for (int i = 0; i < st.size(); i++) {
                     StdOut.print(st.rsq(i, i) + " ");
                 }
                 StdOut.println();
-            }
-            else if (line[0].equals("rsq")) {
+            } else if (line[0].equals("rsq")) {
                 StdOut.printf("Sum from %d to %d = %d%n", arg1, arg2, st.rsq(arg1, arg2));
-            }
-            else if (line[0].equals("rmq")) {
+            } else if (line[0].equals("rmq")) {
                 StdOut.printf("Min from %d to %d = %d%n", arg1, arg2, st.rMinQ(arg1, arg2));
-            }
-            else {
+            } else {
                 StdOut.println("Invalid command");
             }
 

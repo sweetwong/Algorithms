@@ -12,26 +12,26 @@ package classical;
  */
 class TowerOfHanoi {
 
-  private static int count = 0;
+    private static int count = 0;
 
-  public static void hanoi(String from, String temp, String to, int n) {
-    // 终止条件, 也是真正搬运的步骤
-    if (n == 1) {
-      count++;
-      System.out.println(from + " -> " + to);
-      return;
+    public static void hanoi(String from, String temp, String to, int n) {
+        // 终止条件, 也是真正搬运的步骤
+        if (n == 1) {
+            count++;
+            System.out.println(from + " -> " + to);
+            return;
+        }
+
+        // 大问题化成小问题, 问题规模从n减小到n-1, 直到n=1终止递归
+
+        hanoi(from, to, temp, n - 1);
+        hanoi(from, null, to, 1);
+        hanoi(temp, from, to, n - 1);
     }
 
-    // 大问题化成小问题, 问题规模从n减小到n-1, 直到n=1终止递归
-
-    hanoi(from, to, temp, n - 1);
-    hanoi(from, null, to, 1);
-    hanoi(temp, from, to, n - 1);
-  }
-
-  public static void main(String[] args) {
-    hanoi("A", "B", "C", 3);
-    System.out.println("一共搬运了" + count + "次");
-  }
+    public static void main(String[] args) {
+        hanoi("A", "B", "C", 3);
+        System.out.println("一共搬运了" + count + "次");
+    }
 
 }

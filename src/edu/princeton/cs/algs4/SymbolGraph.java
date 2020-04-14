@@ -7,7 +7,7 @@
  *                https://algs4.cs.princeton.edu/41graph/moviestiny.txt
  *                https://algs4.cs.princeton.edu/41graph/moviesG.txt
  *                https://algs4.cs.princeton.edu/41graph/moviestopGrossing.txt
- *  
+ *
  *  %  java SymbolGraph routes.txt " "
  *  JFK
  *     MCO
@@ -35,7 +35,7 @@
  *     Apollo 13 (1995)
  *     Animal House (1978)
  *
- * 
+ *
  *  Assumes that input file is encoded using UTF-8.
  *  % iconv -f ISO-8859-1 -t UTF-8 movies-iso8859.txt > movies.txt
  *
@@ -70,7 +70,7 @@ public class SymbolGraph {
     private String[] keys;           // index  -> string
     private Graph graph;             // the underlying graph
 
-    /**  
+    /**
      * Initializes a graph from a file using the specified delimiter.
      * Each line in the file contains
      * the name of a vertex, followed by a list of the names
@@ -191,7 +191,7 @@ public class SymbolGraph {
     private void validateVertex(int v) {
         int V = graph.V();
         if (v < 0 || v >= V)
-            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V - 1));
     }
 
 
@@ -201,7 +201,7 @@ public class SymbolGraph {
      * @param args the command-line arguments
      */
     public static void main(String[] args) {
-        String filename  = args[0];
+        String filename = args[0];
         String delimiter = args[1];
         SymbolGraph sg = new SymbolGraph(filename, delimiter);
         Graph graph = sg.graph();
@@ -212,8 +212,7 @@ public class SymbolGraph {
                 for (int v : graph.adj(s)) {
                     StdOut.println("   " + sg.name(v));
                 }
-            }
-            else {
+            } else {
                 StdOut.println("input not contain '" + source + "'");
             }
         }

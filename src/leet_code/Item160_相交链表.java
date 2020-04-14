@@ -32,5 +32,5 @@ package leet_code;
  */
 class Item160_相交链表 {
 
-  
+
 }

@@ -114,7 +114,7 @@ public class LazyPrimMST {
         for (Edge e : G.adj(v))
             if (!marked[e.other(v)]) pq.insert(e);
     }
-        
+
     /**
      * Returns the edges in a minimum spanning tree (or forest).
      * @return the edges in a minimum spanning tree (or forest) as
@@ -190,8 +190,8 @@ public class LazyPrimMST {
 
         return true;
     }
-    
-    
+
+
     /**
      * Unit tests the {@code LazyPrimMST} data type.
      *

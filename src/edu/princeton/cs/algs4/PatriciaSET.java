@@ -106,7 +106,9 @@ public class PatriciaSET implements Iterable<String> {
             this.key = key;
             this.b = b;
         }
-    };
+    }
+
+    ;
 
     /**
      * Initializes an empty PATRICIA-based set.
@@ -135,7 +137,7 @@ public class PatriciaSET implements Iterable<String> {
         do {
             p = x;
             if (safeBitTest(key, x.b)) x = x.right;
-            else                       x = x.left;
+            else x = x.left;
         } while (p.b < x.b);
         if (!x.key.equals(key)) {
             int b = firstDifferingBit(x.key, key);
@@ -143,19 +145,18 @@ public class PatriciaSET implements Iterable<String> {
             do {
                 p = x;
                 if (safeBitTest(key, x.b)) x = x.right;
-                else                       x = x.left;
+                else x = x.left;
             } while (p.b < x.b && x.b < b);
             Node t = new Node(key, b);
             if (safeBitTest(key, b)) {
-                t.left  = x;
+                t.left = x;
                 t.right = t;
-            }
-            else {
-                t.left  = t;
+            } else {
+                t.left = t;
                 t.right = x;
             }
             if (safeBitTest(key, p.b)) p.right = t;
-            else                       p.left = t;
+            else p.left = t;
             count++;
         }
     }
@@ -176,7 +177,7 @@ public class PatriciaSET implements Iterable<String> {
         do {
             p = x;
             if (safeBitTest(key, x.b)) x = x.right;
-            else                       x = x.left;
+            else x = x.left;
         } while (p.b < x.b);
         return x.key.equals(key);
     }
@@ -197,7 +198,7 @@ public class PatriciaSET implements Iterable<String> {
             g = p;
             p = x;
             if (safeBitTest(key, x.b)) x = x.right;
-            else                       x = x.left;
+            else x = x.left;
         } while (p.b < x.b);
         if (x.key.equals(key)) {
             Node z;
@@ -205,23 +206,22 @@ public class PatriciaSET implements Iterable<String> {
             do {            // find the true parent (z) of x
                 z = y;
                 if (safeBitTest(key, y.b)) y = y.right;
-                else                       y = y.left;
+                else y = y.left;
             } while (y != x);
             if (x == p) {   // case 1: remove (leaf node) x
                 Node c;     // child of x
                 if (safeBitTest(key, x.b)) c = x.left;
-                else                       c = x.right;
+                else c = x.right;
                 if (safeBitTest(key, z.b)) z.right = c;
-                else                       z.left  = c;
-            }
-            else {          // case 2: p replaces (internal node) x
+                else z.left = c;
+            } else {          // case 2: p replaces (internal node) x
                 Node c;     // child of p
                 if (safeBitTest(key, p.b)) c = p.left;
-                else                       c = p.right;
+                else c = p.right;
                 if (safeBitTest(key, g.b)) g.right = c;
-                else                       g.left  = c;
+                else g.left = c;
                 if (safeBitTest(key, z.b)) z.right = p;
-                else                       z.left  = p;
+                else z.left = p;
                 p.left = x.left;
                 p.right = x.right;
                 p.b = x.b;
@@ -255,7 +255,7 @@ public class PatriciaSET implements Iterable<String> {
      */
     public Iterator<String> iterator() {
         Queue<String> queue = new Queue<String>();
-        if (head.left  != head) collect(head.left,  0, queue);
+        if (head.left != head) collect(head.left, 0, queue);
         if (head.right != head) collect(head.right, 0, queue);
         return queue.iterator();
     }
@@ -296,9 +296,10 @@ public class PatriciaSET implements Iterable<String> {
      * (because these methods do not regard string lengths).
      */
     private static boolean safeBitTest(String key, int b) {
-        if (b < key.length() * 16)      return bitTest(key, b) != 0;
+        if (b < key.length() * 16) return bitTest(key, b) != 0;
         if (b > key.length() * 16 + 15) return false;   // padding
-        /* 16 bits of 0xffff */         return true;    // end marker
+        /* 16 bits of 0xffff */
+        return true;    // end marker
     }
 
     private static int bitTest(String key, int b) {
@@ -313,7 +314,7 @@ public class PatriciaSET implements Iterable<String> {
     private static int safeCharAt(String key, int i) {
         if (i < key.length()) return key.charAt(i);
         if (i > key.length()) return 0x0000;            // padding
-        else                  return 0xffff;            // end marker
+        else return 0xffff;            // end marker
     }
 
     /* For efficiency's sake, the firstDifferingBit function compares entire
@@ -383,7 +384,7 @@ public class PatriciaSET implements Iterable<String> {
             StdOut.printf("Iterating...\n");
             for (String key : set) countItems++;
             StdOut.printf("%d items iterated\n", countItems);
-            if (countItems != limitItem)  ok = false;
+            if (countItems != limitItem) ok = false;
             if (countItems != set.size()) ok = false;
 
             StdOut.printf("Shuffling...\n");
@@ -399,7 +400,7 @@ public class PatriciaSET implements Iterable<String> {
             for (String key : set) countItems++;
             StdOut.printf("%d items iterated\n", countItems);
             if (countItems != limitItem - limitDelete) ok = false;
-            if (countItems != set.size())              ok = false;
+            if (countItems != set.size()) ok = false;
 
             int countDelete = 0;
             int countRemain = 0;
@@ -407,26 +408,25 @@ public class PatriciaSET implements Iterable<String> {
             for (int i = 0; i < limitItem; i++) {
                 if (i < limitDelete) {
                     if (!set.contains(a[i])) countDelete++;
-                }
-                else {
+                } else {
                     if (set.contains(a[i])) countRemain++;
                 }
             }
             StdOut.printf("%d items found and %d (deleted) items missing\n",
-                countRemain, countDelete);
-            if (countRemain + countDelete != limitItem)  ok = false;
-            if (countRemain               != set.size()) ok = false;
-            if (set.isEmpty())                           ok = false;
+                    countRemain, countDelete);
+            if (countRemain + countDelete != limitItem) ok = false;
+            if (countRemain != set.size()) ok = false;
+            if (set.isEmpty()) ok = false;
 
             StdOut.printf("Deleting the rest (%d items)...\n",
-                limitItem - countDelete);
+                    limitItem - countDelete);
             for (int i = countDelete; i < limitItem; i++)
                 set.delete(a[i]);
             if (!set.isEmpty()) ok = false;
 
             countPass++;
             if (ok) StdOut.printf("PASS %d TESTS SUCCEEDED\n", countPass);
-            else    StdOut.printf("PASS %d TESTS FAILED\n",    countPass);
+            else StdOut.printf("PASS %d TESTS FAILED\n", countPass);
         } while (ok && countPass < limitPass);
 
         if (!ok) throw new java.lang.RuntimeException("TESTS FAILED");

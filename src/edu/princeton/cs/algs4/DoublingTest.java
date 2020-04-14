@@ -30,7 +30,8 @@ public class DoublingTest {
     private static final int MAXIMUM_INTEGER = 1000000;
 
     // This class should not be instantiated.
-    private DoublingTest() { }
+    private DoublingTest() {
+    }
 
     /**
      * Returns the amount of time to call {@code ThreeSum.count()} with <em>n</em>
@@ -55,12 +56,12 @@ public class DoublingTest {
      *
      * @param args the command-line arguments
      */
-    public static void main(String[] args) { 
+    public static void main(String[] args) {
         for (int n = 250; true; n += n) {
             double time = timeTrial(n);
             StdOut.printf("%7d %7.1f\n", n, time);
-        } 
-    } 
+        }
+    }
 }
 
 /******************************************************************************

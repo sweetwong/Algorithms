@@ -19,22 +19,22 @@ import util.other.NumberUtils;
  */
 class Item136_只出现一次的数字 {
 
-  public static void main(String[] args) {
-    NumberUtils.printBinary(5 ^ 12 ^ 13 ^ 12 ^ 13);
-  }
-
-  /**
-   * 方法一: 利用异或, 一个数异或两次会等于它原来的数, 异或操作还满足交换律
-   */
-  public static int singleNumberXOR(int[] nums) {
-    int res = nums[0];
-    if (nums.length > 1) {
-      for (int i = 1; i < nums.length; i++) {
-        res = res ^ nums[i];
-      }
+    public static void main(String[] args) {
+        NumberUtils.printBinary(5 ^ 12 ^ 13 ^ 12 ^ 13);
     }
-    return res;
-  }
+
+    /**
+     * 方法一: 利用异或, 一个数异或两次会等于它原来的数, 异或操作还满足交换律
+     */
+    public static int singleNumberXOR(int[] nums) {
+        int res = nums[0];
+        if (nums.length > 1) {
+            for (int i = 1; i < nums.length; i++) {
+                res = res ^ nums[i];
+            }
+        }
+        return res;
+    }
 
 
 }

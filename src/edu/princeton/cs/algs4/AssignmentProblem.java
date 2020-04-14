@@ -49,7 +49,7 @@ public class AssignmentProblem {
      * @param  weight the <em>n</em>-by-<em>n</em> matrix of weights
      * @throws IllegalArgumentException unless all weights are nonnegative
      * @throws IllegalArgumentException if {@code weight} is {@code null}
-     */ 
+     */
     public AssignmentProblem(double[][] weight) {
         if (weight == null) throw new IllegalArgumentException("constructor argument is null");
 
@@ -58,7 +58,7 @@ public class AssignmentProblem {
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 if (Double.isNaN(weight[i][j]))
-                    throw new IllegalArgumentException("weight " + i + "-" + j  + " is NaN");
+                    throw new IllegalArgumentException("weight " + i + "-" + j + " is NaN");
                 if (weight[i][j] < minWeight) minWeight = weight[i][j];
                 this.weight[i][j] = weight[i][j];
             }
@@ -72,9 +72,9 @@ public class AssignmentProblem {
         xy = new int[n];
         yx = new int[n];
         for (int i = 0; i < n; i++)
-             xy[i] = UNMATCHED;
+            xy[i] = UNMATCHED;
         for (int j = 0; j < n; j++)
-             yx[j] = UNMATCHED;
+            yx[j] = UNMATCHED;
 
         // add n edges to matching
         for (int k = 0; k < n; k++) {
@@ -89,20 +89,20 @@ public class AssignmentProblem {
     private void augment() {
 
         // build residual graph
-        EdgeWeightedDigraph G = new EdgeWeightedDigraph(2*n+2);
-        int s = 2*n, t = 2*n+1;
+        EdgeWeightedDigraph G = new EdgeWeightedDigraph(2 * n + 2);
+        int s = 2 * n, t = 2 * n + 1;
         for (int i = 0; i < n; i++) {
             if (xy[i] == UNMATCHED)
                 G.addEdge(new DirectedEdge(s, i, 0.0));
         }
         for (int j = 0; j < n; j++) {
             if (yx[j] == UNMATCHED)
-                G.addEdge(new DirectedEdge(n+j, t, py[j]));
+                G.addEdge(new DirectedEdge(n + j, t, py[j]));
         }
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                if (xy[i] == j) G.addEdge(new DirectedEdge(n+j, i, 0.0));
-                else            G.addEdge(new DirectedEdge(i, n+j, reducedCost(i, j)));
+                if (xy[i] == j) G.addEdge(new DirectedEdge(n + j, i, 0.0));
+                else G.addEdge(new DirectedEdge(i, n + j, reducedCost(i, j)));
             }
         }
 
@@ -122,7 +122,7 @@ public class AssignmentProblem {
         for (int i = 0; i < n; i++)
             px[i] += spt.distTo(i);
         for (int j = 0; j < n; j++)
-            py[j] += spt.distTo(n+j);
+            py[j] += spt.distTo(n + j);
     }
 
     // reduced cost of i-j
@@ -194,7 +194,7 @@ public class AssignmentProblem {
     }
 
     private void validate(int i) {
-        if (i < 0 || i >= n) throw new IllegalArgumentException("index is not between 0 and " + (n-1) + ": " + i);
+        if (i < 0 || i >= n) throw new IllegalArgumentException("index is not between 0 and " + (n - 1) + ": " + i);
     }
 
 

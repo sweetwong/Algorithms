@@ -60,7 +60,7 @@ public class HopcroftKarp {
     private BipartiteX bipartition;      // the bipartition
     private int cardinality;             // cardinality of current matching
     private int[] mate;                  // mate[v] =  w if v-w is an edge in current matching
-                                         //         = -1 if v is not in current matching
+    //         = -1 if v is not in current matching
     private boolean[] inMinVertexCover;  // inMinVertexCover[v] = true iff v is in min vertex cover
     private boolean[] marked;            // marked[v] = true iff v is reachable via alternating path
     private int[] distTo;                // distTo[v] = number of edges on shortest path to v
@@ -107,7 +107,7 @@ public class HopcroftKarp {
                     if (!adj[v].hasNext())
                         path.pop();
 
-                    // advance
+                        // advance
                     else {
                         // process edge v-w only if it is an edge in level graph
                         int w = adj[v].next();
@@ -153,14 +153,14 @@ public class HopcroftKarp {
         return s;
     }
 
-   // is the edge v-w in the level graph?
+    // is the edge v-w in the level graph?
     private boolean isLevelGraphEdge(int v, int w) {
         return (distTo[w] == distTo[v] + 1) && isResidualGraphEdge(v, w);
     }
 
-   // is the edge v-w a forward edge not in the matching or a reverse edge in the matching?
+    // is the edge v-w a forward edge not in the matching or a reverse edge in the matching?
     private boolean isResidualGraphEdge(int v, int w) {
-        if ((mate[v] != w) &&  bipartition.color(v)) return true;
+        if ((mate[v] != w) && bipartition.color(v)) return true;
         if ((mate[v] == w) && !bipartition.color(v)) return true;
         return false;
     }
@@ -288,11 +288,11 @@ public class HopcroftKarp {
     // throw an exception if vertex is invalid
     private void validate(int v) {
         if (v < 0 || v >= V)
-            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V - 1));
     }
 
     /**************************************************************************
-     *   
+     *
      *  The code below is solely for testing correctness of the data type.
      *
      **************************************************************************/
@@ -311,7 +311,7 @@ public class HopcroftKarp {
         for (int v = 0; v < V; v++) {
             if (mate(v) != -1) matchedVertices++;
         }
-        if (2*size() != matchedVertices) return false;
+        if (2 * size() != matchedVertices) return false;
 
         // check that size() is consistent with minVertexCover()
         int sizeOfMinVertexCover = 0;
@@ -349,7 +349,7 @@ public class HopcroftKarp {
         return true;
     }
 
-    /** 
+    /**
      * Unit tests the {@code HopcroftKarp} data type.   
      * Takes three command-line arguments {@code V1}, {@code V2}, and {@code E};
      * creates a random bipartite graph with {@code V1} + {@code V2} vertices
@@ -362,7 +362,7 @@ public class HopcroftKarp {
 
         int V1 = Integer.parseInt(args[0]);
         int V2 = Integer.parseInt(args[1]);
-        int E  = Integer.parseInt(args[2]);
+        int E = Integer.parseInt(args[2]);
         Graph G = GraphGenerator.bipartite(V1, V2, E);
         if (G.V() < 1000) StdOut.println(G);
 

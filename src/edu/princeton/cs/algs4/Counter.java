@@ -42,14 +42,14 @@ public class Counter implements Comparable<Counter> {
      */
     public Counter(String id) {
         name = id;
-    } 
+    }
 
     /**
      * Increments the counter by 1.
      */
     public void increment() {
         count++;
-    } 
+    }
 
     /**
      * Returns the current value of this counter.
@@ -58,7 +58,7 @@ public class Counter implements Comparable<Counter> {
      */
     public int tally() {
         return count;
-    } 
+    }
 
     /**
      * Returns a string representation of this counter.
@@ -67,7 +67,7 @@ public class Counter implements Comparable<Counter> {
      */
     public String toString() {
         return count + " " + name;
-    } 
+    }
 
     /**
      * Compares this counter to the specified counter.
@@ -82,9 +82,9 @@ public class Counter implements Comparable<Counter> {
      */
     @Override
     public int compareTo(Counter that) {
-        if      (this.count < that.count) return -1;
+        if (this.count < that.count) return -1;
         else if (this.count > that.count) return +1;
-        else                              return  0;
+        else return 0;
     }
 
 
@@ -94,7 +94,7 @@ public class Counter implements Comparable<Counter> {
      *
      * @param args the command-line arguments
      */
-    public static void main(String[] args) { 
+    public static void main(String[] args) {
         int n = Integer.parseInt(args[0]);
         int trials = Integer.parseInt(args[1]);
 
@@ -113,8 +113,8 @@ public class Counter implements Comparable<Counter> {
         for (int i = 0; i < n; i++) {
             StdOut.println(hits[i]);
         }
-    } 
-} 
+    }
+}
 
 /******************************************************************************
  *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.

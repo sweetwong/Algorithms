@@ -2,7 +2,7 @@ package java.reflect.dynamic_proxy;
 
 interface Download {
 
-  int downloadVideo();
+    int downloadVideo();
 
-  int downloadAudio();
+    int downloadAudio();
 }

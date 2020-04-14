@@ -39,7 +39,7 @@ public class FlowNetwork {
     private final int V;
     private int E;
     private Bag<FlowEdge>[] adj;
-    
+
     /**
      * Initializes an empty flow network with {@code V} vertices and 0 edges.
      * @param V the number of vertices
@@ -73,7 +73,7 @@ public class FlowNetwork {
         }
     }
 
-    /**  
+    /**
      * Initializes a flow network from an input stream.
      * The format is the number of vertices <em>V</em>,
      * followed by the number of edges <em>E</em>,
@@ -117,7 +117,7 @@ public class FlowNetwork {
     // throw an IllegalArgumentException unless {@code 0 <= v < V}
     private void validateVertex(int v) {
         if (v < 0 || v >= V)
-            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V - 1));
     }
 
     /**

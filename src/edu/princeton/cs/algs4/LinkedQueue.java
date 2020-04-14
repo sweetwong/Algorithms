@@ -51,7 +51,7 @@ public class LinkedQueue<Item> implements Iterable<Item> {
      */
     public LinkedQueue() {
         first = null;
-        last  = null;
+        last = null;
         n = 0;
         assert check();
     }
@@ -69,7 +69,7 @@ public class LinkedQueue<Item> implements Iterable<Item> {
      * @return the number of items in this queue
      */
     public int size() {
-        return n;     
+        return n;
     }
 
     /**
@@ -92,7 +92,7 @@ public class LinkedQueue<Item> implements Iterable<Item> {
         last.item = item;
         last.next = null;
         if (isEmpty()) first = last;
-        else           oldlast.next = last;
+        else oldlast.next = last;
         n++;
         assert check();
     }
@@ -121,27 +121,24 @@ public class LinkedQueue<Item> implements Iterable<Item> {
         for (Item item : this)
             s.append(item + " ");
         return s.toString();
-    } 
+    }
 
     // check internal invariants
     private boolean check() {
         if (n < 0) {
             return false;
-        }
-        else if (n == 0) {
+        } else if (n == 0) {
             if (first != null) return false;
-            if (last  != null) return false;
-        }
-        else if (n == 1) {
+            if (last != null) return false;
+        } else if (n == 1) {
             if (first == null || last == null) return false;
-            if (first != last)                 return false;
-            if (first.next != null)            return false;
-        }
-        else {
+            if (first != last) return false;
+            if (first.next != null) return false;
+        } else {
             if (first == null || last == null) return false;
-            if (first == last)      return false;
+            if (first == last) return false;
             if (first.next == null) return false;
-            if (last.next  != null) return false;
+            if (last.next != null) return false;
 
             // check internal consistency of instance variable n
             int numberOfNodes = 0;
@@ -159,28 +156,33 @@ public class LinkedQueue<Item> implements Iterable<Item> {
         }
 
         return true;
-    } 
- 
+    }
+
 
     /**
      * Returns an iterator that iterates over the items in this queue in FIFO order.
      * @return an iterator that iterates over the items in this queue in FIFO order
      */
-    public Iterator<Item> iterator()  {
-        return new ListIterator();  
+    public Iterator<Item> iterator() {
+        return new ListIterator();
     }
 
     // an iterator, doesn't implement remove() since it's optional
     private class ListIterator implements Iterator<Item> {
         private Node current = first;
 
-        public boolean hasNext()  { return current != null;                     }
-        public void remove()      { throw new UnsupportedOperationException();  }
+        public boolean hasNext() {
+            return current != null;
+        }
+
+        public void remove() {
+            throw new UnsupportedOperationException();
+        }
 
         public Item next() {
             if (!hasNext()) throw new NoSuchElementException();
             Item item = current.item;
-            current = current.next; 
+            current = current.next;
             return item;
         }
     }

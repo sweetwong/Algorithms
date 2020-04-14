@@ -60,8 +60,8 @@ public class IndexMaxPQ<Key extends Comparable<Key>> implements Iterable<Integer
         this.maxN = maxN;
         n = 0;
         keys = (Key[]) new Comparable[maxN + 1];    // make this of length maxN??
-        pq   = new int[maxN + 1];
-        qp   = new int[maxN + 1];                   // make this of length maxN??
+        pq = new int[maxN + 1];
+        qp = new int[maxN + 1];                   // make this of length maxN??
         for (int i = 0; i <= maxN; i++)
             qp[i] = -1;
     }
@@ -98,7 +98,7 @@ public class IndexMaxPQ<Key extends Comparable<Key>> implements Iterable<Integer
         return n;
     }
 
-   /**
+    /**
      * Associate key with index i.
      *
      * @param  i an index
@@ -151,10 +151,10 @@ public class IndexMaxPQ<Key extends Comparable<Key>> implements Iterable<Integer
         exch(1, n--);
         sink(1);
 
-        assert pq[n+1] == max;
+        assert pq[n + 1] == max;
         qp[max] = -1;        // delete
         keys[max] = null;    // to help with garbage collection
-        pq[n+1] = -1;        // not needed
+        pq[n + 1] = -1;        // not needed
         return max;
     }
 
@@ -187,7 +187,7 @@ public class IndexMaxPQ<Key extends Comparable<Key>> implements Iterable<Integer
         sink(qp[i]);
     }
 
-   /**
+    /**
      * Change the key associated with index {@code i} to the specified value.
      *
      * @param  i the index of the key to change
@@ -266,9 +266,9 @@ public class IndexMaxPQ<Key extends Comparable<Key>> implements Iterable<Integer
         if (i >= maxN) throw new IllegalArgumentException("index >= capacity: " + i);
     }
 
-   /***************************************************************************
-    * General helper functions.
-    ***************************************************************************/
+    /***************************************************************************
+     * General helper functions.
+     ***************************************************************************/
     private boolean less(int i, int j) {
         return keys[pq[i]].compareTo(keys[pq[j]]) < 0;
     }
@@ -282,20 +282,20 @@ public class IndexMaxPQ<Key extends Comparable<Key>> implements Iterable<Integer
     }
 
 
-   /***************************************************************************
-    * Heap helper functions.
-    ***************************************************************************/
+    /***************************************************************************
+     * Heap helper functions.
+     ***************************************************************************/
     private void swim(int k) {
-        while (k > 1 && less(k/2, k)) {
-            exch(k, k/2);
-            k = k/2;
+        while (k > 1 && less(k / 2, k)) {
+            exch(k, k / 2);
+            k = k / 2;
         }
     }
 
     private void sink(int k) {
-        while (2*k <= n) {
-            int j = 2*k;
-            if (j < n && less(j, j+1)) j++;
+        while (2 * k <= n) {
+            int j = 2 * k;
+            if (j < n && less(j, j + 1)) j++;
             if (!less(k, j)) break;
             exch(k, j);
             k = j;
@@ -326,8 +326,13 @@ public class IndexMaxPQ<Key extends Comparable<Key>> implements Iterable<Integer
                 copy.insert(pq[i], keys[pq[i]]);
         }
 
-        public boolean hasNext()  { return !copy.isEmpty();                     }
-        public void remove()      { throw new UnsupportedOperationException();  }
+        public boolean hasNext() {
+            return !copy.isEmpty();
+        }
+
+        public void remove() {
+            throw new UnsupportedOperationException();
+        }
 
         public Integer next() {
             if (!hasNext()) throw new NoSuchElementException();
@@ -342,7 +347,7 @@ public class IndexMaxPQ<Key extends Comparable<Key>> implements Iterable<Integer
      */
     public static void main(String[] args) {
         // insert a bunch of strings
-        String[] strings = { "it", "was", "the", "best", "of", "times", "it", "was", "the", "worst" };
+        String[] strings = {"it", "was", "the", "best", "of", "times", "it", "was", "the", "worst"};
 
         IndexMaxPQ<String> pq = new IndexMaxPQ<String>(strings.length);
         for (int i = 0; i < strings.length; i++) {

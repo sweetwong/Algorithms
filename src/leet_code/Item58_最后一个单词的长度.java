@@ -14,27 +14,27 @@ package leet_code;
  */
 class Item58_最后一个单词的长度 {
 
-  public static void main(String[] args) {
-    System.out.println(lengthOfLastWord("Hello World"));
-  }
-
-  public static int lengthOfLastWord(String s) {
-    int len = s.length();
-    char[] chars = s.toCharArray();
-    int i = len - 1;
-
-    int count = 0;
-
-    while (i >= 0 && chars[i] == ' ') {
-      i--;
+    public static void main(String[] args) {
+        System.out.println(lengthOfLastWord("Hello World"));
     }
 
-    while (i >= 0 && chars[i] != ' ') {
-      count++;
-      i--;
-    }
+    public static int lengthOfLastWord(String s) {
+        int len = s.length();
+        char[] chars = s.toCharArray();
+        int i = len - 1;
 
-    return count;
-  }
+        int count = 0;
+
+        while (i >= 0 && chars[i] == ' ') {
+            i--;
+        }
+
+        while (i >= 0 && chars[i] != ' ') {
+            count++;
+            i--;
+        }
+
+        return count;
+    }
 
 }

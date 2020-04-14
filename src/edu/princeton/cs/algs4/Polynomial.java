@@ -50,7 +50,7 @@ public class Polynomial {
         if (b < 0) {
             throw new IllegalArgumentException("exponent cannot be negative: " + b);
         }
-        coef = new int[b+1];
+        coef = new int[b + 1];
         coef[b] = a;
         reduce();
     }
@@ -116,7 +116,7 @@ public class Polynomial {
         Polynomial poly = new Polynomial(0, this.degree + that.degree);
         for (int i = 0; i <= this.degree; i++)
             for (int j = 0; j <= that.degree; j++)
-                poly.coef[i+j] += (this.coef[i] * that.coef[j]);
+                poly.coef[i + j] += (this.coef[i] * that.coef[j]);
         poly.reduce();
         return poly;
     }
@@ -140,9 +140,9 @@ public class Polynomial {
     }
 
 
-    /**       
+    /**
      * Compares this polynomial to the specified polynomial.
-     *       
+     *
      * @param  other the other polynoimal
      * @return {@code true} if this polynomial equals {@code other};
      *         {@code false} otherwise
@@ -213,16 +213,16 @@ public class Polynomial {
      */
     @Override
     public String toString() {
-        if      (degree == -1) return "0";
-        else if (degree ==  0) return "" + coef[0];
-        else if (degree ==  1) return coef[1] + "x + " + coef[0];
+        if (degree == -1) return "0";
+        else if (degree == 0) return "" + coef[0];
+        else if (degree == 1) return coef[1] + "x + " + coef[0];
         String s = coef[degree] + "x^" + degree;
         for (int i = degree - 1; i >= 0; i--) {
-            if      (coef[i] == 0) continue;
-            else if (coef[i]  > 0) s = s + " + " + (coef[i]);
-            else if (coef[i]  < 0) s = s + " - " + (-coef[i]);
-            if      (i == 1) s = s + "x";
-            else if (i >  1) s = s + "x^" + i;
+            if (coef[i] == 0) continue;
+            else if (coef[i] > 0) s = s + " + " + (coef[i]);
+            else if (coef[i] < 0) s = s + " - " + (-coef[i]);
+            if (i == 1) s = s + "x";
+            else if (i > 1) s = s + "x^" + i;
         }
         return s;
     }
@@ -232,24 +232,24 @@ public class Polynomial {
      *
      * @param args the command-line arguments (none)
      */
-    public static void main(String[] args) { 
+    public static void main(String[] args) {
         Polynomial zero = new Polynomial(0, 0);
 
-        Polynomial p1   = new Polynomial(4, 3);
-        Polynomial p2   = new Polynomial(3, 2);
-        Polynomial p3   = new Polynomial(1, 0);
-        Polynomial p4   = new Polynomial(2, 1);
-        Polynomial p    = p1.plus(p2).plus(p3).plus(p4);   // 4x^3 + 3x^2 + 1
+        Polynomial p1 = new Polynomial(4, 3);
+        Polynomial p2 = new Polynomial(3, 2);
+        Polynomial p3 = new Polynomial(1, 0);
+        Polynomial p4 = new Polynomial(2, 1);
+        Polynomial p = p1.plus(p2).plus(p3).plus(p4);   // 4x^3 + 3x^2 + 1
 
-        Polynomial q1   = new Polynomial(3, 2);
-        Polynomial q2   = new Polynomial(5, 0);
-        Polynomial q    = q1.plus(q2);                     // 3x^2 + 5
+        Polynomial q1 = new Polynomial(3, 2);
+        Polynomial q2 = new Polynomial(5, 0);
+        Polynomial q = q1.plus(q2);                     // 3x^2 + 5
 
 
-        Polynomial r    = p.plus(q);
-        Polynomial s    = p.times(q);
-        Polynomial t    = p.compose(q);
-        Polynomial u    = p.minus(p);
+        Polynomial r = p.plus(q);
+        Polynomial s = p.times(q);
+        Polynomial t = p.compose(q);
+        Polynomial u = p.minus(p);
 
         StdOut.println("zero(x)     = " + zero);
         StdOut.println("p(x)        = " + p);

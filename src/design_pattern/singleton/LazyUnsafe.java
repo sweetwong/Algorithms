@@ -5,16 +5,16 @@ package design_pattern.singleton;
  */
 public class LazyUnsafe {
 
-  private static LazyUnsafe instance;
+    private static LazyUnsafe instance;
 
-  private LazyUnsafe() {
-  }
-
-  public static LazyUnsafe getInstance() {
-    if (instance == null) {
-      instance = new LazyUnsafe();
+    private LazyUnsafe() {
     }
-    return instance;
-  }
+
+    public static LazyUnsafe getInstance() {
+        if (instance == null) {
+            instance = new LazyUnsafe();
+        }
+        return instance;
+    }
 
 }

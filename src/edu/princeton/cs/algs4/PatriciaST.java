@@ -111,7 +111,9 @@ public class PatriciaST<Value> {
             this.val = val;
             this.b = b;
         }
-    };
+    }
+
+    ;
 
     /**
      * Initializes an empty PATRICIA-based symbol table.
@@ -145,7 +147,7 @@ public class PatriciaST<Value> {
         do {
             p = x;
             if (safeBitTest(key, x.b)) x = x.right;
-            else                       x = x.left;
+            else x = x.left;
         } while (p.b < x.b);
         if (!x.key.equals(key)) {
             int b = firstDifferingBit(x.key, key);
@@ -153,22 +155,20 @@ public class PatriciaST<Value> {
             do {
                 p = x;
                 if (safeBitTest(key, x.b)) x = x.right;
-                else                       x = x.left;
+                else x = x.left;
             } while (p.b < x.b && x.b < b);
             Node t = new Node(key, val, b);
             if (safeBitTest(key, b)) {
-                t.left  = x;
+                t.left = x;
                 t.right = t;
-            }
-            else {
-                t.left  = t;
+            } else {
+                t.left = t;
                 t.right = x;
             }
             if (safeBitTest(key, p.b)) p.right = t;
-            else                       p.left  = t;
+            else p.left = t;
             count++;
-        }
-        else x.val = val;
+        } else x.val = val;
     }
 
     /**
@@ -187,10 +187,10 @@ public class PatriciaST<Value> {
         do {
             p = x;
             if (safeBitTest(key, x.b)) x = x.right;
-            else                       x = x.left;
+            else x = x.left;
         } while (p.b < x.b);
         if (x.key.equals(key)) return x.val;
-        else                   return null;
+        else return null;
     }
 
     /**
@@ -210,7 +210,7 @@ public class PatriciaST<Value> {
             g = p;
             p = x;
             if (safeBitTest(key, x.b)) x = x.right;
-            else                       x = x.left;
+            else x = x.left;
         } while (p.b < x.b);
         if (x.key.equals(key)) {
             Node z;
@@ -218,23 +218,22 @@ public class PatriciaST<Value> {
             do {            // find the true parent (z) of x
                 z = y;
                 if (safeBitTest(key, y.b)) y = y.right;
-                else                       y = y.left;
+                else y = y.left;
             } while (y != x);
             if (x == p) {   // case 1: remove (leaf node) x
                 Node c;     // child of x
                 if (safeBitTest(key, x.b)) c = x.left;
-                else                       c = x.right;
+                else c = x.right;
                 if (safeBitTest(key, z.b)) z.right = c;
-                else                       z.left  = c;
-            }
-            else {          // case 2: p replaces (internal node) x
+                else z.left = c;
+            } else {          // case 2: p replaces (internal node) x
                 Node c;     // child of p
                 if (safeBitTest(key, p.b)) c = p.left;
-                else                       c = p.right;
+                else c = p.right;
                 if (safeBitTest(key, g.b)) g.right = c;
-                else                       g.left  = c;
+                else g.left = c;
                 if (safeBitTest(key, z.b)) z.right = p;
-                else                       z.left  = p;
+                else z.left = p;
                 p.left = x.left;
                 p.right = x.right;
                 p.b = x.b;
@@ -282,7 +281,7 @@ public class PatriciaST<Value> {
      */
     public Iterable<String> keys() {
         Queue<String> queue = new Queue<String>();
-        if (head.left  != head) keys(head.left,  0, queue);
+        if (head.left != head) keys(head.left, 0, queue);
         if (head.right != head) keys(head.right, 0, queue);
         return queue;
     }
@@ -311,9 +310,10 @@ public class PatriciaST<Value> {
      * (because these methods do not regard string lengths).
      */
     private static boolean safeBitTest(String key, int b) {
-        if (b < key.length() * 16)      return bitTest(key, b) != 0;
+        if (b < key.length() * 16) return bitTest(key, b) != 0;
         if (b > key.length() * 16 + 15) return false;   // padding
-        /* 16 bits of 0xffff */         return true;    // end marker
+        /* 16 bits of 0xffff */
+        return true;    // end marker
     }
 
     private static int bitTest(String key, int b) {
@@ -328,7 +328,7 @@ public class PatriciaST<Value> {
     private static int safeCharAt(String key, int i) {
         if (i < key.length()) return key.charAt(i);
         if (i > key.length()) return 0x0000;            // padding
-        else                  return 0xffff;            // end marker
+        else return 0xffff;            // end marker
     }
 
     /* For efficiency's sake, the firstDifferingBit function compares entire
@@ -382,7 +382,7 @@ public class PatriciaST<Value> {
 
         do {
             String[] a = new String[limitItem];
-            int[]    v = new int[limitItem];
+            int[] v = new int[limitItem];
 
             StdOut.printf("Creating dataset (%d items)...\n", limitItem);
             for (int i = 0; i < limitItem; i++) {
@@ -417,7 +417,7 @@ public class PatriciaST<Value> {
             for (String key : st.keys()) countKeys++;
             StdOut.printf("%d items iterated\n", countKeys);
             if (countKeys != limitItem - limitDelete) ok = false;
-            if (countKeys != st.size())               ok = false;
+            if (countKeys != st.size()) ok = false;
 
             int countDelete = 0;
             int countRemain = 0;
@@ -425,27 +425,26 @@ public class PatriciaST<Value> {
             for (int i = 0; i < limitItem; i++) {
                 if (i < limitDelete) {
                     if (!st.contains(a[v[i]])) countDelete++;
-                }
-                else {
+                } else {
                     int val = st.get(a[v[i]]);
                     if (val == v[i]) countRemain++;
                 }
             }
             StdOut.printf("%d items found and %d (deleted) items missing\n",
-                countRemain, countDelete);
+                    countRemain, countDelete);
             if (countRemain + countDelete != limitItem) ok = false;
-            if (countRemain               != st.size()) ok = false;
-            if (st.isEmpty())                           ok = false;
+            if (countRemain != st.size()) ok = false;
+            if (st.isEmpty()) ok = false;
 
             StdOut.printf("Deleting the rest (%d items)...\n",
-                limitItem - countDelete);
+                    limitItem - countDelete);
             for (int i = countDelete; i < limitItem; i++)
                 st.delete(a[v[i]]);
             if (!st.isEmpty()) ok = false;
 
             countPass++;
             if (ok) StdOut.printf("PASS %d TESTS SUCCEEDED\n", countPass);
-            else    StdOut.printf("PASS %d TESTS FAILED\n",    countPass);
+            else StdOut.printf("PASS %d TESTS FAILED\n", countPass);
         } while (ok && countPass < limitPass);
 
         if (!ok) throw new java.lang.RuntimeException("TESTS FAILED");

@@ -173,7 +173,7 @@ public class BreadthFirstDirectedPaths {
     private void validateVertex(int v) {
         int V = marked.length;
         if (v < 0 || v >= V)
-            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V - 1));
     }
 
     // throw an IllegalArgumentException unless {@code 0 <= v < V}
@@ -184,7 +184,7 @@ public class BreadthFirstDirectedPaths {
         int V = marked.length;
         for (int v : vertices) {
             if (v < 0 || v >= V) {
-                throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
+                throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V - 1));
             }
         }
     }
@@ -208,12 +208,10 @@ public class BreadthFirstDirectedPaths {
                 StdOut.printf("%d to %d (%d):  ", s, v, bfs.distTo(v));
                 for (int x : bfs.pathTo(v)) {
                     if (x == s) StdOut.print(x);
-                    else        StdOut.print("->" + x);
+                    else StdOut.print("->" + x);
                 }
                 StdOut.println();
-            }
-
-            else {
+            } else {
                 StdOut.printf("%d to %d (-):  not connected\n", s, v);
             }
 

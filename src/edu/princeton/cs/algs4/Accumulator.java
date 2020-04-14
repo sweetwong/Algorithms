@@ -51,7 +51,7 @@ public class Accumulator {
     public void addDataValue(double x) {
         n++;
         double delta = x - mu;
-        mu  += delta / n;
+        mu += delta / n;
         sum += (double) (n - 1) / n * delta * delta;
     }
 
@@ -112,7 +112,7 @@ public class Accumulator {
             stats.addDataValue(x);
         }
 
-        StdOut.printf("n      = %d\n",   stats.count());
+        StdOut.printf("n      = %d\n", stats.count());
         StdOut.printf("mean   = %.5f\n", stats.mean());
         StdOut.printf("stddev = %.5f\n", stats.stddev());
         StdOut.printf("var    = %.5f\n", stats.var());

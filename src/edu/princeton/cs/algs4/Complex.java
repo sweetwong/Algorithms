@@ -67,7 +67,7 @@ public class Complex {
     public String toString() {
         if (im == 0) return re + "";
         if (re == 0) return im + "i";
-        if (im <  0) return re + " - " + (-im) + "i";
+        if (im < 0) return re + " - " + (-im) + "i";
         return re + " + " + im + "i";
     }
 
@@ -165,7 +165,7 @@ public class Complex {
      * @return the complex number whose value is {@code (1 / this)}
      */
     public Complex reciprocal() {
-        double scale = re*re + im*im;
+        double scale = re * re + im * im;
         return new Complex(re / scale, -im / scale);
     }
 
@@ -233,7 +233,7 @@ public class Complex {
     public Complex tan() {
         return sin().divides(cos());
     }
-    
+
 
     /**
      * Unit tests the {@code Complex} data type.

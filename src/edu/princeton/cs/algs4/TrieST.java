@@ -60,7 +60,7 @@ public class TrieST<Value> {
         private Node[] next = new Node[R];
     }
 
-   /**
+    /**
      * Initializes an empty string symbol table.
      */
     public TrieST() {
@@ -97,7 +97,7 @@ public class TrieST<Value> {
         if (x == null) return null;
         if (d == key.length()) return x;
         char c = key.charAt(d);
-        return get(x.next[c], key, d+1);
+        return get(x.next[c], key, d + 1);
     }
 
     /**
@@ -122,7 +122,7 @@ public class TrieST<Value> {
             return x;
         }
         char c = key.charAt(d);
-        x.next[c] = put(x.next[c], key, val, d+1);
+        x.next[c] = put(x.next[c], key, val, d + 1);
         return x;
     }
 
@@ -202,8 +202,7 @@ public class TrieST<Value> {
                 collect(x.next[ch], prefix, pattern, results);
                 prefix.deleteCharAt(prefix.length() - 1);
             }
-        }
-        else {
+        } else {
             prefix.append(c);
             collect(x.next[c], prefix, pattern, results);
             prefix.deleteCharAt(prefix.length() - 1);
@@ -234,7 +233,7 @@ public class TrieST<Value> {
         if (x.val != null) length = d;
         if (d == query.length()) return length;
         char c = query.charAt(d);
-        return longestPrefixOf(x.next[c], query, d+1, length);
+        return longestPrefixOf(x.next[c], query, d + 1, length);
     }
 
     /**
@@ -252,10 +251,9 @@ public class TrieST<Value> {
         if (d == key.length()) {
             if (x.val != null) n--;
             x.val = null;
-        }
-        else {
+        } else {
             char c = key.charAt(d);
-            x.next[c] = delete(x.next[c], key, d+1);
+            x.next[c] = delete(x.next[c], key, d + 1);
         }
 
         // remove subtrie rooted at x if it is completely empty

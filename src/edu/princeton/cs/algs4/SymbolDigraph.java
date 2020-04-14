@@ -3,7 +3,7 @@
  *  Execution:    java SymbolDigraph
  *  Dependencies: ST.java Digraph.java In.java
  *  Data files:   https://algs4.cs.princeton.edu/42digraph/routes.txt
- *  
+ *
  *  %  java SymbolDigraph routes.txt " "
  *  JFK
  *     MCO
@@ -45,7 +45,7 @@ public class SymbolDigraph {
     private String[] keys;           // index  -> string
     private Digraph graph;           // the underlying digraph
 
-    /**  
+    /**
      * Initializes a digraph from a file using the specified delimiter.
      * Each line in the file contains
      * the name of a vertex, followed by a list of the names
@@ -166,7 +166,7 @@ public class SymbolDigraph {
     private void validateVertex(int v) {
         int V = graph.V();
         if (v < 0 || v >= V)
-            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V - 1));
     }
 
     /**
@@ -175,7 +175,7 @@ public class SymbolDigraph {
      * @param args the command-line arguments
      */
     public static void main(String[] args) {
-        String filename  = args[0];
+        String filename = args[0];
         String delimiter = args[1];
         SymbolDigraph sg = new SymbolDigraph(filename, delimiter);
         Digraph graph = sg.digraph();

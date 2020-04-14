@@ -92,7 +92,7 @@ public class DepthFirstSearch {
     private void validateVertex(int v) {
         int V = marked.length;
         if (v < 0 || v >= V)
-            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V - 1));
     }
 
     /**
@@ -112,7 +112,7 @@ public class DepthFirstSearch {
 
         StdOut.println();
         if (search.count() != G.V()) StdOut.println("NOT connected");
-        else                         StdOut.println("connected");
+        else StdOut.println("connected");
     }
 
 }

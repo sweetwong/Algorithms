@@ -5,7 +5,7 @@ package leet_code;
  */
 class Item42_接雨水 {
 
-  public int trap(int[] height) {
-    return 0;
-  }
+    public int trap(int[] height) {
+        return 0;
+    }
 }

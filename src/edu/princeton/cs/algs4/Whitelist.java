@@ -44,7 +44,8 @@ package edu.princeton.cs.algs4;
 public class Whitelist {
 
     // Do not instantiate.
-    private Whitelist() { }
+    private Whitelist() {
+    }
 
     /**
      * Reads in a sequence of integers from the whitelist file, specified as

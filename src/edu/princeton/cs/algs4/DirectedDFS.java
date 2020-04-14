@@ -22,6 +22,7 @@
  ******************************************************************************/
 
 package edu.princeton.cs.algs4;
+
 /**
  *  The {@code DirectedDFS} class represents a data type for 
  *  determining the vertices reachable from a given source vertex <em>s</em>
@@ -75,7 +76,7 @@ public class DirectedDFS {
         }
     }
 
-    private void dfs(Digraph G, int v) { 
+    private void dfs(Digraph G, int v) {
         count++;
         marked[v] = true;
         for (int w : G.adj(v)) {
@@ -109,7 +110,7 @@ public class DirectedDFS {
     private void validateVertex(int v) {
         int V = marked.length;
         if (v < 0 || v >= V)
-            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V - 1));
     }
 
     // throw an IllegalArgumentException unless {@code 0 <= v < V}
@@ -120,7 +121,7 @@ public class DirectedDFS {
         int V = marked.length;
         for (int v : vertices) {
             if (v < 0 || v >= V) {
-                throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
+                throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V - 1));
             }
         }
     }

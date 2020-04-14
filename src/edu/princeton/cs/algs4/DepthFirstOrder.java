@@ -66,11 +66,11 @@ public class DepthFirstOrder {
      * @param G the digraph
      */
     public DepthFirstOrder(Digraph G) {
-        pre    = new int[G.V()];
-        post   = new int[G.V()];
+        pre = new int[G.V()];
+        post = new int[G.V()];
         postorder = new Queue<Integer>();
-        preorder  = new Queue<Integer>();
-        marked    = new boolean[G.V()];
+        preorder = new Queue<Integer>();
+        marked = new boolean[G.V()];
         for (int v = 0; v < G.V(); v++)
             if (!marked[v]) dfs(G, v);
 
@@ -82,11 +82,11 @@ public class DepthFirstOrder {
      * @param G the edge-weighted digraph
      */
     public DepthFirstOrder(EdgeWeightedDigraph G) {
-        pre    = new int[G.V()];
-        post   = new int[G.V()];
+        pre = new int[G.V()];
+        post = new int[G.V()];
         postorder = new Queue<Integer>();
-        preorder  = new Queue<Integer>();
-        marked    = new boolean[G.V()];
+        preorder = new Queue<Integer>();
+        marked = new boolean[G.V()];
         for (int v = 0; v < G.V(); v++)
             if (!marked[v]) dfs(G, v);
     }
@@ -200,7 +200,7 @@ public class DepthFirstOrder {
     private void validateVertex(int v) {
         int V = marked.length;
         if (v < 0 || v >= V)
-            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V - 1));
     }
 
     /**

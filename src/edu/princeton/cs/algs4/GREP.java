@@ -41,7 +41,8 @@ package edu.princeton.cs.algs4;
 public class GREP {
 
     // do not instantiate
-    private GREP() { }
+    private GREP() {
+    }
 
     /**
      * Interprets the command-line argument as a regular expression
@@ -52,17 +53,17 @@ public class GREP {
      *
      * @param args the command-line arguments
      */
-    public static void main(String[] args) { 
+    public static void main(String[] args) {
         String regexp = "(.*" + args[0] + ".*)";
         NFA nfa = new NFA(regexp);
-        while (StdIn.hasNextLine()) { 
+        while (StdIn.hasNextLine()) {
             String line = StdIn.readLine();
             if (nfa.recognizes(line)) {
                 StdOut.println(line);
             }
         }
-    } 
-} 
+    }
+}
 
 /******************************************************************************
  *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.

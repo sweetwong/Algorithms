@@ -68,7 +68,7 @@ public class DepthFirstDirectedPaths {
         dfs(G, s);
     }
 
-    private void dfs(Digraph G, int v) { 
+    private void dfs(Digraph G, int v) {
         marked[v] = true;
         for (int w : G.adj(v)) {
             if (!marked[w]) {
@@ -90,7 +90,7 @@ public class DepthFirstDirectedPaths {
         return marked[v];
     }
 
-    
+
     /**
      * Returns a directed path from the source vertex {@code s} to vertex {@code v}, or
      * {@code null} if no such path.
@@ -113,7 +113,7 @@ public class DepthFirstDirectedPaths {
     private void validateVertex(int v) {
         int V = marked.length;
         if (v < 0 || v >= V)
-            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V - 1));
     }
 
     /**
@@ -134,12 +134,10 @@ public class DepthFirstDirectedPaths {
                 StdOut.printf("%d to %d:  ", s, v);
                 for (int x : dfs.pathTo(v)) {
                     if (x == s) StdOut.print(x);
-                    else        StdOut.print("-" + x);
+                    else StdOut.print("-" + x);
                 }
                 StdOut.println();
-            }
-
-            else {
+            } else {
                 StdOut.printf("%d to %d:  not connected\n", s, v);
             }
 

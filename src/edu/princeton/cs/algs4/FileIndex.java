@@ -36,14 +36,15 @@ import java.io.File;
  *  <p>
  *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/35applications">Section 3.5</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
- *  
+ *
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
  */
-public class FileIndex { 
+public class FileIndex {
 
     // Do not instantiate.
-    private FileIndex() { }
+    private FileIndex() {
+    }
 
     public static void main(String[] args) {
 

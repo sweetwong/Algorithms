@@ -159,9 +159,7 @@ public class DirectedCycleX {
                 StdOut.print(v + " ");
             }
             StdOut.println();
-        }
-
-        else {
+        } else {
             StdOut.println("No directed cycle");
         }
         StdOut.println();

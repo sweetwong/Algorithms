@@ -31,38 +31,38 @@ import java.util.Set;
  */
 class Item141_环形链表 {
 
-  /**
-   * 方法一: 使用HashSet
-   */
-  public static boolean hasCycleSet(ListNode head) {
-    Set<ListNode> set = new HashSet<>();
-    while (head != null) {
-      if (set.contains(head))
+    /**
+     * 方法一: 使用HashSet
+     */
+    public static boolean hasCycleSet(ListNode head) {
+        Set<ListNode> set = new HashSet<>();
+        while (head != null) {
+            if (set.contains(head))
+                return true;
+
+            set.add(head);
+            head = head.next;
+        }
+        return false;
+    }
+
+
+    /**
+     * 方法二: 使用快慢指针
+     */
+    public static boolean hasCycleTwoPoint(ListNode head) {
+        if (head == null || head.next == null) return false;
+
+        ListNode slow = head, fast = head.next;
+        while (slow != fast) {
+            // 快指针到头, 说明不是循环链表
+            if (fast == null || fast.next == null) return false;
+
+            // 慢指针走一步
+            slow = slow.next;
+            // 快指针走两步
+            fast = fast.next.next;
+        }
         return true;
-
-      set.add(head);
-      head = head.next;
     }
-    return false;
-  }
-
-
-  /**
-   * 方法二: 使用快慢指针
-   */
-  public static boolean hasCycleTwoPoint(ListNode head) {
-    if (head == null || head.next == null) return false;
-
-    ListNode slow = head, fast = head.next;
-    while (slow != fast) {
-      // 快指针到头, 说明不是循环链表
-      if (fast == null || fast.next == null) return false;
-
-      // 慢指针走一步
-      slow = slow.next;
-      // 快指针走两步
-      fast = fast.next.next;
-    }
-    return true;
-  }
 }

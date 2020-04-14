@@ -60,8 +60,8 @@ public class IndexMinPQ<Key extends Comparable<Key>> implements Iterable<Integer
         this.maxN = maxN;
         n = 0;
         keys = (Key[]) new Comparable[maxN + 1];    // make this of length maxN??
-        pq   = new int[maxN + 1];
-        qp   = new int[maxN + 1];                   // make this of length maxN??
+        pq = new int[maxN + 1];
+        qp = new int[maxN + 1];                   // make this of length maxN??
         for (int i = 0; i <= maxN; i++)
             qp[i] = -1;
     }
@@ -149,10 +149,10 @@ public class IndexMinPQ<Key extends Comparable<Key>> implements Iterable<Integer
         int min = pq[1];
         exch(1, n--);
         sink(1);
-        assert min == pq[n+1];
+        assert min == pq[n + 1];
         qp[min] = -1;        // delete
         keys[min] = null;    // to help with garbage collection
-        pq[n+1] = -1;        // not needed
+        pq[n + 1] = -1;        // not needed
         return min;
     }
 
@@ -263,9 +263,9 @@ public class IndexMinPQ<Key extends Comparable<Key>> implements Iterable<Integer
         if (i >= maxN) throw new IllegalArgumentException("index >= capacity: " + i);
     }
 
-   /***************************************************************************
-    * General helper functions.
-    ***************************************************************************/
+    /***************************************************************************
+     * General helper functions.
+     ***************************************************************************/
     private boolean greater(int i, int j) {
         return keys[pq[i]].compareTo(keys[pq[j]]) > 0;
     }
@@ -279,20 +279,20 @@ public class IndexMinPQ<Key extends Comparable<Key>> implements Iterable<Integer
     }
 
 
-   /***************************************************************************
-    * Heap helper functions.
-    ***************************************************************************/
+    /***************************************************************************
+     * Heap helper functions.
+     ***************************************************************************/
     private void swim(int k) {
-        while (k > 1 && greater(k/2, k)) {
-            exch(k, k/2);
-            k = k/2;
+        while (k > 1 && greater(k / 2, k)) {
+            exch(k, k / 2);
+            k = k / 2;
         }
     }
 
     private void sink(int k) {
-        while (2*k <= n) {
-            int j = 2*k;
-            if (j < n && greater(j, j+1)) j++;
+        while (2 * k <= n) {
+            int j = 2 * k;
+            if (j < n && greater(j, j + 1)) j++;
             if (!greater(k, j)) break;
             exch(k, j);
             k = j;
@@ -300,9 +300,9 @@ public class IndexMinPQ<Key extends Comparable<Key>> implements Iterable<Integer
     }
 
 
-   /***************************************************************************
-    * Iterators.
-    ***************************************************************************/
+    /***************************************************************************
+     * Iterators.
+     ***************************************************************************/
 
     /**
      * Returns an iterator that iterates over the keys on the
@@ -311,7 +311,9 @@ public class IndexMinPQ<Key extends Comparable<Key>> implements Iterable<Integer
      *
      * @return an iterator that iterates over the keys in ascending order
      */
-    public Iterator<Integer> iterator() { return new HeapIterator(); }
+    public Iterator<Integer> iterator() {
+        return new HeapIterator();
+    }
 
     private class HeapIterator implements Iterator<Integer> {
         // create a new pq
@@ -325,8 +327,13 @@ public class IndexMinPQ<Key extends Comparable<Key>> implements Iterable<Integer
                 copy.insert(pq[i], keys[pq[i]]);
         }
 
-        public boolean hasNext()  { return !copy.isEmpty();                     }
-        public void remove()      { throw new UnsupportedOperationException();  }
+        public boolean hasNext() {
+            return !copy.isEmpty();
+        }
+
+        public void remove() {
+            throw new UnsupportedOperationException();
+        }
 
         public Integer next() {
             if (!hasNext()) throw new NoSuchElementException();
@@ -342,7 +349,7 @@ public class IndexMinPQ<Key extends Comparable<Key>> implements Iterable<Integer
      */
     public static void main(String[] args) {
         // insert a bunch of strings
-        String[] strings = { "it", "was", "the", "best", "of", "times", "it", "was", "the", "worst" };
+        String[] strings = {"it", "was", "the", "best", "of", "times", "it", "was", "the", "worst"};
 
         IndexMinPQ<String> pq = new IndexMinPQ<String>(strings.length);
         for (int i = 0; i < strings.length; i++) {

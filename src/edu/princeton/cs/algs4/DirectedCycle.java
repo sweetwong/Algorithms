@@ -53,9 +53,9 @@ public class DirectedCycle {
      * @param G the digraph
      */
     public DirectedCycle(Digraph G) {
-        marked  = new boolean[G.V()];
+        marked = new boolean[G.V()];
         onStack = new boolean[G.V()];
-        edgeTo  = new int[G.V()];
+        edgeTo = new int[G.V()];
         for (int v = 0; v < G.V(); v++)
             if (!marked[v] && cycle == null) dfs(G, v);
     }
@@ -69,7 +69,7 @@ public class DirectedCycle {
             // short circuit if directed cycle found
             if (cycle != null) return;
 
-            // found new vertex, so recur
+                // found new vertex, so recur
             else if (!marked[w]) {
                 edgeTo[w] = v;
                 dfs(G, w);
@@ -143,9 +143,7 @@ public class DirectedCycle {
                 StdOut.print(v + " ");
             }
             StdOut.println();
-        }
-
-        else {
+        } else {
             StdOut.println("No directed cycle");
         }
         StdOut.println();

@@ -204,7 +204,7 @@ public class FloydWarshall {
     private void validateVertex(int v) {
         int V = distTo.length;
         if (v < 0 || v >= V)
-            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V - 1));
     }
 
     /**
@@ -263,8 +263,7 @@ public class FloydWarshall {
                         for (DirectedEdge e : spt.path(v, w))
                             StdOut.print(e + "  ");
                         StdOut.println();
-                    }
-                    else {
+                    } else {
                         StdOut.printf("%d to %d no path\n", v, w);
                     }
                 }

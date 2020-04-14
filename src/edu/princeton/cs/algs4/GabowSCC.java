@@ -22,6 +22,7 @@
  ******************************************************************************/
 
 package edu.princeton.cs.algs4;
+
 /**
  *  The {@code GabowSCC} class represents a data type for 
  *  determining the strong components in a digraph.
@@ -30,11 +31,9 @@ package edu.princeton.cs.algs4;
  *  determines whether two vertices are in the same strong component;
  *  and the <em>count</em> operation determines the number of strong
  *  components.
-
  *  The <em>component identifier</em> of a component is one of the
  *  vertices in the strong component: two vertices have the same component
  *  identifier if and only if they are in the same strong component.
-
  *  <p>
  *  This implementation uses the Gabow's algorithm.
  *  The constructor takes &Theta;(<em>V</em> + <em>E</em>) time,
@@ -71,7 +70,7 @@ public class GabowSCC {
         marked = new boolean[G.V()];
         stack1 = new Stack<Integer>();
         stack2 = new Stack<Integer>();
-        id = new int[G.V()]; 
+        id = new int[G.V()];
         preorder = new int[G.V()];
         for (int v = 0; v < G.V(); v++)
             id[v] = -1;
@@ -84,7 +83,7 @@ public class GabowSCC {
         assert check(G);
     }
 
-    private void dfs(Digraph G, int v) { 
+    private void dfs(Digraph G, int v) {
         marked[v] = true;
         preorder[v] = pre++;
         stack1.push(v);
@@ -159,7 +158,7 @@ public class GabowSCC {
     private void validateVertex(int v) {
         int V = marked.length;
         if (v < 0 || v >= V)
-            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V - 1));
     }
 
     /**

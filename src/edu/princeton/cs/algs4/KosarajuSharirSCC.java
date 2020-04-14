@@ -122,7 +122,7 @@ public class KosarajuSharirSCC {
     }
 
     // DFS on graph G
-    private void dfs(Digraph G, int v) { 
+    private void dfs(Digraph G, int v) {
         marked[v] = true;
         id[v] = count;
         for (int w : G.adj(v)) {
@@ -180,7 +180,7 @@ public class KosarajuSharirSCC {
     private void validateVertex(int v) {
         int V = marked.length;
         if (v < 0 || v >= V)
-            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V - 1));
     }
 
     /**

@@ -120,22 +120,22 @@ public final class RectHV {
      *
      * @param  that the other rectangle
      * @return {@code true} if this rectangle intersect the argument
-               rectangle at one or more points
+    rectangle at one or more points
      */
     public boolean intersects(RectHV that) {
         return this.xmax >= that.xmin && this.ymax >= that.ymin
-            && that.xmax >= this.xmin && that.ymax >= this.ymin;
+                && that.xmax >= this.xmin && that.ymax >= this.ymin;
     }
 
     /**
      * Returns true if this rectangle contain the point.
      * @param  p the point
      * @return {@code true} if this rectangle contain the point {@code p},
-               possibly at the boundary; {@code false} otherwise
+    possibly at the boundary; {@code false} otherwise
      */
     public boolean contains(Point2D p) {
         return (p.x() >= xmin) && (p.x() <= xmax)
-            && (p.y() >= ymin) && (p.y() <= ymax);
+                && (p.y() >= ymin) && (p.y() <= ymax);
     }
 
     /**
@@ -143,7 +143,7 @@ public final class RectHV {
      *
      * @param  p the point
      * @return the Euclidean distance between the point {@code p} and the closest point
-               on this rectangle; 0 if the point is contained in this rectangle
+    on this rectangle; 0 if the point is contained in this rectangle
      */
     public double distanceTo(Point2D p) {
         return Math.sqrt(this.distanceSquaredTo(p));
@@ -159,11 +159,11 @@ public final class RectHV {
      */
     public double distanceSquaredTo(Point2D p) {
         double dx = 0.0, dy = 0.0;
-        if      (p.x() < xmin) dx = p.x() - xmin;
+        if (p.x() < xmin) dx = p.x() - xmin;
         else if (p.x() > xmax) dx = p.x() - xmax;
-        if      (p.y() < ymin) dy = p.y() - ymin;
+        if (p.y() < ymin) dy = p.y() - ymin;
         else if (p.y() > ymax) dy = p.y() - ymax;
-        return dx*dx + dy*dy;
+        return dx * dx + dy * dy;
     }
 
     /**
@@ -196,7 +196,7 @@ public final class RectHV {
         int hash2 = ((Double) ymin).hashCode();
         int hash3 = ((Double) xmax).hashCode();
         int hash4 = ((Double) ymax).hashCode();
-        return 31*(31*(31*hash1 + hash2) + hash3) + hash4;
+        return 31 * (31 * (31 * hash1 + hash2) + hash3) + hash4;
     }
 
     /**

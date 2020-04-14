@@ -4,18 +4,18 @@
  *  Dependencies: StdOut.java StdIn.java
  *  Data files:   https://algs4.cs.princeton.edu/21elementary/tiny.txt
  *                https://algs4.cs.princeton.edu/21elementary/words3.txt
- *   
+ *
  *  Sorts a sequence of strings from standard input using selection sort.
- *   
+ *
  *  % more tiny.txt
  *  S O R T E X A M P L E
  *
  *  % java Selection < tiny.txt
  *  A E E L M O P R S T X                 [ one string per line ]
- *    
+ *
  *  % more words3.txt
  *  bed bug dad yes zoo ... all bad yet
- *  
+ *
  *  % java Selection < words3.txt
  *  all bad bed bug dad ... yes yet zoo    [ one string per line ]
  *
@@ -45,7 +45,8 @@ import java.util.Comparator;
 public class Selection {
 
     // This class should not be instantiated.
-    private Selection() { }
+    private Selection() {
+    }
 
     /**
      * Rearranges the array in ascending order, using the natural order.
@@ -55,7 +56,7 @@ public class Selection {
         int n = a.length;
         for (int i = 0; i < n; i++) {
             int min = i;
-            for (int j = i+1; j < n; j++) {
+            for (int j = i + 1; j < n; j++) {
                 if (less(a[j], a[min])) min = j;
             }
             exch(a, i, min);
@@ -73,7 +74,7 @@ public class Selection {
         int n = a.length;
         for (int i = 0; i < n; i++) {
             int min = i;
-            for (int j = i+1; j < n; j++) {
+            for (int j = i + 1; j < n; j++) {
                 if (less(comparator, a[j], a[min])) min = j;
             }
             exch(a, i, min);
@@ -83,10 +84,10 @@ public class Selection {
     }
 
 
-   /***************************************************************************
-    *  Helper sorting functions.
-    ***************************************************************************/
-    
+    /***************************************************************************
+     *  Helper sorting functions.
+     ***************************************************************************/
+
     // is v < w ?
     private static boolean less(Comparable v, Comparable w) {
         return v.compareTo(w) < 0;
@@ -96,8 +97,8 @@ public class Selection {
     private static boolean less(Comparator comparator, Object v, Object w) {
         return comparator.compare(v, w) < 0;
     }
-        
-        
+
+
     // exchange a[i] and a[j]
     private static void exch(Object[] a, int i, int j) {
         Object swap = a[i];
@@ -106,19 +107,19 @@ public class Selection {
     }
 
 
-   /***************************************************************************
-    *  Check if array is sorted - useful for debugging.
-    ***************************************************************************/
+    /***************************************************************************
+     *  Check if array is sorted - useful for debugging.
+     ***************************************************************************/
 
     // is the array a[] sorted?
     private static boolean isSorted(Comparable[] a) {
         return isSorted(a, 0, a.length - 1);
     }
-        
+
     // is the array sorted from a[lo] to a[hi]
     private static boolean isSorted(Comparable[] a, int lo, int hi) {
         for (int i = lo + 1; i <= hi; i++)
-            if (less(a[i], a[i-1])) return false;
+            if (less(a[i], a[i - 1])) return false;
         return true;
     }
 
@@ -130,10 +131,9 @@ public class Selection {
     // is the array sorted from a[lo] to a[hi]
     private static boolean isSorted(Object[] a, Comparator comparator, int lo, int hi) {
         for (int i = lo + 1; i <= hi; i++)
-            if (less(comparator, a[i], a[i-1])) return false;
+            if (less(comparator, a[i], a[i - 1])) return false;
         return true;
     }
-
 
 
     // print array to standard output

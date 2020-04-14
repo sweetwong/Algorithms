@@ -11,7 +11,7 @@ package edu.princeton.cs.algs4;
 
 /**
  *  The {@code FlowEdge} class represents a capacitated edge with a 
-  * flow in a {@link FlowNetwork}. Each edge consists of two integers
+ * flow in a {@link FlowNetwork}. Each edge consists of two integers
  *  (naming the two vertices), a real-valued capacity, and a real-valued
  *  flow. The data type provides methods for accessing the two endpoints
  *  of the directed edge and the weight. It also provides methods for
@@ -47,10 +47,10 @@ public class FlowEdge {
         if (v < 0) throw new IllegalArgumentException("vertex index must be a non-negative integer");
         if (w < 0) throw new IllegalArgumentException("vertex index must be a non-negative integer");
         if (!(capacity >= 0.0)) throw new IllegalArgumentException("Edge capacity must be non-negative");
-        this.v         = v;
-        this.w         = w;  
-        this.capacity  = capacity;
-        this.flow      = 0.0;
+        this.v = v;
+        this.w = w;
+        this.capacity = capacity;
+        this.flow = 0.0;
     }
 
     /**
@@ -69,13 +69,13 @@ public class FlowEdge {
     public FlowEdge(int v, int w, double capacity, double flow) {
         if (v < 0) throw new IllegalArgumentException("vertex index must be a non-negative integer");
         if (w < 0) throw new IllegalArgumentException("vertex index must be a non-negative integer");
-        if (!(capacity >= 0.0))  throw new IllegalArgumentException("edge capacity must be non-negative");
+        if (!(capacity >= 0.0)) throw new IllegalArgumentException("edge capacity must be non-negative");
         if (!(flow <= capacity)) throw new IllegalArgumentException("flow exceeds capacity");
-        if (!(flow >= 0.0))      throw new IllegalArgumentException("flow must be non-negative");
-        this.v         = v;
-        this.w         = w;  
-        this.capacity  = capacity;
-        this.flow      = flow;
+        if (!(flow >= 0.0)) throw new IllegalArgumentException("flow must be non-negative");
+        this.v = v;
+        this.w = w;
+        this.capacity = capacity;
+        this.flow = flow;
     }
 
     /**
@@ -83,10 +83,10 @@ public class FlowEdge {
      * @param e the edge to copy
      */
     public FlowEdge(FlowEdge e) {
-        this.v         = e.v;
-        this.w         = e.w;
-        this.capacity  = e.capacity;
-        this.flow      = e.flow;
+        this.v = e.v;
+        this.w = e.w;
+        this.capacity = e.capacity;
+        this.flow = e.flow;
     }
 
     /**
@@ -95,7 +95,7 @@ public class FlowEdge {
      */
     public int from() {
         return v;
-    }  
+    }
 
     /**
      * Returns the head vertex of the edge.
@@ -103,7 +103,7 @@ public class FlowEdge {
      */
     public int to() {
         return w;
-    }  
+    }
 
     /**
      * Returns the capacity of the edge.
@@ -131,7 +131,7 @@ public class FlowEdge {
      *   of the edge
      */
     public int other(int vertex) {
-        if      (vertex == v) return w;
+        if (vertex == v) return w;
         else if (vertex == w) return v;
         else throw new IllegalArgumentException("invalid endpoint");
     }
@@ -147,7 +147,7 @@ public class FlowEdge {
      * @throws IllegalArgumentException if {@code vertex} is not one of the endpoints of the edge
      */
     public double residualCapacityTo(int vertex) {
-        if      (vertex == v) return flow;              // backward edge
+        if (vertex == v) return flow;              // backward edge
         else if (vertex == w) return capacity - flow;   // forward edge
         else throw new IllegalArgumentException("invalid endpoint");
     }
@@ -167,7 +167,7 @@ public class FlowEdge {
     public void addResidualFlowTo(int vertex, double delta) {
         if (!(delta >= 0.0)) throw new IllegalArgumentException("Delta must be nonnegative");
 
-        if      (vertex == v) flow -= delta;           // backward edge
+        if (vertex == v) flow -= delta;           // backward edge
         else if (vertex == w) flow += delta;           // forward edge
         else throw new IllegalArgumentException("invalid endpoint");
 
@@ -177,7 +177,7 @@ public class FlowEdge {
         if (Math.abs(flow - capacity) <= FLOATING_POINT_EPSILON)
             flow = capacity;
 
-        if (!(flow >= 0.0))      throw new IllegalArgumentException("Flow is negative");
+        if (!(flow >= 0.0)) throw new IllegalArgumentException("Flow is negative");
         if (!(flow <= capacity)) throw new IllegalArgumentException("Flow exceeds capacity");
     }
 
@@ -191,7 +191,7 @@ public class FlowEdge {
     }
 
 
-   /**
+    /**
      * Unit tests the {@code FlowEdge} data type.
      *
      * @param args the command-line arguments

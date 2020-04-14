@@ -38,19 +38,20 @@ public class LZW {
     private static final int W = 12;         // codeword width
 
     // Do not instantiate.
-    private LZW() { }
+    private LZW() {
+    }
 
     /**
      * Reads a sequence of 8-bit bytes from standard input; compresses
      * them using LZW compression with 12-bit codewords; and writes the results
      * to standard output.
      */
-    public static void compress() { 
+    public static void compress() {
         String input = BinaryStdIn.readString();
         TST<Integer> st = new TST<Integer>();
         for (int i = 0; i < R; i++)
             st.put("" + (char) i, i);
-        int code = R+1;  // R is codeword for EOF
+        int code = R + 1;  // R is codeword for EOF
 
         while (input.length() > 0) {
             String s = st.longestPrefixOf(input);  // Find max prefix match s.
@@ -62,7 +63,7 @@ public class LZW {
         }
         BinaryStdOut.write(R, W);
         BinaryStdOut.close();
-    } 
+    }
 
     /**
      * Reads a sequence of bit encoded using LZW compression with
@@ -101,7 +102,7 @@ public class LZW {
      * @param args the command-line arguments
      */
     public static void main(String[] args) {
-        if      (args[0].equals("-")) compress();
+        if (args[0].equals("-")) compress();
         else if (args[0].equals("+")) expand();
         else throw new IllegalArgumentException("Illegal command line argument");
     }

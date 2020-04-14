@@ -23,7 +23,7 @@ package edu.princeton.cs.algs4;
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
  */
-public class Edge implements Comparable<Edge> { 
+public class Edge implements Comparable<Edge> {
 
     private final int v;
     private final int w;
@@ -36,7 +36,7 @@ public class Edge implements Comparable<Edge> {
      * @param  v one vertex
      * @param  w the other vertex
      * @param  weight the weight of this edge
-     * @throws IllegalArgumentException if either {@code v} or {@code w} 
+     * @throws IllegalArgumentException if either {@code v} or {@code w}
      *         is a negative integer
      * @throws IllegalArgumentException if {@code weight} is {@code NaN}
      */
@@ -76,7 +76,7 @@ public class Edge implements Comparable<Edge> {
      *         endpoints of this edge
      */
     public int other(int vertex) {
-        if      (vertex == v) return w;
+        if (vertex == v) return w;
         else if (vertex == w) return v;
         else throw new IllegalArgumentException("Illegal endpoint");
     }

@@ -6,10 +6,10 @@ package leet_code;
  */
 class Item28_实现strStr {
 
-  // todo
-  public int strStr(String haystack, String needle) {
-    return haystack.indexOf(needle);
-  }
+    // todo
+    public int strStr(String haystack, String needle) {
+        return haystack.indexOf(needle);
+    }
 
 
 }

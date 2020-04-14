@@ -505,7 +505,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
     /**
      *  The color green.
      */
-    public static final Color GREEN  = Color.GREEN;
+    public static final Color GREEN = Color.GREEN;
 
     /**
      *  The color light gray.
@@ -567,7 +567,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
     public static final Color PRINCETON_ORANGE = new Color(245, 128, 37);
 
     // default colors
-    private static final Color DEFAULT_PEN_COLOR   = BLACK;
+    private static final Color DEFAULT_PEN_COLOR = BLACK;
     private static final Color DEFAULT_CLEAR_COLOR = WHITE;
 
     // current pen color
@@ -575,7 +575,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 
     // default canvas size is DEFAULT_SIZE-by-DEFAULT_SIZE
     private static final int DEFAULT_SIZE = 512;
-    private static int width  = DEFAULT_SIZE;
+    private static int width = DEFAULT_SIZE;
     private static int height = DEFAULT_SIZE;
 
     // default pen radius
@@ -628,7 +628,8 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
     private static TreeSet<Integer> keysDown = new TreeSet<Integer>();
 
     // singleton pattern: client can't instantiate
-    private StdDraw() { }
+    private StdDraw() {
+    }
 
 
     // static initializer
@@ -671,10 +672,10 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
     private static void init() {
         if (frame != null) frame.setVisible(false);
         frame = new JFrame();
-        offscreenImage = new BufferedImage(2*width, 2*height, BufferedImage.TYPE_INT_ARGB);
-        onscreenImage  = new BufferedImage(2*width, 2*height, BufferedImage.TYPE_INT_ARGB);
+        offscreenImage = new BufferedImage(2 * width, 2 * height, BufferedImage.TYPE_INT_ARGB);
+        onscreenImage = new BufferedImage(2 * width, 2 * height, BufferedImage.TYPE_INT_ARGB);
         offscreen = offscreenImage.createGraphics();
-        onscreen  = onscreenImage.createGraphics();
+        onscreen = onscreenImage.createGraphics();
         offscreen.scale(2.0, 2.0);  // since we made it 2x as big
 
         setXscale();
@@ -688,7 +689,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 
         // add antialiasing
         RenderingHints hints = new RenderingHints(RenderingHints.KEY_ANTIALIASING,
-                                                  RenderingHints.VALUE_ANTIALIAS_ON);
+                RenderingHints.VALUE_ANTIALIAS_ON);
         hints.put(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
         offscreen.addRenderingHints(hints);
 
@@ -721,14 +722,14 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
         menuItem1.addActionListener(std);
         // Java 10+: replace getMenuShortcutKeyMask() with getMenuShortcutKeyMaskEx()
         menuItem1.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S,
-                                Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
+                Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
         menu.add(menuItem1);
         return menuBar;
     }
 
-   /***************************************************************************
-    *  User and screen coordinate systems.
-    ***************************************************************************/
+    /***************************************************************************
+     *  User and screen coordinate systems.
+     ***************************************************************************/
 
     // throw an IllegalArgumentException if x is NaN or infinite
     private static void validate(double x, String name) {
@@ -830,12 +831,29 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
     }
 
     // helper functions that scale from user coordinates to screen coordinates and back
-    private static double  scaleX(double x) { return width  * (x - xmin) / (xmax - xmin); }
-    private static double  scaleY(double y) { return height * (ymax - y) / (ymax - ymin); }
-    private static double factorX(double w) { return w * width  / Math.abs(xmax - xmin);  }
-    private static double factorY(double h) { return h * height / Math.abs(ymax - ymin);  }
-    private static double   userX(double x) { return xmin + x * (xmax - xmin) / width;    }
-    private static double   userY(double y) { return ymax - y * (ymax - ymin) / height;   }
+    private static double scaleX(double x) {
+        return width * (x - xmin) / (xmax - xmin);
+    }
+
+    private static double scaleY(double y) {
+        return height * (ymax - y) / (ymax - ymin);
+    }
+
+    private static double factorX(double w) {
+        return w * width / Math.abs(xmax - xmin);
+    }
+
+    private static double factorY(double h) {
+        return h * height / Math.abs(ymax - ymin);
+    }
+
+    private static double userX(double x) {
+        return xmin + x * (xmax - xmin) / width;
+    }
+
+    private static double userY(double y) {
+        return ymax - y * (ymax - ymin) / height;
+    }
 
 
     /**
@@ -943,9 +961,9 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
      *         or {@code blue} is outside its prescribed range
      */
     public static void setPenColor(int red, int green, int blue) {
-        if (red   < 0 || red   >= 256) throw new IllegalArgumentException("red must be between 0 and 255");
+        if (red < 0 || red >= 256) throw new IllegalArgumentException("red must be between 0 and 255");
         if (green < 0 || green >= 256) throw new IllegalArgumentException("green must be between 0 and 255");
-        if (blue  < 0 || blue  >= 256) throw new IllegalArgumentException("blue must be between 0 and 255");
+        if (blue < 0 || blue >= 256) throw new IllegalArgumentException("blue must be between 0 and 255");
         setPenColor(new Color(red, green, blue));
     }
 
@@ -977,9 +995,9 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
     }
 
 
-   /***************************************************************************
-    *  Drawing geometric shapes.
-    ***************************************************************************/
+    /***************************************************************************
+     *  Drawing geometric shapes.
+     ***************************************************************************/
 
     /**
      * Draws a line segment between (<em>x</em><sub>0</sub>, <em>y</em><sub>0</sub>) and
@@ -1037,8 +1055,8 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
         // double hs = factorY(2*r);
         // if (ws <= 1 && hs <= 1) pixel(x, y);
         if (scaledPenRadius <= 1) pixel(x, y);
-        else offscreen.fill(new Ellipse2D.Double(xs - scaledPenRadius/2, ys - scaledPenRadius/2,
-                                                 scaledPenRadius, scaledPenRadius));
+        else offscreen.fill(new Ellipse2D.Double(xs - scaledPenRadius / 2, ys - scaledPenRadius / 2,
+                scaledPenRadius, scaledPenRadius));
         draw();
     }
 
@@ -1059,10 +1077,10 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 
         double xs = scaleX(x);
         double ys = scaleY(y);
-        double ws = factorX(2*radius);
-        double hs = factorY(2*radius);
+        double ws = factorX(2 * radius);
+        double hs = factorY(2 * radius);
         if (ws <= 1 && hs <= 1) pixel(x, y);
-        else offscreen.draw(new Ellipse2D.Double(xs - ws/2, ys - hs/2, ws, hs));
+        else offscreen.draw(new Ellipse2D.Double(xs - ws / 2, ys - hs / 2, ws, hs));
         draw();
     }
 
@@ -1083,10 +1101,10 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 
         double xs = scaleX(x);
         double ys = scaleY(y);
-        double ws = factorX(2*radius);
-        double hs = factorY(2*radius);
+        double ws = factorX(2 * radius);
+        double hs = factorY(2 * radius);
         if (ws <= 1 && hs <= 1) pixel(x, y);
-        else offscreen.fill(new Ellipse2D.Double(xs - ws/2, ys - hs/2, ws, hs));
+        else offscreen.fill(new Ellipse2D.Double(xs - ws / 2, ys - hs / 2, ws, hs));
         draw();
     }
 
@@ -1113,10 +1131,10 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 
         double xs = scaleX(x);
         double ys = scaleY(y);
-        double ws = factorX(2*semiMajorAxis);
-        double hs = factorY(2*semiMinorAxis);
+        double ws = factorX(2 * semiMajorAxis);
+        double hs = factorY(2 * semiMinorAxis);
         if (ws <= 1 && hs <= 1) pixel(x, y);
-        else offscreen.draw(new Ellipse2D.Double(xs - ws/2, ys - hs/2, ws, hs));
+        else offscreen.draw(new Ellipse2D.Double(xs - ws / 2, ys - hs / 2, ws, hs));
         draw();
     }
 
@@ -1142,10 +1160,10 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 
         double xs = scaleX(x);
         double ys = scaleY(y);
-        double ws = factorX(2*semiMajorAxis);
-        double hs = factorY(2*semiMinorAxis);
+        double ws = factorX(2 * semiMajorAxis);
+        double hs = factorY(2 * semiMinorAxis);
         if (ws <= 1 && hs <= 1) pixel(x, y);
-        else offscreen.fill(new Ellipse2D.Double(xs - ws/2, ys - hs/2, ws, hs));
+        else offscreen.fill(new Ellipse2D.Double(xs - ws / 2, ys - hs / 2, ws, hs));
         draw();
     }
 
@@ -1174,10 +1192,10 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
         while (angle2 < angle1) angle2 += 360;
         double xs = scaleX(x);
         double ys = scaleY(y);
-        double ws = factorX(2*radius);
-        double hs = factorY(2*radius);
+        double ws = factorX(2 * radius);
+        double hs = factorY(2 * radius);
         if (ws <= 1 && hs <= 1) pixel(x, y);
-        else offscreen.draw(new Arc2D.Double(xs - ws/2, ys - hs/2, ws, hs, angle1, angle2 - angle1, Arc2D.OPEN));
+        else offscreen.draw(new Arc2D.Double(xs - ws / 2, ys - hs / 2, ws, hs, angle1, angle2 - angle1, Arc2D.OPEN));
         draw();
     }
 
@@ -1198,10 +1216,10 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 
         double xs = scaleX(x);
         double ys = scaleY(y);
-        double ws = factorX(2*halfLength);
-        double hs = factorY(2*halfLength);
+        double ws = factorX(2 * halfLength);
+        double hs = factorY(2 * halfLength);
         if (ws <= 1 && hs <= 1) pixel(x, y);
-        else offscreen.draw(new Rectangle2D.Double(xs - ws/2, ys - hs/2, ws, hs));
+        else offscreen.draw(new Rectangle2D.Double(xs - ws / 2, ys - hs / 2, ws, hs));
         draw();
     }
 
@@ -1222,10 +1240,10 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 
         double xs = scaleX(x);
         double ys = scaleY(y);
-        double ws = factorX(2*halfLength);
-        double hs = factorY(2*halfLength);
+        double ws = factorX(2 * halfLength);
+        double hs = factorY(2 * halfLength);
         if (ws <= 1 && hs <= 1) pixel(x, y);
-        else offscreen.fill(new Rectangle2D.Double(xs - ws/2, ys - hs/2, ws, hs));
+        else offscreen.fill(new Rectangle2D.Double(xs - ws / 2, ys - hs / 2, ws, hs));
         draw();
     }
 
@@ -1250,10 +1268,10 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 
         double xs = scaleX(x);
         double ys = scaleY(y);
-        double ws = factorX(2*halfWidth);
-        double hs = factorY(2*halfHeight);
+        double ws = factorX(2 * halfWidth);
+        double hs = factorY(2 * halfHeight);
         if (ws <= 1 && hs <= 1) pixel(x, y);
-        else offscreen.draw(new Rectangle2D.Double(xs - ws/2, ys - hs/2, ws, hs));
+        else offscreen.draw(new Rectangle2D.Double(xs - ws / 2, ys - hs / 2, ws, hs));
         draw();
     }
 
@@ -1277,10 +1295,10 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 
         double xs = scaleX(x);
         double ys = scaleY(y);
-        double ws = factorX(2*halfWidth);
-        double hs = factorY(2*halfHeight);
+        double ws = factorX(2 * halfWidth);
+        double hs = factorY(2 * halfHeight);
         if (ws <= 1 && hs <= 1) pixel(x, y);
-        else offscreen.fill(new Rectangle2D.Double(xs - ws/2, ys - hs/2, ws, hs));
+        else offscreen.fill(new Rectangle2D.Double(xs - ws / 2, ys - hs / 2, ws, hs));
         draw();
     }
 
@@ -1354,9 +1372,9 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
     }
 
 
-   /***************************************************************************
-    *  Drawing images.
-    ***************************************************************************/
+    /***************************************************************************
+     *  Drawing images.
+     ***************************************************************************/
     // get an image from the given filename
     private static Image getImage(String filename) {
         if (filename == null) throw new IllegalArgumentException();
@@ -1369,8 +1387,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
             try {
                 URL url = new URL(filename);
                 icon = new ImageIcon(url);
-            }
-            catch (MalformedURLException e) {
+            } catch (MalformedURLException e) {
                 /* not a url */
             }
         }
@@ -1392,13 +1409,13 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
         return icon.getImage();
     }
 
-   /***************************************************************************
-    * [Summer 2016] Should we update to use ImageIO instead of ImageIcon()?
-    *               Seems to have some issues loading images on some systems
-    *               and slows things down on other systems.
-    *               especially if you don't call ImageIO.setUseCache(false)
-    *               One advantage is that it returns a BufferedImage.
-    ***************************************************************************/
+    /***************************************************************************
+     * [Summer 2016] Should we update to use ImageIO instead of ImageIcon()?
+     *               Seems to have some issues loading images on some systems
+     *               and slows things down on other systems.
+     *               especially if you don't call ImageIO.setUseCache(false)
+     *               One advantage is that it returns a BufferedImage.
+     ***************************************************************************/
 /*
     private static BufferedImage getImage(String filename) {
         if (filename == null) throw new IllegalArgumentException();
@@ -1435,6 +1452,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
         throw new IllegalArgumentException("image " + filename + " not found");
     }
 */
+
     /**
      * Draws the specified image centered at (<em>x</em>, <em>y</em>).
      * The supported image formats are JPEG, PNG, and GIF.
@@ -1464,7 +1482,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
         int hs = image.getHeight(null);
         if (ws < 0 || hs < 0) throw new IllegalArgumentException("image " + filename + " is corrupt");
 
-        offscreen.drawImage(image, (int) Math.round(xs - ws/2.0), (int) Math.round(ys - hs/2.0), null);
+        offscreen.drawImage(image, (int) Math.round(xs - ws / 2.0), (int) Math.round(ys - hs / 2.0), null);
         draw();
     }
 
@@ -1498,7 +1516,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
         if (ws < 0 || hs < 0) throw new IllegalArgumentException("image " + filename + " is corrupt");
 
         offscreen.rotate(Math.toRadians(-degrees), xs, ys);
-        offscreen.drawImage(image, (int) Math.round(xs - ws/2.0), (int) Math.round(ys - hs/2.0), null);
+        offscreen.drawImage(image, (int) Math.round(xs - ws / 2.0), (int) Math.round(ys - hs / 2.0), null);
         offscreen.rotate(Math.toRadians(+degrees), xs, ys);
 
         draw();
@@ -1537,10 +1555,10 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
         if (ws < 0 || hs < 0) throw new IllegalArgumentException("image " + filename + " is corrupt");
         if (ws <= 1 && hs <= 1) pixel(x, y);
         else {
-            offscreen.drawImage(image, (int) Math.round(xs - ws/2.0),
-                                       (int) Math.round(ys - hs/2.0),
-                                       (int) Math.round(ws),
-                                       (int) Math.round(hs), null);
+            offscreen.drawImage(image, (int) Math.round(xs - ws / 2.0),
+                    (int) Math.round(ys - hs / 2.0),
+                    (int) Math.round(ws),
+                    (int) Math.round(hs), null);
         }
         draw();
     }
@@ -1580,18 +1598,18 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
         if (ws <= 1 && hs <= 1) pixel(x, y);
 
         offscreen.rotate(Math.toRadians(-degrees), xs, ys);
-        offscreen.drawImage(image, (int) Math.round(xs - ws/2.0),
-                                   (int) Math.round(ys - hs/2.0),
-                                   (int) Math.round(ws),
-                                   (int) Math.round(hs), null);
+        offscreen.drawImage(image, (int) Math.round(xs - ws / 2.0),
+                (int) Math.round(ys - hs / 2.0),
+                (int) Math.round(ws),
+                (int) Math.round(hs), null);
         offscreen.rotate(Math.toRadians(+degrees), xs, ys);
 
         draw();
     }
 
-   /***************************************************************************
-    *  Drawing text.
-    ***************************************************************************/
+    /***************************************************************************
+     *  Drawing text.
+     ***************************************************************************/
 
     /**
      * Writes the given text string in the current font, centered at (<em>x</em>, <em>y</em>).
@@ -1613,7 +1631,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
         double ys = scaleY(y);
         int ws = metrics.stringWidth(text);
         int hs = metrics.getDescent();
-        offscreen.drawString(text, (float) (xs - ws/2.0), (float) (ys + hs));
+        offscreen.drawString(text, (float) (xs - ws / 2.0), (float) (ys + hs));
         draw();
     }
 
@@ -1710,8 +1728,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
         validateNonnegative(t, "t");
         try {
             Thread.sleep(t);
-        }
-        catch (InterruptedException e) {
+        } catch (InterruptedException e) {
             System.out.println("Error sleeping");
         }
     }
@@ -1751,9 +1768,9 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
     }
 
 
-   /***************************************************************************
-    *  Save drawing to a file.
-    ***************************************************************************/
+    /***************************************************************************
+     *  Save drawing to a file.
+     ***************************************************************************/
 
     /**
      * Saves the drawing to using the specified filename.
@@ -1772,8 +1789,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
         if ("png".equalsIgnoreCase(suffix)) {
             try {
                 ImageIO.write(onscreenImage, suffix, file);
-            }
-            catch (IOException e) {
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
@@ -1783,22 +1799,19 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
         else if ("jpg".equalsIgnoreCase(suffix)) {
             WritableRaster raster = onscreenImage.getRaster();
             WritableRaster newRaster;
-            newRaster = raster.createWritableChild(0, 0, width, height, 0, 0, new int[] {0, 1, 2});
+            newRaster = raster.createWritableChild(0, 0, width, height, 0, 0, new int[]{0, 1, 2});
             DirectColorModel cm = (DirectColorModel) onscreenImage.getColorModel();
             DirectColorModel newCM = new DirectColorModel(cm.getPixelSize(),
-                                                          cm.getRedMask(),
-                                                          cm.getGreenMask(),
-                                                          cm.getBlueMask());
-            BufferedImage rgbBuffer = new BufferedImage(newCM, newRaster, false,  null);
+                    cm.getRedMask(),
+                    cm.getGreenMask(),
+                    cm.getBlueMask());
+            BufferedImage rgbBuffer = new BufferedImage(newCM, newRaster, false, null);
             try {
                 ImageIO.write(rgbBuffer, suffix, file);
-            }
-            catch (IOException e) {
+            } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
-
-        else {
+        } else {
             System.out.println("Invalid image file type: " + suffix);
         }
     }
@@ -1818,9 +1831,9 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
     }
 
 
-   /***************************************************************************
-    *  Mouse interactions.
-    ***************************************************************************/
+    /***************************************************************************
+     *  Mouse interactions.
+     ***************************************************************************/
 
     /**
      * Returns true if the mouse is being pressed.
@@ -1919,7 +1932,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
      * This method cannot be called directly.
      */
     @Override
-    public void mouseDragged(MouseEvent e)  {
+    public void mouseDragged(MouseEvent e) {
         synchronized (mouseLock) {
             mouseX = StdDraw.userX(e.getX());
             mouseY = StdDraw.userY(e.getY());
@@ -1938,9 +1951,9 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
     }
 
 
-   /***************************************************************************
-    *  Keyboard interactions.
-    ***************************************************************************/
+    /***************************************************************************
+     *  Keyboard interactions.
+     ***************************************************************************/
 
     /**
      * Returns true if the user has typed a key (that has not yet been processed).
@@ -1980,7 +1993,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
      * Returns true if the given key is being pressed.
      * <p>
      * This method takes the keycode (corresponding to a physical key)
-    *  as an argument. It can handle action keys
+     *  as an argument. It can handle action keys
      * (such as F1 and arrow keys) and modifier keys (such as shift and control).
      * See {@link KeyEvent} for a description of key codes.
      *
@@ -2026,12 +2039,12 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
     }
 
 
-   /***************************************************************************
-    *  For improved resolution on Mac Retina displays.
-    ***************************************************************************/
+    /***************************************************************************
+     *  For improved resolution on Mac Retina displays.
+     ***************************************************************************/
 
     private static class RetinaImageIcon extends ImageIcon {
-    
+
         public RetinaImageIcon(Image image) {
             super(image);
         }
@@ -2051,9 +2064,9 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 
         public synchronized void paintIcon(Component c, Graphics g, int x, int y) {
             Graphics2D g2 = (Graphics2D) g.create();
-            g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION,RenderingHints.VALUE_INTERPOLATION_BICUBIC);
-            g2.setRenderingHint(RenderingHints.KEY_RENDERING,RenderingHints.VALUE_RENDER_QUALITY);
-            g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
+            g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BICUBIC);
+            g2.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+            g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
             g2.scale(0.5, 0.5);
             super.paintIcon(c, g2, x * 2, y * 2);
             g2.dispose();
@@ -2078,8 +2091,8 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
         // draw a blue diamond
         StdDraw.setPenRadius();
         StdDraw.setPenColor(StdDraw.BOOK_BLUE);
-        double[] x = { 0.1, 0.2, 0.3, 0.2 };
-        double[] y = { 0.2, 0.3, 0.2, 0.1 };
+        double[] x = {0.1, 0.2, 0.3, 0.2};
+        double[] y = {0.2, 0.3, 0.2, 0.1};
         StdDraw.filledPolygon(x, y);
 
         // text

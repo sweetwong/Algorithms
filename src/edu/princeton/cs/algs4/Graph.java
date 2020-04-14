@@ -31,7 +31,7 @@
  *  1: 220 203 200 194 189 164 150 130 107 72 
  *  2: 141 110 108 86 79 51 42 18 14 
  *  ...
- *  
+ *
  ******************************************************************************/
 
 package edu.princeton.cs.algs4;
@@ -74,7 +74,7 @@ public class Graph {
     private final int V;
     private int E;
     private Bag<Integer>[] adj;
-    
+
     /**
      * Initializes an empty graph with {@code V} vertices and 0 edges.
      * param V the number of vertices
@@ -92,7 +92,7 @@ public class Graph {
         }
     }
 
-    /**  
+    /**
      * Initializes a graph from the specified input stream.
      * The format is the number of vertices <em>V</em>,
      * followed by the number of edges <em>E</em>,
@@ -120,10 +120,9 @@ public class Graph {
                 int w = in.readInt();
                 validateVertex(v);
                 validateVertex(w);
-                addEdge(v, w); 
+                addEdge(v, w);
             }
-        }
-        catch (NoSuchElementException e) {
+        } catch (NoSuchElementException e) {
             throw new IllegalArgumentException("invalid input format in Graph constructor", e);
         }
     }
@@ -179,7 +178,7 @@ public class Graph {
     // throw an IllegalArgumentException unless {@code 0 <= v < V}
     private void validateVertex(int v) {
         if (v < 0 || v >= V)
-            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V - 1));
     }
 
     /**

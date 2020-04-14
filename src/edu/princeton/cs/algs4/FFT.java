@@ -15,7 +15,7 @@
  *      an object type for representing complex numbers and because
  *      it re-allocates memory for the subarray, instead of doing
  *      in-place or reusing a single temporary array)
- *  
+ *
  *
  *  % java FFT 4
  *  x
@@ -73,7 +73,7 @@ package edu.princeton.cs.algs4;
  *  It is not the most memory efficient implementation because it uses
  *  objects to represents complex numbers and it it re-allocates memory
  *  for the subarray, instead of doing in-place or reusing a single temporary array.
- *  
+ *
  *  <p>
  *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/99scientific">Section 9.9</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
@@ -86,7 +86,8 @@ public class FFT {
     private static final Complex ZERO = new Complex(0, 0);
 
     // Do not instantiate.
-    private FFT() { }
+    private FFT() {
+    }
 
     /**
      * Returns the FFT of the specified complex array.
@@ -100,7 +101,7 @@ public class FFT {
 
         // base case
         if (n == 1) {
-            return new Complex[] { x[0] };
+            return new Complex[]{x[0]};
         }
 
         // radix 2 Cooley-Tukey FFT
@@ -109,26 +110,26 @@ public class FFT {
         }
 
         // fft of even terms
-        Complex[] even = new Complex[n/2];
-        for (int k = 0; k < n/2; k++) {
-            even[k] = x[2*k];
+        Complex[] even = new Complex[n / 2];
+        for (int k = 0; k < n / 2; k++) {
+            even[k] = x[2 * k];
         }
         Complex[] q = fft(even);
 
         // fft of odd terms
-        Complex[] odd  = even;  // reuse the array
-        for (int k = 0; k < n/2; k++) {
-            odd[k] = x[2*k + 1];
+        Complex[] odd = even;  // reuse the array
+        for (int k = 0; k < n / 2; k++) {
+            odd[k] = x[2 * k + 1];
         }
         Complex[] r = fft(odd);
 
         // combine
         Complex[] y = new Complex[n];
-        for (int k = 0; k < n/2; k++) {
+        for (int k = 0; k < n / 2; k++) {
             double kth = -2 * k * Math.PI / n;
             Complex wk = new Complex(Math.cos(kth), Math.sin(kth));
-            y[k]       = q[k].plus(wk.times(r[k]));
-            y[k + n/2] = q[k].minus(wk.times(r[k]));
+            y[k] = q[k].plus(wk.times(r[k]));
+            y[k + n / 2] = q[k].minus(wk.times(r[k]));
         }
         return y;
     }
@@ -210,16 +211,16 @@ public class FFT {
      *         the length of {@code y} or if the length is not a power of 2
      */
     public static Complex[] convolve(Complex[] x, Complex[] y) {
-        Complex[] a = new Complex[2*x.length];
+        Complex[] a = new Complex[2 * x.length];
         for (int i = 0; i < x.length; i++)
             a[i] = x[i];
-        for (int i = x.length; i < 2*x.length; i++)
+        for (int i = x.length; i < 2 * x.length; i++)
             a[i] = ZERO;
 
-        Complex[] b = new Complex[2*y.length];
+        Complex[] b = new Complex[2 * y.length];
         for (int i = 0; i < y.length; i++)
             b[i] = y[i];
-        for (int i = y.length; i < 2*y.length; i++)
+        for (int i = y.length; i < 2 * y.length; i++)
             b[i] = ZERO;
 
         return cconvolve(a, b);
@@ -236,16 +237,16 @@ public class FFT {
     }
 
 
-   /***************************************************************************
-    *  Test client.
-    ***************************************************************************/
+    /***************************************************************************
+     *  Test client.
+     ***************************************************************************/
 
     /**
      * Unit tests the {@code FFT} class.
      *
      * @param args the command-line arguments
      */
-    public static void main(String[] args) { 
+    public static void main(String[] args) {
         int n = Integer.parseInt(args[0]);
         Complex[] x = new Complex[n];
 

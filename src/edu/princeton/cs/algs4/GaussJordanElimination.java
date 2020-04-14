@@ -2,7 +2,7 @@
  *  Compilation:  javac GaussJordanElimination.java
  *  Execution:    java GaussJordanElimination n
  *  Dependencies: StdOut.java
- * 
+ *
  *  Finds a solutions to Ax = b using Gauss-Jordan elimination with partial
  *  pivoting. If no solution exists, find a solution to yA = 0, yb != 0,
  *  which serves as a certificate of infeasibility.
@@ -15,7 +15,7 @@
  *  3.000000
  *  -1.000000
  *  -2.000000
- * 
+ *
  *  System is infeasible
  *
  *  -6.250000
@@ -64,6 +64,7 @@ public class GaussJordanElimination {
     private double[][] a;     // n-by-(n+1) augmented matrix
 
     // Gauss-Jordan elimination with partial pivoting
+
     /**
      * Solves the linear system of equations <em>Ax</em> = <em>b</em>,
      * where <em>A</em> is an <em>n</em>-by-<em>n</em> matrix and <em>b</em>
@@ -76,17 +77,17 @@ public class GaussJordanElimination {
         n = b.length;
 
         // build augmented matrix
-        a = new double[n][n+n+1];
+        a = new double[n][n + n + 1];
         for (int i = 0; i < n; i++)
             for (int j = 0; j < n; j++)
                 a[i][j] = A[i][j];
 
         // only needed if you want to find certificate of infeasibility (or compute inverse)
         for (int i = 0; i < n; i++)
-            a[i][n+i] = 1.0;
+            a[i][n + i] = 1.0;
 
         for (int i = 0; i < n; i++)
-            a[i][n+n] = b[i];
+            a[i][n + n] = b[i];
 
         solve();
 
@@ -101,7 +102,7 @@ public class GaussJordanElimination {
 
             // find pivot row using partial pivoting
             int max = p;
-            for (int i = p+1; i < n; i++) {
+            for (int i = p + 1; i < n; i++) {
                 if (Math.abs(a[i][p]) > Math.abs(a[max][p])) {
                     max = i;
                 }
@@ -136,7 +137,7 @@ public class GaussJordanElimination {
         // everything but row p and column q
         for (int i = 0; i < n; i++) {
             double alpha = a[i][q] / a[p][q];
-            for (int j = 0; j <= n+n; j++) {
+            for (int j = 0; j <= n + n; j++) {
                 if (i != p && j != q) a[i][j] -= alpha * a[p][j];
             }
         }
@@ -146,14 +147,14 @@ public class GaussJordanElimination {
             if (i != p) a[i][q] = 0.0;
 
         // scale row p (ok to go from q+1 to n, but do this for consistency with simplex pivot)
-        for (int j = 0; j <= n+n; j++)
+        for (int j = 0; j <= n + n; j++)
             if (j != q) a[p][j] /= a[p][q];
         a[p][q] = 1.0;
     }
 
     /**
      * Returns a solution to the linear system of equations <em>Ax</em> = <em>b</em>.
-     *      
+     *
      * @return a solution <em>x</em> to the linear system of equations
      *         <em>Ax</em> = <em>b</em>; {@code null} if no such solution
      */
@@ -161,8 +162,8 @@ public class GaussJordanElimination {
         double[] x = new double[n];
         for (int i = 0; i < n; i++) {
             if (Math.abs(a[i][i]) > EPSILON)
-                x[i] = a[i][n+n] / a[i][i];
-            else if (Math.abs(a[i][n+n]) > EPSILON)
+                x[i] = a[i][n + n] / a[i][i];
+            else if (Math.abs(a[i][n + n]) > EPSILON)
                 return null;
         }
         return x;
@@ -171,16 +172,16 @@ public class GaussJordanElimination {
     /**
      * Returns a solution to the linear system of equations <em>yA</em> = 0,
      * <em>yb</em> &ne; 0.
-     *      
+     *
      * @return a solution <em>y</em> to the linear system of equations
      *         <em>yA</em> = 0, <em>yb</em> &ne; 0; {@code null} if no such solution
      */
     public double[] dual() {
         double[] y = new double[n];
         for (int i = 0; i < n; i++) {
-            if ((Math.abs(a[i][i]) <= EPSILON) && (Math.abs(a[i][n+n]) > EPSILON)) {
+            if ((Math.abs(a[i][i]) <= EPSILON) && (Math.abs(a[i][n + n]) > EPSILON)) {
                 for (int j = 0; j < n; j++)
-                    y[j] = a[i][n+j];
+                    y[j] = a[i][n + j];
                 return y;
             }
         }
@@ -190,7 +191,7 @@ public class GaussJordanElimination {
     /**
      * Returns true if there exists a solution to the linear system of
      * equations <em>Ax</em> = <em>b</em>.
-     *      
+     *
      * @return {@code true} if there exists a solution to the linear system
      *         of equations <em>Ax</em> = <em>b</em>; {@code false} otherwise
      */
@@ -205,10 +206,10 @@ public class GaussJordanElimination {
                 StdOut.printf("%8.3f ", a[i][j]);
             }
             StdOut.printf("| ");
-            for (int j = n; j < n+n; j++) {
+            for (int j = n; j < n + n; j++) {
                 StdOut.printf("%8.3f ", a[i][j]);
             }
-            StdOut.printf("| %8.3f\n", a[i][n+n]);
+            StdOut.printf("| %8.3f\n", a[i][n + n]);
         }
         StdOut.println();
     }
@@ -273,8 +274,7 @@ public class GaussJordanElimination {
             for (int i = 0; i < x.length; i++) {
                 StdOut.printf("%10.6f\n", x[i]);
             }
-        }
-        else {
+        } else {
             StdOut.println("Certificate of infeasibility");
             double[] y = gaussian.dual();
             for (int j = 0; j < y.length; j++) {
@@ -289,22 +289,22 @@ public class GaussJordanElimination {
     // 3-by-3 nonsingular system
     private static void test1() {
         double[][] A = {
-            { 0, 1,  1 },
-            { 2, 4, -2 },
-            { 0, 3, 15 }
+                {0, 1, 1},
+                {2, 4, -2},
+                {0, 3, 15}
         };
-        double[] b = { 4, 2, 36 };
+        double[] b = {4, 2, 36};
         test("test 1", A, b);
     }
 
     // 3-by-3 nonsingular system
     private static void test2() {
         double[][] A = {
-            {  1, -3,   1 },
-            {  2, -8,   8 },
-            { -6,  3, -15 }
+                {1, -3, 1},
+                {2, -8, 8},
+                {-6, 3, -15}
         };
-        double[] b = { 4, -2, 9 };
+        double[] b = {4, -2, 9};
         test("test 2", A, b);
     }
 
@@ -312,26 +312,26 @@ public class GaussJordanElimination {
     // y = [ -1, 0, 1, 1, 0 ]
     private static void test3() {
         double[][] A = {
-            {  2, -3, -1,  2,  3 },
-            {  4, -4, -1,  4, 11 },
-            {  2, -5, -2,  2, -1 },
-            {  0,  2,  1,  0,  4 },
-            { -4,  6,  0,  0,  7 },
+                {2, -3, -1, 2, 3},
+                {4, -4, -1, 4, 11},
+                {2, -5, -2, 2, -1},
+                {0, 2, 1, 0, 4},
+                {-4, 6, 0, 0, 7},
         };
-        double[] b = { 4, 4, 9, -6, 5 };
+        double[] b = {4, 4, 9, -6, 5};
         test("test 3", A, b);
     }
 
     // 5-by-5 singluar: infinitely many solutions
     private static void test4() {
         double[][] A = {
-            {  2, -3, -1,  2,  3 },
-            {  4, -4, -1,  4, 11 },
-            {  2, -5, -2,  2, -1 },
-            {  0,  2,  1,  0,  4 },
-            { -4,  6,  0,  0,  7 },
+                {2, -3, -1, 2, 3},
+                {4, -4, -1, 4, 11},
+                {2, -5, -2, 2, -1},
+                {0, 2, 1, 0, 4},
+                {-4, 6, 0, 0, 7},
         };
-        double[] b = { 4, 4, 9, -5, 5 };
+        double[] b = {4, 4, 9, -5, 5};
         test("test 4", A, b);
     }
 
@@ -339,22 +339,22 @@ public class GaussJordanElimination {
     // y = [ 1, 0, 1/3 ]
     private static void test5() {
         double[][] A = {
-            {  2, -1,  1 },
-            {  3,  2, -4 },
-            { -6,  3, -3 },
+                {2, -1, 1},
+                {3, 2, -4},
+                {-6, 3, -3},
         };
-        double[] b = { 1, 4, 2 };
+        double[] b = {1, 4, 2};
         test("test 5", A, b);
     }
 
     // 3-by-3 singular: infinitely many solutions
     private static void test6() {
         double[][] A = {
-            {  1, -1,  2 },
-            {  4,  4, -2 },
-            { -2,  2, -4 },
+                {1, -1, 2},
+                {4, 4, -2},
+                {-2, 2, -4},
         };
-        double[] b = { -3, 1, 6 };
+        double[] b = {-3, 1, 6};
         test("test 6 (infinitely many solutions)", A, b);
     }
 
@@ -386,13 +386,13 @@ public class GaussJordanElimination {
 
         // n-by-n random system (likely infeasible)
         A = new double[n][n];
-        for (int i = 0; i < n-1; i++)
+        for (int i = 0; i < n - 1; i++)
             for (int j = 0; j < n; j++)
                 A[i][j] = StdRandom.uniform(1000);
-        for (int i = 0; i < n-1; i++) {
+        for (int i = 0; i < n - 1; i++) {
             double alpha = StdRandom.uniform(11) - 5.0;
             for (int j = 0; j < n; j++) {
-                A[n-1][j] += alpha * A[i][j];
+                A[n - 1][j] += alpha * A[i][j];
             }
         }
         b = new double[n];

@@ -43,7 +43,7 @@ public class DijkstraAllPairsSP {
      * @throws IllegalArgumentException unless {@code 0 <= s < V}
      */
     public DijkstraAllPairsSP(EdgeWeightedDigraph G) {
-        all  = new DijkstraSP[G.V()];
+        all = new DijkstraSP[G.V()];
         for (int v = 0; v < G.V(); v++)
             all[v] = new DijkstraSP(G, v);
     }
@@ -67,7 +67,7 @@ public class DijkstraAllPairsSP {
      * Is there a path from the vertex {@code s} to vertex {@code t}?
      * @param  s the source vertex
      * @param  t the destination vertex
-     * @return {@code true} if there is a path from vertex {@code s} 
+     * @return {@code true} if there is a path from vertex {@code s}
      *         to vertex {@code t}, and {@code false} otherwise
      * @throws IllegalArgumentException unless {@code 0 <= s < V}
      * @throws IllegalArgumentException unless {@code 0 <= t < V}
@@ -97,7 +97,7 @@ public class DijkstraAllPairsSP {
     private void validateVertex(int v) {
         int V = all.length;
         if (v < 0 || v >= V)
-            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V - 1));
     }
 
 
@@ -139,8 +139,7 @@ public class DijkstraAllPairsSP {
                     for (DirectedEdge e : spt.path(v, w))
                         StdOut.print(e + "  ");
                     StdOut.println();
-                }
-                else {
+                } else {
                     StdOut.printf("%d to %d no path\n", v, w);
                 }
             }

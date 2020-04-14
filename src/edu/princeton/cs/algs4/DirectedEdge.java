@@ -8,6 +8,7 @@
  ******************************************************************************/
 
 package edu.princeton.cs.algs4;
+
 /**
  *  The {@code DirectedEdge} class represents a weighted edge in an 
  *  {@link EdgeWeightedDigraph}. Each edge consists of two integers
@@ -22,7 +23,7 @@ package edu.princeton.cs.algs4;
  *  @author Kevin Wayne
  */
 
-public class DirectedEdge { 
+public class DirectedEdge {
     private final int v;
     private final int w;
     private final double weight;

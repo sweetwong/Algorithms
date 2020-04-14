@@ -20,7 +20,7 @@
  *  140925
  *  161828
  *  [367,966 total values]
- *  
+ *
  ******************************************************************************/
 
 package edu.princeton.cs.algs4;
@@ -44,7 +44,8 @@ public class BinarySearch {
     /**
      * This class should not be instantiated.
      */
-    private BinarySearch() { }
+    private BinarySearch() {
+    }
 
     /**
      * Returns the index of the specified key in the specified array.
@@ -59,7 +60,7 @@ public class BinarySearch {
         while (lo <= hi) {
             // Key is in a[lo..hi] or not present.
             int mid = lo + (hi - lo) / 2;
-            if      (key < a[mid]) hi = mid - 1;
+            if (key < a[mid]) hi = mid - 1;
             else if (key > a[mid]) lo = mid + 1;
             else return mid;
         }

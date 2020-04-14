@@ -93,7 +93,7 @@ public class WeightedQuickUnionUF {
     public int count() {
         return count;
     }
-  
+
     /**
      * Returns the canonical element of the set containing element {@code p}.
      *
@@ -110,7 +110,7 @@ public class WeightedQuickUnionUF {
 
     /**
      * Returns true if the two elements are in the same set.
-     * 
+     *
      * @param  p one element
      * @param  q the other element
      * @return {@code true} if {@code p} and {@code q} are in the same set;
@@ -128,7 +128,7 @@ public class WeightedQuickUnionUF {
     private void validate(int p) {
         int n = parent.length;
         if (p < 0 || p >= n) {
-            throw new IllegalArgumentException("index " + p + " is not between 0 and " + (n-1));  
+            throw new IllegalArgumentException("index " + p + " is not between 0 and " + (n - 1));
         }
     }
 
@@ -150,8 +150,7 @@ public class WeightedQuickUnionUF {
         if (size[rootP] < size[rootQ]) {
             parent[rootP] = rootQ;
             size[rootQ] += size[rootP];
-        }
-        else {
+        } else {
             parent[rootQ] = rootP;
             size[rootP] += size[rootQ];
         }
@@ -165,7 +164,7 @@ public class WeightedQuickUnionUF {
      * in the pair represents some element;
      * if the elements are in different sets, merge the two sets
      * and print the pair to standard output.
-     * 
+     *
      * @param args the command-line arguments
      */
     public static void main(String[] args) {

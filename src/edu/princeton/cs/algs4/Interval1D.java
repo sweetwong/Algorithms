@@ -2,7 +2,7 @@
  *  Compilation:  javac Interval1D.java
  *  Execution:    java Interval1D
  *  Dependencies: StdOut.java
- *  
+ *
  *  1-dimensional interval data type.
  *
  ******************************************************************************/
@@ -31,7 +31,7 @@ public class Interval1D {
     /**
      * Compares two intervals by min endpoint.
      */
-    public static final Comparator<Interval1D> MIN_ENDPOINT_ORDER  = new MinEndpointComparator();
+    public static final Comparator<Interval1D> MIN_ENDPOINT_ORDER = new MinEndpointComparator();
 
     /**
      * Compares two intervals by max endpoint.
@@ -70,8 +70,7 @@ public class Interval1D {
         if (min <= max) {
             this.min = min;
             this.max = max;
-        }
-        else throw new IllegalArgumentException("Illegal interval");
+        } else throw new IllegalArgumentException("Illegal interval");
     }
 
     /**
@@ -81,7 +80,7 @@ public class Interval1D {
      * @deprecated Replaced by {@link #min()}.
      */
     @Deprecated
-    public double left() { 
+    public double left() {
         return min;
     }
 
@@ -91,7 +90,7 @@ public class Interval1D {
      * @deprecated Replaced by {@link #max()}.
      */
     @Deprecated
-    public double right() { 
+    public double right() {
         return max;
     }
 
@@ -100,7 +99,7 @@ public class Interval1D {
      *
      * @return the min endpoint of this interval
      */
-    public double min() { 
+    public double min() {
         return min;
     }
 
@@ -109,7 +108,7 @@ public class Interval1D {
      *
      * @return the max endpoint of this interval
      */
-    public double max() { 
+    public double max() {
         return max;
     }
 
@@ -178,28 +177,28 @@ public class Interval1D {
     public int hashCode() {
         int hash1 = ((Double) min).hashCode();
         int hash2 = ((Double) max).hashCode();
-        return 31*hash1 + hash2;
+        return 31 * hash1 + hash2;
     }
 
     // ascending order of min endpoint, breaking ties by max endpoint
     private static class MinEndpointComparator implements Comparator<Interval1D> {
         public int compare(Interval1D a, Interval1D b) {
-            if      (a.min < b.min) return -1;
+            if (a.min < b.min) return -1;
             else if (a.min > b.min) return +1;
             else if (a.max < b.max) return -1;
             else if (a.max > b.max) return +1;
-            else                    return  0;
+            else return 0;
         }
     }
 
     // ascending order of max endpoint, breaking ties by min endpoint
     private static class MaxEndpointComparator implements Comparator<Interval1D> {
         public int compare(Interval1D a, Interval1D b) {
-            if      (a.max < b.max) return -1;
+            if (a.max < b.max) return -1;
             else if (a.max > b.max) return +1;
             else if (a.min < b.min) return -1;
             else if (a.min > b.min) return +1;
-            else                    return  0;
+            else return 0;
         }
     }
 
@@ -208,13 +207,11 @@ public class Interval1D {
         public int compare(Interval1D a, Interval1D b) {
             double alen = a.length();
             double blen = b.length();
-            if      (alen < blen) return -1;
+            if (alen < blen) return -1;
             else if (alen > blen) return +1;
-            else                  return  0;
+            else return 0;
         }
     }
-
-
 
 
     /**
@@ -233,7 +230,7 @@ public class Interval1D {
         for (int i = 0; i < intervals.length; i++)
             StdOut.println(intervals[i]);
         StdOut.println();
-        
+
         StdOut.println("Sort by min endpoint");
         Arrays.sort(intervals, Interval1D.MIN_ENDPOINT_ORDER);
         for (int i = 0; i < intervals.length; i++)

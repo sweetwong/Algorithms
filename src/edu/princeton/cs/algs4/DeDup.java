@@ -43,10 +43,11 @@ package edu.princeton.cs.algs4;
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
  */
-public class DeDup {  
+public class DeDup {
 
     // Do not instantiate.
-    private DeDup() { }
+    private DeDup() {
+    }
 
     public static void main(String[] args) {
         SET<String> set = new SET<String>();

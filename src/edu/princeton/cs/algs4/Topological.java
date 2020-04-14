@@ -133,14 +133,14 @@ public class Topological {
     public int rank(int v) {
         validateVertex(v);
         if (hasOrder()) return rank[v];
-        else            return -1;
+        else return -1;
     }
 
     // throw an IllegalArgumentException unless {@code 0 <= v < V}
     private void validateVertex(int v) {
         int V = rank.length;
         if (v < 0 || v >= V)
-            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V - 1));
     }
 
     /**
@@ -149,7 +149,7 @@ public class Topological {
      * @param args the command-line arguments
      */
     public static void main(String[] args) {
-        String filename  = args[0];
+        String filename = args[0];
         String delimiter = args[1];
         SymbolDigraph sg = new SymbolDigraph(filename, delimiter);
         Topological topological = new Topological(sg.digraph());

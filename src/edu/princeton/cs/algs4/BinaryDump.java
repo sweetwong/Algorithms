@@ -3,7 +3,7 @@
  *  Execution:    java BinaryDump n < file
  *  Dependencies: BinaryStdIn.java
  *  Data file:    https://introcs.cs.princeton.edu/stdlib/abra.txt
- *  
+ *
  *  Reads in a binary file and writes out the bits, n per line.
  *
  *  % more abra.txt 
@@ -41,7 +41,8 @@ package edu.princeton.cs.algs4;
 public class BinaryDump {
 
     // Do not instantiate.
-    private BinaryDump() { }
+    private BinaryDump() {
+    }
 
     /**
      * Reads in a sequence of bytes from standard input and writes
@@ -63,10 +64,9 @@ public class BinaryDump {
             if (bitsPerLine == 0) {
                 BinaryStdIn.readBoolean();
                 continue;
-            }
-            else if (count != 0 && count % bitsPerLine == 0) StdOut.println();
+            } else if (count != 0 && count % bitsPerLine == 0) StdOut.println();
             if (BinaryStdIn.readBoolean()) StdOut.print(1);
-            else                           StdOut.print(0);
+            else StdOut.print(0);
         }
         if (bitsPerLine != 0) StdOut.println();
         StdOut.println(count + " bits");

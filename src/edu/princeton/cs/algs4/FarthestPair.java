@@ -4,7 +4,7 @@
  *  Dependencies: GrahamScan.java Point2D.java
  *  Data files:   https://algs4.cs.princeton.edu/99hull/rs1423.txt
  *                https://algs4.cs.princeton.edu/99hull/kw1260.txt
- *  
+ *
  *  Given a set of n points in the plane, find the farthest pair
  *  (equivalently, compute the diameter of the set of points).
  *
@@ -68,7 +68,7 @@ public class FarthestPair {
             m++;
 
         // the hull, in counterclockwise order hull[1] to hull[m]
-        Point2D[] hull = new Point2D[m+1];
+        Point2D[] hull = new Point2D[m + 1];
         m = 1;
         for (Point2D p : graham.hull()) {
             hull[m++] = p;
@@ -88,7 +88,7 @@ public class FarthestPair {
 
         // k = farthest vertex from edge from hull[1] to hull[m]
         int k = 2;
-        while (Point2D.area2(hull[m], hull[1], hull[k+1]) > Point2D.area2(hull[m], hull[1], hull[k])) {
+        while (Point2D.area2(hull[m], hull[1], hull[k + 1]) > Point2D.area2(hull[m], hull[1], hull[k])) {
             k++;
         }
 
@@ -100,7 +100,7 @@ public class FarthestPair {
                 best2 = hull[j];
                 bestDistanceSquared = hull[i].distanceSquaredTo(hull[j]);
             }
-            while ((j < m) && Point2D.area2(hull[i], hull[i+1], hull[j+1]) > Point2D.area2(hull[i], hull[i+1], hull[j])) {
+            while ((j < m) && Point2D.area2(hull[i], hull[i + 1], hull[j + 1]) > Point2D.area2(hull[i], hull[i + 1], hull[j])) {
                 j++;
                 // StdOut.println(hull[i] + " and " + hull[j] + " are antipodal");
                 double distanceSquared = hull[i].distanceSquaredTo(hull[j]);
@@ -145,7 +145,7 @@ public class FarthestPair {
         return Math.sqrt(bestDistanceSquared);
     }
 
-   /**
+    /**
      * Unit tests the {@code FarthestPair} data type.
      * Reads in an integer {@code n} and {@code n} points (specified by
      * their <em>x</em>- and <em>y</em>-coordinates) from standard input;

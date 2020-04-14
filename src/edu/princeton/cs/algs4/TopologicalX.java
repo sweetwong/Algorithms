@@ -55,7 +55,7 @@ public class TopologicalX {
         }
 
         // initialize 
-        ranks = new int[G.V()]; 
+        ranks = new int[G.V()];
         order = new Queue<Integer>();
         int count = 0;
 
@@ -96,7 +96,7 @@ public class TopologicalX {
         }
 
         // initialize 
-        ranks = new int[G.V()]; 
+        ranks = new int[G.V()];
         order = new Queue<Integer>();
         int count = 0;
 
@@ -156,7 +156,7 @@ public class TopologicalX {
     public int rank(int v) {
         validateVertex(v);
         if (hasOrder()) return ranks[v];
-        else            return -1;
+        else return -1;
     }
 
     // certify that digraph is acyclic
@@ -181,7 +181,7 @@ public class TopologicalX {
                 for (int w : G.adj(v)) {
                     if (rank(v) > rank(w)) {
                         System.err.printf("%d-%d: rank(%d) = %d, rank(%d) = %d\n",
-                                          v, w, v, rank(v), w, rank(w));
+                                v, w, v, rank(v), w, rank(w));
                         return false;
                     }
                 }
@@ -225,7 +225,7 @@ public class TopologicalX {
                     int w = e.to();
                     if (rank(v) > rank(w)) {
                         System.err.printf("%d-%d: rank(%d) = %d, rank(%d) = %d\n",
-                                          v, w, v, rank(v), w, rank(w));
+                                v, w, v, rank(v), w, rank(w));
                         return false;
                     }
                 }
@@ -250,7 +250,7 @@ public class TopologicalX {
     private void validateVertex(int v) {
         int V = ranks.length;
         if (v < 0 || v >= V)
-            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V - 1));
     }
 
     /**

@@ -31,14 +31,15 @@ package edu.princeton.cs.algs4;
 public class Genome {
 
     // Do not instantiate.
-    private Genome() { }
+    private Genome() {
+    }
 
     /**
      * Reads a sequence of 8-bit extended ASCII characters over the alphabet
      * { A, C, T, G } from standard input; compresses them using two bits per
      * character; and writes the results to standard output.
      */
-    public static void compress() { 
+    public static void compress() {
         Alphabet DNA = Alphabet.DNA;
         String s = BinaryStdIn.readString();
         int n = s.length();
@@ -50,7 +51,7 @@ public class Genome {
             BinaryStdOut.write(d, 2);
         }
         BinaryStdOut.close();
-    } 
+    }
 
     /**
      * Reads a binary sequence from standard input; converts each two bits
@@ -76,7 +77,7 @@ public class Genome {
      * @param args the command-line arguments
      */
     public static void main(String[] args) {
-        if      (args[0].equals("-")) compress();
+        if (args[0].equals("-")) compress();
         else if (args[0].equals("+")) expand();
         else throw new IllegalArgumentException("Illegal command line argument");
     }

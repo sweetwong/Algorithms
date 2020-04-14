@@ -120,10 +120,10 @@ public class TST<Value> {
         if (x == null) return null;
         if (key.length() == 0) throw new IllegalArgumentException("key must have length >= 1");
         char c = key.charAt(d);
-        if      (c < x.c)              return get(x.left,  key, d);
-        else if (c > x.c)              return get(x.right, key, d);
-        else if (d < key.length() - 1) return get(x.mid,   key, d+1);
-        else                           return x;
+        if (c < x.c) return get(x.left, key, d);
+        else if (c > x.c) return get(x.right, key, d);
+        else if (d < key.length() - 1) return get(x.mid, key, d + 1);
+        else return x;
     }
 
     /**
@@ -139,7 +139,7 @@ public class TST<Value> {
             throw new IllegalArgumentException("calls put() with null key");
         }
         if (!contains(key)) n++;
-        else if(val == null) n--;       // delete existing key
+        else if (val == null) n--;       // delete existing key
         root = put(root, key, val, 0);
     }
 
@@ -149,10 +149,10 @@ public class TST<Value> {
             x = new Node<Value>();
             x.c = c;
         }
-        if      (c < x.c)               x.left  = put(x.left,  key, val, d);
-        else if (c > x.c)               x.right = put(x.right, key, val, d);
-        else if (d < key.length() - 1)  x.mid   = put(x.mid,   key, val, d+1);
-        else                            x.val   = val;
+        if (c < x.c) x.left = put(x.left, key, val, d);
+        else if (c > x.c) x.right = put(x.right, key, val, d);
+        else if (d < key.length() - 1) x.mid = put(x.mid, key, val, d + 1);
+        else x.val = val;
         return x;
     }
 
@@ -174,7 +174,7 @@ public class TST<Value> {
         int i = 0;
         while (x != null && i < query.length()) {
             char c = query.charAt(i);
-            if      (c < x.c) x = x.left;
+            if (c < x.c) x = x.left;
             else if (c > x.c) x = x.right;
             else {
                 i++;
@@ -219,9 +219,9 @@ public class TST<Value> {
     // all keys in subtrie rooted at x with given prefix
     private void collect(Node<Value> x, StringBuilder prefix, Queue<String> queue) {
         if (x == null) return;
-        collect(x.left,  prefix, queue);
+        collect(x.left, prefix, queue);
         if (x.val != null) queue.enqueue(prefix.toString() + x.c);
-        collect(x.mid,   prefix.append(x.c), queue);
+        collect(x.mid, prefix.append(x.c), queue);
         prefix.deleteCharAt(prefix.length() - 1);
         collect(x.right, prefix, queue);
     }
@@ -239,7 +239,7 @@ public class TST<Value> {
         collect(root, new StringBuilder(), 0, pattern, queue);
         return queue;
     }
- 
+
     private void collect(Node<Value> x, StringBuilder prefix, int i, String pattern, Queue<String> queue) {
         if (x == null) return;
         char c = pattern.charAt(i);
@@ -247,7 +247,7 @@ public class TST<Value> {
         if (c == '.' || c == x.c) {
             if (i == pattern.length() - 1 && x.val != null) queue.enqueue(prefix.toString() + x.c);
             if (i < pattern.length() - 1) {
-                collect(x.mid, prefix.append(x.c), i+1, pattern, queue);
+                collect(x.mid, prefix.append(x.c), i + 1, pattern, queue);
                 prefix.deleteCharAt(prefix.length() - 1);
             }
         }

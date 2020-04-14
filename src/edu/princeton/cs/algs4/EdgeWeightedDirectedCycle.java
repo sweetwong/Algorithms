@@ -48,9 +48,9 @@ public class EdgeWeightedDirectedCycle {
      * @param G the edge-weighted digraph
      */
     public EdgeWeightedDirectedCycle(EdgeWeightedDigraph G) {
-        marked  = new boolean[G.V()];
+        marked = new boolean[G.V()];
         onStack = new boolean[G.V()];
-        edgeTo  = new DirectedEdge[G.V()];
+        edgeTo = new DirectedEdge[G.V()];
         for (int v = 0; v < G.V(); v++)
             if (!marked[v]) dfs(G, v);
 
@@ -68,7 +68,7 @@ public class EdgeWeightedDirectedCycle {
             // short circuit if directed cycle found
             if (cycle != null) return;
 
-            // found new vertex, so recur
+                // found new vertex, so recur
             else if (!marked[w]) {
                 edgeTo[w] = e;
                 dfs(G, w);

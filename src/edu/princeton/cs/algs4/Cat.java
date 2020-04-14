@@ -15,7 +15,7 @@
  *  % more in2.txt 
  *  a tiny
  *  test.
- * 
+ *
  *  % java Cat in1.txt in2.txt out.txt
  *
  *  % more out.txt
@@ -37,10 +37,11 @@ package edu.princeton.cs.algs4;
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
  */
-public class Cat { 
+public class Cat {
 
     // this class should not be instantiated
-    private Cat() { }
+    private Cat() {
+    }
 
     /**
      * Reads in a sequence of text files specified as the first command-line
@@ -49,7 +50,7 @@ public class Cat {
      *
      * @param args the command-line arguments
      */
-    public static void main(String[] args) { 
+    public static void main(String[] args) {
         Out out = new Out(args[args.length - 1]);
         for (int i = 0; i < args.length - 1; i++) {
             In in = new In(args[i]);

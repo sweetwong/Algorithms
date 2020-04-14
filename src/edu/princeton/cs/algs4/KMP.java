@@ -63,15 +63,15 @@ public class KMP {
 
         // build DFA from pattern
         int m = pat.length();
-        dfa = new int[R][m]; 
-        dfa[pat.charAt(0)][0] = 1; 
+        dfa = new int[R][m];
+        dfa[pat.charAt(0)][0] = 1;
         for (int x = 0, j = 1; j < m; j++) {
-            for (int c = 0; c < R; c++) 
+            for (int c = 0; c < R; c++)
                 dfa[c][j] = dfa[c][x];     // Copy mismatch cases. 
-            dfa[pat.charAt(j)][j] = j+1;   // Set match case. 
+            dfa[pat.charAt(j)][j] = j + 1;   // Set match case.
             x = dfa[pat.charAt(j)][x];     // Update restart state. 
-        } 
-    } 
+        }
+    }
 
     /**
      * Preprocesses the pattern string.
@@ -87,15 +87,15 @@ public class KMP {
 
         // build DFA from pattern
         int m = pattern.length;
-        dfa = new int[R][m]; 
-        dfa[pattern[0]][0] = 1; 
+        dfa = new int[R][m];
+        dfa[pattern[0]][0] = 1;
         for (int x = 0, j = 1; j < m; j++) {
-            for (int c = 0; c < R; c++) 
+            for (int c = 0; c < R; c++)
                 dfa[c][j] = dfa[c][x];     // Copy mismatch cases. 
-            dfa[pattern[j]][j] = j+1;      // Set match case. 
+            dfa[pattern[j]][j] = j + 1;      // Set match case.
             x = dfa[pattern[j]][x];        // Update restart state. 
-        } 
-    } 
+        }
+    }
 
     /**
      * Returns the index of the first occurrrence of the pattern string
@@ -140,7 +140,7 @@ public class KMP {
     }
 
 
-    /** 
+    /**
      * Takes a pattern string and an input string as command-line arguments;
      * searches for the pattern string in the text string; and prints
      * the first occurrence of the pattern string in the text string.
@@ -151,7 +151,7 @@ public class KMP {
         String pat = args[0];
         String txt = args[1];
         char[] pattern = pat.toCharArray();
-        char[] text    = txt.toCharArray();
+        char[] text = txt.toCharArray();
 
         KMP kmp1 = new KMP(pat);
         int offset1 = kmp1.search(txt);

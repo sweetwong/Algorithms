@@ -24,44 +24,44 @@ import util.linked_list.ListNode;
  */
 class Item61_旋转链表 {
 
-  public static void main(String[] args) {
-    ListNode head = LinkedListUtils.create(1, 2, 3, 4, 5);
-    head = rotateRight(head, 5);
-    LinkedListUtils.print(head);
-  }
-
-  public static ListNode rotateRight(ListNode head, int k) {
-    int size = 0;
-    ListNode curr = head;
-    while (curr != null) {
-      size++;
-      curr = curr.next;
+    public static void main(String[] args) {
+        ListNode head = LinkedListUtils.create(1, 2, 3, 4, 5);
+        head = rotateRight(head, 5);
+        LinkedListUtils.print(head);
     }
 
-    if (size == 0) return null;
+    public static ListNode rotateRight(ListNode head, int k) {
+        int size = 0;
+        ListNode curr = head;
+        while (curr != null) {
+            size++;
+            curr = curr.next;
+        }
 
-    curr = head;
+        if (size == 0) return null;
 
-    // 向前走多少步
-    int goAhead = size - k % size - 1;
+        curr = head;
 
-    // 一直向前走, 直到走到断裂点, 记住断裂点前一个位置和后一个位置
-    for (int i = 0; i < goAhead; i++) {
-      curr = curr.next;
+        // 向前走多少步
+        int goAhead = size - k % size - 1;
+
+        // 一直向前走, 直到走到断裂点, 记住断裂点前一个位置和后一个位置
+        for (int i = 0; i < goAhead; i++) {
+            curr = curr.next;
+        }
+
+        // 断掉前一个位置, 后一个位置作为新头部
+        ListNode newHead = curr.next;
+        curr.next = null;
+        curr = newHead;
+
+        if (curr == null) return head;
+
+        while (curr.next != null) {
+            curr = curr.next;
+        }
+        curr.next = head;
+
+        return newHead;
     }
-
-    // 断掉前一个位置, 后一个位置作为新头部
-    ListNode newHead = curr.next;
-    curr.next = null;
-    curr = newHead;
-
-    if (curr == null) return head;
-
-    while (curr.next != null) {
-      curr = curr.next;
-    }
-    curr.next = head;
-
-    return newHead;
-  }
 }

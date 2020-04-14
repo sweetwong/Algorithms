@@ -5,7 +5,7 @@
  *
  *  An edge-weighted digraph, implemented using an adjacency matrix.
  *  Parallel edges are disallowed; self-loops are allowed.
- *  
+ *
  ******************************************************************************/
 
 package edu.princeton.cs.algs4;
@@ -41,7 +41,7 @@ public class AdjMatrixEdgeWeightedDigraph {
     private final int V;
     private int E;
     private DirectedEdge[][] adj;
-    
+
     /**
      * Initializes an empty edge-weighted digraph with {@code V} vertices and 0 edges.
      * @param V the number of vertices
@@ -64,7 +64,7 @@ public class AdjMatrixEdgeWeightedDigraph {
     public AdjMatrixEdgeWeightedDigraph(int V, int E) {
         this(V);
         if (E < 0) throw new IllegalArgumentException("number of edges must be nonnegative");
-        if (E > V*V) throw new IllegalArgumentException("too many edges");
+        if (E > V * V) throw new IllegalArgumentException("too many edges");
 
         // can be inefficient
         while (this.E != E) {
@@ -173,7 +173,7 @@ public class AdjMatrixEdgeWeightedDigraph {
     // throw an IllegalArgumentException unless {@code 0 <= v < V}
     private void validateVertex(int v) {
         if (v < 0 || v >= V)
-            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V - 1));
     }
 
 

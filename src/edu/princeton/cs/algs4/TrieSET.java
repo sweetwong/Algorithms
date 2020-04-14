@@ -72,7 +72,7 @@ public class TrieSET implements Iterable<String> {
         if (x == null) return null;
         if (d == key.length()) return x;
         char c = key.charAt(d);
-        return get(x.next[c], key, d+1);
+        return get(x.next[c], key, d + 1);
     }
 
     /**
@@ -90,10 +90,9 @@ public class TrieSET implements Iterable<String> {
         if (d == key.length()) {
             if (!x.isString) n++;
             x.isString = true;
-        }
-        else {
+        } else {
             char c = key.charAt(d);
-            x.next[c] = add(x.next[c], key, d+1);
+            x.next[c] = add(x.next[c], key, d + 1);
         }
         return x;
     }
@@ -153,14 +152,14 @@ public class TrieSET implements Iterable<String> {
      * @param pattern the pattern
      * @return all of the keys in the set that match {@code pattern},
      *     as an iterable, where . is treated as a wildcard character.
-     */  
+     */
     public Iterable<String> keysThatMatch(String pattern) {
         Queue<String> results = new Queue<String>();
         StringBuilder prefix = new StringBuilder();
         collect(root, prefix, pattern, results);
         return results;
     }
-        
+
     private void collect(Node x, StringBuilder prefix, String pattern, Queue<String> results) {
         if (x == null) return;
         int d = prefix.length();
@@ -175,8 +174,7 @@ public class TrieSET implements Iterable<String> {
                 collect(x.next[ch], prefix, pattern, results);
                 prefix.deleteCharAt(prefix.length() - 1);
             }
-        }
-        else {
+        } else {
             prefix.append(c);
             collect(x.next[c], prefix, pattern, results);
             prefix.deleteCharAt(prefix.length() - 1);
@@ -207,7 +205,7 @@ public class TrieSET implements Iterable<String> {
         if (x.isString) length = d;
         if (d == query.length()) return length;
         char c = query.charAt(d);
-        return longestPrefixOf(x.next[c], query, d+1, length);
+        return longestPrefixOf(x.next[c], query, d + 1, length);
     }
 
     /**
@@ -225,10 +223,9 @@ public class TrieSET implements Iterable<String> {
         if (d == key.length()) {
             if (x.isString) n--;
             x.isString = false;
-        }
-        else {
+        } else {
             char c = key.charAt(d);
-            x.next[c] = delete(x.next[c], key, d+1);
+            x.next[c] = delete(x.next[c], key, d + 1);
         }
 
         // remove subtrie rooted at x if it is completely empty

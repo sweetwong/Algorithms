@@ -6,7 +6,7 @@
  *
  *  A generic stack, implemented using a linked list. Each stack
  *  element is of type Item.
- *  
+ *
  *  % more tobe.txt 
  *  to be or not to - be - - that - - - is
  *
@@ -123,7 +123,7 @@ public class LinkedStack<Item> implements Iterable<Item> {
             s.append(item + " ");
         return s.toString();
     }
-       
+
     /**
      * Returns an iterator to this stack that iterates through the items in LIFO order.
      * @return an iterator to this stack that iterates through the items in LIFO order.
@@ -135,13 +135,19 @@ public class LinkedStack<Item> implements Iterable<Item> {
     // an iterator, doesn't implement remove() since it's optional
     private class ListIterator implements Iterator<Item> {
         private Node current = first;
-        public boolean hasNext()  { return current != null;                     }
-        public void remove()      { throw new UnsupportedOperationException();  }
+
+        public boolean hasNext() {
+            return current != null;
+        }
+
+        public void remove() {
+            throw new UnsupportedOperationException();
+        }
 
         public Item next() {
             if (!hasNext()) throw new NoSuchElementException();
             Item item = current.item;
-            current = current.next; 
+            current = current.next;
             return item;
         }
     }
@@ -156,13 +162,11 @@ public class LinkedStack<Item> implements Iterable<Item> {
         }
         if (n == 0) {
             if (first != null) return false;
-        }
-        else if (n == 1) {
-            if (first == null)      return false;
+        } else if (n == 1) {
+            if (first == null) return false;
             if (first.next != null) return false;
-        }
-        else {
-            if (first == null)      return false;
+        } else {
+            if (first == null) return false;
             if (first.next == null) return false;
         }
 

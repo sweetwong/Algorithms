@@ -32,7 +32,7 @@ import java.util.Iterator;
  *  For additional documentation,
  *  see <a href="https://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
- * 
+ *
  * @author Robert Sedgewick
  * @author Kevin Wayne
  * @author Nate Liu
@@ -42,7 +42,7 @@ public class DirectedEulerianPath {
 
     /**
      * Computes an Eulerian path in the specified digraph, if one exists.
-     * 
+     *
      * @param G the digraph
      */
     public DirectedEulerianPath(Digraph G) {
@@ -84,7 +84,7 @@ public class DirectedEulerianPath {
             // push vertex with no more available edges to path
             path.push(v);
         }
-            
+
         // check if all edges have been used
         if (path.size() != G.E() + 1)
             path = null;
@@ -94,7 +94,7 @@ public class DirectedEulerianPath {
 
     /**
      * Returns the sequence of vertices on an Eulerian path.
-     * 
+     *
      * @return the sequence of vertices on an Eulerian path;
      *         {@code null} if no such path
      */
@@ -104,7 +104,7 @@ public class DirectedEulerianPath {
 
     /**
      * Returns true if the digraph has an Eulerian path.
-     * 
+     *
      * @return {@code true} if the digraph has an Eulerian path;
      *         {@code false} otherwise
      */
@@ -151,7 +151,7 @@ public class DirectedEulerianPath {
         for (int v = 0; v < G.V(); v++)
             for (int w : G.adj(v))
                 H.addEdge(v, w);
-        
+
         // check that all non-isolated vertices are connected
         int s = nonIsolatedVertex(G);
         BreadthFirstPaths bfs = new BreadthFirstPaths(H, s);
@@ -197,8 +197,7 @@ public class DirectedEulerianPath {
                 StdOut.print(v + " ");
             }
             StdOut.println();
-        }
-        else {
+        } else {
             StdOut.println("none");
         }
         StdOut.println();

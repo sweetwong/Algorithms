@@ -2,7 +2,7 @@
  *  Compilation:  javac Particle.java
  *  Execution:    none
  *  Dependencies: StdDraw.java
- *      
+ *
  *  A particle moving in the unit box with a given position, velocity,
  *  radius, and mass.
  *
@@ -54,23 +54,23 @@ public class Particle {
         this.rx = rx;
         this.ry = ry;
         this.radius = radius;
-        this.mass   = mass;
-        this.color  = color;
+        this.mass = mass;
+        this.color = color;
     }
-         
+
     /**
      * Initializes a particle with a random position and velocity.
      * The position is uniform in the unit box; the velocity in
      * either direciton is chosen uniformly at random.
      */
     public Particle() {
-        rx     = StdRandom.uniform(0.0, 1.0);
-        ry     = StdRandom.uniform(0.0, 1.0);
-        vx     = StdRandom.uniform(-0.005, 0.005);
-        vy     = StdRandom.uniform(-0.005, 0.005);
+        rx = StdRandom.uniform(0.0, 1.0);
+        ry = StdRandom.uniform(0.0, 1.0);
+        vx = StdRandom.uniform(-0.005, 0.005);
+        vy = StdRandom.uniform(-0.005, 0.005);
         radius = 0.02;
-        mass   = 0.5;
-        color  = Color.BLACK;
+        mass = 0.5;
+        color = Color.BLACK;
     }
 
     /**
@@ -117,17 +117,17 @@ public class Particle {
      */
     public double timeToHit(Particle that) {
         if (this == that) return INFINITY;
-        double dx  = that.rx - this.rx;
-        double dy  = that.ry - this.ry;
+        double dx = that.rx - this.rx;
+        double dy = that.ry - this.ry;
         double dvx = that.vx - this.vx;
         double dvy = that.vy - this.vy;
-        double dvdr = dx*dvx + dy*dvy;
+        double dvdr = dx * dvx + dy * dvy;
         if (dvdr > 0) return INFINITY;
-        double dvdv = dvx*dvx + dvy*dvy;
+        double dvdv = dvx * dvx + dvy * dvy;
         if (dvdv == 0) return INFINITY;
-        double drdr = dx*dx + dy*dy;
+        double drdr = dx * dx + dy * dy;
         double sigma = this.radius + that.radius;
-        double d = (dvdr*dvdr) - dvdv * (drdr - sigma*sigma);
+        double d = (dvdr * dvdr) - dvdv * (drdr - sigma * sigma);
         // if (drdr < sigma*sigma) StdOut.println("overlapping particles");
         if (d < 0) return INFINITY;
         return -(dvdr + Math.sqrt(d)) / dvdv;
@@ -143,9 +143,9 @@ public class Particle {
      *         with a vertical wall
      */
     public double timeToHitVerticalWall() {
-        if      (vx > 0) return (1.0 - rx - radius) / vx;
-        else if (vx < 0) return (radius - rx) / vx;  
-        else             return INFINITY;
+        if (vx > 0) return (1.0 - rx - radius) / vx;
+        else if (vx < 0) return (radius - rx) / vx;
+        else return INFINITY;
     }
 
     /**
@@ -158,9 +158,9 @@ public class Particle {
      *         with a horizontal wall
      */
     public double timeToHitHorizontalWall() {
-        if      (vy > 0) return (1.0 - ry - radius) / vy;
+        if (vy > 0) return (1.0 - ry - radius) / vy;
         else if (vy < 0) return (radius - ry) / vy;
-        else             return INFINITY;
+        else return INFINITY;
     }
 
     /**
@@ -171,11 +171,11 @@ public class Particle {
      * @param  that the other particle
      */
     public void bounceOff(Particle that) {
-        double dx  = that.rx - this.rx;
-        double dy  = that.ry - this.ry;
+        double dx = that.rx - this.rx;
+        double dy = that.ry - this.ry;
         double dvx = that.vx - this.vx;
         double dvy = that.vy - this.vy;
-        double dvdr = dx*dvx + dy*dvy;             // dv dot dr
+        double dvdr = dx * dvx + dy * dvy;             // dv dot dr
         double dist = this.radius + that.radius;   // distance between particle centers at collison
 
         // magnitude of normal force
@@ -224,7 +224,7 @@ public class Particle {
      * @return the kinetic energy of this particle
      */
     public double kineticEnergy() {
-        return 0.5 * mass * (vx*vx + vy*vy);
+        return 0.5 * mass * (vx * vx + vy * vy);
     }
 }
 

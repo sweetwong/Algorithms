@@ -5,13 +5,13 @@ package design_pattern.singleton;
  */
 public class Hungry {
 
-  private static Hungry instance = new Hungry();
+    private static Hungry instance = new Hungry();
 
-  private Hungry() {
-  }
+    private Hungry() {
+    }
 
-  public static Hungry getInstance() {
-    return instance;
-  }
+    public static Hungry getInstance() {
+        return instance;
+    }
 
 }

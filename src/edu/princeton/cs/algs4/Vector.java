@@ -17,7 +17,7 @@
  *   10z     = [ 60.0 40.0 70.0 50.0 ]
  *    |x|    = 5.477225575051661
  *   <x, y>  = 25.0
- * 
+ *
  *
  *  Note that Vector is also the name of an unrelated Java library class
  *  in the package java.util.
@@ -40,7 +40,7 @@ package edu.princeton.cs.algs4;
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
  */
-public class Vector { 
+public class Vector {
 
     private int d;               // dimension of the vector
     private double[] data;       // array of vector's components
@@ -228,8 +228,8 @@ public class Vector {
      * @param args the command-line arguments
      */
     public static void main(String[] args) {
-        double[] xdata = { 1.0, 2.0, 3.0, 4.0 };
-        double[] ydata = { 5.0, 2.0, 4.0, 1.0 };
+        double[] xdata = {1.0, 2.0, 3.0, 4.0};
+        double[] ydata = {5.0, 2.0, 4.0, 1.0};
         Vector x = new Vector(xdata);
         Vector y = new Vector(ydata);
 

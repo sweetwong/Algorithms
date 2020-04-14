@@ -43,14 +43,14 @@ public final class BinaryOut {
     private int n;                     // number of bits remaining in buffer
 
 
-   /**
+    /**
      * Initializes a binary output stream from standard output.
      */
     public BinaryOut() {
         out = new BufferedOutputStream(System.out);
     }
 
-   /**
+    /**
      * Initializes a binary output stream from an {@code OutputStream}.
      * @param os the {@code OutputStream}
      */
@@ -58,7 +58,7 @@ public final class BinaryOut {
         out = new BufferedOutputStream(os);
     }
 
-   /**
+    /**
      * Initializes a binary output stream from a file.
      * @param filename the name of the file
      */
@@ -66,13 +66,12 @@ public final class BinaryOut {
         try {
             OutputStream os = new FileOutputStream(filename);
             out = new BufferedOutputStream(os);
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-   /**
+    /**
      * Initializes a binary output stream from a socket.
      * @param socket the socket
      */
@@ -80,14 +79,13 @@ public final class BinaryOut {
         try {
             OutputStream os = socket.getOutputStream();
             out = new BufferedOutputStream(os);
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
 
-   /**
+    /**
      * Writes the specified bit to the binary output stream.
      * @param x the bit
      */
@@ -99,9 +97,9 @@ public final class BinaryOut {
         // if buffer is full (8 bits), write out as a single byte
         n++;
         if (n == 8) clearBuffer();
-    } 
+    }
 
-   /**
+    /**
      * Writes the 8-bit byte to the binary output stream.
      * @param x the byte
      */
@@ -112,8 +110,7 @@ public final class BinaryOut {
         if (n == 0) {
             try {
                 out.write(x);
-            }
-            catch (IOException e) {
+            } catch (IOException e) {
                 e.printStackTrace();
             }
             return;
@@ -132,15 +129,14 @@ public final class BinaryOut {
         if (n > 0) buffer <<= (8 - n);
         try {
             out.write(buffer);
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
         n = 0;
         buffer = 0;
     }
 
-   /**
+    /**
      * Flushes the binary output stream, padding 0s if number of bits written so far
      * is not a multiple of 8.
      */
@@ -148,13 +144,12 @@ public final class BinaryOut {
         clearBuffer();
         try {
             out.flush();
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-   /**
+    /**
      * Flushes and closes the binary output stream.
      * Once it is closed, bits can no longer be written.
      */
@@ -162,22 +157,21 @@ public final class BinaryOut {
         flush();
         try {
             out.close();
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
 
-   /**
+    /**
      * Writes the specified bit to the binary output stream.
      * @param x the {@code boolean} to write
      */
     public void write(boolean x) {
         writeBit(x);
-    } 
+    }
 
-   /**
+    /**
      * Writes the 8-bit byte to the binary output stream.
      * @param x the {@code byte} to write.
      */
@@ -185,18 +179,18 @@ public final class BinaryOut {
         writeByte(x & 0xff);
     }
 
-   /**
+    /**
      * Writes the 32-bit int to the binary output stream.
      * @param x the {@code int} to write
      */
     public void write(int x) {
         writeByte((x >>> 24) & 0xff);
         writeByte((x >>> 16) & 0xff);
-        writeByte((x >>>  8) & 0xff);
-        writeByte((x >>>  0) & 0xff);
+        writeByte((x >>> 8) & 0xff);
+        writeByte((x >>> 0) & 0xff);
     }
 
-   /**
+    /**
      * Writes the r-bit int to the binary output stream.
      *
      * @param  x the {@code int} to write
@@ -210,7 +204,7 @@ public final class BinaryOut {
             return;
         }
         if (r < 1 || r > 32) throw new IllegalArgumentException("Illegal value for r = " + r);
-        if (x >= (1 << r))   throw new IllegalArgumentException("Illegal " + r + "-bit char = " + x);
+        if (x >= (1 << r)) throw new IllegalArgumentException("Illegal " + r + "-bit char = " + x);
         for (int i = 0; i < r; i++) {
             boolean bit = ((x >>> (r - i - 1)) & 1) == 1;
             writeBit(bit);
@@ -218,7 +212,7 @@ public final class BinaryOut {
     }
 
 
-   /**
+    /**
      * Writes the 64-bit double to the binary output stream.
      * @param x the {@code double} to write
      */
@@ -226,7 +220,7 @@ public final class BinaryOut {
         write(Double.doubleToRawLongBits(x));
     }
 
-   /**
+    /**
      * Writes the 64-bit long to the binary output stream.
      * @param x the {@code long} to write
      */
@@ -237,11 +231,11 @@ public final class BinaryOut {
         writeByte((int) ((x >>> 32) & 0xff));
         writeByte((int) ((x >>> 24) & 0xff));
         writeByte((int) ((x >>> 16) & 0xff));
-        writeByte((int) ((x >>>  8) & 0xff));
-        writeByte((int) ((x >>>  0) & 0xff));
+        writeByte((int) ((x >>> 8) & 0xff));
+        writeByte((int) ((x >>> 0) & 0xff));
     }
 
-   /**
+    /**
      * Writes the 32-bit float to the binary output stream.
      * @param x the {@code float} to write
      */
@@ -249,16 +243,16 @@ public final class BinaryOut {
         write(Float.floatToRawIntBits(x));
     }
 
-   /**
+    /**
      * Write the 16-bit int to the binary output stream.
      * @param x the {@code short} to write.
      */
     public void write(short x) {
-        writeByte((x >>>  8) & 0xff);
-        writeByte((x >>>  0) & 0xff);
+        writeByte((x >>> 8) & 0xff);
+        writeByte((x >>> 0) & 0xff);
     }
 
-   /**
+    /**
      * Writes the 8-bit char to the binary output stream.
      *
      * @param  x the {@code char} to write
@@ -269,7 +263,7 @@ public final class BinaryOut {
         writeByte(x);
     }
 
-   /**
+    /**
      * Writes the r-bit char to the binary output stream.
      *
      * @param  x the {@code char} to write
@@ -283,14 +277,14 @@ public final class BinaryOut {
             return;
         }
         if (r < 1 || r > 16) throw new IllegalArgumentException("Illegal value for r = " + r);
-        if (x >= (1 << r))   throw new IllegalArgumentException("Illegal " + r + "-bit char = " + x);
+        if (x >= (1 << r)) throw new IllegalArgumentException("Illegal " + r + "-bit char = " + x);
         for (int i = 0; i < r; i++) {
             boolean bit = ((x >>> (r - i - 1)) & 1) == 1;
             writeBit(bit);
         }
     }
 
-   /**
+    /**
      * Writes the string of 8-bit characters to the binary output stream.
      *
      * @param  s the {@code String} to write
@@ -303,7 +297,7 @@ public final class BinaryOut {
     }
 
 
-   /**
+    /**
      * Writes the string of r-bit characters to the binary output stream.
      * @param  s the {@code String} to write
      * @param  r the number of relevants bits in each character
@@ -317,7 +311,7 @@ public final class BinaryOut {
     }
 
 
-   /**
+    /**
      * Test client. Read bits from standard input and write to the file
      * specified on command line.
      *
@@ -328,7 +322,7 @@ public final class BinaryOut {
         // create binary output stream to write to file
         String filename = args[0];
         BinaryOut out = new BinaryOut(filename);
-        BinaryIn  in  = new BinaryIn();
+        BinaryIn in = new BinaryIn();
 
         // read from standard input and write to file
         while (!in.isEmpty()) {

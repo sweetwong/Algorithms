@@ -60,7 +60,7 @@ public class BipartiteMatching {
     private BipartiteX bipartition;      // the bipartition
     private int cardinality;             // cardinality of current matching
     private int[] mate;                  // mate[v] =  w if v-w is an edge in current matching
-                                         //         = -1 if v is not in current matching
+    //         = -1 if v is not in current matching
     private boolean[] inMinVertexCover;  // inMinVertexCover[v] = true iff v is in min vertex cover
     private boolean[] marked;            // marked[v] = true iff v is reachable via alternating path
     private int[] edgeTo;                // edgeTo[v] = last edge on alternating path to v
@@ -167,7 +167,7 @@ public class BipartiteMatching {
 
     // is the edge v-w a forward edge not in the matching or a reverse edge in the matching?
     private boolean isResidualGraphEdge(int v, int w) {
-        if ((mate[v] != w) &&  bipartition.color(v)) return true;
+        if ((mate[v] != w) && bipartition.color(v)) return true;
         if ((mate[v] == w) && !bipartition.color(v)) return true;
         return false;
     }
@@ -239,7 +239,7 @@ public class BipartiteMatching {
 
     private void validate(int v) {
         if (v < 0 || v >= V)
-            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V - 1));
     }
 
     /**************************************************************************
@@ -262,7 +262,7 @@ public class BipartiteMatching {
         for (int v = 0; v < V; v++) {
             if (mate(v) != -1) matchedVertices++;
         }
-        if (2*size() != matchedVertices) return false;
+        if (2 * size() != matchedVertices) return false;
 
         // check that size() is consistent with minVertexCover()
         int sizeOfMinVertexCover = 0;
@@ -312,13 +312,13 @@ public class BipartiteMatching {
     public static void main(String[] args) {
         int V1 = Integer.parseInt(args[0]);
         int V2 = Integer.parseInt(args[1]);
-        int E  = Integer.parseInt(args[2]);
+        int E = Integer.parseInt(args[2]);
         Graph G = GraphGenerator.bipartite(V1, V2, E);
 
         if (G.V() < 1000) StdOut.println(G);
 
         BipartiteMatching matching = new BipartiteMatching(G);
-        
+
         // print maximum matching
         StdOut.printf("Number of edges in max matching        = %d\n", matching.size());
         StdOut.printf("Number of vertices in min vertex cover = %d\n", matching.size());

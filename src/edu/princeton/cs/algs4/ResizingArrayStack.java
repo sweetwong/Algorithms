@@ -3,7 +3,7 @@
  *  Execution:    java ResizingArrayStack < input.txt
  *  Dependencies: StdIn.java StdOut.java
  *  Data files:   https://algs4.cs.princeton.edu/13stacks/tobe.txt
- *  
+ *
  *  Stack implementation with a resizing array.
  *
  *  % more tobe.txt 
@@ -80,10 +80,9 @@ public class ResizingArrayStack<Item> implements Iterable<Item> {
         }
         a = temp;
 
-       // alternative implementation
-       // a = java.util.Arrays.copyOf(a, capacity);
+        // alternative implementation
+        // a = java.util.Arrays.copyOf(a, capacity);
     }
-
 
 
     /**
@@ -91,7 +90,7 @@ public class ResizingArrayStack<Item> implements Iterable<Item> {
      * @param item the item to add
      */
     public void push(Item item) {
-        if (n == a.length) resize(2*a.length);    // double size of array if necessary
+        if (n == a.length) resize(2 * a.length);    // double size of array if necessary
         a[n++] = item;                            // add item
     }
 
@@ -102,11 +101,11 @@ public class ResizingArrayStack<Item> implements Iterable<Item> {
      */
     public Item pop() {
         if (isEmpty()) throw new NoSuchElementException("Stack underflow");
-        Item item = a[n-1];
-        a[n-1] = null;                              // to avoid loitering
+        Item item = a[n - 1];
+        a[n - 1] = null;                              // to avoid loitering
         n--;
         // shrink size of array if necessary
-        if (n > 0 && n == a.length/4) resize(a.length/2);
+        if (n > 0 && n == a.length / 4) resize(a.length / 2);
         return item;
     }
 
@@ -118,7 +117,7 @@ public class ResizingArrayStack<Item> implements Iterable<Item> {
      */
     public Item peek() {
         if (isEmpty()) throw new NoSuchElementException("Stack underflow");
-        return a[n-1];
+        return a[n - 1];
     }
 
     /**
@@ -134,7 +133,7 @@ public class ResizingArrayStack<Item> implements Iterable<Item> {
         private int i;
 
         public ReverseArrayIterator() {
-            i = n-1;
+            i = n - 1;
         }
 
         public boolean hasNext() {

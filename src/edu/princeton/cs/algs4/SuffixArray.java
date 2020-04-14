@@ -83,9 +83,11 @@ public class SuffixArray {
             this.text = text;
             this.index = index;
         }
+
         private int length() {
             return text.length() - index;
         }
+
         private char charAt(int i) {
             return text.charAt(index + i);
         }
@@ -137,7 +139,7 @@ public class SuffixArray {
      */
     public int lcp(int i) {
         if (i < 1 || i >= suffixes.length) throw new IllegalArgumentException();
-        return lcpSuffix(suffixes[i], suffixes[i-1]);
+        return lcpSuffix(suffixes[i], suffixes[i - 1]);
     }
 
     // longest common prefix of s and t
@@ -210,8 +212,7 @@ public class SuffixArray {
             int rank = suffix.rank(s.substring(index));
             if (i == 0) {
                 StdOut.printf("%3d %3d %3s %3d %s\n", i, index, "-", rank, ith);
-            }
-            else {
+            } else {
                 int lcp = suffix.lcp(i);
                 StdOut.printf("%3d %3d %3d %3d %s\n", i, index, lcp, rank, ith);
             }

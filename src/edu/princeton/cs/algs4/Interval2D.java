@@ -2,7 +2,7 @@
  *  Compilation:  javac Interval2D.java
  *  Execution:    java Interval2D
  *  Dependencies: StdOut.java Interval1D.java StdDraw.java
- *  
+ *
  *  2-dimensional interval data type.
  *
  ******************************************************************************/
@@ -58,7 +58,7 @@ public class Interval2D {
      * @return true if this two-dimensional interval contains the point p; false otherwise
      */
     public boolean contains(Point2D p) {
-        return x.contains(p.x())  && y.contains(p.y());
+        return x.contains(p.x()) && y.contains(p.y());
     }
 
     /**
@@ -68,7 +68,7 @@ public class Interval2D {
     public double area() {
         return x.length() * y.length();
     }
-        
+
     /**
      * Returns a string representation of this two-dimensional interval.
      * @return a string representation of this two-dimensional interval
@@ -91,7 +91,7 @@ public class Interval2D {
         return this.x.equals(that.x) && this.y.equals(that.y);
     }
 
- 
+
     /**
      * Returns an integer hash code for this interval.  
      * @return an integer hash code for this interval 
@@ -99,7 +99,7 @@ public class Interval2D {
     public int hashCode() {
         int hash1 = x.hashCode();
         int hash2 = y.hashCode();
-        return 31*hash1 + hash2;
+        return 31 * hash1 + hash2;
     }
 
     /**
@@ -135,7 +135,7 @@ public class Interval2D {
             Point2D point = new Point2D(x, y);
 
             if (box.contains(point)) counter.increment();
-            else                     point.draw();
+            else point.draw();
         }
 
         StdOut.println(counter);

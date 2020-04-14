@@ -5,17 +5,17 @@ package design_pattern.singleton;
  */
 public class Registration {
 
-  private Registration() {
+    private Registration() {
 
-  }
+    }
 
-  public static Registration getInstance() {
-    return SingletonHolder.instance;
-  }
+    public static Registration getInstance() {
+        return SingletonHolder.instance;
+    }
 
-  private static class SingletonHolder {
-    private static Registration instance = new Registration();
-  }
+    private static class SingletonHolder {
+        private static Registration instance = new Registration();
+    }
 
 
 }

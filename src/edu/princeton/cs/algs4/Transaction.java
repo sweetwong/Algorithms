@@ -2,7 +2,7 @@
  *  Compilation:  javac Transaction.java
  *  Execution:    java Transaction
  *  Dependencies: StdOut.java
- *  
+ *
  *  Data type for commercial transactions.
  *
  ******************************************************************************/
@@ -24,9 +24,9 @@ import java.util.Comparator;
  *  @author Kevin Wayne
  */
 public class Transaction implements Comparable<Transaction> {
-    private final String  who;      // customer
-    private final Date    when;     // date
-    private final double  amount;   // amount
+    private final String who;      // customer
+    private final Date when;     // date
+    private final double amount;   // amount
 
 
     /**
@@ -35,15 +35,15 @@ public class Transaction implements Comparable<Transaction> {
      * @param  who the person involved in this transaction
      * @param  when the date of this transaction
      * @param  amount the amount of this transaction
-     * @throws IllegalArgumentException if {@code amount} 
+     * @throws IllegalArgumentException if {@code amount}
      *         is {@code Double.NaN}, {@code Double.POSITIVE_INFINITY},
      *         or {@code Double.NEGATIVE_INFINITY}
      */
     public Transaction(String who, Date when, double amount) {
         if (Double.isNaN(amount) || Double.isInfinite(amount))
             throw new IllegalArgumentException("Amount cannot be NaN or infinite");
-        this.who    = who;
-        this.when   = when;
+        this.who = who;
+        this.when = when;
         this.amount = amount;
     }
 
@@ -51,14 +51,14 @@ public class Transaction implements Comparable<Transaction> {
      * Initializes a new transaction by parsing a string of the form NAME DATE AMOUNT.
      *
      * @param  transaction the string to parse
-     * @throws IllegalArgumentException if {@code amount} 
+     * @throws IllegalArgumentException if {@code amount}
      *         is {@code Double.NaN}, {@code Double.POSITIVE_INFINITY},
      *         or {@code Double.NEGATIVE_INFINITY}
      */
     public Transaction(String transaction) {
         String[] a = transaction.split("\\s+");
-        who    = a[0];
-        when   = new Date(a[1]);
+        who = a[0];
+        when = new Date(a[1]);
         amount = Double.parseDouble(a[2]);
         if (Double.isNaN(amount) || Double.isInfinite(amount))
             throw new IllegalArgumentException("Amount cannot be NaN or infinite");
@@ -72,7 +72,7 @@ public class Transaction implements Comparable<Transaction> {
     public String who() {
         return who;
     }
- 
+
     /**
      * Returns the date of this transaction.
      *
@@ -81,7 +81,7 @@ public class Transaction implements Comparable<Transaction> {
     public Date when() {
         return when;
     }
- 
+
     /**
      * Returns the amount of this transaction.
      *
@@ -111,7 +111,7 @@ public class Transaction implements Comparable<Transaction> {
      */
     public int compareTo(Transaction that) {
         return Double.compare(this.amount, that.amount);
-    }    
+    }
 
     /**
      * Compares this transaction to the specified object.
@@ -126,7 +126,7 @@ public class Transaction implements Comparable<Transaction> {
         if (other.getClass() != this.getClass()) return false;
         Transaction that = (Transaction) other;
         return (this.amount == that.amount) && (this.who.equals(that.who))
-                                            && (this.when.equals(that.when));
+                && (this.when.equals(that.when));
     }
 
 
@@ -137,9 +137,9 @@ public class Transaction implements Comparable<Transaction> {
      */
     public int hashCode() {
         int hash = 1;
-        hash = 31*hash + who.hashCode();
-        hash = 31*hash + when.hashCode();
-        hash = 31*hash + ((Double) amount).hashCode();
+        hash = 31 * hash + who.hashCode();
+        hash = 31 * hash + when.hashCode();
+        hash = 31 * hash + ((Double) amount).hashCode();
         return hash;
         // return Objects.hash(who, when, amount);
     }
@@ -194,7 +194,7 @@ public class Transaction implements Comparable<Transaction> {
         for (int i = 0; i < a.length; i++)
             StdOut.println(a[i]);
         StdOut.println();
-        
+
         StdOut.println("Sort by date");
         Arrays.sort(a, new Transaction.WhenOrder());
         for (int i = 0; i < a.length; i++)
@@ -215,8 +215,6 @@ public class Transaction implements Comparable<Transaction> {
     }
 
 }
-
-
 
 
 /******************************************************************************

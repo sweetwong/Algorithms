@@ -113,7 +113,7 @@ public class PrimMST {
                 distTo[w] = e.weight();
                 edgeTo[w] = e;
                 if (pq.contains(w)) pq.decreaseKey(w, distTo[w]);
-                else                pq.insert(w, distTo[w]);
+                else pq.insert(w, distTo[w]);
             }
         }
     }

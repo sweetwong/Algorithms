@@ -12,48 +12,48 @@ import util.linked_list.ListNode;
  */
 class Item203_移除链表元素 {
 
-  public static void main(String[] args) {
-    ListNode head = LinkedListUtils.create(1, 2, 2, 1);
-    removeElements1(head, 2);
-    LinkedListUtils.print(head);
-  }
-
-  /**
-   * 利用dummyHead, 问题会简单很多
-   */
-  public static ListNode removeElements1(ListNode head, int val) {
-    ListNode dummyHead = new ListNode(0);
-    dummyHead.next = head;
-
-    ListNode curr = dummyHead;
-    while (curr != null) {
-      while (curr.next != null && curr.next.val == val) {
-        curr.next = curr.next.next;
-      }
-      curr = curr.next;
-    }
-    return dummyHead.next;
-  }
-
-
-  /**
-   * 不利用dummyHead, 问题会复杂很多
-   */
-  public static ListNode removeElements2(ListNode head, int val) {
-    if (head == null) return null;
-
-    while (head != null && head.val == val) {
-      head = head.next;
+    public static void main(String[] args) {
+        ListNode head = LinkedListUtils.create(1, 2, 2, 1);
+        removeElements1(head, 2);
+        LinkedListUtils.print(head);
     }
 
-    ListNode curr = head;
-    while (curr != null) {
-      while (curr.next != null && curr.next.val == val) {
-        curr.next = curr.next.next;
-      }
-      curr = curr.next;
+    /**
+     * 利用dummyHead, 问题会简单很多
+     */
+    public static ListNode removeElements1(ListNode head, int val) {
+        ListNode dummyHead = new ListNode(0);
+        dummyHead.next = head;
+
+        ListNode curr = dummyHead;
+        while (curr != null) {
+            while (curr.next != null && curr.next.val == val) {
+                curr.next = curr.next.next;
+            }
+            curr = curr.next;
+        }
+        return dummyHead.next;
     }
-    return head;
-  }
+
+
+    /**
+     * 不利用dummyHead, 问题会复杂很多
+     */
+    public static ListNode removeElements2(ListNode head, int val) {
+        if (head == null) return null;
+
+        while (head != null && head.val == val) {
+            head = head.next;
+        }
+
+        ListNode curr = head;
+        while (curr != null) {
+            while (curr.next != null && curr.next.val == val) {
+                curr.next = curr.next.next;
+            }
+            curr = curr.next;
+        }
+        return head;
+    }
 
 }

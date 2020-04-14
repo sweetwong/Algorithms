@@ -2,7 +2,7 @@
  *  Compilation:  javac ResizingArrayBag.java
  *  Execution:    java ResizingArrayBag
  *  Dependencies: StdIn.java StdOut.java
- *  
+ *
  *  Bag implementation with a resizing array.
  *
  ******************************************************************************/
@@ -71,7 +71,7 @@ public class ResizingArrayBag<Item> implements Iterable<Item> {
      * @param item the item to add to this bag
      */
     public void add(Item item) {
-        if (n == a.length) resize(2*a.length);    // double size of array if necessary
+        if (n == a.length) resize(2 * a.length);    // double size of array if necessary
         a[n++] = item;                            // add item
     }
 
@@ -87,8 +87,14 @@ public class ResizingArrayBag<Item> implements Iterable<Item> {
     // an iterator, doesn't implement remove() since it's optional
     private class ArrayIterator implements Iterator<Item> {
         private int i = 0;
-        public boolean hasNext()  { return i < n;                               }
-        public void remove()      { throw new UnsupportedOperationException();  }
+
+        public boolean hasNext() {
+            return i < n;
+        }
+
+        public void remove() {
+            throw new UnsupportedOperationException();
+        }
 
         public Item next() {
             if (!hasNext()) throw new NoSuchElementException();

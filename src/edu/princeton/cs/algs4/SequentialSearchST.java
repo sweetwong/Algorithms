@@ -3,7 +3,7 @@
  *  Execution:    java SequentialSearchST
  *  Dependencies: StdIn.java StdOut.java
  *  Data files:   https://algs4.cs.princeton.edu/31elementary/tinyST.txt  
- *  
+ *
  *  Symbol table implementation with sequential search in an
  *  unordered linked list of key-value pairs.
  *
@@ -68,9 +68,9 @@ public class SequentialSearchST<Key, Value> {
         private Value val;
         private Node next;
 
-        public Node(Key key, Value val, Node next)  {
-            this.key  = key;
-            this.val  = val;
+        public Node(Key key, Value val, Node next) {
+            this.key = key;
+            this.val = val;
             this.next = next;
         }
     }
@@ -122,7 +122,7 @@ public class SequentialSearchST<Key, Value> {
      * @throws IllegalArgumentException if {@code key} is {@code null}
      */
     public Value get(Key key) {
-        if (key == null) throw new IllegalArgumentException("argument to get() is null"); 
+        if (key == null) throw new IllegalArgumentException("argument to get() is null");
         for (Node x = first; x != null; x = x.next) {
             if (key.equals(x.key))
                 return x.val;
@@ -141,7 +141,7 @@ public class SequentialSearchST<Key, Value> {
      * @throws IllegalArgumentException if {@code key} is {@code null}
      */
     public void put(Key key, Value val) {
-        if (key == null) throw new IllegalArgumentException("first argument to put() is null"); 
+        if (key == null) throw new IllegalArgumentException("first argument to put() is null");
         if (val == null) {
             delete(key);
             return;
@@ -165,7 +165,7 @@ public class SequentialSearchST<Key, Value> {
      * @throws IllegalArgumentException if {@code key} is {@code null}
      */
     public void delete(Key key) {
-        if (key == null) throw new IllegalArgumentException("argument to delete() is null"); 
+        if (key == null) throw new IllegalArgumentException("argument to delete() is null");
         first = delete(first, key);
     }
 
@@ -189,7 +189,7 @@ public class SequentialSearchST<Key, Value> {
      *
      * @return all keys in the symbol table
      */
-    public Iterable<Key> keys()  {
+    public Iterable<Key> keys() {
         Queue<Key> queue = new Queue<Key>();
         for (Node x = first; x != null; x = x.next)
             queue.enqueue(x.key);

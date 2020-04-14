@@ -13,24 +13,24 @@ package classical;
  */
 public class Fibonacci {
 
-  public static void main(String[] args) {
-    for (int i = 1; i <= 9; i++) {
-      System.out.println(fibonacci(i));
-    }
-  }
-
-  public static int fibonacci(int n) {
-    if (n <= 2) return 1;
-
-    int p = 1, q = 1;
-    for (int i = 3; i <= n; i++) {
-      int sum = p + q;
-      p = q;
-      q = sum;
+    public static void main(String[] args) {
+        for (int i = 1; i <= 9; i++) {
+            System.out.println(fibonacci(i));
+        }
     }
 
-    return q;
-  }
+    public static int fibonacci(int n) {
+        if (n <= 2) return 1;
+
+        int p = 1, q = 1;
+        for (int i = 3; i <= n; i++) {
+            int sum = p + q;
+            p = q;
+            q = sum;
+        }
+
+        return q;
+    }
 
 
 }

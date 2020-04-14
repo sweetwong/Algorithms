@@ -69,7 +69,7 @@ public class TarjanSCC {
     public TarjanSCC(Digraph G) {
         marked = new boolean[G.V()];
         stack = new Stack<Integer>();
-        id = new int[G.V()]; 
+        id = new int[G.V()];
         low = new int[G.V()];
         for (int v = 0; v < G.V(); v++) {
             if (!marked[v]) dfs(G, v);
@@ -79,7 +79,7 @@ public class TarjanSCC {
         assert check(G);
     }
 
-    private void dfs(Digraph G, int v) { 
+    private void dfs(Digraph G, int v) {
         marked[v] = true;
         low[v] = pre++;
         int min = low[v];
@@ -153,7 +153,7 @@ public class TarjanSCC {
     private void validateVertex(int v) {
         int V = marked.length;
         if (v < 0 || v >= V)
-            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V - 1));
     }
 
     /**

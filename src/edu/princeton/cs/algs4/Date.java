@@ -21,13 +21,13 @@ package edu.princeton.cs.algs4;
  *  @author Kevin Wayne
  */
 public class Date implements Comparable<Date> {
-    private static final int[] DAYS = { 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+    private static final int[] DAYS = {0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
     private final int month;   // month (between 1 and 12)
     private final int day;     // day   (between 1 and DAYS[month]
     private final int year;    // year
 
-   /**
+    /**
      * Initializes a new date from the month, day, and year.
      * @param month the month (between 1 and 12)
      * @param day the day (between 1 and 28-31, depending on the month)
@@ -37,8 +37,8 @@ public class Date implements Comparable<Date> {
     public Date(int month, int day, int year) {
         if (!isValid(month, day, year)) throw new IllegalArgumentException("Invalid date");
         this.month = month;
-        this.day   = day;
-        this.year  = year;
+        this.day = day;
+        this.year = year;
     }
 
     /**
@@ -52,8 +52,8 @@ public class Date implements Comparable<Date> {
             throw new IllegalArgumentException("Invalid date");
         }
         month = Integer.parseInt(fields[0]);
-        day   = Integer.parseInt(fields[1]);
-        year  = Integer.parseInt(fields[2]);
+        day = Integer.parseInt(fields[1]);
+        year = Integer.parseInt(fields[2]);
         if (!isValid(month, day, year)) throw new IllegalArgumentException("Invalid date");
     }
 
@@ -84,7 +84,7 @@ public class Date implements Comparable<Date> {
 
     // is the given date valid?
     private static boolean isValid(int m, int d, int y) {
-        if (m < 1 || m > 12)      return false;
+        if (m < 1 || m > 12) return false;
         if (d < 1 || d > DAYS[m]) return false;
         if (m == 2 && d == 29 && !isLeapYear(y)) return false;
         return true;
@@ -103,9 +103,9 @@ public class Date implements Comparable<Date> {
      * @return a date that represents the next day after this day
      */
     public Date next() {
-        if (isValid(month, day + 1, year))    return new Date(month, day + 1, year);
+        if (isValid(month, day + 1, year)) return new Date(month, day + 1, year);
         else if (isValid(month + 1, 1, year)) return new Date(month + 1, 1, year);
-        else                                  return new Date(1, 1, year + 1);
+        else return new Date(1, 1, year + 1);
     }
 
     /**
@@ -138,12 +138,12 @@ public class Date implements Comparable<Date> {
      */
     @Override
     public int compareTo(Date that) {
-        if (this.year  < that.year)  return -1;
-        if (this.year  > that.year)  return +1;
+        if (this.year < that.year) return -1;
+        if (this.year > that.year) return +1;
         if (this.month < that.month) return -1;
         if (this.month > that.month) return +1;
-        if (this.day   < that.day)   return -1;
-        if (this.day   > that.day)   return +1;
+        if (this.day < that.day) return -1;
+        if (this.day > that.day) return +1;
         return 0;
     }
 
@@ -179,7 +179,7 @@ public class Date implements Comparable<Date> {
      */
     @Override
     public int hashCode() {
-        return day + 31*month + 31*12*year;
+        return day + 31 * month + 31 * 12 * year;
     }
 
     /**
