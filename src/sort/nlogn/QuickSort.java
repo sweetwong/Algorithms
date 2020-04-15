@@ -11,15 +11,6 @@ import util.other.Time;
  */
 public class QuickSort {
 
-    public static void main(String[] args) {
-        for (int i = 0; i < 5; i++) {
-            int[] nums = ArrayUtils.createRandomArray(10000000);
-            Time.watch(() -> sort(nums));
-            Time.watch(() -> sort(nums));
-            System.out.println();
-        }
-    }
-
     /**
      * 模拟Arrays.sort()接口
      */
@@ -27,40 +18,41 @@ public class QuickSort {
         quickSort(nums, 0, nums.length - 1);
     }
 
-    public static void quickSort(int[] nums, int low, int high) {
-        // 当low == high, quickSort(nums, low, low)没有任何意义
-        // 因此终止条件是low >= high
-        if (low < high) {
+    public static void quickSort(int[] nums, int lo, int hi) {
+        // 当lo == hi, quickSort(nums, lo, lo)没有任何意义
+        // 因此终止条件是lo >= hi
+        if (lo < hi) {
             // 先分区,然后返回分区的索引
-            int partition = partition(nums, low, high);
+            int partition = partition(nums, lo, hi);
             // 左边快排
-            quickSort(nums, low, partition - 1);
+            quickSort(nums, lo, partition - 1);
             // 右边快排
-            quickSort(nums, partition + 1, high);
+            quickSort(nums, partition + 1, hi);
         }
     }
 
     /**
      * 快速排序的最坏时间复杂度为O(n²), 通过取随机数可以将最坏情况优化到O(nlogn)
-     * 最坏情况什么时候会出现? 当选取边界为枢纽, 以下情况会导致最坏情况
+     * 最坏情况什么时候会出现? 当选取边界为枢纽, 以下情况可能会导致最坏情况
      * 1. 数组已经按照正序排序
      * 2. 数组已经按照倒序排序
      * 3. 数组中所有的数都相等
      * 4. 或者有大量重复元素或者顺序相对较整齐(不够混乱), 也会降低其效率
      */
-    private static int partition(int[] nums, int low, int high) {
+    private static int partition(int[] nums, int lo, int hi) {
 
-        // 解决O(n²)问题的方案: 随机在数组中取一个数, 然后与最后一个数进行交换
-        int randomIndex = low + (int) ((high - low) * Math.random());
-        swap(nums, randomIndex, high);
+        // 解决O(n²)问题的方案(不是完全解决, 是尽最大可能解决, 运气最差是还是O(n²))
+        // 随机在数组中取一个数, 然后与最后一个数进行交换
+        int random = lo + (int) ((hi - lo) * Math.random());
+        swap(nums, random, hi);
 
         // 选出最后一个值作为基准, 实质上是之前取得随机数
-        int pivot = nums[high];
+        int pivot = nums[hi];
 
         // i是慢指针, i的一边是指小于pivot的数
-        int i = low;
-        // j是快指针, 从low遍历到high, 注意此处是j < high, 既不包括最后一个数
-        for (int j = low; j < high; j++) {
+        int i = lo;
+        // j是快指针, 从lo遍历到hi, 注意此处是j < hi, 既不包括最后一个数
+        for (int j = lo; j < hi; j++) {
             // 如果nums[j]小于基准, 分到左边的区
             // 如果nums[j]大于等于基准, 分到右边的区(保持原位即可)
             // 此处取 < 或者 <= 都可以, 不过取<可以减少运算次数
@@ -71,7 +63,7 @@ public class QuickSort {
                 i++;
             }
         }
-        swap(nums, i, high);
+        swap(nums, i, hi);
         return i;
     }
 
@@ -115,6 +107,15 @@ public class QuickSort {
         T temp = nums[i];
         nums[i] = nums[j];
         nums[j] = temp;
+    }
+
+    public static void main(String[] args) {
+        for (int i = 0; i < 5; i++) {
+            int[] nums = ArrayUtils.createRandomArray(10000000);
+            Time.watch(() -> sort(nums));
+            Time.watch(() -> sort(nums));
+            System.out.println();
+        }
     }
 
 }

@@ -41,13 +41,13 @@ public class BinarySearch {
      * 当然只是列举下, 当然是不能使用的
      * 没必要增加无谓的空间复杂度
      */
-    public static int binarySearch(int[] arr, int lo, int hi, int target) {
+    public static int binarySearch(int[] nums, int lo, int hi, int target) {
         if (lo <= hi) {
             int mid = lo + ((hi - lo) >>> 1);
-            if (arr[mid] < target) {
-                return binarySearch(arr, mid + 1, hi, target);
-            } else if (arr[mid] > target) {
-                return binarySearch(arr, lo, mid - 1, target);
+            if (nums[mid] < target) {
+                return binarySearch(nums, mid + 1, hi, target);
+            } else if (nums[mid] > target) {
+                return binarySearch(nums, lo, mid - 1, target);
             } else {
                 return mid;
             }
