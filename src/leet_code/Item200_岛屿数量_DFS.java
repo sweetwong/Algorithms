@@ -1,6 +1,6 @@
 package leet_code;
 
-class Item200_岛屿数量_深度优先搜索 {
+class Item200_岛屿数量_DFS {
 
     private int height = 0;
     private int width = 0;

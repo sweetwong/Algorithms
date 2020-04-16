@@ -3,7 +3,7 @@ package leet_code;
 import java.util.ArrayDeque;
 import java.util.Queue;
 
-class Item200_岛屿数量_广度优先搜索 {
+class Item200_岛屿数量_BFS {
 
     private static class Node {
         int row;
