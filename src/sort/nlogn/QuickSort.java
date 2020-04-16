@@ -23,11 +23,11 @@ public class QuickSort {
         // 因此终止条件是lo >= hi
         if (lo < hi) {
             // 先分区,然后返回分区的索引
-            int partition = partition(nums, lo, hi);
+            int p = partition(nums, lo, hi);
             // 左边快排
-            quickSort(nums, lo, partition - 1);
+            quickSort(nums, lo, p - 1);
             // 右边快排
-            quickSort(nums, partition + 1, hi);
+            quickSort(nums, p + 1, hi);
         }
     }
 
@@ -80,33 +80,33 @@ public class QuickSort {
         quickSort(arr, 0, arr.length - 1);
     }
 
-    public static <T extends Comparable<T>> void quickSort(T[] arr, int low, int high) {
-        if (low < high) {
-            int pi = partition(arr, low, high);
-            quickSort(arr, low, pi - 1);
-            quickSort(arr, pi + 1, high);
+    public static <T extends Comparable<T>> void quickSort(T[] arr, int lo, int hi) {
+        if (lo < hi) {
+            int p = partition(arr, lo, hi);
+            quickSort(arr, lo, p - 1);
+            quickSort(arr, p + 1, hi);
         }
     }
 
-    private static <T extends Comparable<T>> int partition(T[] arr, int low, int high) {
-        int randomIndex = low + (int) ((high - low) * Math.random());
-        swap(arr, randomIndex, high);
-        T pivot = arr[high];
-        int i = low;
-        for (int j = low; j < high; j++) {
+    private static <T extends Comparable<T>> int partition(T[] arr, int lo, int hi) {
+        int random = lo + (int) ((hi - lo) * Math.random());
+        swap(arr, random, hi);
+        T pivot = arr[hi];
+        int i = lo;
+        for (int j = lo; j < hi; j++) {
             if (arr[j].compareTo(pivot) < 0) {
                 swap(arr, i, j);
                 i++;
             }
         }
-        swap(arr, i, high);
+        swap(arr, i, hi);
         return i;
     }
 
-    private static <T extends Comparable<T>> void swap(T[] nums, int i, int j) {
-        T temp = nums[i];
-        nums[i] = nums[j];
-        nums[j] = temp;
+    private static <T extends Comparable<T>> void swap(T[] arr, int i, int j) {
+        T temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
     }
 
     public static void main(String[] args) {

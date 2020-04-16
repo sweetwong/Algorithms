@@ -1,8 +1,11 @@
 package search.graph;
 
+import algs4.DepthFirstSearch;
+import algs4.DirectedDFS;
+
 /**
- * @see edu.princeton.cs.algs4.DepthFirstSearch 无向图的深度优先搜索
- * @see edu.princeton.cs.algs4.DirectedDFS 有向图的深度优先搜索
+ * @see DepthFirstSearch 无向图的深度优先搜索
+ * @see DirectedDFS 有向图的深度优先搜索
  */
 class Search {
 }
