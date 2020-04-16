@@ -1,6 +1,10 @@
 package leet_code.important;
 
+import util.array.ArrayUtils;
+import util.other.Time;
+
 import java.util.ArrayDeque;
+import java.util.Arrays;
 import java.util.Queue;
 
 class Item695_岛屿的最大面积_BFS {
@@ -13,7 +17,7 @@ class Item695_岛屿的最大面积_BFS {
         int maxArea = 0;
         // 这是BFS常用的方法, 用这样来表示四个方向
         int[][] directions = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
-        // 这又是一个技巧, 此处有3个表示的方法:
+        // 这是一个技巧, 此处有3个表示的方法:
         // 1. 利用id: 例如 int id = i * m + j, 但是用id需要对数值有限制的情况
         // 2. 利用Node: 用一个对象来包装i和j, 显然这是最低效的
         // 3. 利用int[]: 就是下面用的方法, 一般来说效率最高的是方法1, 如果无法用方法1就用这个方法
@@ -30,7 +34,7 @@ class Item695_岛屿的最大面积_BFS {
                         int[] poll = queue.poll();
                         int currI = poll[0];
                         int currJ = poll[1];
-                        // 这是一个出队后的判断点(这个判断点可以判断到第一次入队, 即queue.offer(new int[]{i, j});)
+                        // 这是一个出队后的判断点(这个判断点可以囊括到第一次入队, 即queue.offer(new int[]{i, j});)
                         if (currI < 0 || currI >= m || currJ < 0 || currJ >= n || grid[currI][currJ] == 0) {
                             continue;
                         }
@@ -46,7 +50,8 @@ class Item695_岛屿的最大面积_BFS {
                             queue.offer(new int[]{currI + direction[0], currJ + direction[1]});
                         }
                     }
-                    // 此处level++
+                    // 此处层级level++
+                    // 很多BFS都要用到level这个变量, 只是这一题不用
                 }
                 maxArea = Math.max(maxArea, currArea);
             }
@@ -55,14 +60,18 @@ class Item695_岛屿的最大面积_BFS {
     }
 
     public static void main(String[] args) {
-        int[][] grid = {
-                {1, 1, 0, 0, 0},
-                {1, 1, 0, 0, 0},
-                {0, 0, 0, 1, 1},
-                {0, 0, 0, 1, 1}
-        };
+        for (int i = 0; i < 3; i++) {
 
-        System.out.println(maxAreaOfIsland(grid));
+            int[][] grid1 = ArrayUtils.createIsland(5000, 5000);
+            System.out.print("BFS: ");
+            Time.watch(() -> Item695_岛屿的最大面积_BFS.maxAreaOfIsland(grid1));
+
+            int[][] grid2 = ArrayUtils.createIsland(5000, 5000);
+            System.out.print("DFS: ");
+            Time.watch(() -> Item695_岛屿的最大面积_DFS.maxAreaOfIsland(grid2));
+
+            System.out.println();
+        }
     }
 
 }

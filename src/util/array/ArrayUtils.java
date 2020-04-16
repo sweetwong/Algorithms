@@ -60,6 +60,21 @@ public class ArrayUtils {
         return arr;
     }
 
+    /**
+     * @param m 岛的行
+     * @param n 岛的列
+     * @return 代表岛的grid
+     */
+    public static int[][] createIsland(int m, int n) {
+        int[][] grid = new int[m][n];
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                grid[i][j] = Math.random() > 0.5 ? 1 : 0;
+            }
+        }
+        return grid;
+    }
+
     public static int[] convertIntToArray(int x) {
         List<Integer> list = new ArrayList<>();
         while (x != 0) {
