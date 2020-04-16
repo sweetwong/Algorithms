@@ -77,36 +77,6 @@ public class MergeSort {
     }
 
     /**
-     * 对象的归并排序
-     */
-    public static <T extends Comparable<T>> void sort(T[] nums) {
-        if (nums.length <= 1) return;
-        int mid = nums.length / 2;
-        T[] left = Arrays.copyOfRange(nums, 0, mid);
-        T[] right = Arrays.copyOfRange(nums, mid, nums.length);
-        sort(left);
-        sort(right);
-        mergeTwoSortedArrays(nums, left, right);
-    }
-
-    /**
-     * 对象的归并排序
-     */
-    public static <T extends Comparable<T>> void mergeTwoSortedArrays(T[] nums, T[] left, T[] right) {
-        for (int i = 0, l = 0, r = 0; i < nums.length; i++) {
-            if (l >= left.length)
-                nums[i] = right[r++];
-            else if (r >= right.length)
-                nums[i] = left[l++];
-                // 这句话必须这样写, 左边<=右边, 这样才能保持稳定性
-            else if (left[l].compareTo(right[r]) <= 0)
-                nums[i] = left[l++];
-            else
-                nums[i] = right[r++];
-        }
-    }
-
-    /**
      * 链表的归并排序
      * <p>
      * 思路:
@@ -130,6 +100,29 @@ public class MergeSort {
         slow.next = null;
 
         return mergeTwoSortedLists(sortList(head), sortList(rightHead));
+    }
+
+    /**
+     * 优先使用迭代法, 递归法会占用额外的空间
+     */
+    public static ListNode mergeTwoSortedListsIte(ListNode l1, ListNode l2) {
+        ListNode dummy = new ListNode(0);
+
+        ListNode curr = dummy;
+        while (l1 != null && l2 != null) {
+            if (l1.val <= l2.val) {
+                curr.next = l1;
+                l1 = l1.next;
+            } else {
+                curr.next = l2;
+                l2 = l2.next;
+            }
+            curr = curr.next;
+        }
+
+        curr.next = l1 == null ? l2 : l1;
+
+        return dummy.next;
     }
 
     /**

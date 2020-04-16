@@ -9,7 +9,7 @@ import util.other.Time;
  * 质数是指在大于1的自然数中，除了1和它本身以外不再有其他因数的自然数。
  * 厄拉多塞筛选法
  */
-class CountPrimes {
+public class CountPrimes {
 
     public static void main(String[] args) {
         Time.watch(() -> countPrimes(100000000));

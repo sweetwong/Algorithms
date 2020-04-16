@@ -11,7 +11,7 @@ package classical;
  * 递归思想: 是把f(n)化成f(n-1)和f(n-2)
  * 迭代思想: 已知f(1)和f(2), 求f(3), f(4), ..., f(n)
  */
-class ClimbStairs {
+public class ClimbStairs {
 
     public static void main(String[] args) {
         System.out.println(climbStairsFibonacci(10));
