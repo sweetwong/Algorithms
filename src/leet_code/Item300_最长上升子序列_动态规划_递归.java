@@ -1,8 +1,11 @@
 package leet_code;
 
+import util.array.ArrayUtils;
+import util.other.Time;
+
 class Item300_最长上升子序列_动态规划_递归 {
 
-    public int lengthOfLIS(int[] nums) {
+    public static int lengthOfLIS(int[] nums) {
         int[] dp = new int[nums.length];
         int max = 0;
         for (int i = 0; i < nums.length; i++) {
@@ -11,7 +14,7 @@ class Item300_最长上升子序列_动态规划_递归 {
         return max;
     }
 
-    public int lengthOfLISFromStart(int[] nums, int[] dp, int start) {
+    public static int lengthOfLISFromStart(int[] nums, int[] dp, int start) {
         if (start == nums.length - 1) return 1;
 
         if (dp[start] != 0) {
@@ -30,5 +33,16 @@ class Item300_最长上升子序列_动态规划_递归 {
         return dp[start];
     }
 
+    public static void main(String[] args) {
+        for (int i = 0; i < 5; i++) {
+            int[] nums1 = ArrayUtils.createRandomArray(30000);
+            Time.watch(() -> Item300_最长上升子序列_动态规划_递归.lengthOfLIS(nums1));
+
+            int[] nums2 = ArrayUtils.createRandomArray(30000);
+            Time.watch(() -> Item300_最长上升子序列_动态规划_迭代.lengthOfLIS(nums2));
+
+            System.out.println();
+        }
+    }
 
 }
