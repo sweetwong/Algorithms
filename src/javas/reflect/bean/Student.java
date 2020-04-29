@@ -1,4 +1,4 @@
-package java.reflect.bean;
+package javas.reflect.bean;
 
 public class Student extends Person {
 

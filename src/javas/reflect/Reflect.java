@@ -1,6 +1,6 @@
-package java.reflect;
+package javas.reflect;
 
-import java.reflect.bean.Student;
+import javas.reflect.bean.Student;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -13,7 +13,7 @@ class Reflect {
             Student person = new Student("Sweet", 18, 180);
 
             // Class, 1. 这种方法不需要获得Student的类的
-            Class<Student> clazz = (Class<Student>) Class.forName("java.reflect.bean.Student");
+            Class<Student> clazz = (Class<Student>) Class.forName("javas.reflect.bean.Student");
 
             // Class, 2. 这种方法需要Student的类
             Class<Student> class2 = Student.class;
