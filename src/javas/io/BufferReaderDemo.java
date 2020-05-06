@@ -6,7 +6,7 @@ import java.io.IOException;
 
 class BufferReaderDemo {
 
-    public static void readText() {
+    public static String readText() {
         String text;
         BufferedReader reader = null;
         StringBuilder builder = new StringBuilder();
@@ -31,6 +31,7 @@ class BufferReaderDemo {
                 e.printStackTrace();
             }
         }
+        return builder.toString();
     }
 
     public static boolean isEmpty(String str) {
