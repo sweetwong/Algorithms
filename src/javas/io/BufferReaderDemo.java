@@ -15,11 +15,6 @@ class BufferReaderDemo {
             while (!isEmpty(text = reader.readLine())) {
                 builder.append(text);
             }
-            if (isEmpty(builder.toString())) {
-                System.out.println("demo.txt is not exist");
-            } else {
-                System.out.println(builder.toString());
-            }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -39,7 +34,7 @@ class BufferReaderDemo {
     }
 
     public static void main(String[] args) {
-        readText();
+        System.out.println(readText());;
     }
 
 }

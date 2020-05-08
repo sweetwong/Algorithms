@@ -29,7 +29,7 @@ class Item207_课程表 {
             indegrees[cp[0]]++;
             adj.get(cp[1]).add(cp[0]);
         }
-        GraphUtils.printAdjacencyList(adj);
+        GraphUtils.printAdj(adj);
         ArrayUtils.printArray(indegrees);
 
         // 从此处开始BFS拓扑排序
