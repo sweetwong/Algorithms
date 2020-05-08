@@ -25,6 +25,8 @@ class Item695_岛屿的最大面积_BFS {
 
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
+                // 第一次入队, 第一次入队可能有很多种情况, 这只是其中一个情况
+                // 有些情况需要先遍历一次, 先统一做第一次入队
                 queue.offer(new int[]{i, j});
                 int currArea = 0;
                 while (!queue.isEmpty()) {

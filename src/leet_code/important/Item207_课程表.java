@@ -9,20 +9,22 @@ import java.util.List;
 import java.util.Queue;
 
 /**
- * todo 完成这个拓扑排序
+ * https://leetcode-cn.com/problems/course-schedule/solution/course-schedule-tuo-bu-pai-xu-bfsdfsliang-chong-fa/
  */
 class Item207_课程表 {
 
     // 注意prerequisites使用边的列表, 而不是邻接矩阵, 注意区分
     public static boolean canFinish(int numCourses, int[][] prerequisites) {
+        // 入度
         int[] indegrees = new int[numCourses];
+        // 邻接表
         List<List<Integer>> adj = new ArrayList<>();
-        Queue<Integer> queue = new LinkedList<>();
-        // 预创邻接表
+        // 预创空邻接表
         for (int i = 0; i < numCourses; i++) {
             adj.add(new ArrayList<>());
         }
         // 得到邻接表和入度
+        // 注意, 此题应该是cp[1]指向cp[0], 即只有学了cp[1]才能学cp[0]
         for (int[] cp : prerequisites) {
             indegrees[cp[0]]++;
             adj.get(cp[1]).add(cp[0]);
@@ -30,11 +32,13 @@ class Item207_课程表 {
         GraphUtils.printAdjacencyList(adj);
         ArrayUtils.printArray(indegrees);
 
-        // Get all the courses with the indegree of 0.
+        // 从此处开始BFS拓扑排序
+        Queue<Integer> queue = new LinkedList<>();
+        // 入度为0的节点入队
         for (int i = 0; i < numCourses; i++) {
             if (indegrees[i] == 0) queue.add(i);
         }
-        // BFS TopSort.
+        // todo 理解这个拓扑排序
         while (!queue.isEmpty()) {
             int pre = queue.poll();
             numCourses--;
