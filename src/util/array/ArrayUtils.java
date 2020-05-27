@@ -96,6 +96,10 @@ public class ArrayUtils {
 
     public static void printMatrix(int[][] matrix) {
         for (int[] row : matrix) {
+            if (row == null) {
+                System.out.println("null");
+                continue;
+            }
             System.out.print(addEmpty(String.valueOf(row[0])));
             for (int i = 1; i < row.length; i++) {
                 System.out.print(" " + addEmpty(String.valueOf(row[i])));

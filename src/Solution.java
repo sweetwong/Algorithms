@@ -1,14 +1,14 @@
-import sort.nlogn.QuickSort;
 import util.array.ArrayUtils;
-import util.other.Time;
+
+import java.util.Arrays;
 
 class Solution {
 
     public static void main(String[] args) {
-        for (int i = 0; i < 5; i++) {
-            int[] nums = ArrayUtils.createRandomArray(20000000);
-            Time.watch(() -> QuickSort.sort(nums));
-        }
+        int[] nums = {2, 53, 12, 8, 79};
+
+        ArrayUtils.printArray(nums);
+        ArrayUtils.printArray(Arrays.copyOfRange(nums, nums.length - 1, nums.length));
     }
 
 }
