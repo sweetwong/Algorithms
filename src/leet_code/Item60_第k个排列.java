@@ -1,46 +1,53 @@
 package leet_code;
 
-// todo 现在是错的，完成这道题
+import java.util.ArrayList;
+import java.util.List;
+
 class Item60_第k个排列 {
 
     private int count = 0;
-    private String res = null;
 
     public String getPermutation(int n, int k) {
-        char[] chars = new char[n];
+        int[] nums = new int[n];
         for (int i = 0; i < n; i++) {
-            chars[i] = (char) (i + '1');
+            nums[i] = i + 1;
         }
-        backtrack(chars, k, 0);
-        return res;
+        return backtrack(nums, k, n, new ArrayList<>(), new boolean[n], 0);
     }
 
-    private void backtrack(char[] chars, int k, int start) {
-        if (start >= chars.length) {
-            count++;
-            if (count == k) {
-                res = new String(chars);
+    private String backtrack(int[] nums, int k, int len, List<Integer> path, boolean[] used, int depth) {
+        if (depth == len) {
+            if (++count == k) {
+                StringBuilder builder = new StringBuilder(len);
+                for (int num: path) {
+                    builder.append(num);
+                }
+                return builder.toString();
             }
-            System.out.println("count: " + count + ", ");
-            return;
+            return null;
         }
 
-        for (int i = start; i < chars.length; i++) {
-            swap(chars, start, i);
-            backtrack(chars, k, start + 1);
-            swap(chars, start, i);
-        }
-    }
+        for (int i = 0; i < len; i++) {
+            if (!used[i]) {
+                path.add(nums[i]);
+                used[i] = true;
 
-    private void swap(char[] nums, int i, int j) {
-        char temp = nums[i];
-        nums[i] = nums[j];
-        nums[j] = temp;
+                String res = backtrack(nums, k, len, path, used, depth + 1);
+                if (res != null) {
+                    return res;
+                }
+
+                used[i] = false;
+                path.remove(path.size() - 1);
+            }
+        }
+
+        return null;
     }
 
     public static void main(String[] args) {
         Item60_第k个排列 a = new Item60_第k个排列();
-        System.out.println(a.getPermutation(3, 3));
+        System.out.println(a.getPermutation(3, 5));
     }
 
 }

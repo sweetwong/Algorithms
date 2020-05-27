@@ -1,4 +1,9 @@
-class Solution {
+package leet_code.important;
+
+/**
+ * 在普通递归的基础上, 添加了记忆表
+ */
+class Item10_正则表达式匹配_动态规划_自顶向下 {
 
     public static boolean isMatch(String s, String p) {
         return isMatch(s, p, new Boolean[s.length() + 1][p.length() + 1]);
@@ -37,5 +42,10 @@ class Solution {
         return res;
     }
 
+    public static void main(String[] args) {
+        String s = "mississippi";
+        String p = "mis*is*p*.";
+        System.out.println(isMatch(s, p));
+    }
 
 }
