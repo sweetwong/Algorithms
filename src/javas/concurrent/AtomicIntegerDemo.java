@@ -7,10 +7,6 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 class AtomicIntegerDemo {
 
-    private static int count = 0;
-
-    private static AtomicInteger countAtomicInt = new AtomicInteger(0);
-
     public static void main(String[] args) {
         unsafeCount();
         safeCount();
@@ -25,11 +21,15 @@ class AtomicIntegerDemo {
 
     }
 
+    static int count = 0;
+
+    static AtomicInteger countAtomicInt = new AtomicInteger(0);
+
     /**
      * 此处多个线程共同修改一个参数, 考虑到Java内存模型, count最后不会如预期值, 这是因为没有保证原子性
      * 即使在count前面加volatile也没有, 因为volatile只能保证: 1. 可见性 2: 有序性
      */
-    public static void unsafeCount() {
+    static void unsafeCount() {
         for (int i = 0; i < 1000; i++) {
             new Thread(() -> {
                 for (int j = 0; j < 100; j++) {
@@ -40,7 +40,7 @@ class AtomicIntegerDemo {
 
     }
 
-    public static void safeCount() {
+    static void safeCount() {
         for (int i = 0; i < 1000; i++) {
             new Thread(() -> {
                 for (int j = 0; j < 100; j++) {

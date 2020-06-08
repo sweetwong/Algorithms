@@ -8,7 +8,7 @@ public class JoinDemo {
         a.run();
     }
 
-    private void run() {
+    void run() {
         System.out.println(Thread.currentThread().getName() + " A开始");
         Thread threadB = new Thread(() -> {
             System.out.println(Thread.currentThread().getName() + " B开始");

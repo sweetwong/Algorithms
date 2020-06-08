@@ -1,13 +1,8 @@
 package javas.concurrent;
 
-class ThreadUtils {
+public class ThreadUtils {
 
-    public static void print() {
-        System.out.println(Thread.currentThread().getName());
+    public static <T> void print(T t) {
+        System.out.println(Thread.currentThread().getName() + ": " + t);
     }
-
-    public static void print(String msg) {
-        System.out.println(Thread.currentThread().getName() + ", " + msg);
-    }
-
 }

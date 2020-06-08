@@ -19,7 +19,7 @@ public class DeadLockDemo {
                     e.printStackTrace();
                 }
                 synchronized (o2) {
-                    System.out.println("执行t1");
+                    ThreadUtils.print("执行t1");
                 }
             }
         });
@@ -31,7 +31,7 @@ public class DeadLockDemo {
                     e.printStackTrace();
                 }
                 synchronized (o1) {
-                    System.out.println("执行t2");
+                    ThreadUtils.print("执行t2");
                 }
             }
         });
