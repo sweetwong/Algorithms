@@ -9,7 +9,6 @@
  *  points, lines, circles, rectangles) in a window on your computer
  *  and to save the drawings to a file.
  *
- *  Todo
  *  ----
  *    -  Add support for gradient fill, etc.
  *    -  Fix setCanvasSize() so that it can be called only once.

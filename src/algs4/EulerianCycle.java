@@ -207,7 +207,6 @@ public class EulerianCycle {
         if (cycle.size() != G.E() + 1) return false;
 
         // check that cycle() is a cycle of G
-        // TODO
 
         // check that first and last vertices in cycle() are the same
         int first = -1, last = -1;

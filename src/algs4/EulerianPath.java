@@ -212,7 +212,6 @@ public class EulerianPath {
         if (path.size() != G.E() + 1) return false;
 
         // check that path() is a path in G
-        // TODO
 
         return true;
     }

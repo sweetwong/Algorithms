@@ -2,36 +2,30 @@ package leet_code;
 
 import util.tree.TreeNode;
 
-// todo 这特么也太巧妙了吧？
+/**
+ * todo 这道题有点难理解，最好弄清楚其中的奥义
+ */
 class Item236_二叉树的最近公共祖先 {
 
-    private TreeNode res = null;
-
-    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        traversal(root, p, q);
-        return res;
+    public static TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        if (root == null || root == p || root == q) return root;
+        TreeNode left = lowestCommonAncestor(root.left, p, q);
+        TreeNode right = lowestCommonAncestor(root.right, p, q);
+        if (left == null) return right;
+        if (right == null) return left;
+        return root;
     }
 
-    private boolean traversal(TreeNode node, TreeNode p, TreeNode q) {
+    public static void main(String[] args) {
+        TreeNode root = new TreeNode(3);
+        root.left = new TreeNode(5);
+        root.right = new TreeNode(1);
+        root.left.left = new TreeNode(6);
+        root.left.right = new TreeNode(2);
+        root.left.right.left = new TreeNode(7);
+        root.left.right.right = new TreeNode(4);
 
-        // 终止条件
-        if (node == null || res != null) return false;
-
-        // 左边有p或q
-        int left = traversal(node.left, p, q) ? 1 : 0;
-
-        // 右边有p或q
-        int right = traversal(node.right, p, q) ? 1 : 0;
-
-        // 中间有p或q
-        int mid = (node == p || node == q) ? 1 : 0;
-
-        // 就是满足其中两个条件就行
-        // 这个方法特别巧妙, 当我们需要多个条件且只要满足其中几个就可以用这个方法
-        if (mid + left + right >= 2) res = node;
-
-        // 左边或右边或中间有一个p或q
-        return (mid + left + right > 0);
+        System.out.println(lowestCommonAncestor(root.left.right, root.right, root.left.right.left).val);
     }
 
 }

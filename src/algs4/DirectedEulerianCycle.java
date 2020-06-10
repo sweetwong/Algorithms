@@ -170,7 +170,6 @@ public class DirectedEulerianCycle {
         if (cycle.size() != G.E() + 1) return false;
 
         // check that cycle() is a directed cycle of G
-        // TODO
 
         return true;
     }

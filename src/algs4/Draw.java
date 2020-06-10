@@ -10,7 +10,6 @@
  *  This is the object-oriented version of standard draw; it supports
  *  multiple indepedent drawing windows.
  *
- *  Todo
  *  ----
  *    -  Add support for gradient fill, etc.
  *

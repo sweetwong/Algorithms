@@ -178,7 +178,6 @@ public class DirectedEulerianPath {
         if (path.size() != G.E() + 1) return false;
 
         // check that path() is a directed path in G
-        // TODO
 
         return true;
     }

@@ -3,7 +3,7 @@ package leet_code.important;
 /**
  * 最长回文子字符串
  */
-class Item5_最长回文子串 {
+class Item5_最长回文子串_扩散法 {
 
     public String longestPalindrome(String s) {
         if (s == null || s.isEmpty()) return "";
