@@ -31,7 +31,7 @@ class Item48_旋转图像 {
                 {15, 14, 12, 16}
         };
         rotate(matrix);
-        ArrayUtils.printMatrix(matrix);
+        ArrayUtils.print(matrix);
     }
 
 }

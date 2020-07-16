@@ -21,5 +21,6 @@ public class GraphUtils {
             }
             System.out.println();
         }
+        System.out.println();
     }
 }

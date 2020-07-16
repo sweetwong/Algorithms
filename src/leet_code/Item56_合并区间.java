@@ -33,7 +33,7 @@ class Item56_合并区间 {
 
     public static void main(String[] args) {
         int[][] intervals = {{2, 3}, {2, 2}, {3, 3}, {1, 3}, {5, 7}, {2, 2}, {4, 6}};
-        ArrayUtils.printMatrix(merge(intervals));
+        ArrayUtils.print(merge(intervals));
     }
 
 }

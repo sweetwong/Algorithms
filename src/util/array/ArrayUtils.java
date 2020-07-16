@@ -1,6 +1,7 @@
 package util.array;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ArrayUtils {
@@ -90,11 +91,12 @@ public class ArrayUtils {
         return res;
     }
 
-    public static void printArray(int[] nums) {
-        System.out.println(toString(nums));
+    public static void print(int[] nums) {
+        System.out.println(Arrays.toString(nums));
+        System.out.println();
     }
 
-    public static void printMatrix(int[][] matrix) {
+    public static void print(int[][] matrix) {
         for (int[] row : matrix) {
             if (row == null) {
                 System.out.println("null");
@@ -108,7 +110,7 @@ public class ArrayUtils {
         }
     }
 
-    public static void printMatrix(char[][] matrix) {
+    public static void print(char[][] matrix) {
         for (char[] row : matrix) {
             System.out.print(addEmpty(String.valueOf(row[0])));
             for (int i = 1; i < row.length; i++) {

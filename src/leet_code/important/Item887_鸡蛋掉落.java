@@ -7,7 +7,7 @@ class Item887_鸡蛋掉落 {
     public int superEggDrop(int k, int n) {
         int[][] dp = new int[k + 1][n + 1];
         int res = superEggDrop(k, n, dp);
-        ArrayUtils.printMatrix(dp);
+        ArrayUtils.print(dp);
         System.out.println();
         return res;
     }
