@@ -7,6 +7,11 @@ import java.util.Map;
 
 /**
  * 实现LRU缓存(Least Recently Used Cache)
+ *
+ * 方法:
+ * 1. 继承LinkedHashMap, 重写removeEldestEntry
+ * 2. 组合LinkedHashMap, 代理相应的方法
+ * 3. TODO 利用HashMap + 双链表手动实现
  */
 public class LRUCache<K, V> extends LinkedHashMap<K, V> {
 
