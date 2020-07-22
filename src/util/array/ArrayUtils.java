@@ -62,6 +62,24 @@ public class ArrayUtils {
     }
 
     /**
+     * @param n   随机数组的长度
+     * @param min 每个数字的最小值
+     * @param max 每个数字的最大值
+     * @return n个随机数字组成的数组
+     */
+    public static int[] createRandomArray(int n, int min, int max, boolean neg) {
+        if (max == 0) max = Integer.MAX_VALUE;
+        int[] arr = new int[n];
+        for (int i = 0; i < arr.length; i++) {
+            double num = min + Math.random() * (max - min);
+            if (neg && Math.random() < 0.5) num = -num;
+            arr[i] = (int) num;
+        }
+        return arr;
+    }
+
+
+    /**
      * @param m 岛的行
      * @param n 岛的列
      * @return 代表岛的grid
