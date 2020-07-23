@@ -63,7 +63,7 @@ public class LinkedListUtils {
         while (curr != null) {
             // 前两步是反转操作
             // 这个的作用是为了记录下一个节点, 用于后面的推进, 因为curr反转后就会丢失下一个节点
-            ListNode nextTemp = curr.next;
+            ListNode next = curr.next;
             // 每一轮只反转一个节点
             curr.next = prev;
 
@@ -71,7 +71,7 @@ public class LinkedListUtils {
             // 先推进prev, 因为后面curr会改变
             prev = curr;
             // 后推进curr
-            curr = nextTemp;
+            curr = next;
         }
         return prev;
     }
