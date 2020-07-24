@@ -44,17 +44,15 @@ public class Item892_三维体的表面积 {
 
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
-                int curr = grid[i][j];
-                if (curr == 0) {
-                    continue;
-                }
-                count += curr * 4 + 2;
-
-                for (int[] direction : directions) {
-                    int newI = i + direction[0];
-                    int newJ = j + direction[1];
-                    if (newI >= 0 && newI < m && newJ >= 0 && newJ < n) {
-                        count -= Math.min(curr, grid[newI][newJ]);
+                int height = grid[i][j];
+                if (height != 0) {
+                    count += height * 4 + 2;
+                    for (int[] direction : directions) {
+                        int newI = i + direction[0];
+                        int newJ = j + direction[1];
+                        if (newI >= 0 && newI < m && newJ >= 0 && newJ < n) {
+                            count -= Math.min(height, grid[newI][newJ]);
+                        }
                     }
                 }
             }

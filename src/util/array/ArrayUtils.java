@@ -114,6 +114,12 @@ public class ArrayUtils {
         System.out.println();
     }
 
+    public static void print(Object[] objects) {
+        System.out.println(Arrays.toString(objects));
+        System.out.println();
+    }
+
+
     public static void print(int[][] matrix) {
         for (int[] row : matrix) {
             if (row == null) {
