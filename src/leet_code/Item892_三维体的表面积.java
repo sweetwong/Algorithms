@@ -40,31 +40,24 @@ public class Item892_三维体的表面积 {
 
         int[][] directions = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
 
-        int level = 1;
         int count = 0;
 
-        boolean empty = false;
-        while (!empty) {
-            empty = true;
-            for (int i = 0; i < m; i++) {
-                for (int j = 0; j < n; j++) {
-                    int curr = grid[i][j];
-                    if (curr < level) {
-                        continue;
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                int curr = grid[i][j];
+                if (curr == 0) {
+                    continue;
+                }
+                count += curr * 4 + 2;
+
+                for (int[] direction : directions) {
+                    int newI = i + direction[0];
+                    int newJ = j + direction[1];
+                    if (newI >= 0 && newI < m && newJ >= 0 && newJ < n) {
+                        count -= Math.min(curr, grid[newI][newJ]);
                     }
-                    // now curr >= level
-                    count += level == 1 ? 6 : 4;
-                    for (int[] direction : directions) {
-                        int newI = i + direction[0];
-                        int newJ = j + direction[1];
-                        if (newI >= 0 && newI < m && newJ >= 0 && newJ < n && grid[newI][newJ] >= level) {
-                            count--;
-                        }
-                    }
-                    empty = false;
                 }
             }
-            level++;
         }
 
         return count;
