@@ -1,7 +1,7 @@
 package leet_code.important;
 
-import util.array.ArrayUtils;
-import util.graph.GraphUtils;
+import data_structure.array.ArrayUtils;
+import data_structure.graph.GraphUtils;
 
 import java.util.*;
 

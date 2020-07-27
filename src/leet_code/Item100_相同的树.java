@@ -1,6 +1,6 @@
 package leet_code;
 
-import util.tree.TreeNode;
+import data_structure.tree.TreeNode;
 
 public class Item100_相同的树 {
 

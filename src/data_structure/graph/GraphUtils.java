@@ -1,4 +1,4 @@
-package util.graph;
+package data_structure.graph;
 
 import java.util.List;
 

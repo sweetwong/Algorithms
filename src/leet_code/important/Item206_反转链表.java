@@ -1,7 +1,7 @@
 package leet_code.important;
 
-import util.linked_list.LinkedListUtils;
-import util.linked_list.ListNode;
+import data_structure.linked_list.LinkedListUtils;
+import data_structure.linked_list.ListNode;
 
 /**
  * 反转链表

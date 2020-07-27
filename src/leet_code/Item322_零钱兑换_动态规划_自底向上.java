@@ -1,9 +1,5 @@
 package leet_code;
 
-import java.util.Arrays;
-
-import util.array.ArrayUtils;
-
 class Item322_零钱兑换_动态规划_自底向上 {
 
     public int coinChange(int[] coins, int amount) {

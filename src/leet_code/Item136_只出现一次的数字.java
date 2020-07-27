@@ -1,6 +1,6 @@
 package leet_code;
 
-import util.other.NumberUtils;
+import data_structure.other.NumberUtils;
 
 /**
  * Given a non-empty array of integers, every element appears twice except for one. Find that single one.

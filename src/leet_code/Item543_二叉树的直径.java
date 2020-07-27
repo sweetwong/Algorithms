@@ -1,9 +1,6 @@
 package leet_code;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import util.tree.TreeNode;
+import data_structure.tree.TreeNode;
 
 class Item543_二叉树的直径 {
 

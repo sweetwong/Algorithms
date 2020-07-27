@@ -1,6 +1,6 @@
 package leet_code;
 
-import util.tree.TreeNode;
+import data_structure.tree.TreeNode;
 
 class Item230_二叉搜索树中第K小的元素 {
 

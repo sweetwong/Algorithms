@@ -1,6 +1,6 @@
 package offer;
 
-import util.tree.TreeNode;
+import data_structure.tree.TreeNode;
 
 import java.util.HashMap;
 import java.util.Map;

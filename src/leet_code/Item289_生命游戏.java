@@ -1,7 +1,5 @@
 package leet_code;
 
-import util.array.ArrayUtils;
-
 class Item289_生命游戏 {
 
 

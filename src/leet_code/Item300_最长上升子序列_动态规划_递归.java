@@ -1,7 +1,7 @@
 package leet_code;
 
-import util.array.ArrayUtils;
-import util.other.Time;
+import data_structure.array.ArrayUtils;
+import data_structure.other.Time;
 
 class Item300_最长上升子序列_动态规划_递归 {
 

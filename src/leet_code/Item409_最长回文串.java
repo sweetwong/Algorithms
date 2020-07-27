@@ -1,7 +1,5 @@
 package leet_code;
 
-import util.array.ArrayUtils;
-
 class Item409_最长回文串 {
 
     /**

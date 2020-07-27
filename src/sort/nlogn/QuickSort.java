@@ -1,7 +1,7 @@
 package sort.nlogn;
 
-import util.array.ArrayUtils;
-import util.other.Time;
+import data_structure.array.ArrayUtils;
+import data_structure.other.Time;
 
 /**
  * 快速排序, 时间复杂度O(nlogn), 最坏情况为O(n²), 通过取随机中枢可以将最坏情况优化到O(nlogn)

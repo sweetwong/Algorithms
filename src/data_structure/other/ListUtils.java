@@ -1,4 +1,4 @@
-package util.other;
+package data_structure.other;
 
 import java.util.List;
 

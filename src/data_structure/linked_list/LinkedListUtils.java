@@ -1,7 +1,7 @@
-package util.linked_list;
+package data_structure.linked_list;
 
 import sort.nlogn.QuickSort;
-import util.array.ArrayUtils;
+import data_structure.array.ArrayUtils;
 
 public class LinkedListUtils {
 

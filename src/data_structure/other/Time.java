@@ -1,4 +1,4 @@
-package util.other;
+package data_structure.other;
 
 public class Time {
 

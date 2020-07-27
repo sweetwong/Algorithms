@@ -1,7 +1,7 @@
 package leet_code;
 
-import util.linked_list.LinkedListUtils;
-import util.linked_list.ListNode;
+import data_structure.linked_list.LinkedListUtils;
+import data_structure.linked_list.ListNode;
 
 /**
  * Given a linked list, rotate the list to the right by k places, where k is non-negative.

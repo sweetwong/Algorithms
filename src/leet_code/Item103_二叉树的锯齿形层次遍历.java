@@ -5,7 +5,7 @@ import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
 
-import util.tree.TreeNode;
+import data_structure.tree.TreeNode;
 
 public class Item103_二叉树的锯齿形层次遍历 {
 

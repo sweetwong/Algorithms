@@ -1,6 +1,6 @@
 package leet_code.important;
 
-import util.other.Time;
+import data_structure.other.Time;
 
 import java.util.*;
 

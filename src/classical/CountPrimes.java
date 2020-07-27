@@ -1,6 +1,6 @@
 package classical;
 
-import util.other.Time;
+import data_structure.other.Time;
 
 /**
  * 计数质数

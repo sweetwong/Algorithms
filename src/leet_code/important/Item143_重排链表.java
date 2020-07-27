@@ -1,7 +1,7 @@
 package leet_code.important;
 
-import util.linked_list.LinkedListUtils;
-import util.linked_list.ListNode;
+import data_structure.linked_list.LinkedListUtils;
+import data_structure.linked_list.ListNode;
 
 /**
  * 给定一个单链表 L：L0→L1→…→Ln-1→Ln ，

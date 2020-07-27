@@ -1,6 +1,6 @@
 package leet_code.important;
 
-import util.array.ArrayUtils;
+import data_structure.array.ArrayUtils;
 
 import java.util.*;
 

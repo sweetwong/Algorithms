@@ -1,6 +1,6 @@
 package leet_code;
 
-import util.tree.TreeNode;
+import data_structure.tree.TreeNode;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package util.tree;
+package data_structure.tree;
 
 public class TreeNode {
 

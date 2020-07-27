@@ -1,7 +1,6 @@
 package leet_code;
 
-import util.tree.TreeNode;
-import util.tree.TreeUtils;
+import data_structure.tree.TreeNode;
 
 /**
  */

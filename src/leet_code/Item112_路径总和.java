@@ -1,6 +1,6 @@
 package leet_code;
 
-import util.tree.TreeNode;
+import data_structure.tree.TreeNode;
 
 /**
  * Given a binary tree and a sum, determine if the tree has a root-to-leaf path such that adding up

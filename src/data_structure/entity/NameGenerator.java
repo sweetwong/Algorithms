@@ -1,4 +1,4 @@
-package util.entity;
+package data_structure.entity;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Random;

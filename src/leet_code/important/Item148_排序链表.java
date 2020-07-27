@@ -1,9 +1,9 @@
 package leet_code.important;
 
 import sort.nlogn.QuickSort;
-import util.array.ArrayUtils;
-import util.linked_list.LinkedListUtils;
-import util.linked_list.ListNode;
+import data_structure.array.ArrayUtils;
+import data_structure.linked_list.LinkedListUtils;
+import data_structure.linked_list.ListNode;
 
 import java.util.Arrays;
 

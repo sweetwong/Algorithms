@@ -1,7 +1,5 @@
 package leet_code;
 
-import util.array.ArrayUtils;
-
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;

@@ -1,9 +1,6 @@
 package leet_code;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import util.tree.TreeNode;
+import data_structure.tree.TreeNode;
 
 public class Item101_对称二叉树 {
 

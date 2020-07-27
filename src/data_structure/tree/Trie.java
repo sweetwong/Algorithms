@@ -1,9 +1,4 @@
-package util.tree;
-
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Queue;
+package data_structure.tree;
 
 /**
  * @see leet_code.Item820_单词的压缩解码_字典树

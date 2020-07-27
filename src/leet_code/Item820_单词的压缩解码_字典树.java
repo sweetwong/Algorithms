@@ -1,6 +1,6 @@
 package leet_code;
 
-import util.tree.Trie;
+import data_structure.tree.Trie;
 
 import java.util.Arrays;
 

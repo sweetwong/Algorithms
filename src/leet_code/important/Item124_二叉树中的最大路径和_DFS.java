@@ -1,6 +1,6 @@
 package leet_code.important;
 
-import util.tree.TreeNode;
+import data_structure.tree.TreeNode;
 
 class Item124_二叉树中的最大路径和_DFS {
 

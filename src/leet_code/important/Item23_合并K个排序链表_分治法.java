@@ -4,8 +4,8 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
-import util.linked_list.LinkedListUtils;
-import util.linked_list.ListNode;
+import data_structure.linked_list.LinkedListUtils;
+import data_structure.linked_list.ListNode;
 
 class Item23_合并K个排序链表_分治法 {
 

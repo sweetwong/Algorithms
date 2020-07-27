@@ -1,4 +1,4 @@
-package util.linked_list;
+package data_structure.linked_list;
 
 /**
  * 链表的节点类

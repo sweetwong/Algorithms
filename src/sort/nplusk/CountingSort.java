@@ -1,7 +1,7 @@
 package sort.nplusk;
 
-import util.array.ArrayUtils;
-import util.other.Time;
+import data_structure.array.ArrayUtils;
+import data_structure.other.Time;
 
 import java.util.*;
 

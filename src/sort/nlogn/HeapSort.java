@@ -1,8 +1,8 @@
 package sort.nlogn;
 
 
-import util.other.Time;
-import util.array.ArrayUtils;
+import data_structure.other.Time;
+import data_structure.array.ArrayUtils;
 
 /**
  * 堆排序, 时间复杂度O(nlogn), 空间复杂度O(1)(亮点), 不稳定, 原地算法

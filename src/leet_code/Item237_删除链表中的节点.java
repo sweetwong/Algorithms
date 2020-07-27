@@ -1,6 +1,6 @@
 package leet_code;
 
-import util.linked_list.ListNode;
+import data_structure.linked_list.ListNode;
 
 class Item237_删除链表中的节点 {
 

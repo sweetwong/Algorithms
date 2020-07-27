@@ -1,6 +1,6 @@
 package offer;
 
-import util.linked_list.ListNode;
+import data_structure.linked_list.ListNode;
 
 class Offer06_从尾到头打印链表 {
 

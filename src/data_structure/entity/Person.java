@@ -1,4 +1,4 @@
-package util.entity;
+package data_structure.entity;
 
 /**
  * 这个用来示例对象的比较的实体类

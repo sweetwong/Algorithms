@@ -1,4 +1,4 @@
-package util.heap;
+package data_structure.heap;
 
 /**
  * 堆的应用场景: 优先队列

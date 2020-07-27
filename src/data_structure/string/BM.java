@@ -1,4 +1,4 @@
-package util.string;
+package data_structure.string;
 
 /**
  * Boyer-Moore
