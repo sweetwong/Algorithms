@@ -23,7 +23,7 @@ import java.util.Set;
  * 2. 1 <= words[i].length <= 7
  * 3. 每个单词都是小写字母 。
  *
- * TODO 学习字典树
+ * @see Item820_单词的压缩解码_字典树
  */
 public class Item820_单词的压缩解码 {
 

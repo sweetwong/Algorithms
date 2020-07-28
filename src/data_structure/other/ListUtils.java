@@ -2,7 +2,7 @@ package data_structure.other;
 
 import java.util.List;
 
-class ListUtils {
+public class ListUtils {
 
     public static <T> void printLists(List<List<T>> lists) {
         int size = lists.size();
