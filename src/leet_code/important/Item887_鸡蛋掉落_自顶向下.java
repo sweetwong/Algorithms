@@ -1,18 +1,14 @@
 package leet_code.important;
 
-import data_structure.array.ArrayUtils;
+import data_structure.other.Time;
 
-class Item887_鸡蛋掉落 {
+class Item887_鸡蛋掉落_自顶向下 {
 
-    public int superEggDrop(int k, int n) {
-        int[][] dp = new int[k + 1][n + 1];
-        int res = superEggDrop(k, n, dp);
-        ArrayUtils.print(dp);
-        System.out.println();
-        return res;
+    public static int superEggDrop(int k, int n) {
+        return superEggDrop(k, n, new int[k + 1][n + 1]);
     }
 
-    public int superEggDrop(int k, int n, int[][] dp) {
+    public static int superEggDrop(int k, int n, int[][] dp) {
         if (n == 0) return 0;
         if (k == 1) return n;
 
@@ -36,8 +32,7 @@ class Item887_鸡蛋掉落 {
     }
 
     public static void main(String[] args) {
-        Item887_鸡蛋掉落 a = new Item887_鸡蛋掉落();
-        System.out.println(a.superEggDrop(2, 5));
+        Time.watch(() -> System.out.println(superEggDrop(6, 5000)));
     }
 
 }

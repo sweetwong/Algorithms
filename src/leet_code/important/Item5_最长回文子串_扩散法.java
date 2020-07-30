@@ -10,18 +10,20 @@ class Item5_最长回文子串_扩散法 {
 
         // 由于要返回的是字符串, 所以记录了起始点和终点
         // 如果只用返回长度, 记录最大的长度会更高
-        int start = 0, end = 0;
+        int begin = 0, end = 0;
 
         for (int i = 0; i < s.length(); i++) {
             int len = Math.max(expand(s, i, i), expand(s, i, i + 1));
-            if (len > end - start + 1) {
-                // 对于偶数长度的start, 因为i是中间偏左, 左右起始点必须这么求
-                start = i - (len - 1) / 2;
-                // 对于奇数长度的end, (len - 1) / 2和 len / 2的值是一样的, 因此根据偶数的要求决定
+            if (len > end - begin + 1) {
+                // 注意这里要适配两种情况, 分别是len为奇数和len为偶数, 可以带入特定的值求解
+                // 分别是:
+                // i = 1, len = 3 -> begin = 1 - (3 - 1) / 2 = 0, end = 1 + 3 / 2 = 2
+                // i = 1, len = 4 -> begin = 1 - (4 - 1) / 2 = 0, end = 1 + 4 / 2 = 3
+                begin = i - (len - 1) / 2;
                 end = i + len / 2;
             }
         }
-        return s.substring(start, end + 1);
+        return s.substring(begin, end + 1);
     }
 
     // 关键, 此处返回的是长度len, 通过长度len求出左起始点和又起始点
