@@ -37,4 +37,5 @@ class DynamicProxy {
         int videoTime = proxyDownload.downloadVideo();
         System.out.println(videoTime);
     }
+
 }

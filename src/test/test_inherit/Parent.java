@@ -18,7 +18,7 @@ public class Parent {
         System.out.println("Parent non-static method");
     }
 
-    public static void go() {
+    public static void staticMethod() {
         System.out.println("Parent static method");
     }
 
