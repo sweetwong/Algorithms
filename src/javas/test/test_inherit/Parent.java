@@ -1,4 +1,4 @@
-package test.test_inherit;
+package javas.test.test_inherit;
 
 public class Parent {
 

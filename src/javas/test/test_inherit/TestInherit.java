@@ -1,8 +1,8 @@
-package test;
+package javas.test.test_inherit;
 
-import test.test_inherit.Child;
+import javas.test.test_inherit.Child;
 
-public class Test {
+public class TestInherit {
 
     public static void main(String[] args) {
         System.out.println(Child.class.getClassLoader());
