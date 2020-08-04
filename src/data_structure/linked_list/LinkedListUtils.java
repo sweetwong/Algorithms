@@ -3,6 +3,9 @@ package data_structure.linked_list;
 import sort.nlogn.QuickSort;
 import data_structure.array.ArrayUtils;
 
+/**
+ * @see sort.nlogn.MergeSort
+ */
 public class LinkedListUtils {
 
     public static void main(String[] args) {
