@@ -1,5 +1,6 @@
 package leet_code.important;
 
+import data_structure.other.Time;
 import sort.nlogn.QuickSort;
 import data_structure.array.ArrayUtils;
 import data_structure.linked_list.LinkedListUtils;
@@ -21,14 +22,10 @@ import java.util.Arrays;
 class Item148_排序链表 {
 
     public static void main(String[] args) {
-        int[] nums = ArrayUtils.createRandomArray(10, 100, false);
-        System.out.println(Arrays.toString(nums));
-
+        int[] nums = ArrayUtils.createRandomArray(10000000, 100, false);
         ListNode head = LinkedListUtils.create(nums);
-        head = sortList(head);
-        LinkedListUtils.print(head);
-        QuickSort.sort(nums);
-        System.out.println(Arrays.toString(nums));
+
+        Time.watch(() -> sortList(head));
     }
 
     /**
@@ -56,16 +53,41 @@ class Item148_排序链表 {
     }
 
     public static ListNode mergeTwoSortedLists(ListNode l1, ListNode l2) {
-        if (l1 == null) return l2;
-        if (l2 == null) return l1;
-        if (l1.val <= l2.val) {
-            l1.next = mergeTwoSortedLists(l1.next, l2);
-            return l1;
-        } else {
-            l2.next = mergeTwoSortedLists(l1, l2.next);
-            return l2;
+            if (l1 == null && l2 == null) {
+                return null;
+            }
+
+            ListNode head;
+            if (l1 == null) {
+                return l2;
+            } else if (l2 == null) {
+                return l1;
+            } else if (l1.val <= l2.val) {
+                head = l1;
+                l1 = l1.next;
+            } else {
+                head = l2;
+                l2 = l2.next;
+            }
+
+            ListNode curr = head;
+
+            while (l1 != null && l2 != null) {
+                if (l1.val <= l2.val) {
+                    curr.next = l1;
+                    l1 = l1.next;
+                } else {
+                    curr.next = l2;
+                    l2 = l2.next;
+                }
+                curr = curr.next;
+            }
+
+            curr.next = l1 == null ? l2 : l1;
+
+            return head;
         }
-    }
+
 
 
 }
