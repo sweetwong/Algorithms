@@ -40,26 +40,27 @@ public class HeapSort {
      * 从start点开始, 一直到length为终点
      * 如果发现start不是最大的, 则交换, 并从子节点开始继续堆化
      *
-     * 注意: 此处的max, start, left, right指的都是数组索引
+     * 注意: 此处的max, parent, left, right指的都是数组索引
      *
      * @param nums  输入的数组, 一直不变
      * @param n     当前堆的大小
-     * @param start 起始节点
+     * @param parent 起始节点
      */
-    public static void heapify(int[] nums, int start, int n) {
+    public static void heapify(int[] nums, int parent, int n) {
+        // 当 n == length, n / 2为数组中间偏右
         // n / 2是最后一排的第一个
-        // 也相当于while(start <= n / 2 - 1)
-        while (start < n / 2) {
+        // 也相当于while(parent <= n / 2 - 1)
+        while (parent < n / 2) {
             // 指向左子树
-            int left = 2 * start + 1;
+            int child = 2 * parent + 1;
             // 比较左右子树, left指向大的
-            if (left < n - 1 && nums[left] < nums[left + 1]) left++;
+            if (child < n - 1 && nums[child] < nums[child + 1]) child++;
             // 拦截start为最大的情况
-            if (nums[start] >= nums[left]) break;
+            if (nums[parent] >= nums[child]) break;
             // 交换父子节点
-            swap(nums, start, left);
+            swap(nums, parent, child);
             // 向下推进
-            start = left;
+            parent = child;
         }
 
     }

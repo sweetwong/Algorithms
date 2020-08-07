@@ -1,5 +1,7 @@
 package javas.reflect.dynamic_proxy;
 
+import javas.concurrent.ThreadUtils;
+
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
@@ -27,11 +29,7 @@ class DynamicProxy {
         int audioTime = proxyDownload.downloadAudio();
         System.out.println(audioTime);
 
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        ThreadUtils.sleep(1000);
         System.out.println();
 
         int videoTime = proxyDownload.downloadVideo();

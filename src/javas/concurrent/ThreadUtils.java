@@ -3,6 +3,11 @@ package javas.concurrent;
 public class ThreadUtils {
 
     public static void print(Object... objects) {
+        if (objects.length == 0) {
+            System.out.println(Thread.currentThread().getName());
+            return;
+        }
+
         String[] strings = new String[objects.length];
         for (int i = 0; i < objects.length; i++) {
             strings[i] = String.valueOf(objects[i]);
@@ -16,6 +21,7 @@ public class ThreadUtils {
             Thread.sleep(millis);
         } catch (InterruptedException e) {
             e.printStackTrace();
+            System.out.println("被打断");
         }
     }
 
