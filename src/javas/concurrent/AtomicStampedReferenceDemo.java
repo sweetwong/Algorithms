@@ -7,9 +7,9 @@ import java.util.concurrent.atomic.AtomicStampedReference;
  */
 class AtomicStampedReferenceDemo {
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         unsafeCount();
-        Thread.sleep(3000);
+        ThreadUtils.sleep(3000);
         safeCount();
     }
 

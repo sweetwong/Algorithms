@@ -10,15 +10,10 @@ class AtomicIntegerDemo {
     public static void main(String[] args) {
         unsafeCount();
         safeCount();
-        try {
-            Thread.sleep(1000);
-            System.out.println("count = " + count);
-            System.out.println("countAtomicInt = " + countAtomicInt);
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
+        ThreadUtils.sleep(1000);
+        System.out.println("count = " + count);
+        System.out.println("countAtomicInt = " + countAtomicInt);
+        ThreadUtils.sleep(1000);
     }
 
     static int count = 0;

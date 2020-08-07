@@ -9,12 +9,8 @@ public class ReentrantLockDemo {
     public void go() {
         mLock.lock();
         try {
-            try {
-                Thread.sleep(1000);
-                ThreadUtils.print();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            ThreadUtils.sleep(20000);
+            ThreadUtils.print();
         } finally {
             mLock.unlock();
         }
@@ -22,8 +18,10 @@ public class ReentrantLockDemo {
 
     public static void main(String[] args) {
         ReentrantLockDemo demo = new ReentrantLockDemo();
+        new Thread(() -> {
+            demo.go();
+        }).start();
         demo.go();
-        new Thread(demo::go).start();
     }
 
 }
