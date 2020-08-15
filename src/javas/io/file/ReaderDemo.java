@@ -1,21 +1,21 @@
-package javas.io.reader;
+package javas.io.file;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-class BufferReaderDemo {
+class ReaderDemo {
 
     public static String readText() {
-        String text;
         BufferedReader reader = null;
         StringBuilder builder = new StringBuilder();
         try {
-            reader = new BufferedReader(new FileReader("src/javas/io/reader/demo.text"));
-            while (!isEmpty(text = reader.readLine())) {
-                builder.append(text);
+            reader = new BufferedReader(new FileReader("src/javas/io/file/out/big.txt"));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                builder.append(line);
             }
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.printStackTrace();
         } finally {
             try {
@@ -29,14 +29,9 @@ class BufferReaderDemo {
         return builder.toString();
     }
 
-    public static boolean isEmpty(String str) {
-        return str == null || str.length() == 0;
-    }
-
     public static void main(String[] args) {
-        System.out.println(readText());;
+        System.out.println(readText());
     }
-
 
 
 }

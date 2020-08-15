@@ -60,7 +60,7 @@ public class HttpASyncDemo {
 
                 if (con.getResponseCode() == 200) {
                     InputStream is = con.getInputStream();
-                    String res = IOUtils.toString(is, 1024);
+                    String res = IOUtils.toString(is);
                     callBack.onSuccess(res);
                     return;
                 }

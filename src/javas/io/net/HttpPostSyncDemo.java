@@ -10,13 +10,15 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 public class HttpPostSyncDemo {
 
     public static void main(String[] args) {
-        Future<String> future = Executors.newSingleThreadExecutor().submit(() -> {
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        Future<String> future = executor.submit(() -> {
             try {
                 String urlParameters = "serialNumber=kunlun0000000000060";
                 byte[] postData = urlParameters.getBytes(StandardCharsets.UTF_8);
@@ -40,7 +42,7 @@ public class HttpPostSyncDemo {
 
                 if (con.getResponseCode() == 200) {
                     InputStream is = con.getInputStream();
-                    return IOUtils.toString(is, 1024);
+                    return IOUtils.toString(is);
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -49,6 +51,7 @@ public class HttpPostSyncDemo {
 
             return null;
         });
+        executor.shutdown();
 
 
         try {

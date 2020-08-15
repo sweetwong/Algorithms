@@ -3,36 +3,59 @@ package javas.io.net;
 import javas.concurrent.ThreadUtils;
 import javas.utils.IOUtils;
 
-import javax.net.ssl.HttpsURLConnection;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.concurrent.*;
 
 public class HttpGetSyncDemo {
 
     public static void main(String[] args) {
-        try {
-            URL url = new URL("https://www.baidu.com");
-            HttpsURLConnection con = (HttpsURLConnection) url.openConnection();
-            con.setDoOutput(true);
-            con.setDoInput(true);
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        Future<String> future = executor.submit(() -> {
+            HttpURLConnection con = null;
+            try {
+                URL url = new URL("https://www.baidu.com");
+                con = (HttpURLConnection) url.openConnection();
+                con.setDoOutput(true);
+                con.setDoInput(true);
+                con.setConnectTimeout(500);
+                con.setReadTimeout(500);
 
-            DataOutputStream wr = new DataOutputStream(con.getOutputStream());
-            wr.flush();
-            wr.close();
+                DataOutputStream os = new DataOutputStream(con.getOutputStream());
+                os.flush();
+                os.close();
 
-            if (con.getResponseCode() == 200) {
-                ThreadUtils.print("成功");
-                InputStream is = con.getInputStream();
-                String s = IOUtils.toString(is, 1024);
-                ThreadUtils.print("成功", s);
-            } else {
-                ThreadUtils.print("失败", "message", con.getResponseMessage(), "code", con.getResponseCode());
+                if (con.getResponseCode() == 200) {
+                    InputStream is = con.getInputStream();
+                    String s = IOUtils.toString(is);
+                    is.close();
+                    return s;
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+                ThreadUtils.print("异常A");
+            } finally {
+                if (con != null) {
+                    con.disconnect();
+                }
             }
-        } catch (IOException e) {
+            return null;
+        });
+        executor.shutdown();
+
+        try {
+            String s = future.get();
+            if (s != null) {
+                ThreadUtils.print(s);
+            } else {
+                ThreadUtils.print("失败");
+            }
+        } catch (InterruptedException | ExecutionException e) {
+            ThreadUtils.print("异常B");
             e.printStackTrace();
-            ThreadUtils.print("异常A");
         }
     }
 
