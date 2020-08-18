@@ -1,6 +1,6 @@
 package javas.io.file;
 
-import javas.utils.IOUtils;
+import javas.io.IOUtils;
 
 public class DeleteOut {
 
@@ -9,7 +9,7 @@ public class DeleteOut {
     }
 
     public static void start() {
-        IOUtils.deleteFile("src/javas/io/file/out");
+        IOUtils.deleteFile("src/javas/io/out");
     }
 
 

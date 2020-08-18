@@ -15,7 +15,7 @@ public class QueueDemo {
 
 
     public static void main(String[] args) {
-        File file = new File("src/javas/io/file/out/big.txt");
+        File file = new File("src/javas/io/out/big.txt");
         if (file.exists()) {
             file.delete();
         }
@@ -50,7 +50,7 @@ public class QueueDemo {
         try {
             for (; ; ) {
                 try {
-                    reader = new BufferedReader(new FileReader("src/javas/io/file/out/big.txt"));
+                    reader = new BufferedReader(new FileReader("src/javas/io/out/big.txt"));
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 }
@@ -90,7 +90,7 @@ public class QueueDemo {
     }
 
     public static void writeText() {
-        File file = new File("src/javas/io/file/out/big.txt");
+        File file = new File("src/javas/io/out/big.txt");
         File parentFile = file.getParentFile();
         if (!parentFile.exists()) {
             if (!parentFile.mkdirs()) {

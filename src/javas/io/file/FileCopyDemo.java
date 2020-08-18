@@ -1,7 +1,7 @@
 package javas.io.file;
 
 import data_structure.other.Time;
-import javas.utils.IOUtils;
+import javas.utils.Utils;
 
 import java.io.*;
 
@@ -12,7 +12,7 @@ public class FileCopyDemo {
     }
 
     public static void start() {
-        File outFile = new File("src/javas/io/file/out/copy.mp4");
+        File outFile = new File("src/javas/io/out/copy.mp4");
         File parentFile = outFile.getParentFile();
         if (!parentFile.exists()) {
             parentFile.mkdirs();
@@ -20,9 +20,9 @@ public class FileCopyDemo {
         InputStream is = null;
         OutputStream os = null;
         try {
-            is = new FileInputStream("src/javas/io/file/case/video.mp4");
+            is = new FileInputStream("src/javas/io/case/video.mp4");
             os = new FileOutputStream(outFile);
-            byte[] buffer = new byte[1024 * 8];
+            byte[] buffer = new byte[8192];
             int n;
             while ((n = is.read(buffer)) != -1) {
                 os.write(buffer, 0, n);
@@ -31,8 +31,17 @@ public class FileCopyDemo {
             e.printStackTrace();
             System.out.println("异常A");
         } finally {
-            IOUtils.close(is);
-            IOUtils.close(os);
+            try {
+                if (is != null) {
+                    is.close();
+                }
+                if (os != null) {
+                    os.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.out.println("异常B");
+            }
         }
     }
 }

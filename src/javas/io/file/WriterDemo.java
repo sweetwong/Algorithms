@@ -1,5 +1,7 @@
 package javas.io.file;
 
+import data_structure.other.Time;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -9,7 +11,11 @@ import java.util.UUID;
 public class WriterDemo {
 
     public static void main(String[] args) {
-        File file = new File("src/javas/io/file/out/big.txt");
+        Time.watch(WriterDemo::writeText);
+    }
+
+    public static void writeText() {
+        File file = new File("src/javas/io/out/big.txt");
         File parentFile = file.getParentFile();
         if (!parentFile.exists()) {
             if (!parentFile.mkdirs()) {
@@ -19,7 +25,7 @@ public class WriterDemo {
         BufferedWriter writer = null;
         try {
             writer = new BufferedWriter(new FileWriter(file));
-            for (int i = 0; i < 10000; i++) {
+            for (int i = 0; i < 1000000; i++) {
                 writer.write(UUID.randomUUID().toString());
                 writer.newLine();
             }
@@ -34,6 +40,7 @@ public class WriterDemo {
                 e.printStackTrace();
             }
         }
+
     }
 
 }

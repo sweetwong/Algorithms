@@ -1,7 +1,7 @@
 package javas.io.net;
 
 import javas.concurrent.ThreadUtils;
-import javas.utils.IOUtils;
+import javas.io.IOUtils;
 
 import java.io.DataOutputStream;
 import java.io.IOException;

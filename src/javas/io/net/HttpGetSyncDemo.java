@@ -1,11 +1,12 @@
 package javas.io.net;
 
 import javas.concurrent.ThreadUtils;
-import javas.utils.IOUtils;
+import javas.io.IOUtils;
 
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.concurrent.*;
@@ -23,8 +24,9 @@ public class HttpGetSyncDemo {
                 con.setDoInput(true);
                 con.setConnectTimeout(500);
                 con.setReadTimeout(500);
+                con.setUseCaches(false);
 
-                DataOutputStream os = new DataOutputStream(con.getOutputStream());
+                OutputStream os = new DataOutputStream(con.getOutputStream());
                 os.flush();
                 os.close();
 

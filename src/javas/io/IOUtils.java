@@ -1,4 +1,4 @@
-package javas.utils;
+package javas.io;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
@@ -9,34 +9,13 @@ public class IOUtils {
         char[] buffer = new char[1024];
         StringBuilder out = new StringBuilder();
         Reader reader = new InputStreamReader(is, StandardCharsets.UTF_8);
-        for (; ; ) {
-            int n = reader.read(buffer, 0, buffer.length);
-            if (n == -1)
-                break;
+        int n;
+        while ((n = reader.read(buffer, 0, buffer.length)) != -1) {
             out.append(buffer, 0, n);
         }
         return out.toString();
     }
 
-    public static void close(InputStream is) {
-        if (is != null) {
-            try {
-                is.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    public static void close(OutputStream os) {
-        if (os != null) {
-            try {
-                os.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
 
     public static boolean deleteFile(String path) {
         File dirFile = new File(path);
@@ -68,7 +47,6 @@ public class IOUtils {
         if (dirFile.isFile()) {
             return dirFile.delete();
         } else {
-
             for (File file : dirFile.listFiles()) {
                 deleteFile(file);
             }
@@ -76,6 +54,40 @@ public class IOUtils {
 
         return dirFile.delete();
     }
+
+    public static String readText(String path) {
+        if (path == null || path.isEmpty()) {
+            return null;
+        }
+
+        File file = new File(path);
+        if (!file.exists()) {
+            return null;
+        }
+
+        BufferedReader reader = null;
+        StringBuilder builder = new StringBuilder();
+        try {
+            reader = new BufferedReader(new FileReader(file));
+            String text;
+            while ((text = reader.readLine()) != null) {
+                builder.append(text);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            try {
+                if (reader != null) {
+                    reader.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return builder.toString();
+    }
+
 
 
 }
