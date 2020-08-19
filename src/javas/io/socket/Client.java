@@ -7,7 +7,9 @@ import java.io.*;
 import java.net.Socket;
 
 /**
- * 客户端
+ * https://blog.csdn.net/qq_32832023/article/details/78703810
+ *
+ * TODO 写一个Socket的Demo App
  */
 public class Client {
     public static void main(String[] args) {
@@ -28,7 +30,6 @@ public class Client {
             String text;
             while ((text = br.readLine()) != null) {
                 System.out.println("我是客户端，服务器说：" + text);
-
             }
             socket.shutdownInput();
 

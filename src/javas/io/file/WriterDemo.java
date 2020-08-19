@@ -22,23 +22,14 @@ public class WriterDemo {
                 return;
             }
         }
-        BufferedWriter writer = null;
-        try {
-            writer = new BufferedWriter(new FileWriter(file));
-            for (int i = 0; i < 1000000; i++) {
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
+            for (int i = 0; i < 10; i++) {
                 writer.write(UUID.randomUUID().toString());
                 writer.newLine();
             }
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            try {
-                if (writer != null) {
-                    writer.close();
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
         }
 
     }

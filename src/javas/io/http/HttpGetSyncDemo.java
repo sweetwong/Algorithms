@@ -1,4 +1,4 @@
-package javas.io.net;
+package javas.io.http;
 
 import javas.concurrent.ThreadUtils;
 import javas.io.IOUtils;

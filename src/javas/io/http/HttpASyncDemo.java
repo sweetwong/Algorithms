@@ -1,4 +1,4 @@
-package javas.io.net;
+package javas.io.http;
 
 import javas.concurrent.ThreadUtils;
 import javas.io.IOUtils;
@@ -9,16 +9,32 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
 
-public class HttpPostSyncDemo {
+public class HttpASyncDemo {
+
+    private static Executor sExecutor = Executors.newFixedThreadPool(3);
 
     public static void main(String[] args) {
-        ExecutorService executor = Executors.newSingleThreadExecutor();
-        Future<String> future = executor.submit(() -> {
+        String a = "sweet: ";
+        getData(new CallBack<String>() {
+            @Override
+            public void onSuccess(String s) {
+                ThreadUtils.print(a + s);
+            }
+
+            @Override
+            public void onFailure() {
+                ThreadUtils.print(a + "失败");
+            }
+        });
+
+        System.out.println("你好呀");
+    }
+
+    public static void getData(CallBack<String> callBack) {
+        sExecutor.execute(() -> {
             try {
                 String urlParameters = "serialNumber=kunlun0000000000060";
                 byte[] postData = urlParameters.getBytes(StandardCharsets.UTF_8);
@@ -42,25 +58,23 @@ public class HttpPostSyncDemo {
 
                 if (con.getResponseCode() == 200) {
                     InputStream is = con.getInputStream();
-                    return IOUtils.toString(is);
+                    String res = IOUtils.toString(is);
+                    callBack.onSuccess(res);
+                    return;
                 }
             } catch (IOException e) {
                 e.printStackTrace();
                 ThreadUtils.print("异常A");
             }
-
-            return null;
+            callBack.onFailure();
         });
-        executor.shutdown();
+    }
 
+    interface CallBack<T> {
 
-        try {
-            String s = future.get();
-            ThreadUtils.print(s);
-        } catch (InterruptedException | ExecutionException e) {
-            e.printStackTrace();
-            ThreadUtils.print("异常B");
-        }
+        void onSuccess(T t);
+
+        void onFailure();
     }
 
 }
