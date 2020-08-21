@@ -2,12 +2,13 @@ package javas.utils;
 
 import jdk.nashorn.internal.ir.debug.ObjectSizeCalculator;
 
+import java.text.DecimalFormat;
 import java.util.UUID;
 
 public class Utils {
 
     public static void printObjectSize(Object obj) {
-        System.out.println(ObjectSizeCalculator.getObjectSize(obj));
+        System.out.println(formatString(ObjectSizeCalculator.getObjectSize(obj)));
     }
 
     public static String bigText(int n) {
@@ -17,4 +18,10 @@ public class Utils {
         }
         return builder.toString();
     }
+
+    public static String formatString(long data) {
+        DecimalFormat df = new DecimalFormat("#,###");
+        return df.format(data);
+    }
+
 }
