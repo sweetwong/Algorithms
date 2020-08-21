@@ -9,5 +9,9 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="com.google.code.gson:gson:2.8.6" level="project" />
     <orderEntry type="library" name="io.reactivex.rxjava3:rxjava:3.0.6" level="project" />
+    <orderEntry type="library" name="com.squareup.okhttp3:okhttp:3.14.9" level="project" />
+    <orderEntry type="library" name="com.squareup.okhttp3:logging-interceptor:3.14.9" level="project" />
+    <orderEntry type="library" name="com.squareup.retrofit2:retrofit:2.9.0" level="project" />
+    <orderEntry type="library" name="com.squareup.retrofit2:converter-gson:2.9.0" level="project" />
   </component>
 </module>
