@@ -14,7 +14,7 @@ import java.net.Socket;
  * 基于TCp的Socket通信，实现用户登录
  * 服务器端
  */
-public class Server {
+public class ServerA {
     public static void main(String[] args) {
         Thread thread = new Thread(() -> {
             try {

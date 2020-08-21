@@ -11,7 +11,7 @@ import java.net.Socket;
  *
  * TODO 写一个Socket的Demo App
  */
-public class Client {
+public class ClientA {
     public static void main(String[] args) {
         //创建客户端socket建立连接，指定服务器地址和端口
         try {
