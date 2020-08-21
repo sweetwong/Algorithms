@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * N皇后问题
  */
-class NQueens {
+public class NQueens {
 
     private int n;
 
