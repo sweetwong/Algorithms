@@ -2,6 +2,7 @@ package javas.io;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
+import java.util.UUID;
 
 public class IOUtils {
 
@@ -65,29 +66,40 @@ public class IOUtils {
             return null;
         }
 
-        BufferedReader reader = null;
         StringBuilder builder = new StringBuilder();
-        try {
-            reader = new BufferedReader(new FileReader(file));
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String text;
             while ((text = reader.readLine()) != null) {
                 builder.append(text);
+                builder.append("\n");
             }
         } catch (IOException e) {
-            e.printStackTrace();
             return null;
-        } finally {
-            try {
-                if (reader != null) {
-                    reader.close();
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
         }
+        
         return builder.toString();
     }
 
+    public static void writeText(String path, String s) {
+        if (path == null || path.isEmpty()) {
+            return;
+        }
+
+        File file = new File(path);
+        File parentFile = file.getParentFile();
+        if (!parentFile.exists()) {
+            if (!parentFile.mkdirs()) {
+                return;
+            }
+        }
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
+            writer.write(s);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
 
 
 }
