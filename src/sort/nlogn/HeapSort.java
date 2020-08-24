@@ -134,8 +134,4 @@ public class HeapSort {
         }
     }
 
-    public static void main(String[] args) {
-        Time.watch(() -> ArrayUtils.createRandomArray(10000000), HeapSort::sort, 5);
-    }
-
 }
