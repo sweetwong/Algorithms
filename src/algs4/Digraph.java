@@ -29,6 +29,8 @@
 
 package algs4;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 /**
@@ -66,7 +68,7 @@ public class Digraph {
 
     private final int V;           // number of vertices in this digraph
     private int E;                 // number of edges in this digraph
-    private Bag<Integer>[] adj;    // adj[v] = adjacency list for vertex v
+    private List<List<Integer>> adj;    // adj[v] = adjacency list for vertex v
     private int[] indegree;        // indegree[v] = indegree of vertex v
 
     /**
@@ -80,9 +82,9 @@ public class Digraph {
         this.V = V;
         this.E = 0;
         indegree = new int[V];
-        adj = (Bag<Integer>[]) new Bag[V];
+        adj = new ArrayList<>(V);
         for (int v = 0; v < V; v++) {
-            adj[v] = new Bag<Integer>();
+            adj.add(new ArrayList<>());
         }
     }
 
@@ -104,9 +106,9 @@ public class Digraph {
             this.V = in.readInt();
             if (V < 0) throw new IllegalArgumentException("number of vertices in a Digraph must be nonnegative");
             indegree = new int[V];
-            adj = (Bag<Integer>[]) new Bag[V];
+            adj = new ArrayList<>(V);
             for (int v = 0; v < V; v++) {
-                adj[v] = new Bag<Integer>();
+                adj.add(new ArrayList<>());
             }
             int E = in.readInt();
             if (E < 0) throw new IllegalArgumentException("number of edges in a Digraph must be nonnegative");
@@ -139,19 +141,19 @@ public class Digraph {
             this.indegree[v] = G.indegree(v);
 
         // update adjacency lists
-        adj = (Bag<Integer>[]) new Bag[V];
+        adj = new ArrayList<>(V);
         for (int v = 0; v < V; v++) {
-            adj[v] = new Bag<Integer>();
+            adj.add(new ArrayList<>());
         }
 
         for (int v = 0; v < G.V(); v++) {
             // reverse so that adjacency list is in same order as original
             Stack<Integer> reverse = new Stack<Integer>();
-            for (int w : G.adj[v]) {
+            for (int w : G.adj.get(v)) {
                 reverse.push(w);
             }
             for (int w : reverse) {
-                adj[v].add(w);
+                adj.get(v).add(w);
             }
         }
     }
@@ -191,7 +193,7 @@ public class Digraph {
     public void addEdge(int v, int w) {
         validateVertex(v);
         validateVertex(w);
-        adj[v].add(w);
+        adj.get(v).add(w);
         indegree[w]++;
         E++;
     }
@@ -205,7 +207,7 @@ public class Digraph {
      */
     public Iterable<Integer> adj(int v) {
         validateVertex(v);
-        return adj[v];
+        return adj.get(v);
     }
 
     /**
@@ -218,7 +220,7 @@ public class Digraph {
      */
     public int outdegree(int v) {
         validateVertex(v);
-        return adj[v].size();
+        return adj.get(v).size();
     }
 
     /**
@@ -260,7 +262,7 @@ public class Digraph {
         s.append(V + " vertices, " + E + " edges " + NEWLINE);
         for (int v = 0; v < V; v++) {
             s.append(String.format("%d: ", v));
-            for (int w : adj[v]) {
+            for (int w : adj.get(v)) {
                 s.append(String.format("%d ", w));
             }
             s.append(NEWLINE);
