@@ -31,11 +31,6 @@ class Item46_全排列_通过交换解决 {
         return res;
     }
 
-    /**
-     * 全排列的回溯是一维的, 相当于在一个 1 × n 的棋盘上放不同的棋
-     *
-     * N皇后的回溯是二维的, 是在 m × n 的棋盘上放棋
-     */
     private void backtrack(int n, int[] nums, List<List<Integer>> res, int depth) {
         // 只有当row达到n的时候才添加, 其他时候不添加+
         if (depth == n) {

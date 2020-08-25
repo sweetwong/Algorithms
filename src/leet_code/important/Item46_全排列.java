@@ -38,6 +38,7 @@ class Item46_全排列 {
             return;
         }
 
+        // 此处 i = 0
         for (int i = 0; i < len; i++) {
             if (!used[i]) {
                 path.add(nums[i]);

@@ -1,9 +1,6 @@
 package sort.nlogn;
 
 
-import data_structure.other.Time;
-import data_structure.array.ArrayUtils;
-
 /**
  * 堆排序, 时间复杂度O(nlogn), 空间复杂度O(1)(亮点), 不稳定, 原地算法
  *
@@ -13,6 +10,12 @@ import data_structure.array.ArrayUtils;
  * 可以把heapify转成迭代, 就没有递归的空间复杂度了
  *
  * heapify本身可以进行尾递归优化(Java不行), 如果是C语言即使写成递归, 空间复杂度也是O(1)
+ *
+ * 注意堆的几个运算：
+ * n / 2 - 1 : 最后一个非叶子节点（最后一个有子节点的节点）
+ * i * 2 + 1 : i的左子节点
+ * i * 2 + 2 : i的右子节点
+ * (i - 1) / 2 : i的父节点
  */
 public class HeapSort {
 
@@ -37,25 +40,24 @@ public class HeapSort {
     /**
      * 堆化
      *
-     * 从start点开始, 一直到length为终点
-     * 如果发现start不是最大的, 则交换, 并从子节点开始继续堆化
+     * 从start点开始，一直到length为终点
+     * 如果发现start不是最大的，则交换，并从子节点开始继续堆化
      *
-     * 注意: 此处的max, parent, left, right指的都是数组索引
+     * 注意：此处的max，parent，left，right指的都是数组索引
      *
      * @param nums  输入的数组, 一直不变
      * @param n     当前堆的大小
      * @param parent 起始节点
      */
-    public static void heapify(int[] nums, int parent, int n) {
-        // 当 n == length, n / 2为数组中间偏右
-        // n / 2是最后一排的第一个
-        // 也相当于while(parent <= n / 2 - 1)
-        while (parent < n / 2) {
+    private static void heapify(int[] nums, int parent, int n) {
+        // 当 n == length，n / 2为数组中间偏右
+        // 从最后一个非叶子节点开始计算
+        while (parent <= n / 2 - 1) {
             // 指向左子树
             int child = 2 * parent + 1;
-            // 比较左右子树, left指向大的
+            // 判断左子树的合理性，找到左右子树更大的
             if (child < n - 1 && nums[child] < nums[child + 1]) child++;
-            // 拦截start为最大的情况
+            // 比较父节点和子节点，当父节点比较大时，终止堆化
             if (nums[parent] >= nums[child]) break;
             // 交换父子节点
             swap(nums, parent, child);
@@ -65,7 +67,7 @@ public class HeapSort {
 
     }
 
-    public static void swap(int[] nums, int i, int j) {
+    private static void swap(int[] nums, int i, int j) {
         int temp = nums[i];
         nums[i] = nums[j];
         nums[j] = temp;
@@ -84,7 +86,7 @@ public class HeapSort {
      * @param n     当前堆的大小
      * @param start 起始节点
      */
-    public static void heapifyIte(int[] nums, int start, int n) {
+    private static void heapifyIte(int[] nums, int start, int n) {
         // 当前(current)节点的位置
         int curr = start;
         // left左孩子，left + 1右孩子
@@ -119,7 +121,7 @@ public class HeapSort {
      * @param n     当前堆的大小
      * @param start 起始节点
      */
-    public static void heapifyRecursive(int[] nums, int start, int n) {
+    private static void heapifyRecursive(int[] nums, int start, int n) {
         int max = start;
 
         int left = 2 * start + 1;

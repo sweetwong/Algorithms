@@ -47,7 +47,9 @@ class Item31_下一个排列 {
     }
 
     private static void reverse(int[] nums, int i, int j) {
-        while (i < j) swap(nums, i++, j--);
+        while (i < j) {
+            swap(nums, i++, j--);
+        }
     }
 
 }

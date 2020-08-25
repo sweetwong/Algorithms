@@ -303,7 +303,7 @@ public class TreeUtils {
                 && isSame(t1.right, t2.right);
     }
 
-    public static TreeNode arrayToCompleteBinaryTree(int[] array) {
+    public static TreeNode arrayToCompleteBinaryTree(int... array) {
         return arrayToCompleteBinaryTree(array, 0);
     }
 

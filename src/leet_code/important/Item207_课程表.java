@@ -27,12 +27,17 @@ import java.util.*;
  *
  * 答案：
  * https://leetcode-cn.com/problems/course-schedule/solution/course-schedule-tuo-bu-pai-xu-bfsdfsliang-chong-fa/
+ *
+ * 这一题用到了几个重要的概念：
+ * 1. 边的数组 转 邻接表
+ * 2. 入度
+ * 3. BFS拓扑排序
  */
 class Item207_课程表 {
 
-    // 注意prerequisites使用边的列表, 而不是邻接矩阵, 注意区分
+    // 注意prerequisites使用边的数组, 而不是邻接矩阵, 注意区分
     public static boolean canFinish(int numCourses, int[][] prerequisites) {
-        // 入度
+        // 入度（表示当前节点的依赖）
         int[] indegrees = new int[numCourses];
         // 邻接表
         List<List<Integer>> adj = new ArrayList<>();
@@ -46,8 +51,11 @@ class Item207_课程表 {
             indegrees[cp[0]]++;
             adj.get(cp[1]).add(cp[0]);
         }
+
+        // Debug
         GraphUtils.printAdj(adj);
         ArrayUtils.print(indegrees);
+        // Debug
 
         // 从此处开始BFS拓扑排序
         // 这是个起点队列, 只有当前的起点能够入队
@@ -60,12 +68,13 @@ class Item207_课程表 {
         }
         while (!queue.isEmpty()) {
             int prev = queue.poll();
+            // do something here
+            // 因为在这里已经没有任何依赖了, 可以做为起点, 处理相对应的事件
+            // 例如: 在启动优化中, 这里可以启动对应的Task
+            System.out.println(prev);
             for (int curr : adj.get(prev)) {
                 if (--indegrees[curr] == 0) {
                     queue.offer(curr);
-                    // 在这里处理事件
-                    // 因为在这里已经没有任何依赖了, 可以做为起点, 处理相对应的事件
-                    // 例如: 在启动优化中, 这里可以启动对应的Task
                 }
             }
             // 每一轮循环处理一个节点(一门课)
@@ -82,7 +91,8 @@ class Item207_课程表 {
                 {5, 4},
                 {5, 3}
         };
-        System.out.println(canFinish(10, prerequisites));
+
+        System.out.println(canFinish(6, prerequisites));
     }
 
 }
