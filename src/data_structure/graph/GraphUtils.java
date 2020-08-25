@@ -24,9 +24,5 @@ public class GraphUtils {
         System.out.println();
     }
 
-    public static void print(Digraph graph) {
-        System.out.println(graph);
-    }
-
 
 }
