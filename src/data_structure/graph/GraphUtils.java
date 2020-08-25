@@ -9,7 +9,7 @@ public class GraphUtils {
      *
      * @param adj 邻接表
      */
-    public static void printAdj(List<List<Integer>> adj) {
+    public static void print(List<List<Integer>> adj) {
         for (int i = 0; i < adj.size(); i++) {
             System.out.print(i + ": ");
             for (int j = 0; j < adj.get(i).size(); j++) {
@@ -23,4 +23,10 @@ public class GraphUtils {
         }
         System.out.println();
     }
+
+    public static void print(Digraph graph) {
+        System.out.println(graph);
+    }
+
+
 }

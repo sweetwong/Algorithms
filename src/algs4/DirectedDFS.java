@@ -138,15 +138,17 @@ public class DirectedDFS {
         In in = new In(args[0]);
         Digraph G = new Digraph(in);
 
-        // read in sources from command-line arguments
-        Bag<Integer> sources = new Bag<Integer>();
-        for (int i = 1; i < args.length; i++) {
-            int s = Integer.parseInt(args[i]);
-            sources.add(s);
-        }
+//        // read in sources from command-line arguments
+//        Bag<Integer> sources = new Bag<Integer>();
+//        for (int i = 1; i < args.length; i++) {
+//            int s = Integer.parseInt(args[i]);
+//            sources.add(s);
+//        }
+
+        System.out.println(G);
 
         // multiple-source reachability
-        DirectedDFS dfs = new DirectedDFS(G, sources);
+        DirectedDFS dfs = new DirectedDFS(G, 0);
 
         // print out vertices reachable from sources
         for (int v = 0; v < G.V(); v++) {

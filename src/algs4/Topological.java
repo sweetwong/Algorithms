@@ -143,6 +143,10 @@ public class Topological {
             throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V - 1));
     }
 
+    public int[] getRank() {
+        return rank;
+    }
+
     /**
      * Unit tests the {@code Topological} data type.
      *

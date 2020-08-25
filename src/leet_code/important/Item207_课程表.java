@@ -53,7 +53,7 @@ class Item207_课程表 {
         }
 
         // Debug
-        GraphUtils.printAdj(adj);
+        GraphUtils.print(adj);
         ArrayUtils.print(indegrees);
         // Debug
 
