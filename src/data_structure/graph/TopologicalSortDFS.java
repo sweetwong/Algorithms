@@ -5,16 +5,15 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class TopologicalSort {
+public class TopologicalSortDFS {
 
     /**
      * 注意，digraph必须是一个有向无环图（DAG）
      */
-    public static List<Integer> sort(Digraph digraph) {
+    public static List<Integer> sort(List<List<Integer>> adj) {
         List<Integer> res = new ArrayList<>();
 
-        int n = digraph.size();
-        List<List<Integer>> adj = digraph.getAdj();
+        int n = adj.size();
 
         boolean[] visited = new boolean[n];
         Arrays.fill(visited, false);
@@ -56,8 +55,6 @@ public class TopologicalSort {
         g.addEdge(3, 4);
         g.addEdge(7, 6);
 
-        List<Integer> list = TopologicalSort.sort(g);
-        System.out.println(list);
     }
 
 }
