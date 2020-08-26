@@ -5,14 +5,14 @@ import java.util.List;
 
 public class Digraph {
 
-    private int V;
-
     private List<List<Integer>> adj;
 
-    public Digraph(int v) {
-        V = v;
-        adj = new ArrayList<>(v);
-        for (int i = 0; i < v; ++i) {
+    private int size;
+
+    public Digraph(int size) {
+        this.size = size;
+        adj = new ArrayList<>(size);
+        for (int i = 0; i < size; ++i) {
             adj.add(new ArrayList<>());
         }
     }
@@ -21,8 +21,8 @@ public class Digraph {
         adj.get(v).add(w);
     }
 
-    public int getV() {
-        return V;
+    public int size() {
+        return size;
     }
 
     public List<List<Integer>> getAdj() {
@@ -31,7 +31,7 @@ public class Digraph {
 
     public String toString() {
         StringBuilder s = new StringBuilder();
-        for (int v = 0; v < V; v++) {
+        for (int v = 0; v < size; v++) {
             s.append(String.format("%d: ", v));
             for (int w : adj.get(v)) {
                 s.append(String.format("%d ", w));

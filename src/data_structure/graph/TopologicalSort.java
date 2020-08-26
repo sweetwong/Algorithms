@@ -13,16 +13,16 @@ public class TopologicalSort {
     public static List<Integer> sort(Digraph digraph) {
         List<Integer> res = new ArrayList<>();
 
-        int V = digraph.getV();
+        int n = digraph.size();
         List<List<Integer>> adj = digraph.getAdj();
 
-        boolean[] visited = new boolean[V];
+        boolean[] visited = new boolean[n];
         Arrays.fill(visited, false);
 
         // 拓扑排序需要遍历所有节点
-        for (int i = 0; i < V; i++) {
+        for (int i = 0; i < n; i++) {
             if (!visited[i]) {
-                dfs(adj, i, visited, res);
+                dfs(adj, visited, res, i);
             }
         }
 
@@ -31,18 +31,12 @@ public class TopologicalSort {
         return res;
     }
 
-    /**
-     * @param adj 邻接表
-     * @param v 当前的节点
-     * @param visited 记录状态
-     * @param res 结果
-     */
-    private static void dfs(List<List<Integer>> adj, int v,
-                            boolean[] visited, List<Integer> res) {
+    private static void dfs(List<List<Integer>> adj, boolean[] visited,
+                            List<Integer> res, int v) {
         visited[v] = true;
         for (int i : adj.get(v)) {
             if (!visited[i]) {
-                dfs(adj, i, visited, res);
+                dfs(adj, visited, res, i);
             }
         }
         res.add(v);
