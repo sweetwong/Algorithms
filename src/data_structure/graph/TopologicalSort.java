@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class TopologicalSortDFS {
+public class TopologicalSort {
 
     /**
      * 注意，digraph必须是一个有向无环图（DAG）
@@ -16,7 +16,6 @@ public class TopologicalSortDFS {
         int n = adj.size();
 
         boolean[] visited = new boolean[n];
-        Arrays.fill(visited, false);
 
         // 拓扑排序需要遍历所有节点
         for (int i = 0; i < n; i++) {
@@ -39,22 +38,6 @@ public class TopologicalSortDFS {
             }
         }
         res.add(v);
-    }
-
-    /**
-     * https://visualgo.net/en/dfsbfs
-     */
-    public static void main(String[] args) {
-        Digraph g = new Digraph(8);
-        g.addEdge(0, 1);
-        g.addEdge(0, 2);
-        g.addEdge(1, 2);
-        g.addEdge(1, 3);
-        g.addEdge(2, 3);
-        g.addEdge(2, 5);
-        g.addEdge(3, 4);
-        g.addEdge(7, 6);
-
     }
 
 }
