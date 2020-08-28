@@ -7,7 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Queue;
 
-public class CycleDetect {
+/**
+ * 环检测是基于BFS或者DFS，然后加入一些额外的检测
+ */
+public class DirectedCycle {
 
     public static boolean hasCycleBFS(List<List<Integer>> adj) {
         int n = adj.size();
@@ -29,8 +32,7 @@ public class CycleDetect {
         int count = n;
         while (!queue.isEmpty()) {
             int u = queue.poll();
-            List<Integer> list = adj.get(u);
-            for (int v : list) {
+            for (int v : adj.get(u)) {
                 if (--indegrees[v] == 0) {
                     queue.offer(v);
                 }
@@ -47,8 +49,8 @@ public class CycleDetect {
         boolean[] visited = new boolean[n];
         boolean[] onStack = new boolean[n];
 
-        for (int i = 0; i < n; i++) {
-            if (dfs(adj, visited, onStack, i)) {
+        for (int v = 0; v < n; v++) {
+            if (dfs(adj, visited, onStack, v)) {
                 return true;
             }
         }
@@ -56,25 +58,25 @@ public class CycleDetect {
         return false;
     }
 
-    private static boolean dfs(List<List<Integer>> adj, boolean[] visited, boolean[] onStack, int u) {
-        if (onStack[u]) {
+    private static boolean dfs(List<List<Integer>> adj, boolean[] visited, boolean[] onStack, int v) {
+        if (onStack[v]) {
             return true;
         }
 
-        if (visited[u]) {
+        if (visited[v]) {
             return false;
         }
 
-        visited[u] = true;
-        onStack[u] = true;
+        visited[v] = true;
+        onStack[v] = true;
 
-        for (int v : adj.get(u)) {
-            if (dfs(adj, visited, onStack, v)) {
+        for (int w : adj.get(v)) {
+            if (dfs(adj, visited, onStack, w)) {
                 return true;
             }
         }
 
-        onStack[u] = false;
+        onStack[v] = false;
 
         return false;
     }
