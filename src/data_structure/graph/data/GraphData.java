@@ -18,7 +18,7 @@ public class GraphData {
         return adj;
     }
 
-    public static List<List<Integer>> getDG() {
+    public static List<List<Integer>> getDCG() {
         List<List<Integer>> adj = new ArrayList<>();
         for (int i = 0; i < 8; i++) {
             adj.add(new ArrayList<>());
@@ -33,13 +33,13 @@ public class GraphData {
         adj.get(7).add(6);
         adj.get(6).add(4);
 
-
         return adj;
     }
 
     public static void main(String[] args) {
-        List<List<Integer>> adj = getDG();
-        GraphUtils.print(adj);
+        List<List<Integer>> dg = getDCG();
+        List<List<Integer>> dag = getDAG();
+        GraphUtils.print(dg);
     }
 
 

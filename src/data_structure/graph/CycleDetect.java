@@ -44,10 +44,11 @@ public class CycleDetect {
     public static boolean hasCycleDFS(List<List<Integer>> adj) {
         int n = adj.size();
 
-        int[] flags = new int[n];
+        boolean[] visited = new boolean[n];
+        boolean[] onStack = new boolean[n];
 
         for (int i = 0; i < n; i++) {
-            if (dfs(adj, flags, i)) {
+            if (dfs(adj, visited, onStack, i)) {
                 return true;
             }
         }
@@ -55,24 +56,25 @@ public class CycleDetect {
         return false;
     }
 
-    private static boolean dfs(List<List<Integer>> adj, int[] flags, int u) {
-        if (flags[u] == 1) {
+    private static boolean dfs(List<List<Integer>> adj, boolean[] visited, boolean[] onStack, int u) {
+        if (onStack[u]) {
             return true;
         }
 
-        if (flags[u] == -1) {
+        if (visited[u]) {
             return false;
         }
 
-        flags[u] = 1;
+        visited[u] = true;
+        onStack[u] = true;
 
         for (int v : adj.get(u)) {
-            if (dfs(adj, flags, v)) {
+            if (dfs(adj, visited, onStack, v)) {
                 return true;
             }
         }
 
-        flags[u] = -1;
+        onStack[u] = false;
 
         return false;
     }

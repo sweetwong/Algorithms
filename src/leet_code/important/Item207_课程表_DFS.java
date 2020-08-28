@@ -43,16 +43,17 @@ class Item207_课程表_DFS {
             adj.get(prerequisite[1]).add(prerequisite[0]);
         }
 
-        return !detectCycle(adj);
+        return !hasCycle(adj);
     }
 
-    private static boolean detectCycle(List<List<Integer>> adj) {
+    private static boolean hasCycle(List<List<Integer>> adj) {
         int n = adj.size();
 
-        int[] visited = new int[n];
+        boolean[] visited = new boolean[n];
+        boolean[] onStack = new boolean[n];
 
         for (int i = 0; i < n; i++) {
-            if (dfs(adj, visited, i)) {
+            if (dfs(adj, visited, onStack, i)) {
                 return true;
             }
         }
@@ -60,24 +61,25 @@ class Item207_课程表_DFS {
         return false;
     }
 
-    private static boolean dfs(List<List<Integer>> adj, int[] visited, int u) {
-        if (visited[u] == -1) {
+    private static boolean dfs(List<List<Integer>> adj, boolean[] visited, boolean[] onStack, int u) {
+        if (onStack[u]) {
             return true;
         }
 
-        if (visited[u] == 1) {
+        if (visited[u]) {
             return false;
         }
 
-        visited[u] = 1;
+        visited[u] = true;
+        onStack[u] = true;
 
         for (int v : adj.get(u)) {
-            if (dfs(adj, visited, v)) {
+            if (dfs(adj, visited, onStack, v)) {
                 return true;
             }
         }
 
-        visited[u] = -1;
+        onStack[u] = false;
 
         return false;
     }
