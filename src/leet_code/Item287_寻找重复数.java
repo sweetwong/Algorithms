@@ -28,7 +28,7 @@ public class Item287_寻找重复数 {
         int hi = n - 1;
         while (lo < hi) {
             // 在 Java 里可以这么用，当 lo + hi 溢出的时候，无符号右移保证结果依然正确
-            int mid = (lo + hi) >>> 1;
+            int mid = lo + hi >>> 1;
 
             int cnt = 0;
             for (int num : nums) {

@@ -1,7 +1,7 @@
 package leet_code;
 
 // todo 用二分查找完成这一题
-class Item300_最长上升子序列_二分查找 {
+public class Item300_最长上升子序列_二分查找 {
 
   
 

@@ -1,12 +1,14 @@
 package search.binary;
 
-import leet_code.important.Item34_在排序数组中查找元素的第一个和最后一个位置_方法一;
-
 /**
  * @see leet_code.important.Item4_寻找两个有序数组的中位数
  * @see leet_code.important.Item33_搜索旋转排列数组
- * @see Item34_在排序数组中查找元素的第一个和最后一个位置_方法一
+ * @see leet_code.important.Item34_在排序数组中查找元素的第一个和最后一个位置_方法一
+ * @see leet_code.important.Item34_在排序数组中查找元素的第一个和最后一个位置_方法二
+ * @see leet_code.important.Item35_搜索插入位置
  * @see leet_code.important.Item240_搜索二维矩阵II
+ * @see leet_code.Item287_寻找重复数
+ * @see leet_code.Item300_最长上升子序列_二分查找
  * @see leet_code.Item378_有序矩阵中第K小的元素
  *
  * 写对二分查找不能靠模板，需要理解加练习 （附练习题，持续更新）
@@ -100,7 +102,7 @@ public class BinarySearch {
      * 当然只是列举下, 当然是不能使用的
      * 没必要增加无谓的空间复杂度
      */
-    public static int binarySearch(int[] nums, int lo, int hi, int target) {
+    private static int binarySearch(int[] nums, int lo, int hi, int target) {
         if (lo <= hi) {
             int mid = lo + hi >>> 1;
             if (nums[mid] < target) {
