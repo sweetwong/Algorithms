@@ -1,10 +1,11 @@
 package search.binary;
 
+import leet_code.important.Item34_在排序数组中查找元素的第一个和最后一个位置_方法一;
+
 /**
  * @see leet_code.important.Item4_寻找两个有序数组的中位数
  * @see leet_code.important.Item33_搜索旋转排列数组
- * @see leet_code.Item34_在排序数组中查找元素的第一个和最后一个位置
- * @see leet_code.important.Item35_搜索插入位置_二分法
+ * @see Item34_在排序数组中查找元素的第一个和最后一个位置_方法一
  * @see leet_code.important.Item240_搜索二维矩阵II
  * @see leet_code.Item378_有序矩阵中第K小的元素
  *
@@ -62,7 +63,8 @@ public class BinarySearch {
             // 这种情况中位数的取法也会变
             int mid = lo + hi >>> 1;
             // 这里是二分查找的核心，需要处理好边界问题
-            if (nums[mid] < target) {
+            int midVal = nums[mid];
+            if (midVal < target) {
                 lo = mid + 1;
             }
             // nums[mid] >= target 的情况
@@ -75,11 +77,14 @@ public class BinarySearch {
     }
 
     public static int binarySearchInsertLeft(int[] nums, int target) {
+        // 需要处理 target < nums[0] 的情况
+
         int lo = 0;
         int hi = nums.length - 1;
         while (lo < hi) {
             int mid = lo + hi + 1 >>> 1;
-            if (nums[mid] > target) {
+            int midVal = nums[mid];
+            if (midVal > target) {
                 hi = mid - 1;
             } else {
                 lo = mid;
@@ -110,8 +115,9 @@ public class BinarySearch {
     }
 
     public static void main(String[] args) {
-        int[] nums = {0, 10, 20, 30};
-        System.out.println(binarySearchInsertLeft(nums, 9));
+        BinarySearchTest.test(BinarySearch::binarySearch);
+        BinarySearchTest.test(BinarySearch::binarySearchInsertLeft);
+        BinarySearchTest.test(BinarySearch::binarySearchInsertRight);
     }
 
 }

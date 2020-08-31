@@ -44,14 +44,12 @@ public class BinarySearchTest {
             e.printStackTrace();
             System.out.println("error 4");
         }
+
+        executor.shutdown();
     }
 
     public interface IBinarySearch {
         int search(int[] nums, int target);
-    }
-
-    public static void main(String[] args) {
-        BinarySearchTest.test(BinarySearch::binarySearchInsertLeft);
     }
 
 }
