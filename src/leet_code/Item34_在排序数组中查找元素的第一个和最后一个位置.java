@@ -2,7 +2,7 @@ package leet_code;
 
 import java.util.Arrays;
 
-class Item34_在排序数组中查找元素的第一个和最后一个位置 {
+public class Item34_在排序数组中查找元素的第一个和最后一个位置 {
 
     public int[] searchRange(int[] nums, int target) {
         return new int[]{search(nums, target, true), search(nums, target, false)};

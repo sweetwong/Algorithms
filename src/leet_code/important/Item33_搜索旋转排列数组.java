@@ -19,7 +19,7 @@ package leet_code.important;
  * 输入: nums = [4,5,6,7,0,1,2], target = 3
  * 输出: -1
  */
-class Item33_搜索旋转排列数组 {
+public class Item33_搜索旋转排列数组 {
 
     /**
      * 在二分法的基础上加了拓展

@@ -1,8 +1,6 @@
 package data_structure.array;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class ArrayUtils {
 
@@ -76,6 +74,50 @@ public class ArrayUtils {
             arr[i] = (int) num;
         }
         return arr;
+    }
+
+    public static int[] createNotRepeatSortedRandomArray(int n) {
+        if (n == 0) return new int[0];
+
+        int[] nums = createRandomArray(n);
+        Arrays.sort(nums);
+        List<Integer> list = new ArrayList<>(n);
+        list.add(nums[0]);
+        for (int i = 1; i < n; i++) {
+            if (nums[i] != nums[i-1]) {
+                list.add(nums[i]);
+            }
+        }
+
+        n = list.size();
+        int[] res = new int[n];
+        for (int i = 0; i < n; i++) {
+            res[i] = list.get(i);
+        }
+
+        return res;
+    }
+
+    public static int[] createNotRepeatSortedRandomArray(int n, int max, boolean neg) {
+        if (n == 0) return new int[0];
+
+        int[] nums = createRandomArray(n, max, neg);
+        Arrays.sort(nums);
+        List<Integer> list = new ArrayList<>(n);
+        list.add(nums[0]);
+        for (int i = 1; i < n; i++) {
+            if (nums[i] != nums[i-1]) {
+                list.add(nums[i]);
+            }
+        }
+
+        n = list.size();
+        int[] res = new int[n];
+        for (int i = 0; i < n; i++) {
+            res[i] = list.get(i);
+        }
+
+        return res;
     }
 
 

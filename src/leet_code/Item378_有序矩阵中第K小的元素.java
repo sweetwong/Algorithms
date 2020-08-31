@@ -18,7 +18,7 @@ package leet_code;
  * 提示：
  * 你可以假设 k 的值永远是有效的，1 ≤ k ≤ n2 。
  */
-class Item378_有序矩阵中第K小的元素 {
+public class Item378_有序矩阵中第K小的元素 {
 
     /**
      * 用二分法时, 注意区分数组索引和数值, 像此题, 我用middle表示数值, 如果是数组索引就用mid表示

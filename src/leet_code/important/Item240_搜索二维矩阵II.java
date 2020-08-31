@@ -4,7 +4,7 @@ package leet_code.important;
  * todo 1. 理解这个方法（有点巧妙）
  * todo 2. 用其他算法实现
  */
-class Item240_搜索二维矩阵II {
+public class Item240_搜索二维矩阵II {
 
     public boolean searchMatrix(int[][] matrix, int target) {
         if (matrix == null || matrix.length == 0 || matrix[0].length == 0) return false;

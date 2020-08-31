@@ -20,7 +20,7 @@ package leet_code.important;
  * 二分法的代表题
  * 且要很好的区分, 第k个数和其下标nums[k-1]
  */
-class Item4_寻找两个有序数组的中位数 {
+public class Item4_寻找两个有序数组的中位数 {
 
     public static double findMedianSortedArrays(int[] nums1, int[] nums2) {
         int len = nums1.length + nums2.length;

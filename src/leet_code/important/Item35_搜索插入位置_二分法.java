@@ -20,8 +20,10 @@ package leet_code.important;
  * 示例 4:
  * 输入: [1,3,5,6], 0
  * 输出: 0
+ *
+ * @see search.binary.BinarySearch
  */
-public class Item35_搜索插入位置_方法一 {
+public class Item35_搜索插入位置_二分法 {
 
     /**
      * 可以理解为, 从nums中找到target
