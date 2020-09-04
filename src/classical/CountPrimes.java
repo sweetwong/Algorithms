@@ -2,6 +2,8 @@ package classical;
 
 import data_structure.other.Time;
 
+import java.util.Arrays;
+
 /**
  * 计数质数
  *
@@ -11,13 +13,10 @@ import data_structure.other.Time;
  */
 public class CountPrimes {
 
-    public static void main(String[] args) {
-        Time.watch(() -> countPrimes(100000000));
-    }
-
     public static int countPrimes(int n) {
         // 因为题目要求的是, 求小于n的所有质数, 因此此处不包括n, 最大的索引为 n - 1
-        boolean[] notPrime = new boolean[n];
+        boolean[] isPrime = new boolean[n];
+        Arrays.fill(isPrime, true);
         // 考虑到质数的定义, 从2开始
         // 12 = 2 × 6
         // 12 = 3 × 4
@@ -28,11 +27,12 @@ public class CountPrimes {
         // 所以如果到12为止, 还没有发现两个相乘的数等于n, 那么n为质数
         // 因为题目要求的是, 求小于n的所有质数, 因此此处不包括n
         for (int i = 2; i * i < n; i++) {
-            // 如果是质数
-            if (!notPrime[i]) {
+            // 如果i不是质数, 那就不用计算了
+            // 比如 i == 4, 那其实当 i == 2 时已经计算过了
+            if (isPrime[i]) {
                 // 因为题目要求的是, 求小于n的所有质数, 因此此处不包括n
                 for (int j = i * i; j < n; j += i) {
-                    notPrime[j] = true;
+                    isPrime[j] = false;
                 }
             }
         }
@@ -40,10 +40,15 @@ public class CountPrimes {
         int count = 0;
         for (int i = 2; i < n; i++) {
             // 因为题目要求的是, 求小于n的所有质数, 因此此处不包括n
-            if (!notPrime[i]) count++;
+            if (isPrime[i]) count++;
         }
 
         return count;
     }
+
+    public static void main(String[] args) {
+        Time.watch(() -> System.out.println(countPrimes(100000000)));
+    }
+
 
 }

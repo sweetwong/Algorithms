@@ -22,5 +22,4 @@ public class GsonUtils {
         return sGson.fromJson(json, typeOfT);
     }
 
-
 }
