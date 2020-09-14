@@ -1,13 +1,17 @@
 package leet_code.important;
 
 /**
+ * @see leet_code.Item74_搜索二维矩阵
+ *
  * todo 1. 理解这个方法（有点巧妙）
  * todo 2. 用其他算法实现
  */
 public class Item240_搜索二维矩阵II {
 
     public boolean searchMatrix(int[][] matrix, int target) {
-        if (matrix == null || matrix.length == 0 || matrix[0].length == 0) return false;
+        if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
+            return false;
+        }
 
         int m = matrix.length;
         int n = matrix[0].length;

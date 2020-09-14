@@ -10,14 +10,10 @@ public class NQueens {
 
     private int n;
 
-    // 用boolean比int更节约空间, 且用作判断条件时更简单
     private boolean[][] board;
 
     private List<List<String>> res = new ArrayList<>();
 
-    /**
-     * 调用
-     */
     public List<List<String>> solveNQueens(int n) {
         this.n = n;
         board = new boolean[n][n];
@@ -62,19 +58,19 @@ public class NQueens {
     }
 
     private void addSolution() {
-        List<String> oneSolution = new ArrayList<>();
+        List<String> list = new ArrayList<>();
         for (int col = 0; col < n; col++) {
-            StringBuilder sb = new StringBuilder();
+            StringBuilder builder = new StringBuilder();
             for (int row = 0; row < n; row++) {
                 if (board[row][col]) {
-                    sb.append('Q');
+                    builder.append('Q');
                 } else {
-                    sb.append('.');
+                    builder.append('.');
                 }
             }
-            oneSolution.add(sb.toString());
+            list.add(builder.toString());
         }
-        res.add(oneSolution);
+        res.add(list);
     }
 
 }
