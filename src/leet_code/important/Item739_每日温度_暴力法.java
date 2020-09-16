@@ -1,4 +1,4 @@
-package leet_code;
+package leet_code.important;
 
 import data_structure.array.ArrayUtils;
 import data_structure.other.Time;

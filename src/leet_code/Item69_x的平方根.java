@@ -16,6 +16,8 @@ package leet_code;
  * 输出: 2
  * 说明: 8 的平方根是 2.82842...,
  *      由于返回类型是整数，小数部分将被舍去。
+ *
+ * TODO 理解这道题
  */
 public class Item69_x的平方根 {
 
@@ -26,7 +28,7 @@ public class Item69_x的平方根 {
         int ans = 1;
 
         while (lo <= hi) {
-            int mid = lo + ((hi - lo) >>> 1);
+            int mid = lo + hi >>> 1;
             long midVal = (long) mid * (long) mid;
             if (midVal <= x) {
                 ans = mid;

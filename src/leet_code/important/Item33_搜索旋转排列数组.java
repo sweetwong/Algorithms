@@ -31,7 +31,7 @@ public class Item33_搜索旋转排列数组 {
         int last = nums[hi];
 
         while (lo <= hi) {
-            int mid = lo + ((hi - lo) >>> 1);
+            int mid = lo + hi >>> 1;
             int midVal = nums[mid];
 
             // 题目强调了, 没有重复项, 不然这个大于的判断有问题
