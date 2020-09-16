@@ -34,5 +34,13 @@ public class NumberUtils {
         System.out.println();
     }
 
+    public static int generateNumber(int n) {
+        int res = 1;
+        for (int i = 0; i < n; i++) {
+            res *= 10;
+        }
+        return res;
+    }
+
 
 }

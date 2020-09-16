@@ -19,9 +19,7 @@ public class ThreadUtils {
     public static void sleep(long millis) {
         try {
             Thread.sleep(millis);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-            System.out.println("被打断");
+        } catch (InterruptedException ignored) {
         }
     }
 
