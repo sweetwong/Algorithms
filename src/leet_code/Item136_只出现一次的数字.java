@@ -3,7 +3,7 @@ package leet_code;
 import data_structure.other.NumberUtils;
 
 /**
- * Given a non-empty array of integers, every element appears twice except for one. Find that single one.
+ * Given a non-empty array of integers, every element appears twice except for one. Find that single one.
  *
  * Note:
  *

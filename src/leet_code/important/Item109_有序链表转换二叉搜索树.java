@@ -3,9 +3,6 @@ package leet_code.important;
 import data_structure.linked_list.ListNode;
 import data_structure.tree.TreeNode;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * 给定一个单链表，其中的元素按升序排序，将其转换为高度平衡的二叉搜索树。
  *
@@ -22,29 +19,34 @@ import java.util.List;
  *    -3   9
  *    /   /
  *  -10  5
- *
- *  TODO 不借助数组完成这道题 ！！！ 有一些细节可以学习
  */
 public class Item109_有序链表转换二叉搜索树 {
 
     public static TreeNode sortedListToBST(ListNode head) {
-        List<Integer> list = new ArrayList<>();
-        for (ListNode curr = head; curr != null; curr = curr.next) {
-            list.add(curr.val);
-        }
-        TreeNode root = buildTree(list, 0, list.size() - 1);
+        // 注意，high 取值是 length 对应的值而不是 length - 1 对应的值
+        return buildTree(head, null);
+    }
+
+    private static TreeNode buildTree(ListNode low, ListNode high) {
+        if (low == high) return null;
+
+        ListNode middle = getMiddle(low, high);
+
+        TreeNode root = new TreeNode(middle.val);
+        root.left = buildTree(low, middle);
+        root.right = buildTree(middle.next, high);
+
         return root;
     }
 
-    private static TreeNode buildTree(List<Integer> list, int lo, int hi) {
-        if (lo > hi) {
-            return null;
+    private static ListNode getMiddle(ListNode low, ListNode high) {
+        ListNode slow = low, fast = low;
+        while (fast != high && fast.next != high) {
+            slow = slow.next;
+            fast = fast.next.next;
         }
-        int mid = lo + hi >>> 1;
-        TreeNode root = new TreeNode(list.get(mid));
-        root.left = buildTree(list, lo, mid - 1);
-        root.right = buildTree(list, mid + 1, hi);
-        return root;
+        return slow;
     }
+
 
 }
