@@ -1,6 +1,6 @@
 package leet_code.important;
 
-import data_structure.linked_list.LinkedListUtils;
+import data_structure.linked_list.LinkedLists;
 import data_structure.linked_list.ListNode;
 
 /**
@@ -72,9 +72,9 @@ public class Item143_重排链表 {
     }
 
     public static void main(String[] args) {
-        ListNode head = LinkedListUtils.create(1, 2, 3, 4, 5);
+        ListNode head = LinkedLists.create(1, 2, 3, 4, 5);
         reorderList(head);
-        LinkedListUtils.print(head);
+        LinkedLists.print(head);
     }
 
 

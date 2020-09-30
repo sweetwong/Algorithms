@@ -1,12 +1,9 @@
 package leet_code.important;
 
 import data_structure.other.Time;
-import sort.nlogn.QuickSort;
-import data_structure.array.ArrayUtils;
-import data_structure.linked_list.LinkedListUtils;
+import data_structure.array.Arrays;
+import data_structure.linked_list.LinkedLists;
 import data_structure.linked_list.ListNode;
-
-import java.util.Arrays;
 
 /**
  * Sort a linked list in O(n log n) time using constant space complexity.
@@ -22,8 +19,8 @@ import java.util.Arrays;
 class Item148_排序链表 {
 
     public static void main(String[] args) {
-        int[] nums = ArrayUtils.createRandomArray(10000000, 100, false);
-        ListNode head = LinkedListUtils.create(nums);
+        int[] nums = Arrays.createRandomArray(10000000, 100, false);
+        ListNode head = LinkedLists.create(nums);
 
         Time.watch(() -> sortList(head));
     }

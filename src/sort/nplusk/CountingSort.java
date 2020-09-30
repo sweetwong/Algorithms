@@ -1,9 +1,7 @@
 package sort.nplusk;
 
-import data_structure.array.ArrayUtils;
+import data_structure.array.Arrays;
 import data_structure.other.Time;
-
-import java.util.*;
 
 /**
  * https://www.geeksforgeeks.org/counting-sort/
@@ -15,8 +13,8 @@ class CountingSort {
         int n = nums.length;
         if (n <= 1) return;
 
-        int max = Arrays.stream(nums).max().getAsInt();
-        int min = Arrays.stream(nums).min().getAsInt();
+        int max = java.util.Arrays.stream(nums).max().getAsInt();
+        int min = java.util.Arrays.stream(nums).min().getAsInt();
         int range = max - min + 1;
         int[] count = new int[range];
         int[] output = new int[n];
@@ -37,9 +35,9 @@ class CountingSort {
     }
 
     public static void main(String[] args) {
-        int[] nums = ArrayUtils.createRandomArray(100000000, 100000, false);
+        int[] nums = Arrays.createRandomArray(100000000, 100000, false);
         Time.watch(() -> CountingSort.sort(nums));
-        ArrayUtils.checkSorted(nums);
+        Arrays.checkSorted(nums);
     }
 }
 

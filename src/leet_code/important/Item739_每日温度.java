@@ -1,6 +1,6 @@
 package leet_code.important;
 
-import data_structure.array.ArrayUtils;
+import data_structure.array.Arrays;
 
 import java.util.*;
 
@@ -35,10 +35,10 @@ public class Item739_每日温度 {
     }
 
     public static void main(String[] args) {
-        int[] temperatures = ArrayUtils.createRandomArray(10, 30, 100, false);
-        ArrayUtils.print(temperatures);
+        int[] temperatures = Arrays.createRandomArray(10, 30, 100, false);
+        Arrays.print(temperatures);
         int[] res = dailyTemperatures(temperatures);
-        ArrayUtils.print(res);
+        Arrays.print(res);
     }
 
 

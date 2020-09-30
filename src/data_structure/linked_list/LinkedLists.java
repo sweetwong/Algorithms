@@ -1,15 +1,15 @@
 package data_structure.linked_list;
 
 import sort.nlogn.QuickSort;
-import data_structure.array.ArrayUtils;
+import data_structure.array.Arrays;
 
 /**
  * @see sort.nlogn.MergeSort
  */
-public class LinkedListUtils {
+public class LinkedLists {
 
     public static void main(String[] args) {
-        int[] nums = ArrayUtils.createRandomArray(10, 100, false);
+        int[] nums = Arrays.createRandomArray(10, 100, false);
         QuickSort.sort(nums);
 
         ListNode head = create(nums);

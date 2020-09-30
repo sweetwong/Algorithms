@@ -1,6 +1,6 @@
 package leet_code;
 
-import data_structure.linked_list.LinkedListUtils;
+import data_structure.linked_list.LinkedLists;
 import data_structure.linked_list.ListNode;
 
 class Item25_K个一组翻转链表 {
@@ -56,9 +56,9 @@ class Item25_K个一组翻转链表 {
     }
 
     public static void main(String[] args) {
-        ListNode head = LinkedListUtils.create(1, 2, 3, 4, 5, 6);
+        ListNode head = LinkedLists.create(1, 2, 3, 4, 5, 6);
         ListNode node = reverseKGroup(head, 3);
-        LinkedListUtils.print(node);
+        LinkedLists.print(node);
     }
 
 

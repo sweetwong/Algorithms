@@ -1,6 +1,6 @@
 package leet_code;
 
-import data_structure.array.ArrayUtils;
+import data_structure.array.Arrays;
 import data_structure.other.Time;
 
 /**
@@ -35,8 +35,8 @@ public class Item167_两数之和II_输入有序数组_双指针 {
     }
 
     public static void main(String[] args) {
-        int[] nums = ArrayUtils.createRandomArray(100000000, 10000, false);
-        Time.watch(() -> ArrayUtils.print(twoSum(nums, 1000000000)));
+        int[] nums = Arrays.createRandomArray(100000000, 10000, false);
+        Time.watch(() -> Arrays.print(twoSum(nums, 1000000000)));
     }
 
 }

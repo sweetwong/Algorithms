@@ -1,6 +1,6 @@
 package data_structure.graph.data;
 
-import data_structure.graph.GraphUtils;
+import data_structure.graph.Graphs;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +39,7 @@ public class GraphData {
     public static void main(String[] args) {
         List<List<Integer>> dg = getDCG();
         List<List<Integer>> dag = getDAG();
-        GraphUtils.print(dg);
+        Graphs.print(dg);
     }
 
 

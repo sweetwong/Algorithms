@@ -2,7 +2,7 @@ package data_structure.array;
 
 import java.util.*;
 
-public class ArrayUtils {
+public class Arrays {
 
     /**
      * @param n 随机数组的长度
@@ -80,7 +80,7 @@ public class ArrayUtils {
         if (n == 0) return new int[0];
 
         int[] nums = createRandomArray(n);
-        Arrays.sort(nums);
+        java.util.Arrays.sort(nums);
         List<Integer> list = new ArrayList<>(n);
         list.add(nums[0]);
         for (int i = 1; i < n; i++) {
@@ -102,7 +102,7 @@ public class ArrayUtils {
         if (n == 0) return new int[0];
 
         int[] nums = createRandomArray(n, max, neg);
-        Arrays.sort(nums);
+        java.util.Arrays.sort(nums);
         List<Integer> list = new ArrayList<>(n);
         list.add(nums[0]);
         for (int i = 1; i < n; i++) {
@@ -152,12 +152,12 @@ public class ArrayUtils {
     }
 
     public static void print(int[] nums) {
-        System.out.println(Arrays.toString(nums));
+        System.out.println(java.util.Arrays.toString(nums));
         System.out.println();
     }
 
     public static void print(Object[] objects) {
-        System.out.println(Arrays.toString(objects));
+        System.out.println(java.util.Arrays.toString(objects));
         System.out.println();
     }
 

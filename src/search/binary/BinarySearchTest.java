@@ -1,6 +1,6 @@
 package search.binary;
 
-import data_structure.array.ArrayUtils;
+import data_structure.array.Arrays;
 
 import java.util.concurrent.*;
 
@@ -26,7 +26,7 @@ public class BinarySearchTest {
 
             for (int i = 0; i < 10; i++) {
                 int n = 1 + (int) (1000 * Math.random());
-                int[] nums = ArrayUtils.createNotRepeatSortedRandomArray(1000);
+                int[] nums = Arrays.createNotRepeatSortedRandomArray(1000);
                 int randomIndex = (int) (n * Math.random());
                 int target = nums[randomIndex];
                 if (iBinarySearch.search(nums, target) != randomIndex) {

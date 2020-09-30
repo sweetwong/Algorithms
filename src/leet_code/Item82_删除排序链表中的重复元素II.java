@@ -1,14 +1,14 @@
 package leet_code;
 
-import data_structure.linked_list.LinkedListUtils;
+import data_structure.linked_list.LinkedLists;
 import data_structure.linked_list.ListNode;
 
 class Item82_删除排序链表中的重复元素II {
 
     public static void main(String[] args) {
-        ListNode head = LinkedListUtils.create(1, 2, 2);
+        ListNode head = LinkedLists.create(1, 2, 2);
         head = deleteDuplicatesIte(head);
-        LinkedListUtils.print(head);
+        LinkedLists.print(head);
     }
 
     public static ListNode deleteDuplicates(ListNode head) {

@@ -1,6 +1,6 @@
 package leet_code;
 
-import data_structure.linked_list.LinkedListUtils;
+import data_structure.linked_list.LinkedLists;
 import data_structure.linked_list.ListNode;
 
 import java.util.ArrayDeque;
@@ -38,9 +38,9 @@ class Item445_两数相加II {
     }
 
     public static void main(String[] args) {
-        ListNode l1 = LinkedListUtils.create(7, 2, 4, 3);
-        ListNode l2 = LinkedListUtils.create(5, 6, 4);
-        LinkedListUtils.print(addTwoNumbers(l1, l2));
+        ListNode l1 = LinkedLists.create(7, 2, 4, 3);
+        ListNode l2 = LinkedLists.create(5, 6, 4);
+        LinkedLists.print(addTwoNumbers(l1, l2));
     }
 
 }

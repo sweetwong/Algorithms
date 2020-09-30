@@ -1,10 +1,7 @@
 package leet_code;
 
 import data_structure.tree.TreeNode;
-import data_structure.tree.TreeUtils;
-
-import java.util.ArrayDeque;
-import java.util.Queue;
+import data_structure.tree.Trees;
 
 /**
  * 给定一个完美二叉树，其所有叶子节点都在同一层，每个父节点都有两个子节点。二叉树定义如下：
@@ -66,8 +63,8 @@ public class Item116_填充每个节点的下一个右侧节点指针 {
     }
 
     public static void main(String[] args) {
-        TreeNode root = TreeUtils.arrayToCompleteBinaryTree(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15);
-        TreeUtils.print(root);
+        TreeNode root = Trees.arrayToCompleteBinaryTree(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15);
+        Trees.print(root);
     }
 
 }

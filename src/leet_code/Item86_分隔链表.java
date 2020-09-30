@@ -1,6 +1,6 @@
 package leet_code;
 
-import data_structure.linked_list.LinkedListUtils;
+import data_structure.linked_list.LinkedLists;
 import data_structure.linked_list.ListNode;
 
 /**
@@ -39,7 +39,7 @@ public class Item86_分隔链表 {
     }
 
     public static void main(String[] args) {
-        ListNode head = LinkedListUtils.create(1, 4, 3, 2, 5, 2);
+        ListNode head = LinkedLists.create(1, 4, 3, 2, 5, 2);
         ListNode partition = partition(head, 3);
     }
 

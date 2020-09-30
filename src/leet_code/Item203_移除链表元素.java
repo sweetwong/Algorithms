@@ -1,6 +1,6 @@
 package leet_code;
 
-import data_structure.linked_list.LinkedListUtils;
+import data_structure.linked_list.LinkedLists;
 import data_structure.linked_list.ListNode;
 
 /**
@@ -13,9 +13,9 @@ import data_structure.linked_list.ListNode;
 class Item203_移除链表元素 {
 
     public static void main(String[] args) {
-        ListNode head = LinkedListUtils.create(1, 2, 2, 1);
+        ListNode head = LinkedLists.create(1, 2, 2, 1);
         removeElements1(head, 2);
-        LinkedListUtils.print(head);
+        LinkedLists.print(head);
     }
 
     /**

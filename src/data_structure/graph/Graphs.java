@@ -2,7 +2,7 @@ package data_structure.graph;
 
 import java.util.List;
 
-public class GraphUtils {
+public class Graphs {
 
     /**
      * 打印邻接表

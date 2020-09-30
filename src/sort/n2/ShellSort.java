@@ -12,6 +12,7 @@ public class ShellSort {
 
     public static void sort(int[] nums) {
         int len = nums.length;
+        // 在插入排序之上再包了一层
         for (int gap = len / 2; gap >= 1; gap /= 2) {
             // 注意: 这段代码和插入排序的核心代码几乎一样, 唯一不同的是插入排序的gap为1
             for (int i = gap; i < len; i++) {

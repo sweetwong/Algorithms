@@ -1,7 +1,7 @@
 package leet_code.important;
 
 import data_structure.tree.TreeNode;
-import data_structure.tree.TreeUtils;
+import data_structure.tree.Trees;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -64,7 +64,7 @@ public class Item105_从前序与中序遍历序列构造二叉树 {
         int[] preorder = {3, 9, 20, 15, 7};
         int[] inorder = {9, 3, 15, 20, 7};
         TreeNode root = buildTree(preorder, inorder);
-        TreeUtils.print(root);
+        Trees.print(root);
     }
 
 }

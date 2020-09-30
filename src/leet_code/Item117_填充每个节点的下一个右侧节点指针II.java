@@ -1,7 +1,7 @@
 package leet_code;
 
 import data_structure.tree.TreeNode;
-import data_structure.tree.TreeUtils;
+import data_structure.tree.Trees;
 
 import java.util.ArrayDeque;
 import java.util.Queue;
@@ -75,8 +75,8 @@ public class Item117_填充每个节点的下一个右侧节点指针II {
     }
 
     public static void main(String[] args) {
-        TreeNode root = TreeUtils.arrayToCompleteBinaryTree(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15);
-        TreeUtils.print(root);
+        TreeNode root = Trees.arrayToCompleteBinaryTree(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15);
+        Trees.print(root);
     }
 
 }

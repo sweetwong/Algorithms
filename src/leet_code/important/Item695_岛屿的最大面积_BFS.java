@@ -1,6 +1,6 @@
 package leet_code.important;
 
-import data_structure.array.ArrayUtils;
+import data_structure.array.Arrays;
 import data_structure.other.Time;
 
 import java.util.ArrayDeque;
@@ -87,11 +87,11 @@ class Item695_岛屿的最大面积_BFS {
     public static void main(String[] args) {
         for (int i = 0; i < 3; i++) {
 
-            int[][] grid1 = ArrayUtils.createIsland(5000, 5000);
+            int[][] grid1 = Arrays.createIsland(5000, 5000);
             System.out.print("BFS: ");
             Time.watch(() -> Item695_岛屿的最大面积_BFS.maxAreaOfIsland(grid1));
 
-            int[][] grid2 = ArrayUtils.createIsland(5000, 5000);
+            int[][] grid2 = Arrays.createIsland(5000, 5000);
             System.out.print("DFS: ");
             Time.watch(() -> Item695_岛屿的最大面积_DFS.maxAreaOfIsland(grid2));
 

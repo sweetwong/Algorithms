@@ -1,6 +1,6 @@
 package leet_code;
 
-import data_structure.array.ArrayUtils;
+import data_structure.array.Arrays;
 
 class Item48_旋转图像 {
 
@@ -31,7 +31,7 @@ class Item48_旋转图像 {
                 {15, 14, 12, 16}
         };
         rotate(matrix);
-        ArrayUtils.print(matrix);
+        Arrays.print(matrix);
     }
 
 }

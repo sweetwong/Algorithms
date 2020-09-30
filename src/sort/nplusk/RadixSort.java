@@ -1,9 +1,7 @@
 package sort.nplusk;
 
-import data_structure.array.ArrayUtils;
+import data_structure.array.Arrays;
 import data_structure.other.Time;
-
-import java.util.*;
 
 /**
  * https://www.geeksforgeeks.org/radix-sort/
@@ -15,7 +13,7 @@ class RadixSort {
         if (n <= 1) return;
 
         // 找出最大的数, 用来确定最高的位数
-        int max = Arrays.stream(nums).max().getAsInt();
+        int max = java.util.Arrays.stream(nums).max().getAsInt();
 
         // Do counting sort for every digit. Note that instead
         // of passing digit number, exp is passed. exp is 10^i
@@ -57,8 +55,8 @@ class RadixSort {
 
     /*Driver function to check for above function*/
     public static void main(String[] args) {
-        int[] nums = ArrayUtils.createRandomArray(100000, 10000, true);
+        int[] nums = Arrays.createRandomArray(100000, 10000, true);
         Time.watch(() -> sort(nums));
-        ArrayUtils.checkSorted(nums);
+        Arrays.checkSorted(nums);
     }
 }

@@ -1,6 +1,6 @@
 package leet_code;
 
-import data_structure.array.ArrayUtils;
+import data_structure.array.Arrays;
 import data_structure.other.Time;
 
 class Item300_最长上升子序列_动态规划_递归 {
@@ -35,10 +35,10 @@ class Item300_最长上升子序列_动态规划_递归 {
 
     public static void main(String[] args) {
         for (int i = 0; i < 5; i++) {
-            int[] nums1 = ArrayUtils.createRandomArray(30000);
+            int[] nums1 = Arrays.createRandomArray(30000);
             Time.watch(() -> Item300_最长上升子序列_动态规划_递归.lengthOfLIS(nums1));
 
-            int[] nums2 = ArrayUtils.createRandomArray(30000);
+            int[] nums2 = Arrays.createRandomArray(30000);
             Time.watch(() -> Item300_最长上升子序列_动态规划_迭代.lengthOfLIS(nums2));
 
             System.out.println();

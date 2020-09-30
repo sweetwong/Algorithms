@@ -1,6 +1,6 @@
 package sort;
 
-import data_structure.array.ArrayUtils;
+import data_structure.array.Arrays;
 import data_structure.other.Time;
 
 public class SortTest {
@@ -9,9 +9,9 @@ public class SortTest {
         int length = 0;
         for (int i = 0; i < 8; i++) {
             System.out.println("length = " + length);
-            int[] nums = ArrayUtils.createRandomArray(length);
+            int[] nums = Arrays.createRandomArray(length);
             Time.watch(() -> sortable.sort(nums));
-            ArrayUtils.checkSorted(nums);
+            Arrays.checkSorted(nums);
             System.out.println();
             length *= 10;
             if (i == 0) length += 10;

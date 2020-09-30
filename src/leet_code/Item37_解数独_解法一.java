@@ -1,6 +1,6 @@
 package leet_code;
 
-import data_structure.array.ArrayUtils;
+import data_structure.array.Arrays;
 
 /**
  * 编写一个程序，通过已填充的空格来解决数独问题。
@@ -73,7 +73,7 @@ public class Item37_解数独_解法一 {
                 {'.', '.', '.', '.', '8', '.', '.', '7', '9'}
         };
         new Item37_解数独_解法一().solveSudoku(board);
-        ArrayUtils.print(board);
+        Arrays.print(board);
     }
 
 }

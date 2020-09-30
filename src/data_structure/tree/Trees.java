@@ -13,7 +13,7 @@ import java.util.*;
  * 6. 判断两个树是否相等/是否镜像对称
  * 7. 将树转为列表
  */
-public class TreeUtils {
+public class Trees {
 
     /**
      * 这个理论上来说是需要放在方法中创建的, 但是重复的太多了, 为了节省代码空间, 在这个类中放在了外面
@@ -323,7 +323,7 @@ public class TreeUtils {
      * 把树转为可空列表, 如果有节点就传入节点的值, 没有就传入null
      */
     public static List<Integer> treeToList(TreeNode root) {
-        int maxDepth = TreeUtils.depth(root);
+        int maxDepth = Trees.depth(root);
         int maxLength = (1 << maxDepth) - 1;
 
         List<Integer> res = new ArrayList<>(maxLength);
@@ -352,7 +352,7 @@ public class TreeUtils {
      */
     public static List<List<Integer>> treeToLists(TreeNode root) {
         List<List<Integer>> res = new ArrayList<>();
-        int maxDepth = TreeUtils.depth(root);
+        int maxDepth = Trees.depth(root);
         // 最大深度对应的最大节点数
         int maxLength = (1 << maxDepth) - 1;
 

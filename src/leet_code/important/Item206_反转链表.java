@@ -1,6 +1,6 @@
 package leet_code.important;
 
-import data_structure.linked_list.LinkedListUtils;
+import data_structure.linked_list.LinkedLists;
 import data_structure.linked_list.ListNode;
 
 /**
@@ -9,11 +9,11 @@ import data_structure.linked_list.ListNode;
 class Item206_反转链表 {
 
     public static void main(String[] args) {
-        ListNode head = LinkedListUtils.create(1, 2, 3, 4, 5);
-        LinkedListUtils.print(head);
+        ListNode head = LinkedLists.create(1, 2, 3, 4, 5);
+        LinkedLists.print(head);
 
         ListNode rev = reverseList1(head);
-        LinkedListUtils.print(rev);
+        LinkedLists.print(rev);
     }
 
     /**

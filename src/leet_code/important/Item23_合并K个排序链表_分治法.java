@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
-import data_structure.linked_list.LinkedListUtils;
+import data_structure.linked_list.LinkedLists;
 import data_structure.linked_list.ListNode;
 
 /**
@@ -105,10 +105,10 @@ class Item23_合并K个排序链表_分治法 {
     }
 
     public static void main(String[] args) {
-        ListNode l1 = LinkedListUtils.create(1, 4, 8, 10);
-        ListNode l2 = LinkedListUtils.create(2, 9, 24);
-        ListNode l3 = LinkedListUtils.create(3, 7);
-        LinkedListUtils.print(mergeKListsPriorityQueue(new ListNode[]{l1, l2, l3}));
+        ListNode l1 = LinkedLists.create(1, 4, 8, 10);
+        ListNode l2 = LinkedLists.create(2, 9, 24);
+        ListNode l3 = LinkedLists.create(3, 7);
+        LinkedLists.print(mergeKListsPriorityQueue(new ListNode[]{l1, l2, l3}));
     }
 
 }

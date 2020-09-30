@@ -1,6 +1,6 @@
 package sort.nlogn;
 
-import data_structure.array.ArrayUtils;
+import data_structure.array.Arrays;
 import data_structure.other.Time;
 
 /**
@@ -111,7 +111,7 @@ public class QuickSort {
 
     public static void main(String[] args) {
         for (int i = 0; i < 5; i++) {
-            int[] nums = ArrayUtils.createRandomArray(10000000);
+            int[] nums = Arrays.createRandomArray(10000000);
             Time.watch(() -> sort(nums));
             Time.watch(() -> sort(nums));
             System.out.println();

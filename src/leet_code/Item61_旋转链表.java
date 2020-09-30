@@ -1,6 +1,6 @@
 package leet_code;
 
-import data_structure.linked_list.LinkedListUtils;
+import data_structure.linked_list.LinkedLists;
 import data_structure.linked_list.ListNode;
 
 /**
@@ -25,9 +25,9 @@ import data_structure.linked_list.ListNode;
 class Item61_旋转链表 {
 
     public static void main(String[] args) {
-        ListNode head = LinkedListUtils.create(1, 2, 3, 4, 5);
+        ListNode head = LinkedLists.create(1, 2, 3, 4, 5);
         head = rotateRight(head, 5);
-        LinkedListUtils.print(head);
+        LinkedLists.print(head);
     }
 
     public static ListNode rotateRight(ListNode head, int k) {
