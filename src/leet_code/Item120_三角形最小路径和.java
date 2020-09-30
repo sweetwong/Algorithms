@@ -1,7 +1,6 @@
 package leet_code;
 
-import data_structure.array.Arrays;
-
+import java.util.Arrays;
 import java.util.List;
 
 /**

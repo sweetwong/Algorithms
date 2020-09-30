@@ -307,7 +307,7 @@ public class Trees {
         return arrayToCompleteBinaryTree(array, 0);
     }
 
-    public static TreeNode arrayToCompleteBinaryTree(int[] array, int index) {
+    private static TreeNode arrayToCompleteBinaryTree(int[] array, int index) {
         TreeNode root = null;
         if (index < array.length) {
             int value = array[index];

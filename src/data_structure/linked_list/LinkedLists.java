@@ -1,53 +1,41 @@
 package data_structure.linked_list;
 
-import sort.nlogn.QuickSort;
-import data_structure.array.Arrays;
-
 /**
  * @see sort.nlogn.MergeSort
  */
 public class LinkedLists {
-
-    public static void main(String[] args) {
-        int[] nums = Arrays.createRandomArray(10, 100, false);
-        QuickSort.sort(nums);
-
-        ListNode head = create(nums);
-        print(head);
-
-        ListNode rev = reverse(head);
-        print(rev);
-    }
 
     /**
      * @param nums 输入任意数字
      * @return 生成对应链表
      */
     public static ListNode create(int... nums) {
-        ListNode dummy = new ListNode(0);
-        ListNode curr = dummy;
-        for (int num : nums) {
-            curr.next = new ListNode(num);
+        if (nums == null || nums.length == 0) {
+            return null;
+        }
+        ListNode head = new ListNode(nums[0]);
+        ListNode curr = head;
+        for (int i = 1; i < nums.length; i++) {
+            curr.next = new ListNode(nums[i]);
             curr = curr.next;
         }
-        return dummy.next;
+        return head;
     }
 
     /**
      * 打印链表成如 1 -> 3 -> 5 的格式
      *
-     * @param node 输入的链表
+     * @param head 输入的链表
      */
-    public static void print(ListNode node) {
-        if (node == null) {
-            System.out.print("null");
-        } else {
-            System.out.print(node.val);
-            node = node.next;
-            while (node != null) {
-                System.out.print(" -> " + node.val);
-                node = node.next;
-            }
+    public static void print(ListNode head) {
+        if (head == null) {
+            System.out.println("null");
+            return;
+        }
+        System.out.print(head.val);
+        head = head.next;
+        for (ListNode curr = head; curr != null; curr = curr.next) {
+            System.out.print(" -> " + curr.val);
         }
         System.out.println();
     }
