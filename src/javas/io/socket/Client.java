@@ -1,5 +1,7 @@
 package javas.io.socket;
 
+import javas.utils.FakeData;
+
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.Socket;
@@ -11,27 +13,10 @@ public class Client {
         OutputStream os = socket.getOutputStream();
         PrintWriter writer = new PrintWriter(os);
         for (; ; ) {
-            writer.append(getJson())
-                    .append(System.lineSeparator());
+            writer.write(FakeData.getJson() + System.lineSeparator());
             writer.flush();
-            Thread.sleep(3000);
+            Thread.sleep(5000);
         }
-    }
-
-    private static String getJson() {
-        return "{\n" +
-                "  \"appInfos\": [\n" +
-                "    {\n" +
-                "      \"orderIndex\": 1,\n" +
-                "      \"packageName\": \"us.zoom.videomeetings\",\n" +
-                "      \"customName\": \"\",\n" +
-                "      \"customIcon\": \"\",\n" +
-                "      \"useCustom\": false,\n" +
-                "      \"isHidden\": false,\n" +
-                "      \"description\": \"Zoom\"\n" +
-                "    }\n" +
-                "  ]\n" +
-                "}";
     }
 
 }
