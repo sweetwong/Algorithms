@@ -15,23 +15,22 @@ class Item198_打家劫舍_动态规划 {
      */
     public static int rob(int[] nums) {
         Integer[] memo = new Integer[nums.length + 1];
-        return dp(nums, 0, memo);
+        return rob(nums, 0, memo);
     }
 
-    public static int dp(int[] nums, int start, Integer[] memo) {
+    public static int rob(int[] nums, int start, Integer[] dp) {
         int len = nums.length;
 
         if (start >= len) return 0;
         if (start == len - 1) return nums[len - 1];
         if (start == len - 2) return Math.max(nums[len - 1], nums[len - 2]);
 
-        if (memo[start] != null) return memo[start];
+        if (dp[start] != null) return dp[start];
 
-        int res = Math.max(nums[start] + dp(nums, start + 2, memo), nums[start + 1] + dp(nums, start + 3, memo));
-        memo[start] = res;
+        int res = Math.max(nums[start] + rob(nums, start + 2, dp), nums[start + 1] + rob(nums, start + 3, dp));
+        dp[start] = res;
         return res;
     }
-
 
     /**
      * 动态规划, 自底向上
