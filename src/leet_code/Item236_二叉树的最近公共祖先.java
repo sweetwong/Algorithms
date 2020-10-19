@@ -32,8 +32,10 @@ class Item236_二叉树的最近公共祖先 {
 
     public static TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         if (root == null || root == p || root == q) return root;
+        // 先遍历左右子树
         TreeNode left = lowestCommonAncestor(root.left, p, q);
         TreeNode right = lowestCommonAncestor(root.right, p, q);
+        // 再通过遍历的结果，来作出相应的操作，这个属于后序遍历（即先遍历，再操作）
         if (left == null) return right;
         if (right == null) return left;
         return root;
@@ -48,7 +50,8 @@ class Item236_二叉树的最近公共祖先 {
         root.left.right.left = new TreeNode(7);
         root.left.right.right = new TreeNode(4);
 
-        System.out.println(lowestCommonAncestor(root.left.right, root.right, root.left.right.left).val);
+        TreeNode ancestor = lowestCommonAncestor(root.left.right, root.right, root.left.right.left);
+        System.out.println(ancestor.val);
     }
 
 }

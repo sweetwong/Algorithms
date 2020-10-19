@@ -1,6 +1,7 @@
 package leet_code;
 
 import data_structure.tree.TreeNode;
+import data_structure.tree.Trees;
 
 /**
  * 给定一个二叉搜索树, 找到该树中两个指定节点的最近公共祖先。
@@ -28,7 +29,7 @@ import data_structure.tree.TreeNode;
  */
 class Item235_二叉搜索树的最近公共祖先_迭代 {
 
-    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+    public static TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         while (root != null) {
             // 父节点是最小的, 说明p和q在右子树
             if (root.val < p.val && root.val < q.val) {
@@ -46,5 +47,8 @@ class Item235_二叉搜索树的最近公共祖先_迭代 {
         return null;
     }
 
+    public static void main(String[] args) {
+
+    }
 
 }
