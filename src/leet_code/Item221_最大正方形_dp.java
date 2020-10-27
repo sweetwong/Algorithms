@@ -27,7 +27,7 @@ public class Item221_最大正方形_dp {
 
         int m = matrix.length;
         int n = matrix[0].length;
-        // 定义状态（状态表示的是什么？）
+        // 定义状态（状态表示的是什么？表示的是以[i,j]为终点的最大的正方形）
         int[][] dp = new int[m][n];
 
         for (int i = 0; i < m; i++) {

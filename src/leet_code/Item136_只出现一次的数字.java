@@ -1,6 +1,6 @@
 package leet_code;
 
-import data_structure.other.NumberUtils;
+import data_structure.other.Numbers;
 
 /**
  * Given a non-empty array of integers, every element appears twice except for one. Find that single one.
@@ -20,7 +20,7 @@ import data_structure.other.NumberUtils;
 class Item136_只出现一次的数字 {
 
     public static void main(String[] args) {
-        NumberUtils.printBinary(5 ^ 12 ^ 13 ^ 12 ^ 13);
+        Numbers.printBinary(5 ^ 12 ^ 13 ^ 12 ^ 13);
     }
 
     /**
