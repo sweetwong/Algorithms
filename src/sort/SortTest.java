@@ -18,6 +18,13 @@ public class SortTest {
         }
     }
 
+    public static void test(Sortable sortable, int n) {
+        int[] nums = Arrays.createRandomArray(n);
+        Time.watch(() -> sortable.sort(nums));
+        Arrays.checkSorted(nums);
+    }
+
+
     public interface Sortable {
         void sort(int[] nums);
     }

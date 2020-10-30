@@ -1,25 +1,27 @@
 package javas.concurrent;
 
+import java.util.StringJoiner;
+
 public class ThreadUtils {
 
     public static void print(Object... objects) {
+        String threadName = Thread.currentThread().getName();
         if (objects.length == 0) {
-            System.out.println(Thread.currentThread().getName());
+            System.out.println(threadName);
             return;
         }
-
-        String[] strings = new String[objects.length];
-        for (int i = 0; i < objects.length; i++) {
-            strings[i] = String.valueOf(objects[i]);
+        StringJoiner joiner = new StringJoiner(", ");
+        for (Object object : objects) {
+            joiner.add(String.valueOf(object));
         }
-        String res = String.join(", ", strings);
-        System.out.println(Thread.currentThread().getName() + ": " + res);
+        System.out.println(threadName + ": " + joiner);
     }
 
     public static void sleep(long millis) {
         try {
             Thread.sleep(millis);
-        } catch (InterruptedException ignored) {
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 

@@ -10,13 +10,7 @@ class WaitNotifyDemo {
                 try {
                     wait();
                     // 在被唤醒以后, t1不会立刻进入Runnable, 而是先进入Blocked, 等待下面的synchronized代码结束后, 才获取到锁, 进入Runnable状态
-
-                    long endTime = System.currentTimeMillis() + 1000;
-                    for (;;) {
-                        if (System.currentTimeMillis() > endTime) {
-                            break;
-                        }
-                    }
+                    ThreadUtils.sleep(1000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
