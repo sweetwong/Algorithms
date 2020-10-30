@@ -5,19 +5,14 @@ import java.util.concurrent.RecursiveAction;
 
 public class ForkJoinQuickSort {
 
-    static final int THRESHOLD = 1 << 13;
-
     public static void sort(int[] nums) {
-        if (nums.length <= THRESHOLD) {
-            quickSort(nums, 0, nums.length - 1);
-            return;
-        }
-
         new ForkJoinPool(Runtime.getRuntime().availableProcessors())
                 .invoke(new FJQuickSortTask(nums, 0, nums.length - 1));
     }
 
     static class FJQuickSortTask extends RecursiveAction {
+
+        static final int THRESHOLD = 1 << 13;
 
         int[] nums;
         int lo;
@@ -41,33 +36,33 @@ public class ForkJoinQuickSort {
                     new FJQuickSortTask(nums, p + 1, hi));
         }
 
-    }
-
-    static void quickSort(int[] nums, int lo, int hi) {
-        if (lo < hi) {
-            int p = partition(nums, lo, hi);
-            quickSort(nums, lo, p - 1);
-            quickSort(nums, p + 1, hi);
-        }
-    }
-
-    static int partition(int[] nums, int lo, int hi) {
-        int pivot = nums[hi];
-        int i = lo;
-        for (int j = lo; j < hi; j++) {
-            if (nums[j] < pivot) {
-                swap(nums, i, j);
-                i++;
+        void quickSort(int[] nums, int lo, int hi) {
+            if (lo < hi) {
+                int p = partition(nums, lo, hi);
+                quickSort(nums, lo, p - 1);
+                quickSort(nums, p + 1, hi);
             }
         }
-        swap(nums, i, hi);
-        return i;
-    }
 
-    static void swap(int[] nums, int i, int j) {
-        int tmp = nums[i];
-        nums[i] = nums[j];
-        nums[j] = tmp;
+        int partition(int[] nums, int lo, int hi) {
+            int pivot = nums[hi];
+            int i = lo;
+            for (int j = lo; j < hi; j++) {
+                if (nums[j] < pivot) {
+                    swap(nums, i, j);
+                    i++;
+                }
+            }
+            swap(nums, i, hi);
+            return i;
+        }
+
+        void swap(int[] nums, int i, int j) {
+            int tmp = nums[i];
+            nums[i] = nums[j];
+            nums[j] = tmp;
+        }
+
     }
 
 }
