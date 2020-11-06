@@ -12,7 +12,8 @@ public class ForkJoinQuickSort {
 
     static class FJQuickSortTask extends RecursiveAction {
 
-        static final int THRESHOLD = 1 << 13;
+        static final int INSERTION_SORT_THRESHOLD = 47;
+        static final int QUICK_SORT_THRESHOLD = 1 << 13;
 
         int[] nums;
         int lo;
@@ -26,7 +27,12 @@ public class ForkJoinQuickSort {
 
         @Override
         protected void compute() {
-            if (hi - lo <= THRESHOLD) {
+            if (hi - lo <= INSERTION_SORT_THRESHOLD) {
+                insertionSort(nums, lo, hi);
+                return;
+            }
+
+            if (hi - lo <= QUICK_SORT_THRESHOLD) {
                 quickSort(nums, lo, hi);
                 return;
             }
@@ -34,6 +40,17 @@ public class ForkJoinQuickSort {
             int p = partition(nums, lo, hi);
             invokeAll(new FJQuickSortTask(nums, lo, p - 1),
                     new FJQuickSortTask(nums, p + 1, hi));
+        }
+
+        static void insertionSort(int[] nums, int lo, int hi) {
+            for (int i = lo + 1; i <= hi; i++) {
+                int curr = nums[i];
+                int j;
+                for (j = i - 1; j >= 0 && nums[j] > curr; j--) {
+                    nums[j + 1] = nums[j];
+                }
+                nums[j + 1] = curr;
+            }
         }
 
         void quickSort(int[] nums, int lo, int hi) {
@@ -45,6 +62,8 @@ public class ForkJoinQuickSort {
         }
 
         int partition(int[] nums, int lo, int hi) {
+            int random = (int) (lo + (System.nanoTime() & (hi - lo)));
+            swap(nums, random, hi);
             int pivot = nums[hi];
             int i = lo;
             for (int j = lo; j < hi; j++) {

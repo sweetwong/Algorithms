@@ -1,6 +1,6 @@
 package sort.nplusk;
 
-import data_structure.array.Arrays;
+import data_structure.array.ArrayUtils;
 import data_structure.other.Time;
 
 import java.util.ArrayList;
@@ -102,8 +102,8 @@ class BucketSort {
     }
 
     public static void main(String[] args) {
-        int[] nums = Arrays.createRandomArray(10000000);
+        int[] nums = ArrayUtils.createRandomArray(10000000);
         Time.watch(() -> BucketSort.bucketsort(nums));
-        Arrays.checkSorted(nums);
+        ArrayUtils.checkSorted(nums);
     }
 }

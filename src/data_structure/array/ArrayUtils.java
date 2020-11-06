@@ -2,7 +2,7 @@ package data_structure.array;
 
 import java.util.*;
 
-public class Arrays {
+public class ArrayUtils {
 
     /**
      * @param n 随机数组的长度

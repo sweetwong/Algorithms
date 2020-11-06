@@ -1,6 +1,6 @@
 package sort.nplusk;
 
-import data_structure.array.Arrays;
+import data_structure.array.ArrayUtils;
 import data_structure.other.Time;
 
 /**
@@ -55,8 +55,8 @@ class RadixSort {
 
     /*Driver function to check for above function*/
     public static void main(String[] args) {
-        int[] nums = Arrays.createRandomArray(100000, 10000, true);
+        int[] nums = ArrayUtils.createRandomArray(100000, 10000, true);
         Time.watch(() -> sort(nums));
-        Arrays.checkSorted(nums);
+        ArrayUtils.checkSorted(nums);
     }
 }

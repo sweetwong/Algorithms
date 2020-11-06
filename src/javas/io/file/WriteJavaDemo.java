@@ -2,7 +2,6 @@ package javas.io.file;
 
 import javas.io.IOUtils;
 import javas.utils.Utils;
-import jdk.nashorn.internal.ir.debug.ObjectSizeCalculator;
 
 public class WriteJavaDemo {
 

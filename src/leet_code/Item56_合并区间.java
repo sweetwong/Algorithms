@@ -1,6 +1,6 @@
 package leet_code;
 
-import data_structure.array.Arrays;
+import data_structure.array.ArrayUtils;
 
 /**
  * 给出一个区间的集合，请合并所有重叠的区间。
@@ -48,7 +48,7 @@ class Item56_合并区间 {
 
     public static void main(String[] args) {
         int[][] intervals = {{2, 3}, {2, 2}, {3, 3}, {1, 3}, {5, 7}, {2, 2}, {4, 6}};
-        Arrays.print(merge(intervals));
+        ArrayUtils.print(merge(intervals));
     }
 
 }

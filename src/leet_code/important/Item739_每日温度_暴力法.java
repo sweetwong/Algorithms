@@ -1,6 +1,6 @@
 package leet_code.important;
 
-import data_structure.array.Arrays;
+import data_structure.array.ArrayUtils;
 import data_structure.other.Time;
 
 /**
@@ -33,7 +33,7 @@ public class Item739_每日温度_暴力法 {
     }
 
     public static void main(String[] args) {
-        int[] temperatures = Arrays.createRandomArray(500000, 30, 100, false);
+        int[] temperatures = ArrayUtils.createRandomArray(500000, 30, 100, false);
         // 暴力法的耗时很高
         Time.watch(() -> dailyTemperatures(temperatures));
     }

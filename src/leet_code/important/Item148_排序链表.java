@@ -1,7 +1,7 @@
 package leet_code.important;
 
 import data_structure.other.Time;
-import data_structure.array.Arrays;
+import data_structure.array.ArrayUtils;
 import data_structure.linked_list.LinkedLists;
 import data_structure.linked_list.ListNode;
 
@@ -19,7 +19,7 @@ import data_structure.linked_list.ListNode;
 class Item148_排序链表 {
 
     public static void main(String[] args) {
-        int[] nums = Arrays.createRandomArray(10000000, 100, false);
+        int[] nums = ArrayUtils.createRandomArray(10000000, 100, false);
         ListNode head = LinkedLists.create(nums);
 
         Time.watch(() -> sortList(head));

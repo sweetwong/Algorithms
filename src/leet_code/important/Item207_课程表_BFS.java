@@ -1,6 +1,6 @@
 package leet_code.important;
 
-import data_structure.array.Arrays;
+import data_structure.array.ArrayUtils;
 import data_structure.graph.Graphs;
 
 import java.util.*;
@@ -54,7 +54,7 @@ class Item207_课程表_BFS {
 
         // Debug
         Graphs.print(adj);
-        Arrays.print(indegrees);
+        ArrayUtils.print(indegrees);
         // Debug
 
         // 从此处开始BFS拓扑排序

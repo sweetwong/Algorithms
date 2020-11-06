@@ -1,12 +1,12 @@
 package leet_code;
 
-import data_structure.array.Arrays;
+import data_structure.array.ArrayUtils;
 
 class Item59_螺旋矩阵II {
 
     public static void main(String[] args) {
         int[][] matrix = generateMatrix(4);
-        Arrays.print(matrix);
+        ArrayUtils.print(matrix);
     }
 
     public static int[][] generateMatrix(int n) {

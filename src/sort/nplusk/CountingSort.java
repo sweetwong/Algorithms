@@ -1,6 +1,6 @@
 package sort.nplusk;
 
-import data_structure.array.Arrays;
+import data_structure.array.ArrayUtils;
 import data_structure.other.Time;
 
 /**
@@ -35,9 +35,9 @@ class CountingSort {
     }
 
     public static void main(String[] args) {
-        int[] nums = Arrays.createRandomArray(100000000, 100000, false);
+        int[] nums = ArrayUtils.createRandomArray(100000000, 100000, false);
         Time.watch(() -> CountingSort.sort(nums));
-        Arrays.checkSorted(nums);
+        ArrayUtils.checkSorted(nums);
     }
 }
 
