@@ -1,6 +1,7 @@
 package javas.network.http.retrofit;
 
 
+import javas.network.http.retrofit.api.DownloadApi;
 import javas.network.http.retrofit.api.GankApi;
 
 /**
@@ -12,6 +13,7 @@ public class HttpUtils {
     private static HttpUtils sInstance;
 
     private GankApi mRouterApi;
+    private DownloadApi mDownloadApi;
 
     private HttpUtils() {
     }
@@ -27,11 +29,24 @@ public class HttpUtils {
         return getInstance().getGankApiInner();
     }
 
+    public static DownloadApi getDownloadApi() {
+        return getInstance().getDownloadApiInner();
+    }
+
+
     private GankApi getGankApiInner() {
         if (mRouterApi == null) {
             mRouterApi = RetrofitFactory.getInstance().getRetrofit("https://www.baidu.com").create(GankApi.class);
         }
         return mRouterApi;
     }
+
+    private DownloadApi getDownloadApiInner() {
+        if (mDownloadApi == null) {
+            mDownloadApi = RetrofitFactory.getInstance().getRetrofit("https://www.baidu.com").create(DownloadApi.class);
+        }
+        return mDownloadApi;
+    }
+
 
 }
