@@ -7,6 +7,9 @@ import java.util.List;
 
 public class GraphData {
 
+    /**
+     * Directed Acyclic Graph 有向无环图
+     */
     public static List<List<Integer>> getDAG() {
         List<List<Integer>> adj = new ArrayList<>();
         for (int i = 0; i < 4; i++) {
@@ -18,6 +21,9 @@ public class GraphData {
         return adj;
     }
 
+    /**
+     * Directed Cyclic Graph 有向有环图
+     */
     public static List<List<Integer>> getDCG() {
         List<List<Integer>> adj = new ArrayList<>();
         for (int i = 0; i < 8; i++) {
@@ -37,9 +43,9 @@ public class GraphData {
     }
 
     public static void main(String[] args) {
-        List<List<Integer>> dg = getDCG();
         List<List<Integer>> dag = getDAG();
-        Graphs.print(dg);
+        List<List<Integer>> dcg = getDCG();
+        Graphs.print(dcg);
     }
 
 
