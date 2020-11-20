@@ -47,10 +47,10 @@ public class DirectedDetectCycle {
         int n = adj.size();
 
         boolean[] visited = new boolean[n];
-        boolean[] onStack = new boolean[n];
+        boolean[] recStack = new boolean[n];
 
         for (int v = 0; v < n; v++) {
-            if (dfs(adj, visited, onStack, v)) {
+            if (dfs(adj, visited, recStack, v)) {
                 return true;
             }
         }
@@ -58,25 +58,24 @@ public class DirectedDetectCycle {
         return false;
     }
 
-    private static boolean dfs(List<List<Integer>> adj, boolean[] visited, boolean[] onStack, int v) {
-        if (onStack[v]) {
+    private static boolean dfs(List<List<Integer>> adj, boolean[] visited, boolean[] recStack, int v) {
+        if (recStack[v]) {
             return true;
         }
-
         if (visited[v]) {
             return false;
         }
 
         visited[v] = true;
-        onStack[v] = true;
+        recStack[v] = true;
 
         for (int w : adj.get(v)) {
-            if (dfs(adj, visited, onStack, w)) {
+            if (dfs(adj, visited, recStack, w)) {
                 return true;
             }
         }
 
-        onStack[v] = false;
+        recStack[v] = false;
 
         return false;
     }
@@ -87,6 +86,7 @@ public class DirectedDetectCycle {
         adj.get(0).add(1);
         adj.get(0).add(2);
         adj.get(1).add(2);
+        adj.get(2).add(1);
 
         System.out.println(hasCycleDFS(adj));
     }
