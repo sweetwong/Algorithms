@@ -1,6 +1,7 @@
 package classical;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -8,69 +9,58 @@ import java.util.List;
  */
 public class NQueens {
 
-    private int n;
-
-    private boolean[][] board;
-
-    private List<List<String>> res = new ArrayList<>();
-
     public List<List<String>> solveNQueens(int n) {
-        this.n = n;
-        board = new boolean[n][n];
-        backtrack(0);
+        List<List<String>> res = new ArrayList<>();
+        // 因为每一行只能放一个皇后，所以可以这样表示棋盘皇后的位置
+        int[] queens = new int[n];
+        Arrays.fill(queens, -1);
+        backtrack(res, n, queens, 0);
         return res;
     }
 
-    private void backtrack(int row) {
-        // 终止条件, 在这里添加结果
+    private void backtrack(List<List<String>> res, int n, int[] queens, int row) {
+        // 成功到达终点
         if (row == n) {
-            addSolution();
+            addSolution(res, n, queens);
             return;
         }
 
         for (int col = 0; col < n; col++) {
-
-            if (isSafe(row, col)) {
-
-                // 尝试
-                board[row][col] = true;
-
-                // 推进
-                backtrack(row + 1);
-
-                // 回溯
-                board[row][col] = false;
+            if (isValid(n, queens, row, col)) {
+                queens[row] = col;
+                backtrack(res, n, queens, row + 1);
+                queens[row] = -1;
             }
         }
-
     }
 
-    private boolean isSafe(int row, int col) {
-        int left = col - 1, right = col + 1;
-        for (int i = row - 1; i >= 0; i--) {
-            if (board[i][col] || (left >= 0 && board[i][left]) || (right < n && board[i][right])) {
+    private boolean isValid(int n, int[] queens, int row, int col) {
+        // 从 左上、上、右上 个方向扩散，看看有没有皇后冲突
+        for (int i = row - 1, l = col - 1, r = col + 1; i >= 0; i--, l--, r++) {
+            if (queens[i] == col
+                    || l >= 0 && queens[i] == l
+                    || r < n && queens[i] == r) {
                 return false;
             }
-            left--;
-            right++;
         }
         return true;
     }
 
-    private void addSolution() {
-        List<String> list = new ArrayList<>();
-        for (int col = 0; col < n; col++) {
+    private void addSolution(List<List<String>> res, int n, int[] queens) {
+        List<String> oneSolution = new ArrayList<>();
+        for (int row = 0; row < n; row++) {
             StringBuilder builder = new StringBuilder();
-            for (int row = 0; row < n; row++) {
-                if (board[row][col]) {
-                    builder.append('Q');
-                } else {
-                    builder.append('.');
-                }
+            for (int col = 0; col < n; col++) {
+                builder.append(col == queens[row] ? 'Q' : '.');
             }
-            list.add(builder.toString());
+            oneSolution.add(builder.toString());
         }
-        res.add(list);
+        res.add(oneSolution);
+    }
+
+    public static void main(String[] args) {
+        List<List<String>> res = new NQueens().solveNQueens(4);
+        System.out.println(res);
     }
 
 }

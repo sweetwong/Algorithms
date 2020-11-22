@@ -32,6 +32,7 @@ public class Item820_单词的压缩解码 {
         Set<String> set = new HashSet<>(Arrays.asList(words));
         for (String word : words) {
             for (int k = 1; k < word.length(); k++) {
+                System.out.println(word.substring(k));
                 set.remove(word.substring(k));
             }
         }

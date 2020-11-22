@@ -1,6 +1,8 @@
 package leet_code.important;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Deque;
 import java.util.List;
 
 /**
@@ -20,40 +22,34 @@ import java.util.List;
  */
 class Item46_全排列 {
 
-    public List<List<Integer>> permute(int[] nums) {
-        int len = nums.length;
+    public static List<List<Integer>> permute(int[] nums) {
         List<List<Integer>> res = new ArrayList<>();
-
-        if (len == 0) {
-            return res;
-        }
-
-        backtrack(res, nums, len, new ArrayList<>(), new boolean[len], 0);
+        backtrack(res, new ArrayDeque<>(), new boolean[nums.length], nums, 0);
         return res;
     }
 
-    private void backtrack(List<List<Integer>> res, int[] nums, int len, List<Integer> path, boolean[] used, int depth) {
-        if (depth == len) {
+    private static void backtrack(List<List<Integer>> res, Deque<Integer> path,
+                                  boolean[] visited, int[] nums, int start) {
+        if (start == nums.length) {
             res.add(new ArrayList<>(path));
             return;
         }
 
-        // 此处 i = 0
-        for (int i = 0; i < len; i++) {
-            if (!used[i]) {
-                path.add(nums[i]);
-                used[i] = true;
+        for (int i = 0; i < nums.length; i++) {
+            if (!visited[i]) {
+                visited[i] = true;
+                path.addLast(nums[i]);
 
-                backtrack(res, nums, len, path, used, depth + 1);
-                // 注意：这里是状态重置，是从深层结点回到浅层结点的过程，代码在形式上和递归之前是对称的
-                used[i] = false;
-                path.remove(path.size() - 1);
+                backtrack(res, path, visited, nums, start + 1);
+
+                path.removeLast();
+                visited[i] = false;
             }
         }
     }
 
     public static void main(String[] args) {
-        int[] nums = {1, 2, 3};
-        System.out.println(new Item46_全排列().permute(nums));
+        List<List<Integer>> res = permute(new int[]{1, 2, 3});
+        System.out.println(res);
     }
 }
