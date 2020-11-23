@@ -29,30 +29,38 @@ import data_structure.tree.TreeNode;
  */
 class Item124_二叉树中的最大路径和_DFS {
 
-    private int mMaxPathSum = Integer.MIN_VALUE;
-
-    public int maxPathSum(TreeNode root) {
-        maxGain(root);
-        return mMaxPathSum;
+    public static int maxPathSum(TreeNode root) {
+        int[] maxPathSum = new int[1];
+        maxPathSum[0] = Integer.MIN_VALUE;
+        maxGain(root, maxPathSum);
+        return maxPathSum[0];
     }
 
     /**
-     * 返回node节点的最大权益
-     *
-     * 就是goDown的意思
+     * @return 返回从当前的node到下面节点，和的最大值
      */
-    private int maxGain(TreeNode node) {
+    private static int maxGain(TreeNode node, int[] maxPathSum) {
         if (node == null) {
             return 0;
         }
 
-        int leftGain = Math.max(0, maxGain(node.left));
-        int rightGain = Math.max(0, maxGain(node.right));
+        int leftGain = Math.max(0, maxGain(node.left, maxPathSum));
+        int rightGain = Math.max(0, maxGain(node.right, maxPathSum));
 
+        // 先遍历，再处理，属于后序遍历
         int currPathSum = node.val + leftGain + rightGain;
-        mMaxPathSum = Math.max(mMaxPathSum, currPathSum);
+        maxPathSum[0] = Math.max(maxPathSum[0], currPathSum);
 
         return node.val + Math.max(leftGain, rightGain);
+    }
+
+    public static void main(String[] args) {
+        TreeNode root = new TreeNode(-10);
+        root.left = new TreeNode(9);
+        root.right = new TreeNode(20);
+        root.right.left = new TreeNode(15);
+        root.right.right = new TreeNode(7);
+        maxPathSum(root);
     }
 
 }
