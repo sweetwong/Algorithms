@@ -1,44 +1,92 @@
 package classical;
 
-import data_structure.entity.Person;
-
-import java.util.LinkedHashMap;
+import java.util.HashMap;
 import java.util.Map;
 
-/**
- * 实现LRU缓存(Least Recently Used Cache)
- *
- * 方法:
- * 1. 继承LinkedHashMap, 重写removeEldestEntry
- * 2. 组合LinkedHashMap, 代理相应的方法
- * 3. TODO 利用HashMap + 双链表手动实现
- */
-public class LRUCache<K, V> extends LinkedHashMap<K, V> {
+public class LRUCache {
 
+    private static class Node {
+        int key;
+        int value;
+        Node prev;
+        Node next;
+
+        public Node(int key, int value) {
+            this.key = key;
+            this.value = value;
+        }
+    }
+
+    private Map<Integer, Node> cache = new HashMap<>();
+    private int size;
     private int capacity;
+    private Node head, tail;
 
     public LRUCache(int capacity) {
-        // The load factor used when none specified in constructor.
-        // static final float DEFAULT_LOAD_FACTOR = 0.75f;
-        super(capacity, 0.75f, true);
+        this.size = 0;
         this.capacity = capacity;
+        // 使用伪头部和伪尾部节点
+        head = new Node(0, 0);
+        tail = new Node(0, 0);
+        head.next = tail;
+        tail.prev = head;
     }
 
-    @Override
-    protected boolean removeEldestEntry(Map.Entry<K, V> eldest) {
-        return size() > capacity;
-    }
-
-    public static void main(String[] args) {
-        Person[] people = Person.createPeople(10, 20);
-        Person.printPeople(people);
-
-        LRUCache<Integer, Person> cache = new LRUCache<>(3);
-        for (Person person : people) {
-            cache.put(person.getId(), person);
-            System.out.println(cache);
-            System.out.println();
+    public int get(int key) {
+        Node node = cache.get(key);
+        if (node == null) {
+            return -1;
         }
+        // 如果 key 存在，先通过哈希表定位，再移到头部
+        moveToHead(node);
+        return node.value;
+    }
+
+    public void put(int key, int value) {
+        Node node = cache.get(key);
+        if (node == null) {
+            // 如果 key 不存在，创建一个新的节点
+            Node newNode = new Node(key, value);
+            // 添加进哈希表
+            cache.put(key, newNode);
+            // 添加至双向链表的头部
+            addToHead(newNode);
+            size++;
+            if (size > capacity) {
+                // 如果超出容量，删除双向链表的尾部节点
+                Node tail = removeTail();
+                // 删除哈希表中对应的项
+                cache.remove(tail.key);
+                size--;
+            }
+        } else {
+            // 如果 key 存在，先通过哈希表定位，再修改 value，并移到头部
+            node.value = value;
+            moveToHead(node);
+        }
+    }
+
+    private void addToHead(Node node) {
+        node.prev = head;
+        node.next = head.next;
+        head.next.prev = node;
+        head.next = node;
+    }
+
+    private void removeNode(Node node) {
+        node.prev.next = node.next;
+        node.next.prev = node.prev;
+    }
+
+    private void moveToHead(Node node) {
+        removeNode(node);
+        addToHead(node);
+    }
+
+    private Node removeTail() {
+        Node res = tail.prev;
+        removeNode(res);
+        return res;
     }
 
 }
